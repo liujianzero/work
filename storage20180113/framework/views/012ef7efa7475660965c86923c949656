@@ -1,0 +1,116 @@
+<?php /*<!DOCTYPE html>*/ ?>
+<?php /*<html>*/ ?>
+<?php /*<head>*/ ?>
+    <?php /*<meta http-equiv="X-UA-Compatible" content="IE=edge">*/ ?>
+    <?php /*<meta name="viewport" content="width=device-width, initial-scale=1">*/ ?>
+    <?php /*<meta charset="UTF-8">*/ ?>
+    <?php /*<title></title>*/ ?>
+    <?php /*<link rel="stylesheet" href="plugin/bootstrap.min.css"/>*/ ?>
+    <?php /*<link rel="stylesheet" href="css/shopping.css" />*/ ?>
+    <?php /*<link rel="stylesheet" href="plugin/layer_mobile/need/layer.css" />*/ ?>
+<?php /*</head>*/ ?>
+<?php /*<body>*/ ?>
+<div class="container-fluid bg">
+    <div class="row">
+        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/content/bgshopping.png')); ?>" style="width: 100%;" />
+    </div>
+</div>
+<div class="container-fluid bg2" >
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <p>Nike耐克官方LEBRON WITNESS II EP男子篮球鞋 AA3820</p>
+            <h3>￥799
+                <span class="pull-right bottom">库存：800</span>
+            </h3>
+        </div>
+    </div>
+    <div class="row" style="position: relative;">
+        <div class=" position bg2" style="display: none;">
+            <div class="img" >
+                <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/content/pic2.png')); ?>" class="center-block" />
+            </div>
+            <div class="shuxing" >
+                <h4>颜色</h4>
+
+                <div class="color row">
+                    <a class="active">红色</a>
+                    <a >白色</a>
+                    <a >黑色</a>
+                    <a >灰色</a>
+                    <a >白色</a>
+                    <a >白色</a>
+                    <a >黑色</a>
+                    <a >白色</a>
+                    <a >黑色</a>
+                    <a >灰色</a>
+                    <a >白色</a>
+                    <a >白色</a>
+                    <a >黑色</a>
+                    <a >黑色qwewqewqeqqqqqqqqqqqqqqqewqweew</a>
+                    <a >白色</a>
+                    <a >黑色</a>
+                    <a >灰色</a>
+                    <a >白色</a>
+                    <a >白色</a>
+                    <a >黑色</a>
+                </div>
+                <hr style="border: none;border-bottom: 3px solid black; width: 80%;"/>
+                <h4>尺寸</h4>
+                <div class="chicun row">
+                    <a class="active">8</a>
+                    <a >9</a>
+                    <a >10</a>
+                    <a >9</a>
+                    <a >10</a>
+                </div>
+                <hr style="border: none;border-bottom: 3px solid black; width: 80%;"/>
+            </div>
+            <h4 class="padt">数量
+                <div class="input-group ">
+                    <a class="input-group-addon bg2"  id="jia">+</a>
+                    <input type="text" class="form-control bg2" style="text-align: center;"  value="1" id="num"/>
+                    <a class="input-group-addon bg2" id="jian">-</a>
+                </div>
+            </h4>
+
+
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg2">
+    <div class="nav_bottom bordert">
+        <ul class="row">
+            <li class="col-xs-3 col-sm-3 collect">
+                <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/content/start1.png')); ?>" width="30px" class="center-block"/>
+                <p class="text-center">收藏</p>
+            </li>
+            <li class="col-xs-3 col-sm-3 shopping">
+                <div class="tu">
+                    <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/content/shopping_cart.png')); ?>" width="30px" class="center-block"/>
+
+                </div>
+                <p class="text-center">购物车
+                </p>
+            </li>
+            <li class="col-xs-offset-2 col-sm-offset-2 col-sm-4 col-xs-4">
+                <button class="btn btn-primary">立即购买</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<?php echo e(Theme::asset()->container('common-css')->usePath()->add('shop-css-content', $info->module . '/' . $info->flag . '/shop/css/dark/content.css')); ?>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('shop-css-layer', $info->module . '/' . $info->flag . '/shop/plugin/layer_mobile/need/layer.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('shop-js-layer', $info->module . '/' . $info->flag . '/shop/plugin/layer_mobile/layer.js'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('shop-js-content', $info->module . '/' . $info->flag . '/shop/js/dark/content.js'); ?>
+
+
+
+<?php /*</body>*/ ?>
+<?php /*<script src="plugin/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>*/ ?>
+<?php /*<script src="plugin/layer_mobile/layer.js" type="text/javascript" charset="utf-8"></script>*/ ?>
+<?php /*<script src="js/shopping.js" type="text/javascript" charset="utf-8"></script>*/ ?>
+<?php /*</html>*/ ?>

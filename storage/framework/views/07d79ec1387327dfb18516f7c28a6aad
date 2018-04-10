@@ -1,0 +1,28 @@
+<style>
+    #user .user .user-r{
+        height: auto;
+    }
+</style>
+
+<div class="container" style="width: 100%;background:#1c1c1e;">
+    <div class="type-title">
+        <h4>请选择需要创建的店铺类型</h4>
+    </div>
+</div>
+<div class="container" style="width: 100%;">
+    <div class="row type-list" style="margin-top: 15px;margin-bottom: 20px;">
+        <?php foreach($type as $v): ?>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <div class="thumbnail">
+                    <h3><?php echo e($v->name); ?></h3>
+                    <div class="induce">
+                        <p><?php echo e($v->introduce); ?></p>
+                        <a href="<?php echo e(route('shop.create', ['id' => $v->id])); ?>">立即开店</a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('shop-list', 'css/myShop/store/shop.css'); ?>

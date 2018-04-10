@@ -1,0 +1,8 @@
+<?php /* 这边是操作提示 */ ?>
+<?php if(Session::has('err')): ?>
+    <script type="text/javascript">
+        $(function(){
+            layer.msg('<?php echo e(Session::pull('err')); ?>', {icon: 5});
+        })
+    </script>
+<?php endif; ?>

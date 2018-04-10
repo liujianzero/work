@@ -1,0 +1,94 @@
+<div class="container-fluid">
+    <div class="ban">
+        <div class="row">
+            <img src="<?php if(!empty($shop['store_logo'])): ?><?php echo url($shop['store_logo']); ?><?php else: ?><?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/codeinfo.jpg")); ?><?php endif; ?>"
+                 class="center-block">
+            <p class="text-center">昵称：<strong><?php echo e($shop['store_name']); ?></strong></p>
+            <?php /*<p class="text-center">等级：星球之光</p>*/ ?>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="ull">
+        <ul class="row">
+            <li class="col-xs-12 col-sm-12">
+                <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'order'])); ?>">
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic8.png")); ?>"
+                         class="logo"/>
+                    <span>全部订单</span>
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/arrow.png")); ?>"
+                         class="arrow pull-right"/>
+                </a>
+                <div class="ulll">
+                    <ul>
+                        <li>
+                            <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id,'order'])); ?>?id=1" class="text-center">
+                                <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic7.png")); ?>"
+                                     class="center-block"/>
+                                代付款
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-center">
+                                <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic6.png")); ?>"
+                                     class="center-block"/>
+                                代发货
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-center">
+                                <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic5.png")); ?>"
+                                     class="center-block"/>
+                                待收货
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-center">
+                                <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic4.png")); ?>"
+                                     class="center-block"/>
+                                待评价
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-center">
+                                <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic3.png")); ?>"
+                                     class="center-block"/>
+                                售后
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="col-xs-12 col-sm-12">
+                <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'shopping_cart'])); ?>">
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic9.png")); ?>"
+                         class="logo"/>
+                    <span>购物车</span>
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/arrow.png")); ?>"
+                         class="arrow pull-right"/>
+                </a>
+            </li>
+            <li class="col-xs-12 col-sm-12">
+                <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'collect'])); ?>">
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic10.png")); ?>"
+                         class="logo"/>
+                    <span>我的收藏</span>
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/arrow.png")); ?>"
+                         class="arrow pull-right"/>
+                </a>
+            </li>
+            <li class="col-xs-12 col-sm-12">
+                <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'address'])); ?>">
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic12.png")); ?>"
+                         class="logo"/>
+                    <span>地址管理</span>
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/arrow.png")); ?>"
+                         class="arrow pull-right"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('theme-css-personal', "{$shop->dir}/css/personal.css"); ?>
+

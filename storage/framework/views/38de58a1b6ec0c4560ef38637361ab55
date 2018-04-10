@@ -1,0 +1,233 @@
+
+<div id="container" style=" margin-top: 62px">
+	<div id="banner">
+		<div class="banner-bg" >
+			<p>升级您的开放平台帐户！</p>
+		</div>
+
+	</div>
+	<div id="table">
+		<div class="tables clearfix">
+			<div class="tables-l">
+				<ul>
+					<li>版<br>本</li>
+					<li>作<br>品<br>管<br>理<br>类</li>
+					<li>功<br>能<br>类</li>
+					<li>商<br>铺<br>类</li>
+					<li>其<br>他</li>
+				</ul>
+			</div>
+			<div class="tables-r">
+				<ul class="clearfix row">
+					<li class="name">
+						<div class="type">
+							账号类型
+						</div>
+						<ul class="ul1">
+							<li>身份徽章</li>
+							<li>存储空间</li>
+							<li>CDN加速</li>
+							<li>作品加密</li>
+							<li>API接口</li>
+							<li>作品导出</li>
+							<li>造物引擎高级功能</li>
+							<li>造景引擎高级功能</li>
+							<li>开通商铺</li>
+							<li>商品数量</li>
+							<li>商铺装修</li>
+							<li>优先推荐</li>
+							<li>可绑定独立域名</li>
+							<li>协同子账号</li>
+							<li>学习折扣</li>
+							<li>任务红包</li>
+							<li class="bor">服务支持</li>
+						</ul>
+					</li>
+					<?php foreach($memberType as $k => $v): ?>
+					<li class="edition <?php if($k == 2): ?> hov <?php endif; ?>">
+						<div class="option">
+							<?php if($k == 2): ?> <i class="tuijian"></i> <?php endif; ?>
+							<h3><?php echo e($v['type']); ?></h3>
+							<?php if($v['price'] == 0): ?>
+								<p>免费</p>
+								<a href="javascript:void(0);" class="open" style="background: transparent;"></a>
+							<?php else: ?>
+								<p> <?php echo e($v['price']); ?>/年 </p>
+								<?php if($v['id'] <= $user_type): ?>
+									<a href="#" style="cursor:not-allowed;opacity: 0.2" class="open <?php if($k == 2): ?> active <?php endif; ?>">立即开通</a>
+								<?php else: ?>
+									<a href="javascript:void(0);" data-id="<?php echo e($v['id']); ?>" class="open <?php if($k == 2): ?> active <?php endif; ?>">立即开通</a>
+								<?php endif; ?>
+							<?php endif; ?>
+						</div>
+						<ul>
+							<li>
+								<?php if($k < 2): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php else: ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/yes.png')); ?>"/>
+								<?php endif; ?>
+							</li>
+							<li><?php echo e($v['storage']); ?></li>
+							<li>
+								<?php if($k < 1): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php else: ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/yes.png')); ?>"/>
+								<?php endif; ?>
+							</li>
+							<li>
+								<?php if($k < 1): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php else: ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/yes.png')); ?>"/>
+								<?php endif; ?>
+							</li>
+							<li>
+								<?php if($k == 0): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php elseif($k >0 && $k <3): ?>
+									外网
+								<?php elseif($k == 3): ?>
+									外网/淘宝/天猫/京东
+								<?php else: ?>
+									外网/淘宝/天猫/京东/APP
+								<?php endif; ?>
+							</li>
+							<li>
+								<?php if($k < 3): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php else: ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/yes.png')); ?>"/>
+								<?php endif; ?>
+							</li>
+								<?php if($k < 1): ?>
+								<li>
+									基础功能
+								<?php else: ?>
+								<li  title="自定义Logo/自定义背景/标签功能/动画功能">自定义Logo/自定义背景/标签功能/动画功能
+								<?php endif; ?>
+							</li>
+							<li>
+								<?php if($k < 1): ?>
+									基础功能
+								<?php else: ?>
+									去除Logo/菜单功能/沙盘功能
+								<?php endif; ?>
+							</li>
+							<?php /*商铺类*/ ?>
+							<li>
+								<?php if($k < 1): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php else: ?>
+									出售素材/出售版权/出售商品
+								<?php endif; ?>
+							</li>
+							<li>
+								<?php if($k == 0): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php elseif($k > 0): ?>
+									<?php echo $v['shop_num']; ?>
+
+								<?php endif; ?>
+							</li>
+							<li>
+								<?php if($v['recommend'] == 0): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php else: ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/yes.png')); ?>"/>
+								<?php endif; ?>
+							</li>
+							<li>
+								<?php if($v['Renovation'] == 0): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php else: ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/yes.png')); ?>"/>
+								<?php endif; ?>
+							</li>
+							<li>
+								<?php if($v['url'] == 0): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php else: ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/yes.png')); ?>"/>
+								<?php endif; ?>
+							</li>
+							<?php /*其他*/ ?>
+							<li>
+								<?php if($v['account'] == 0): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php else: ?>
+									<?php echo e($v['account']); ?>个
+								<?php endif; ?>
+							</li>
+							<li>
+								<?php if($v['discount'] == 0): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php else: ?>
+									<?php echo e($v['discount']); ?>
+
+								<?php endif; ?>
+							</li>
+							<li>
+								<?php if($v['red_packet'] == 0): ?>
+									<img src="<?php echo e(Theme::asset()->url('images/member/no.png')); ?>"/>
+								<?php else: ?>
+									<?php echo e($v['red_packet']); ?>元
+								<?php endif; ?>
+							</li>
+							<li class="bor"><?php echo e($v['service']); ?></li>
+						</ul>
+					</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<?php foreach($mFunData as $k => $v): ?>
+	<div class="main <?php if($k>0): ?> backG191 <?php endif; ?>">
+		<div class="main1 cbody">
+			<h3><?php echo mb_strimwidth($v['title'],0,80,"..."); ?></h3>
+			<div class="text"><?php echo $v['content']; ?></div>
+			<div class="main1-b">
+				<ul class="row clearfix">
+					<?php foreach($v['children'] as $v1): ?>
+					<li class="col-lg-3 col-md-3 col-sm-4 col-xs-2">
+						<img src="<?php echo e(Theme::asset()->url($v1['m_img'])); ?>"/>
+						<p class="p1"><?php echo mb_strimwidth($v1['m_title'],0,30,"..."); ?></p>
+						<p class="p2"><?php echo $v1['m_content']; ?></p>
+					</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<?php endforeach; ?>
+</div>
+
+<div class="main2">
+	<div class="mains cbody">
+		<div class="mains-t">
+			<h3>最新购买</h3>
+			<p>已累计<?php echo $total; ?>人</p>
+		</div>
+		<div class="mains-b">
+			<ul class="row clearfix">
+				<?php if($buylist): ?>
+					<?php foreach($buylist as $k4 => $v4): ?>
+						<li class="col-xs-1 col-sm-2 col-md-1 col-lg-1 logoImg">
+							<img src="<?php if(!empty($v4['avatar'])): ?> <?php echo url($v4['avatar']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?> <?php endif; ?>"/>
+							<p class="p1"><?php if($v4['nickname']): ?> <?php echo $v4['nickname']; ?> <?php else: ?> 未命名 <?php endif; ?> </p>
+							<p class="p2"><?php echo \App\Modules\User\Http\Controllers\MemberController::DateTimeDiff($v4['created_at']); ?></p>
+						</li>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</ul>
+		</div>
+	</div>
+</div>
+
+	<?php echo Theme::asset()->container('custom-css')->usepath()->add('vip','css/member/major.css'); ?>
+
+	<?php echo Theme::asset()->container('custom-js')->usepath()->add('member_index','js/member/index.js'); ?>
+
+	<?php echo Theme::asset()->container('custom-js')->usepath()->add('member_logo','js/member/logoImg.js'); ?>

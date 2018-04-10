@@ -1,0 +1,135 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+    <div class="ordertitle">订单概览</div>
+    <div class="order-head">
+        <ul>
+            <li>
+                <h5><a href="javascript:void(0);"><?php echo e($count->wait); ?></a></h5>
+                <p>待发货订单</p>
+            </li>
+            <li>
+                <h5><a href="javascript:void(0);"><?php echo e($count->refund); ?></a></h5>
+                <p>维权订单</p>
+            </li>
+            <li>
+                <h5><a href="javascript:void(0);"><?php echo e($count->yesterday); ?></a></h5>
+                <p>昨日订单</p>
+            </li>
+            <li>
+                <h5><a href="javascript:void(0);"><em class="unit">￥</em><?php echo e(price_format($count->yesterday_money)); ?></a></h5>
+                <p>昨日交易额</p>
+            </li>
+            <li>
+                <h5><a href="javascript:void(0);"><em class="unit">￥</em><?php echo e(price_format($count->withdrawals_money)); ?></a></h5>
+                <p>可提现余额</p>
+            </li>
+        </ul>
+    </div>
+    <div class="order-navslide">
+        <ul class="clearfix">
+            <?php foreach($tab as $v): ?>
+                <li><a href="<?php echo e($v['value']); ?>" class="<?php if($v['value'] == $tab_active): ?><?php echo e('active'); ?><?php endif; ?>"><?php echo e($v['name']); ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <div class="order-main">
+        <div class="order-son" style="display: block;">
+            <table class="table table-bordered table-hover">
+                <thead class="tabhead">
+                    <tr>
+                        <th>订单号</th>
+                        <th>商品</th>
+                        <th>单价/数量「规格」</th>
+                        <th>买家</th>
+                        <th>订单总额</th>
+                        <th>订单状态</th>
+                        <th>下单时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="tab">
+                    <?php $__empty_1 = true; foreach($list as $v): $__empty_1 = false; ?>
+                        <tr>
+                            <td><?php echo e($v->order_sn); ?></td>
+                            <td>
+                                <?php foreach($v->goods as $goods): ?>
+                                    <p data-toggle="tooltip" data-placement="top" title="<?php echo e($goods->goods_name); ?>"><?php echo e(str_limit($goods->goods_name, 30)); ?></p>
+                                <?php endforeach; ?>
+                            </td>
+                            <td>
+                                <?php foreach($v->goods as $goods): ?>
+                                    <p>￥<?php echo e($goods->goods_price); ?>/<?php echo e($goods->goods_number); ?>「<?php echo e(isset($goods->goods_attr) ? $goods->goods_attr : 'N/A'); ?>」</p>
+                                <?php endforeach; ?>
+                            </td>
+                            <td>
+                                <p><?php echo e($v->consignee); ?></p>
+                                <p><?php echo e($v->mobile); ?></p>
+                                <p><?php echo e($v->province_name); ?>-<?php echo e($v->city_name); ?>-<?php echo e($v->area_name); ?></p>
+                                <p><?php echo e($v->address); ?></p>
+                            </td>
+                            <td>￥<?php echo e($v->total_price); ?></td>
+                            <td><?php echo e($v->order_status == 1 ? '正常' : '关闭'); ?></td>
+                            <td><?php echo e($v->created_at); ?></td>
+                            <td>
+                                <?php if($v->order_status == 1): ?>
+                                    <?php if($v->pay_status == 2): ?>
+                                        <?php if($v->post_status == 1): ?>
+                                            <p><span class="label label-warning"><i class="fa fa-hourglass-2" aria-hidden="true"></i> 待发货</span></p>
+                                            <p>
+                                                <a class="btn btn-primary btn-sm" onclick="delivery(this);" data-id="<?php echo e($v->id); ?>">
+                                                    <i class="fa fa-truck" aria-hidden="true"></i> 去发货
+                                                </a>
+                                            </p>
+                                        <?php elseif($v->post_status == 2): ?>
+                                            <p><span class="label label-info"><i class="fa fa-truck" aria-hidden="true"></i> 已发货</span></p>
+                                        <?php elseif($v->post_status == 3): ?>
+                                            <p><span class="label label-success"><i class="fa fa-check" aria-hidden="true"></i> 已完成</span></p>
+                                            <p>
+                                                <?php if($v->shop_evaluate == 'N'): ?>
+                                                    <a class="btn btn-primary btn-sm" onclick="evaluates(this);" data-id="<?php echo e($v->id); ?>">
+                                                        <i class="fa fa-heart" aria-hidden="true"></i> 去评价
+                                                    </a>
+                                                <?php endif; ?>
+                                            </p>
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <p><span class="label label-default"><i class="fa fa-credit-card" aria-hidden="true"></i> 待付款</span></p>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <p><span class="label label-danger"><i class="fa fa-remove" aria-hidden="true"></i> 已关闭</span></p>
+                                <?php endif; ?>
+                                <p>
+                                    <a href="<?php echo e(route(Theme::get('route_prefix') . '.order.detail', ['id' => $v->id])); ?>" class="btn btn-link">
+                                        <i class="fa fa-info-circle" aria-hidden="true"></i> 订单详情
+                                    </a>
+                                </p>
+                            </td>
+                        </tr>
+                    <?php endforeach; if ($__empty_1): ?>
+                        <tr>
+                            <td colspan="8"><i class="fa fa-ban" aria-hidden="true"></i> 没有找到匹配的记录</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation" class="nav">
+                <?php echo $list->appends($merge)->render(); ?>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('order-js-jquery.validate', Theme::get('module') . '/plugin/bootstrap-validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('order-js-messages_zh', Theme::get('module') . '/plugin/bootstrap-validate/messages_zh.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-iCheck-purple', Theme::get('module') . '/plugin/iCheck/skins/flat/purple.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-iCheck', Theme::get('module') . '/plugin/iCheck/icheck.js'); ?>
+
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('order-css-index', Theme::get('dir_prefix') . '/order/css/index.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('order-js-allorder', Theme::get('dir_prefix') . '/order/js/allorder.js'); ?>
+

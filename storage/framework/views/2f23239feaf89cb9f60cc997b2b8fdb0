@@ -1,0 +1,9 @@
+<?php if(Session::has('suc')): ?><?php /* 成功的消息 */ ?>
+    <script>
+        layer.msg("<?php echo e(Session::get('suc')); ?>");
+    </script>
+<?php elseif(Session::has('err')): ?><?php /* 失败的消息 */ ?>
+    <script>
+        layer.msg("<?php echo e(Session::get('err')); ?>");
+    </script>
+<?php endif; ?>

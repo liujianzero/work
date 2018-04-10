@@ -1,0 +1,500 @@
+<?php if(count($address) > 0): ?>
+    <div id="bg-adress"><!--隐藏内容-->
+        <div class="admin">
+            <div class="cha" onclick="closeAddr();"></div>
+            <div class="bg-scroll">
+                <div id="address-form">
+                    <form id="addFrom">
+                        <h4>新增收货地址</h4>
+                        <div class="fill clearfix">
+                            <div class="row content">
+                                <div class="col-sm-10">
+                                    <div class="row">
+                                        <div id="validate-error-msg" class="col-sm-8 col-sm-offset-2">
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            <span class="txt-area">所在地区：</span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="country"></label>
+                                                <select id="country" name="country" required class="form-control sect1">
+                                                    <option value="1">中国大陆</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="province"></label>
+                                                <select id="province" name="province" onchange="checkprovince(this)" required class="form-control sect2">
+                                                    <option value="">请选择</option>
+                                                    <?php foreach($province as $v): ?>
+                                                        <option value="<?php echo e($v['id']); ?>"><?php echo e($v['name']); ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="city"></label>
+                                                <select id="city" name="city" onchange="checkcity(this)" required class="form-control sect2">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="area"></label>
+                                                <select id="area" name="area" required class="form-control sect2">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            <span class="txt-area">详细地址：</span>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="address"></label>
+                                                <textarea id="addresses" name="address" rows="3" required class="form-control" placeholder="例如街道名称，门牌名称，楼层和房间号等信息"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            <span class="txt-area">邮政编码：</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="zip_code"></label>
+                                                <input type="text" class="inp1 form-control" id="zip_code" name="zip_code" required placeholder="邮政编码，不清楚请填000000"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            <span class="txt-area">收货人：</span>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="consignee"></label>
+                                                <input type="text" class="inp1 form-control" id="consignee" name="consignee" required placeholder="收货人"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            <span class="txt-area">手机号码：</span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="mobile_prefix_id"></label>
+                                                <select id="mobile_prefix_id" name="mobile_prefix_id" required class="form-control sect3">
+                                                    <?php foreach($prefix as $v): ?>
+                                                        <option value="<?php echo e($v['id']); ?>"><?php echo e($v['country']); ?> +<?php echo e($v['prefix']); ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="mobile"></label>
+                                                <input type="text" id="mobile" name="mobile" required class="inp1 form-control" placeholder="手机号码"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            <span class="txt-area">固定电话：</span>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="tel_prefix_id"></label>
+                                                <select id="tel_prefix_id" name="tel_prefix_id" required class="form-control sect3">
+                                                    <?php foreach($prefix as $v): ?>
+                                                        <option value="<?php echo e($v['id']); ?>"><?php echo e($v['country']); ?> +<?php echo e($v['prefix']); ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="tel">固定电话</label>
+                                                <div class="input-group" id="tel">
+                                                    <input type="text" name="tel_area_code" class="inp1 form-control" placeholder="区号"/>
+                                                    <div class="input-group-addon input-middle">-</div>
+                                                    <input type="text" name="tel" class="inp1 form-control" placeholder="固定电话"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            <div class="checkbox">
+                                                <label for="is_default">
+                                                    <input id="is_default" name="is_default" type="checkbox" value="Y" checked="checked"/> 默认地址
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2 text-right">
+                                            <div class="btn-save">
+                                                <button id="formSubmit" type="submit">保存</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="count">
+                    <div class="count-main">
+                        <table class="table">
+                            <thead>
+                                <tr style="background: #141414;">
+                                    <th>收货人</th>
+                                    <th>所在地区</th>
+                                    <th>详细地址</th>
+                                    <th>邮编</th>
+                                    <th>手机号码</th>
+                                    <th>默认地址</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($address as $k => $v): ?>
+                                    <tr>
+                                        <td><?php echo e($v->consignee); ?></td>
+                                        <td><?php echo e($v->provinces->name); ?> <?php echo e($v->cities->name); ?> <?php echo e($v->areas->name); ?></td>
+                                        <td><?php echo e($v->address); ?></td>
+                                        <td><?php echo e($v->zip_code); ?></td>
+                                        <td>+<?php echo e($v->mobiles->prefix); ?>-<?php echo e($v->mobile); ?></td>
+                                        <td>
+                                            <?php if($v->is_default == 'Y'): ?>
+                                                是
+                                            <?php else: ?>
+                                                否
+                                            <?php endif; ?>
+                                        </td>
+                                        <td>
+                                            <a onclick="editAddress(this)" data-id="<?php echo e($v->id); ?>">修改</a>
+                                            <?php if($v->is_default != 'Y'): ?>
+                                                <span>|</span>
+                                                <a onclick="delAddress(this)" data-id="<?php echo e($v->id); ?>">删除</a>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--隐藏内容结束-->
+
+    <form action="<?php echo e(route('myOrder.myGoodsAdd')); ?>" method="post" onsubmit="$('#orderSubmit').attr('disabled', true).html('正在提交 <i class=\'fa fa-spinner fa-spin\'></i>');">
+        <div id="address"><!--主体内容-->
+            <div class="address">
+                <?php /* 地址信息 */ ?>
+                <div class="admin">
+                    <h4>选择收货地址</h4>
+                    <div class="admin-adress">
+                        <ul class="clearfix" id="some-address">
+                            <?php foreach($address as $k => $v): ?>
+                                <li class="<?php if($k == 0): ?> active <?php endif; ?> <?php if($k > 3): ?> hide-addr <?php endif; ?>" >
+                                    <h4><?php echo e($v->provinces->name); ?><?php echo e($v->cities->name); ?><?php echo e($v->areas->name); ?> （<?php echo e($v->consignee); ?>  收）</h4>
+                                    <p><?php echo e($v->address); ?></p>
+                                    <p style="margin-bottom: 20px;">+<?php echo e($v->mobiles->prefix); ?>-<?php echo e($v->mobile); ?></p>
+                                    <a onclick="clickAddress(this);" data-id="<?php echo e($v->id); ?>">修改</a>
+                                    <input type="radio" name="address" value="<?php echo e($v->id); ?>" <?php if($k == 0): ?> checked <?php endif; ?> style="display: none">
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="show">
+                        <span onclick="showAllAddr(this);" data-status="Y">显示全部地址</span>
+                        <span onclick="openAddr()">管理收货地址</span>
+                    </div>
+                </div>
+                <?php /* /地址信息 */ ?>
+
+                <?php /* 确认订单信息 */ ?>
+                <div class="infor clearfix">
+                    <h4>确认订单信息</h4>
+                    <ol>
+                        <li class="li1">价格</li>
+                        <li class="li2">数量</li>
+                    </ol>
+                </div>
+                <?php foreach($list as $v): ?>
+                    <div class="store">
+                        <h4>店铺：<?php echo e($v['shop_name']); ?></h4>
+                        <?php foreach($v['children'] as $v1): ?>
+                            <div class="store-b clearfix">
+                                <div class="store-left">
+                                    <dl class="clearfix">
+                                        <dt><img src="<?php echo e($v1['image']); ?>"/></dt>
+                                        <dd class="dd-name"><?php echo e($v1['goods_name']); ?></dd>
+                                        <dd class="dd-size"><?php echo e($v1['goods_attr']); ?></dd>
+                                    </dl>
+                                </div>
+                                <div class="store-right">
+                                    <ul class="clearfix">
+                                        <li class="li-money">￥<?php echo e($v1['goods_price']); ?></li>
+                                        <li class="li-inp">
+                                            <?php echo e($v1['goods_number']); ?>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <input type="hidden" name="order[<?php echo e($v['shop_id']); ?>][id][]" value="<?php echo e($v1['id']); ?>"/>
+                            <input type="hidden" name="ids[]" value="<?php echo e($v1['id']); ?>"/>
+                        <?php endforeach; ?>
+                        <div class="message">
+                            <span>买家留言:</span>
+                            <input type="text" name="order[<?php echo e($v['shop_id']); ?>][msg]" />
+                        </div>
+                    </div>
+                    <input type="text" name="order[<?php echo e($v['shop_id']); ?>][shop_id]" value="<?php echo e($v['shop_id']); ?>" style="display: none"/>
+                <?php endforeach; ?>
+                <div class="balance">
+                    <p>结算<span>￥<?php echo e($price); ?></span></p>
+                </div>
+                <div class="submit">
+                    <button type="submit" id="orderSubmit" style="background: #257CC0;">提交订单</button>
+                </div>
+                <?php /* /确认订单信息 */ ?>
+            </div>
+        </div>
+        <?php echo csrf_field(); ?>
+
+        <input type="hidden" name="order_token" value="<?php echo e(Session::get('order_token')); ?>"/>
+    </form>
+<?php else: ?>
+    <div id="address"><!--主体内容-->
+        <div class="address">
+            <?php /* 地址信息 */ ?>
+            <div class="admin">
+                <form id="validateFrom">
+                    <h4>填写收货地址</h4>
+                    <div class="fill clearfix">
+                        <div class="row content">
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <div id="validate-error-msg" class="col-sm-8 col-sm-offset-2">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2 text-right">
+                                        <span class="txt-area">所在地区：</span>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="country"></label>
+                                            <select id="country" name="country" required class="form-control sect1">
+                                                <option value="1">中国大陆</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="province"></label>
+                                            <select id="province" name="province" onchange="checkprovince(this)" required class="form-control sect2">
+                                                <option value="">请选择</option>
+                                                <?php foreach($province as $v): ?>
+                                                    <option value="<?php echo e($v['id']); ?>"><?php echo e($v['name']); ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="city"></label>
+                                            <select id="city" name="city" onchange="checkcity(this)" required class="form-control sect2">
+                                                <option value="">请选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="area"></label>
+                                            <select id="area" name="area" required class="form-control sect2">
+                                                <option value="">请选择</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2 text-right">
+                                        <span class="txt-area">详细地址：</span>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="address"></label>
+                                            <textarea id="addresses" name="address" rows="3" required class="form-control" placeholder="例如街道名称，门牌名称，楼层和房间号等信息"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2 text-right">
+                                        <span class="txt-area">邮政编码：</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="zip_code"></label>
+                                            <input type="text" class="inp1 form-control" id="zip_code" name="zip_code" required placeholder="邮政编码，不清楚请填000000"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2 text-right">
+                                        <span class="txt-area">收货人：</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="consignee"></label>
+                                            <input type="text" class="inp1 form-control" id="consignee" name="consignee" required placeholder="收货人"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2 text-right">
+                                        <span class="txt-area">手机号码：</span>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="mobile_prefix_id"></label>
+                                            <select id="mobile_prefix_id" name="mobile_prefix_id" required class="form-control sect3">
+                                                <?php foreach($prefix as $v): ?>
+                                                    <option value="<?php echo e($v['id']); ?>"><?php echo e($v['country']); ?> +<?php echo e($v['prefix']); ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="mobile"></label>
+                                            <input type="text" id="mobile" name="mobile" required class="inp1 form-control" placeholder="手机号码"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2 text-right">
+                                        <span class="txt-area">固定电话：</span>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="tel_prefix_id"></label>
+                                            <select id="tel_prefix_id" name="tel_prefix_id" required class="form-control sect3">
+                                                <?php foreach($prefix as $v): ?>
+                                                    <option value="<?php echo e($v['id']); ?>"><?php echo e($v['country']); ?> +<?php echo e($v['prefix']); ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="tel">固定电话</label>
+                                            <div class="input-group" id="tel">
+                                                <input type="text" name="tel_area_code" class="inp1 form-control" placeholder="区号"/>
+                                                <div class="input-group-addon input-middle">-</div>
+                                                <input type="text" name="tel" class="inp1 form-control" placeholder="固定电话"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2 text-right">
+                                        <div class="checkbox">
+                                            <label for="is_default">
+                                                <input id="is_default" name="is_default" type="checkbox" value="Y" checked="checked"/> 默认地址
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2 text-right">
+                                        <div class="btn-save">
+                                            <button id="formSubmit" type="submit">保存</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <?php /* /地址信息 */ ?>
+
+            <?php /* 确认订单信息 */ ?>
+            <div class="infor clearfix">
+                <h4>确认订单信息</h4>
+                <ol>
+                    <li class="li1">价格</li>
+                    <li class="li2">数量</li>
+                </ol>
+            </div>
+            <?php foreach($list as $v): ?>
+                <div class="store">
+                    <h4>店铺：<?php echo e($v['shop_name']); ?></h4>
+                    <?php foreach($v['children'] as $v1): ?>
+                        <div class="store-b clearfix">
+                            <div class="store-left">
+                                <dl class="clearfix">
+                                    <dt><img src="<?php echo e($v1['image']); ?>"/></dt>
+                                    <dd class="dd-name"><?php echo e($v1['goods_name']); ?></dd>
+                                    <dd class="dd-size"><?php echo e($v1['goods_attr']); ?></dd>
+                                </dl>
+                            </div>
+                            <div class="store-right">
+                                <ul class="clearfix">
+                                    <li class="li-money">￥<?php echo e($v1['goods_price']); ?></li>
+                                    <li class="li-inp">
+                                        <?php echo e($v1['goods_number']); ?>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <input type="hidden" name="order[<?php echo e($v['shop_id']); ?>][]" value="<?php echo e($v1['id']); ?>"/>
+                    <?php endforeach; ?>
+                    <div class="message">
+                        <span>买家留言:</span>
+                        <input type="text" name="message" />
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            <div class="balance">
+                <p>结算<span>￥<?php echo e($price); ?></span></p>
+            </div>
+            <div class="submit">
+                <a href="javascript:layer.msg('请先填写收获地址');">提交订单</a>
+            </div>
+            <?php /* /确认订单信息 */ ?>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('myOrder-address', 'css/myOrder/goods/address.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('myOrder-futurico', 'js/myShop/icheck/futurico/futurico.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('myOrder-polaris', 'js/myShop/icheck/polaris/polaris.css'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('myOrder-jquery.validate.min', 'js/myShop/order/validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('myOrder-messages_zh.min', 'js/myShop/order/validate/messages_zh.min.js'); ?>
+
+<?php echo Theme::asset()->container('specific-js')->usePath()->add('myOrder-icheck', 'js/myShop/icheck/icheck.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('myOrder-address', 'js/myOrder/goods/address.js'); ?>

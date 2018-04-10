@@ -1,0 +1,122 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+    <div class="app-container gray clearfix">
+        <div class="title">
+            <h4>所有模板</h4>
+        </div>
+        <div class="box-main">
+            <div class="boxmain-head">
+                <ul class="nav nav-pills">
+                    <li role="presentation"><a href="javascript:void(0);" class="active title" data-id="0">全部</a></li>
+                    <li role="presentation"><a href="javascript:void(0);" class="title" data-id="1">免费模板</a></li>
+                    <li role="presentation"><a href="javascript:void(0);" class="title" data-id="2">付费模板</a></li>
+                </ul>
+            </div>
+            <div class="boxmain-model">
+                <ul class="list">
+                    <?php foreach($template as $v): ?>
+                        <li class="box-model" data-type="<?php echo e($v['pay_status']); ?>">
+                            <div class="box-model-top"
+                                 style="background-size:100%;background-image: url(<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . $v['cover_img'])); ?>)">
+                            </div>
+                            <div class="box-model-bottom clearfix">
+                                <h4><?php echo e($v['title']); ?></h4>
+                            </div>
+                            <div class="box-model-bottom clearfix">
+                                <?php if($v['pay_status'] == 0): ?>
+                                    <span>免费</span>
+                                    <a href="javascript:void(0);" data-id="<?php echo e($v['id']); ?>"
+                                       data-pay="<?php echo e($v['pay_status']); ?>"
+                                       data-href="<?php echo e(route(Theme::get('route_prefix') . '.shop.index')); ?>">立即使用</a>
+                                <?php else: ?>
+                                    <span class="marL">￥<?php echo e($v['price']); ?></span>
+                                    <a href="javascript:void(0);" data-id="<?php echo e($v['id']); ?>"
+                                       data-pay="<?php echo e($v['pay_status']); ?>"
+                                       data-href="<?php echo e(route(Theme::get('route_prefix') . '.shop.buy.template')); ?>">立即购买</a>
+                                <?php endif; ?>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <?php /*<div class="box-model">
+                    <div class="box-model-top "
+                         style="background-size:100%;background-image: url(<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . $cover)); ?>)">
+                    </div>
+                    <div class="box-model-bottom clearfix">
+                        <h4><?php echo e($titles); ?></h4>
+                    </div>
+                    <div class="box-model-bottom clearfix">
+                        <span>免费模板</span>
+                        <a href="javascript:selectTemplate(this);" data-type="1"
+                           data-href="<?php echo e(route(Theme::get('route_prefix') . '.shop.index')); ?>">立即使用</a>
+                    </div>
+                </div>
+                <div class="box-model">
+                    <div class="box-model-top bgcolor1">
+                        <span>定制服务</span>
+                    </div>
+                    <div class="box-model-bottom clearfix">
+                        <span>免费模板</span>
+                        <a href="javascript:selectTemplate(this);" data-type="0"
+                           data-href="<?php echo e(route(Theme::get('route_prefix') . '.shop.index')); ?>">立即使用</a>
+                    </div>
+                </div>
+                <div class="box-model">
+                    <div class="box-model-top bgcolor2">
+                        <span>出售素材</span>
+                    </div>
+                    <div class="box-model-bottom clearfix">
+                        <span>免费模板</span>
+                        <a href="javascript:void(0);"
+                           data-href="<?php echo e(route(Theme::get('route_prefix') . '.shop.index')); ?>">立即使用</a>
+                    </div>
+                </div>
+                <div class="box-model">
+                    <div class="box-model-top bgcolor3">
+                        <span>查看付费</span>
+                    </div>
+                    <div class="box-model-bottom clearfix">
+                        <span>免费模板</span>
+                        <a href="javascript:void(0);"
+                           data-href="<?php echo e(route(Theme::get('route_prefix') . '.shop.index')); ?>">立即使用</a>
+                    </div>
+                </div>
+                <div class="box-model">
+                    <div class="box-model-top bgcolor4">
+                        <span>出售商品</span>
+                    </div>
+                    <div class="box-model-bottom clearfix">
+                        <span>免费模板</span>
+                        <a href="javascript:void(0);"
+                           data-href="<?php echo e(route(Theme::get('route_prefix') . '.shop.index')); ?>">立即使用</a>
+                    </div>
+                </div>
+                <div class="box-model">
+                    <div class="box-model-top bgcolor4">
+                        <span>出售商品111</span>
+                    </div>
+                    <div class="box-model-bottom clearfix">
+                        <span>付费模板</span>
+                        <span class="marL">￥28.00</span>
+                        <a href="javascript:void(0);"
+                           data-href="<?php echo e(route(Theme::get('route_prefix') . '.shop.buy.template')); ?>">立即购买</a>
+                    </div>
+                </div>
+                <div class="box-model">
+                    <div class="box-model-top bgcolor4">
+                        <span>出售商品</span>
+                    </div>
+                    <div class="box-model-bottom clearfix">
+                        <span>付费模板</span>
+                        <span class="marL">￥28.00</span>
+                        <a href="javascript:void(0);"
+                           data-href="<?php echo e(route(Theme::get('route_prefix') . '.shop.buy.template')); ?>">立即购买</a>
+                    </div>
+                </div>*/ ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('childpage-css-index', Theme::get('dir_prefix') . '/shop/css/childpage.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('childpage-js-index', Theme::get('dir_prefix') . '/shop/js/childpage.js'); ?>

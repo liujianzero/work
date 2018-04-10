@@ -1,0 +1,45 @@
+<div class="middle-box loginscreen  animated fadeInDown">
+    <div>
+        <div>
+            <h1 class="logo-name text-center">VR</h1>
+        </div>
+        <h3 class="text-center">后台管理系统</h3>
+        <form class="m-t" id="validateFrom" method="post" action="<?php echo e(route(Theme::get('route') . '.admin.login')); ?>" role="form">
+            <div class="form-group">
+                <label for="username" class="sr-only">用户名</label>
+                <input type="text" class="form-control" id="username" name="username" value="<?php echo e(old('username')); ?>" required placeholder="用户名" onfocus="$('#username-err').html('');">
+            </div>
+            <div class="form-group" id="username-err">
+                <?php if($errors->has('username')): ?>
+                    <span class="label label-danger"><i class='fa fa-times-circle'></i> <?php echo e($errors->first('username')); ?></span>
+                <?php endif; ?>
+            </div>
+            <div class="form-group">
+                <label for="password" class="sr-only">密码</label>
+                <input type="password" class="form-control" id="password" name="password" required placeholder="密码" onfocus="$('#password-err').html('');">
+            </div>
+            <div class="form-group" id="password-err">
+                <?php if($errors->has('password')): ?>
+                    <span class="label label-danger"><i class='fa fa-times-circle'></i> <?php echo e($errors->first('password')); ?></span>
+                <?php endif; ?>
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b" id="formSubmit">登 录</button>
+            <?php echo csrf_field(); ?>
+
+        </form>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('login-css-style', Theme::get('module') . '/login/css/style.css'); ?>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('login-css-animate', Theme::get('module') . '/login/css/animate.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('login-js-jquery.validate', Theme::get('module') . '/plugin/bootstrap-validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('login-js-messages_zh', Theme::get('module') . '/plugin/bootstrap-validate/messages_zh.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('login-js-jquery.base64', Theme::get('module') . '/plugin/jq.cookie/jquery.base64.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('login-js-jquery.cookie', Theme::get('module') . '/plugin/jq.cookie/jquery.cookie.js'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('login-js-login', Theme::get('module') . '/login/js/login.js'); ?>

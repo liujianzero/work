@@ -1,0 +1,545 @@
+<div class="banner-block">
+    <div class="banner1" style="width: 100%;">
+        <span class="banner-title">VR武林高手实训地</span>
+        <div class="banner-menu ">
+            <a class="banner-item selected" href="">
+                <div class="banner-img">
+                    <img src="<?php echo Theme::asset()->url("images/study/whole.PNG"); ?>">
+                </div>
+                <span>全部</span>
+            </a>
+            <a class="banner-item" href="">
+                <div class="banner-img">
+                    <img src="<?php echo Theme::asset()->url("images/study/Maya-logo.png"); ?>">
+                </div>
+                <span>Maya</span>
+            </a>
+            <a class="banner-item" href="">
+                <div class="banner-img">
+                    <img src="<?php echo Theme::asset()->url("images/study/3dsMax-logo.png"); ?>">
+                </div>
+                <span>3ds Max</span>
+            </a>
+            <a class="banner-item" href="">
+                <div class="banner-img">
+                    <img src="<?php echo Theme::asset()->url("images/study/ZBrush-logo.png"); ?>">
+                </div>
+                <span>ZBrush</span>
+            </a>
+
+            <a class="banner-item" href="">
+                <div class="banner-img">
+                    <img src="<?php echo Theme::asset()->url("images/study/Photoshop-logo.png"); ?>">
+                </div>
+                <span>Photo shop</span>
+            </a>
+            <a class="banner-item" href="">
+                <div class="banner-img">
+                    <img src="<?php echo Theme::asset()->url("images/study/Mudbox-logo.png"); ?>">
+                </div>
+                <span>Mud box</span>
+            </a>
+            <a class="banner-item" href="">
+                <div class="banner-img">
+                    <img src="<?php echo Theme::asset()->url("images/study/Unity-logo.png"); ?>">
+                </div>
+                <span>Unity</span>
+            </a>
+            <a class="banner-item" href="">
+                <div class="banner-img">
+                    <img src="<?php echo Theme::asset()->url("images/study/UDK-logo.png"); ?>">
+                </div>
+                <span>UDK</span>
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--内容-->
+<section>
+    <div class="container">
+        <?php /*<div class="test1">*/ ?>
+            <?php /*<span><i class="fa fa-pencil-square-o fa-3x"></i></span>*/ ?>
+            <?php /*<span>测一测</span>*/ ?>
+        <?php /*</div>*/ ?>
+        <div class="item-box"  style="width:100%;">
+            <a class="item" href="study/case/1" target="_blank" title="全景图拍摄制作">
+                <div class="shadow">
+                    <div class="item-head">
+                        <img src="<?php echo Theme::asset()->url('images/study/qjtzz.jpg'); ?>">
+                    </div>
+                    <div class="item-content">
+                        <div class="content-title">全景图拍摄制作教程</div>
+                        <div class="content-subtitle">22节课</div>
+                        <div class="content-dest">全景图因其720度展示场景具有身临其境的特点而使用广泛,但如何让人人都学会...</div>
+                        <div class="content-bottom">
+                            <span class="number">3048人在学</span>
+                            <span class="price">￥&nbsp;399.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow1"></div>
+                <div class="shadow2"></div>
+            </a>
+            <a class="item" href="study/case/2" target="_blank" title="照片建模">
+                <div class="shadow">
+                    <div class="item-head">
+                        <img src="<?php echo Theme::asset()->url('images/study/item-bg2.jpg'); ?>">
+                    </div>
+                    <div class="item-content">
+                        <div class="content-title">照片建模教程</div>
+                        <div class="content-subtitle">3节课</div>
+                        <div class="content-dest">照片建模是通过相机对物体进行采集照片，经过软件进行计算后得到模型方法...</div>
+                        <div class="content-bottom">
+                            <span class="number">6142人在学</span>
+                            <span class="price">￥&nbsp;499.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow1"></div>
+                <div class="shadow2"></div>
+            </a>
+            <a class="item" href="study/case/3" target="_blank" title="WebVR建模基础">
+                <div class="shadow">
+                    <div class="item-head">
+
+                        <img src="<?php echo Theme::asset()->url('images/study/item-bg3.jpg'); ?>">
+                    </div>
+                    <div class="item-content">
+                        <div class="content-title">WebVR建模基础课程</div>
+                        <div class="content-subtitle">6节课</div>
+                        <div class="content-dest">零基础学员通过六节课的学习，即可使用3D MAX软件对简单物体建模...</div>
+                        <div class="content-bottom">
+                            <span class="number">1265人在学</span>
+                            <span class="price">￥&nbsp;199.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow1"></div>
+                <div class="shadow2"></div>
+            </a>
+            <a class="item" href="javascript:void(0);" data-url="<?php echo Theme::asset()->url('images/1.mp4'); ?>" title="VR造物编辑器使用方法">
+                <div class="shadow">
+                    <div class="item-head">
+                        <img src="<?php echo Theme::asset()->url('images/study/item-bg4.jpg'); ?>">
+                    </div>
+                    <div class="item-content">
+                        <div class="content-title">录制中</div>
+                        <div class="content-subtitle">0步骤 • 0门课</div>
+                        <div class="content-dest">带你通过学习系统，完成"会做建模"到"做出好的WebVR建模"的蜕变。</div>
+                        <div class="content-bottom">
+                            <span class="number">0人在学</span>
+                            <span class="price">￥&nbsp;录制中</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow1"></div>
+                <div class="shadow2"></div>
+            </a>
+
+            <a class="item" href="javascript:void(0);" data-url="<?php echo Theme::asset()->url('images/1.mp4'); ?>" title="VR造物编辑器使用方法">
+                <div class="shadow">
+                    <div class="item-head">
+                        <img src="<?php echo Theme::asset()->url('images/study/item-bg5.jpg'); ?>">
+                    </div>
+                    <div class="item-content">
+                        <div class="content-title">录制中</div>
+                        <div class="content-subtitle">0步骤 • 0门课</div>
+                        <div class="content-dest">带你通过学习系统，完成"会做建模"到"做出好的WebVR建模"的蜕变。</div>
+                        <div class="content-bottom">
+                            <span class="number">0人在学</span>
+                            <span class="price">￥&nbsp;录制中</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow1"></div>
+                <div class="shadow2"></div>
+            </a>
+            <a class="item" href="javascript:void(0);" data-url="<?php echo Theme::asset()->url('images/1.mp4'); ?>" title="VR造物编辑器使用方法">
+                <div class="shadow">
+                    <div class="item-head">
+                        <img src="<?php echo Theme::asset()->url('images/study/item-bg6.jpg'); ?>">
+                    </div>
+                    <div class="item-content">
+                        <div class="content-title">录制中</div>
+                        <div class="content-subtitle">0步骤 • 0门课</div>
+                        <div class="content-dest">带你通过学习系统，完成"会做建模"到"做出好的WebVR建模"的蜕变。</div>
+                        <div class="content-bottom">
+                            <span class="number">0人在学</span>
+                            <span class="price">￥&nbsp;录制中</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow1"></div>
+                <div class="shadow2"></div>
+            </a>
+            <a class="item" href="javascript:void(0);" data-url="<?php echo Theme::asset()->url('images/1.mp4'); ?>" title="VR造物编辑器使用方法">
+                <div class="shadow">
+                    <div class="item-head">
+                        <img src="<?php echo Theme::asset()->url('images/study/item-bg7.jpg'); ?>">
+                    </div>
+                    <div class="item-content">
+                        <div class="content-title">录制中</div>
+                        <div class="content-subtitle">0步骤 • 0门课</div>
+                        <div class="content-dest">带你通过学习系统，完成"会做建模"到"做出好的WebVR建模"的蜕变。</div>
+                        <div class="content-bottom">
+                            <span class="number">0人在学</span>
+                            <span class="price">￥&nbsp;录制中</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow1"></div>
+                <div class="shadow2"></div>
+            </a>
+            <a class="item" href="javascript:void(0);" data-url="<?php echo Theme::asset()->url('images/1.mp4'); ?>" title="VR造物编辑器使用方法">
+                <div class="shadow">
+                    <div class="item-head">
+                        <img src="<?php echo Theme::asset()->url('images/study/item-bg8.jpg'); ?>">
+                    </div>
+                    <div class="item-content">
+                        <div class="content-title">录制中</div>
+                        <div class="content-subtitle">0步骤 • 0门课</div>
+                        <div class="content-dest">带你通过学习系统，完成"会做建模"到"做出好的WebVR建模"的蜕变。</div>
+                        <div class="content-bottom">
+                            <span class="number">0人在学</span>
+                            <span class="price">￥&nbsp;录制中</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shadow1"></div>
+                <div class="shadow2"></div>
+            </a>
+        </div>
+
+        <!--轻客堂导师介绍-->
+        <div class="tutor" style="width:100%;">
+            <div class="tutor-title">
+                <span>轻客堂导师介绍</span>
+            </div>
+            <div class="tutor-box">
+
+                <div class="tutor-item">
+                    <!--遮罩-->
+                    <a href="javascript:" class="mask">
+                        <div class="mask-title">胥平</div>
+                        <p>
+                            前高德产品经理，现任十一维度内容数据部总监，对于VR在旅游、教育、电商等领域有较深的研究，长期与阿里、京东联系互动。
+                        </p>
+                        <span class="kc">进入课程>></span>
+                    </a>
+                    <div class="picture">
+                        <img src="<?php echo Theme::asset()->url('images/study/sywd1.jpg'); ?>">
+                    </div>
+                    <h3>胥平</h3>
+                    <h4>WebVR数据采集师</h4>
+
+                </div>
+                <div class="tutor-item">
+                    <!--遮罩-->
+                    <a href="javascript:" class="mask">
+                        <div class="mask-title">钟飞林</div>
+                        <p>
+                            具有丰富的WebVR知识与教育能力，只为打造WebVR行业高端人才。
+                        </p>
+                        <span class="kc">进入课程>></span>
+                    </a>
+                    <div class="picture">
+                        <img src="<?php echo Theme::asset()->url('images/study/sywd2.jpg'); ?>">
+                    </div>
+                    <h3>钟飞林</h3>
+                    <h4>WebVR资深培训讲师</h4>
+                </div>
+                <div class="tutor-item">
+                    <!--遮罩-->
+                    <a href="javascript:" class="mask">
+                        <div class="mask-title">吴高磊</div>
+                        <p>
+                            互联网行业资深从业者市场洞察力强，擅长逻辑梳理多年项目梳理及落地执行经验。
+                        </p>
+                        <span class="kc">进入课程>></span>
+                    </a>
+                    <div class="picture">
+                        <img src="<?php echo Theme::asset()->url('images/study/sywd3.jpg'); ?>">
+                    </div>
+                    <h3>吴高磊</h3>
+                    <h4>WebVR资深策划师</h4>
+                </div>
+                <div class="tutor-item">
+                    <!--遮罩-->
+                    <a href="javascript:" class="mask">
+                        <div class="mask-title">大神入驻</div>
+                        <p>
+                            让世界倾听你的观点，发现你的VR世界
+                        </p>
+                        <span class="kc">点击跳转>></span>
+                    </a>
+                    <div class="picture">
+                        <img src="<?php echo Theme::asset()->url('images/study/tutormode.jpg'); ?>">
+                    </div>
+                    <h3>大神入驻</h3>
+                    <h4>让世界倾听你的观点</h4>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- <span class="more" style="">期待更多...</span>-->
+    </div>
+    <div id="hide-box">
+        <div class="popup-box">
+            <div class="popup-head">测一测<div class="close-box"><div class="close">x</div></div></div>
+            <div class="popup-content">
+                <form class="ceshi-form" method = 'post'  action ="" >
+                    <ul style="margin: 0;padding:0;list-style: none;">
+                        <li class="item">
+                            <span class="span1">01</span>
+                            <span>你的性别？</span>
+                            <div class="radio-box">
+                                <label><input type="radio" name="sex" value="1">男</label>
+                                <label><input type="radio" name="sex" value="1">女</label>
+                            </div>
+
+                        </li>
+
+                        <li class="item">
+                            <span class="span1">02</span>
+                            <span>你的年龄？</span>
+                            <div class="radio-box">
+                                <label><input type="radio" name="age" value="6">40以上</label>
+                                <label><input type="radio" name="age" value="0">40以下</label>
+                            </div>
+                        </li>
+
+                        <li class="item">
+                            <span class="span1">03</span>
+                            <span>你所学专业？</span>
+                            <div class="radio-box">
+                                <label><input type="radio" name="major" value="0">建筑设计、动漫设计、广告设计、影视广告</label>
+                                <label><input type="radio" name="major" value="5">其他</label>
+                            </div>
+                        </li>
+
+                        <li class="item">
+                            <span class="span1">04</span>
+                            <span>你使用过专业相机？</span>
+                            <div class="radio-box">
+                                <label><input type="radio" name="camera" value="0">是</label>
+                                <label><input type="radio" name="camera" value="2">否</label>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <span class="span1">05</span>
+                            <span>你使用3D相关软件的年限？</span>
+                            <div class="radio-box">
+                                <label><input type="radio" name="life" value="4">1年</label>
+                                <label><input type="radio" name="life" value="3">1年以上、2年以下</label>
+                                <label><input type="radio" name="life" value="1">2年以上</label>
+                                <label><input type="radio" name="life" value="20">没使用过</label>
+                            </div>
+                        </li>
+
+                        <li class="item">
+                            <span class="span1">06</span>
+                            <span>会不会使用PHOTOSHOP软件？</span>
+                            <div class="radio-box">
+                                <label><input type="radio" name="software" value="0">会</label>
+                                <label><input type="radio" name="software" value="2">不会</label>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <span class="span1">07</span>
+                            <span>你所从事行业？</span>
+                            <div class="radio-box">
+                                <label><input type="radio" name="industry" value="0">设计相关</label>
+                                <label><input type="radio" name="industry" value="1">其他</label>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="btn2" onclick="submit()">提交</div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="sub-popup-box">
+            <div class="sub-popup">
+                <div class="sub-popup-head">学习VR需几天测试<div class="close-box" id="close-box"><div class="close">x</div></div></div>
+                <div class="sub-popup-content">
+                    <div class="sub-content">恭喜您！学习VR<span></span></div>
+                    <?php /*                   'http://www.zwuvr.com/oauth/weixinweb'*/ ?>
+                    <?php /*                        ->generate("http://".$_SERVER['SERVER_NAME']."/oauth/weixinweb",*/ ?>
+                    <?php /*<div  class="sub-content-img"  id="login_container" style="position:fixed;right:0;top:80px;">*/ ?>
+                    <div class="sub-content-img" id="login_container">
+                        <?php /*<?php echo e(QrCode::format('png')->size(250)->merge('/public/logo.png',.15)->margin(1)*/ ?>
+                        <?php /*->generate("https://open.weixin.qq.com/connect/qrconnect?appid=wx67940d188491da47&redirect_uri=http%3A%2F%2Fwww.zwuvr.com%2Foauth%2Fweixinweb%2Fcallback&response_type=code&scope=snsapi_login&state=eGYTLt8vKFpeeMvPBUadZKZYVuae9aXhe8hPIWQv#wechat_redirect",*/ ?>
+                        <?php /*public_path('themes/default/assets/images/qrcodes/qrcode.png'))); ?>*/ ?>
+                        <?php /*<iframe src="" width="100%" height="100%">1111</iframe>*/ ?>
+                        <?php /*<img src="<?php echo Theme::asset()->url('images/qrcodes/qrcode.png'); ?>" alt="">*/ ?>
+                    </div>
+                    <span class="linghongbao">扫一扫领红包</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hongbao-box">
+            <div class="close"></div>
+            <div class="price"><?php echo $randnum; ?>元</div>
+            <div class="register-btn">
+                <a href="javascript:" class="register"></a>
+                <div class="btn-shadow"></div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" class="uid" value="<?php if(! Auth::user()): ?> 0 <?php else: ?> 1 <?php endif; ?>">
+</section>
+
+<script src="/themes/default/assets/js/doc/jquery.min.js"></script>
+<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+<script src="/themes/default/assets/js/layer/layer.js"></script>
+<script>
+    var obj = new WxLogin({
+        id: "login_container",
+        appid: "wxd56112e2dacd81fc",
+        scope: "snsapi_login",
+        redirect_uri: encodeURIComponent("http://" + window.location.host + "/bre/getCode"),
+        state: Math.ceil(Math.random()*1000),
+        style: "white",
+        href: "https://www.11dom.com/weixin/weixin.css",
+    });
+
+</script>
+<script>
+    $(".banner-item").on("click",function(){
+        $(".banner-item").removeClass("selected");
+        $(this).addClass("selected");
+    });
+
+    $(function(){
+        $(".sub-popup-box").css("display","none");
+//        $(".hongbao-box").css("display","none");
+
+    });
+
+    function submit(){
+        var number=0;
+        var arr=["sex","age","major","camera","life","software","industry"];
+//        for(var a in arr){
+//            var checkedNumber=$('input:radio[name="'+arr[a]+'"]:checked').val();
+//            number+=parseInt(checkedNumber);
+//            if(typeof(checkedNumber)=="undefined"){
+//                alert("你还有题目没有选择");
+//                return false;
+//            }
+//        }
+        if($(".sub-popup-box").css("display")=="none"){
+            $(".sub-popup-box").css("display","block");
+            $(".sub-content span").html(number+"天");
+        }else{
+            $(".sub-popup-box").css("display","none");
+        }
+    }
+
+        //    关闭测试
+        $(".popup-head .close").on("click",function(){
+            $("#hide-box").css("display","none");
+        });
+
+        //    关闭测试结果
+        $(".sub-popup-head .close").on("click",function(){
+            $(".sub-popup-box").css("display","none");
+        });
+        //关闭红包
+        $(".hongbao-box .close").on("click",function(){
+            $(".hongbao-box").css("display","none");
+        });
+
+
+</script>
+<script type="text/javascript">
+    var oTest1 = document.getElementsByClassName("test1")[0];
+    var aRadio = document.querySelectorAll(".radio-box input[type='radio']");//获取所有inputradio
+    var oClosebox = document.getElementById("close-box");
+    var oHidebox = document.getElementById("hide-box");
+    var uid = parseInt($('.uid').val());
+
+        var rand = <?php echo e($randnum); ?>;
+        if( rand == 0) {
+            oTest1.onclick = function () {
+                if(uid == 0 ){
+                    layer.msg("请先登录！");
+                }else {
+                    oHidebox.style.display = "block";
+                    $(".hongbao-box").css("display", "none");
+                }
+            }
+        }else{
+            var is_show = <?php echo e($is_show); ?>
+
+            if(is_show == 1){
+                oHidebox.style.display = "block";
+                $(".hongbao-box").css("display","block");
+            }else {
+                $('.test1').click(function(){
+
+                    oHidebox.style.display = "block";
+                    $(".hongbao-box").css("display","block");
+                });
+            }
+
+//        oTest1.onclick = function () {
+////
+//        }
+        }
+
+
+    oClosebox.onclick = function(){
+        for (var i = 0; i < aRadio.length; i++) {
+            aRadio[i].checked = false;//吧radio的checked属性改变
+        }
+    }
+</script>
+<!--底部-->
+
+<?php /*<div id="videoDiv" style="display: none;overflow: hidden">*/ ?>
+<?php /*<video width="100%" height="99%" controls="controls" autoplay="autoplay">*/ ?>
+<?php /*<source src="" type="video/mp4" class="videoUrl"></source>*/ ?>
+<?php /*<source src="" type="video/ogg" class="videoUrl"></source>*/ ?>
+<?php /*your browser does not support the video tag*/ ?>
+<?php /*</video>*/ ?>
+<?php /*</div>*/ ?>
+
+
+<?php /*<script src="/themes/default/assets/js/doc/jquery.min.js"></script>*/ ?>
+
+<?php /*<script>*/ ?>
+<?php /*$(".item").on("click", function () {*/ ?>
+<?php /*//        获取路径*/ ?>
+<?php /*var url = $(this).attr("data-url");*/ ?>
+<?php /*var title = $(this).attr("title");*/ ?>
+<?php /*//        写入路径*/ ?>
+<?php /*$(".videoUrl").attr("src", url);*/ ?>
+<?php /*var video = $("#videoDiv").html();*/ ?>
+<?php /*//        console.log(video);*/ ?>
+<?php /*layer.open({*/ ?>
+<?php /*type: 1,*/ ?>
+<?php /*skin: 'layui-layer-rim', //加上边框*/ ?>
+<?php /*area: ['80%', '60%'], //宽高*/ ?>
+<?php /*content: video,//添加视频*/ ?>
+<?php /*title: title,*/ ?>
+<?php /*});*/ ?>
+<?php /*});*/ ?>
+
+
+<?php /*//        $(".tutor-item").hover(function(){*/ ?>
+<?php /*//            if($(this)[0].className!="tutor-item more-box"){*/ ?>
+<?php /*//                $(this).append($(".mask"));*/ ?>
+<?php /*//            }*/ ?>
+<?php /*//        },function(){*/ ?>
+<?php /*//            $(".tutor-item").removeClass("mask");*/ ?>
+<?php /*//        })*/ ?>
+
+<?php /*</script>*/ ?>
+<?php /*<?php echo Theme::asset()->container('custom-css')->usepath()->add('style','css/style.css'); ?>*/ ?>
+<?php /*<?php echo Theme::asset()->container('custom-css')->usepath()->add('global','css/global.css'); ?>*/ ?>
+<?php echo Theme::asset()->container('custom-css')->usepath()->add('style1','css/study/style1.css'); ?>
+

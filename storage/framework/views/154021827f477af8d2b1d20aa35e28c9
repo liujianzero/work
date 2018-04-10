@@ -1,0 +1,17 @@
+<?php if(Session::has('suc')): ?>
+    <script>
+        layer.open({
+            content: "<?php echo e(Session::get('suc')); ?>",
+            skin: 'msg',
+            time: 3
+        });
+    </script>
+<?php elseif(Session::has('err')): ?>
+    <script>
+        layer.open({
+            content: "<?php echo e(Session::get('err')); ?>",
+            skin: 'msg',
+            time: 3
+        });
+    </script>
+<?php endif; ?>

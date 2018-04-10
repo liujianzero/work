@@ -1,0 +1,1487 @@
+<style>
+    .task-background {
+        background-color: #191919;
+        border: 1px solid #353535;
+        border-radius: 4px;
+        color: #fff;
+    }
+    .cor-gray51 {
+        color: #fff;
+    }
+    .pd-border {
+        border-left: 1px dashed #cbcbcb;
+    }
+    .wizard-steps li .title {
+        color: #898989;
+    }
+    .wizard-steps li .step {
+        background-color: #292929;
+        color: #898989;
+    }
+    .wizard-steps li .step {
+        border: 5px solid #292929;
+    }
+    .wizard-steps li:before {
+        border-top: 4px solid #292929;
+    }
+    .wizard-steps li.complete .title,
+    .wizard-steps li.active .title {
+        color: #cbcbcb;
+    }
+    .wizard-steps li.active .step,
+    .wizard-steps li.active:before {
+        border-color: #ed5565;
+        background: #ed5565;
+        color: #fff;
+    }
+    .tasknav li {
+        border-right: 1px solid #454647;
+        margin-bottom: 0;
+    }
+    .tasknav>li>a {
+        background-color: #191919;
+        border-right: 1px solid #454647;
+        color: #cbcbcb;
+    }
+    .tasknav>li>a:focus,
+    .tasknav>li>a:hover {
+        background-color: #454647;
+        border-right: 1px solid #454647;
+        border-bottom: 1px solid #464646;
+        color: #fff;
+    }
+    .nav-tabs>li.active>a,
+    .nav-tabs>li.active>a:focus,
+    .nav-tabs>li.active>a:hover {
+        background-color: #0184dc;
+        border-color: #0184dc;
+        border-bottom: 1px solid #0184dc;
+        color: #fff;
+    }
+    .nav-tabs>li.active>a,
+    .nav-tabs>li.active>a:focus,
+    .nav-tabs>li.active>a:hover {
+        border-bottom: 1px solid #0184dc;
+    }
+    .list-l .tab-content {
+        border-color: #454647;
+    }
+    .nav-pills>li>a {
+        color: #cbcbcb;
+    }
+    .nav-pills>li>a:focus,
+    .nav-pills>li>a:hover {
+        background-color: #454647;
+        color: #fff;
+    }
+    .btn-blue {
+        background-color: #0184dc !important;
+        border-color: #0184dc !important;
+    }
+    #home2 .tab-content {
+        background-color: #212121 !important;
+    }
+    section .task-l .taskside {
+        background: #212121;
+        border: none;
+        color: #cbcbcb;
+    }
+    .well {
+        border: 1px solid #454647 !important;
+    }
+    .text-size16 {
+        color: #cbcbcb;
+    }
+    .text-primary {
+        color: #ff9934;
+    }
+    .server-span {
+        padding: 1px 3px;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 14px;
+    }
+    .server-span.active-ding {
+        background-color: #ff9934;
+    }
+    .server-span.active-ji {
+        background-color: #fb5161;
+    }
+    .server-span.active-suo {
+        background-color: #18A689;
+    }
+    .server-span.active-cang {
+        background-color: #337AB7;
+    }
+    .evaluate {
+        background-color: #000;
+        border: 1px solid #454647;
+        color: #cbcbcb;
+    }
+    .text-muted,
+    .evaluateinfo b,
+    .evaluateinfo p,
+    .evaluateinfo .evaluatetime {
+        color: #cbcbcb;
+    }
+    .evaluatext.detail-noborder p {
+        color: #fff;
+    }
+    .widget-main.no-padding {
+        background-color: #000;
+    }
+    .input-group-btn {
+        background-color: #191919 !important;
+    }
+    .scroll-track {
+        background-color: #000;
+    }
+    .scroll-bar {
+        background-color: #0184dc;
+    }
+    .form-actions input[type="text"] {
+        background-color: #191919;
+        color: #fff;
+    }
+    .form-actions .btn {
+        border: 1px solid #2f55a0;
+    }
+    .itemdiv.dialogdiv>.user>img {
+        border-color: #ed5565;
+    }
+    .itemdiv.dialogdiv:before {
+        background-color: #ed5565;
+        border: 1px solid #ed5565;
+    }
+    .itemdiv.dialogdiv>.body {
+        border: 1px solid #454647;
+    }
+    .itemdiv.dialogdiv>.body:before {
+        background-color: #0184dc;
+        border: 1px dashed #0184dc;
+        left: -6px;
+    }
+    .itemdiv>.body>.name a {
+        color: #cbcbcb;
+    }
+    .tasknav .badge {
+        background-color: #ed5565 !important;
+    }
+    .task-label {
+        color: #000;
+    }
+    .label-tender {
+        background-color: #ed5565;
+        color: #fff;
+        padding: 0 5px;
+        border-radius: 4px;
+    }
+    /* 模态框 */
+    .modal-content {
+        border: 2px solid #8f8f9a;
+        border-radius: 4px;
+        color: #fff;
+    }
+    .modal-body {
+        background-color: #000 !important;
+        color: #cbcbcb;
+    }
+    .modal-header,
+    .modal-footer {
+        background-color: #252527 !important;
+    }
+    .close span {
+        color: #fff !important;
+    }
+    .pagination {
+        display: inline-block;
+        padding-left: 0;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
+    .pagination > li {
+        display: inline;
+    }
+    .pagination > li > a,
+    .pagination > li > span {
+        position: relative;
+        float: left;
+        padding: 8px 12px;
+        line-height: 1.42857143;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #222222;
+        border: 1px solid #282828;
+        margin-left: -1px;
+    }
+    .pagination > li:first-child > a,
+    .pagination > li:first-child > span {
+        margin-left: 0;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+    }
+    .pagination > li:last-child > a,
+    .pagination > li:last-child > span {
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+    .pagination > li > a:hover,
+    .pagination > li > span:hover,
+    .pagination > li > a:focus,
+    .pagination > li > span:focus {
+        z-index: 2;
+        color: #ffffff;
+        background-color: #2a9fd6;
+        border-color: transparent;
+    }
+    .pagination > .active > a,
+    .pagination > .active > span,
+    .pagination > .active > a:hover,
+    .pagination > .active > span:hover,
+    .pagination > .active > a:focus,
+    .pagination > .active > span:focus {
+        z-index: 3;
+        color: #ffffff;
+        background-color: #2a9fd6;
+        border-color: transparent;
+        cursor: default;
+    }
+    .pagination > .disabled > span,
+    .pagination > .disabled > span:hover,
+    .pagination > .disabled > span:focus,
+    .pagination > .disabled > a,
+    .pagination > .disabled > a:hover,
+    .pagination > .disabled > a:focus {
+        color: #888888;
+        background-color: #222222;
+        border-color: #282828;
+        cursor: not-allowed;
+    }
+    .pagination-lg > li > a,
+    .pagination-lg > li > span {
+        padding: 14px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+    }
+    .pagination-lg > li:first-child > a,
+    .pagination-lg > li:first-child > span {
+        border-bottom-left-radius: 6px;
+        border-top-left-radius: 6px;
+    }
+    .pagination-lg > li:last-child > a,
+    .pagination-lg > li:last-child > span {
+        border-bottom-right-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    .pagination-sm > li > a,
+    .pagination-sm > li > span {
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    .pagination-sm > li:first-child > a,
+    .pagination-sm > li:first-child > span {
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+    .pagination-sm > li:last-child > a,
+    .pagination-sm > li:last-child > span {
+        border-bottom-right-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+    .pager {
+        padding-left: 0;
+        margin: 20px 0;
+        list-style: none;
+        text-align: center;
+    }
+    .pager li {
+        display: inline;
+    }
+    .pager li > a,
+    .pager li > span {
+        display: inline-block;
+        padding: 5px 14px;
+        background-color: #222222;
+        border: 1px solid #282828;
+        border-radius: 15px;
+    }
+    .pager li > a:hover,
+    .pager li > a:focus {
+        text-decoration: none;
+        background-color: #2a9fd6;
+    }
+    .pager .next > a,
+    .pager .next > span {
+        float: right;
+    }
+    .pager .previous > a,
+    .pager .previous > span {
+        float: left;
+    }
+    .pager .disabled > a,
+    .pager .disabled > a:hover,
+    .pager .disabled > a:focus,
+    .pager .disabled > span {
+        color: #888888;
+        background-color: #222222;
+        cursor: not-allowed;
+    }
+    .pagination li.disabled span {
+        height: 32px;
+    }
+    .ace-file-multiple .ace-file-container {
+        background-color: #191919;
+        border: 1px dashed;
+    }
+    .ace-file-multiple .ace-file-container:before {
+        background-color: #191919;
+    }
+    .gritter-item-wrapper.gritter-info.gritter-center {
+        background-color: #000;
+    }
+    .norecord {
+        background-color: #000;
+        color: #cbcbcb;
+    }
+</style>
+<div class="g-taskposition col-xs-12 col-left"></div>
+<div class="col-xs-12 hidden-lg clearfix col-left">
+    <div class="task-sidetime well bg-white text-size14 task-timeSheet clearfix">
+        <div class="pull-left p-space">
+            <?php if($detail->status == 3): ?>
+                <span class="text-size16">此任务当前处于：<span class="text-primary">竞标</span> 状态</span>
+            <?php elseif($detail->status == 4): ?>
+                <span class="text-size16">此任务当前处于：<span class="text-primary">选标</span> 状态</span>
+            <?php elseif($detail->status == 5): ?>
+                <span class="text-size16">此任务当前处于：<span class="text-primary">工作</span> 状态</span>
+            <?php elseif($detail->status == 6): ?>
+                <span class="text-size16">此任务当前处于：<span class="text-primary">交付</span> 状态</span>
+            <?php elseif($detail->status == 7): ?>
+                <span class="text-size16">此任务当前处于：<span class="text-primary">互评</span> 状态</span>
+            <?php elseif($detail->status == 8): ?>
+                <span class="text-size16">此任务当前处于：<span class="text-primary">完成</span> 状态</span>
+            <?php endif; ?>
+        </div>
+        <div class="pull-right">
+            <?php if($detail->status == 3 && $user_type != 1): ?>
+                <a href="/task/workdelivery/<?php echo e($detail->id); ?>" class="btn btn-primary btn-blue bor-radius2 col-xs-12">立即投稿</a>
+            <?php elseif($detail->status == 6 && $user_type == 2 && $is_win_bid): ?>
+                <a href="/task/delivery/<?php echo e($detail['id']); ?>"  class="btn btn-primary col-xs-12 btn-blue bor-radius6">去交付</a>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-12">
+    <div class="row">
+        <div class="col-lg-9 list-l col-md-12 col-left">
+                <?php /*修改*/ ?>
+                <div class="clearfix">
+                    <div class="clearfix pd-padding30 bg-white b-border active in task-background">
+                        <div class="clearfix">
+                            <div class="col-lg-9 cor-left">
+                                <div class="row cor-gray51 text-size22">
+                                    <span class="task-label"><?php echo e($detail->type_name); ?></span>
+                                    <?php echo e($detail->title); ?>
+
+                                    <?php if($detail->server_status == 2): ?>
+                                        <?php if($detail->top_status): ?>    <span class="server-span active-ding">顶</span> <?php endif; ?>
+                                        <?php if($detail->urgent_status): ?> <span class="server-span active-ji">急</span>   <?php endif; ?>
+                                        <?php if($detail->engine_status): ?> <span class="server-span active-suo">索</span>  <?php endif; ?>
+                                        <?php if($detail->work_status): ?>   <span class="server-span active-cang">藏</span> <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="space-10"></div>
+                                <div class="row">
+                                    <ul class="mg-margin list-inline task-list-label">
+                                        <li class="cor-gray51 clearfix p-space">
+                                            <i class="fa fa-user-o"></i>
+                                            雇主：<span><?php echo e(isset($detail->nickname) ? $detail->nickname : $detail->user_name); ?></span>
+                                        </li>
+                                        <li class="cor-gray51 clearfix p-space">
+                                            <i class="fa fa-clock-o"></i>
+                                            截止时间：<?php echo e(date('Y-m-d', strtotime($detail->delivery_deadline))); ?>
+
+                                        </li>
+                                        <li class="cor-gray51 clearfix p-space">
+                                            <i class="fa fa-th-large"></i>
+                                            分类：<?php echo e($detail->cate_name); ?>
+
+                                        </li>
+                                        <?php if($detail->region_limit == 2): ?>
+                                            <li class="cor-gray51 clearfix p-space">
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                地区：<?php echo e($area[$detail->province]['name'] . $area[$detail->city]['name'] . $area[$detail->area]['name']); ?>
+
+                                            </li>
+                                        <?php endif; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 pd-border">
+                                <?php if($detail->type_id == 2): ?>
+                                    <?php if($detail->bounty_status == 2): ?>
+                                        <span class="text-size14 cor-gray51">已托管赏金:</span>
+                                        <p><span class="cor-orange text-size36"><?php echo e($detail->bounty); ?></span>元</p>
+                                    <?php else: ?>
+                                        <?php if($detail->status > 3): ?>
+                                            <span class="text-size14 cor-gray51">未托管赏金:</span>
+                                            <p><span class="cor-orange text-size36"><?php echo e($detail->bounty); ?></span>元</p>
+                                        <?php else: ?>
+                                            <span class="text-size14 cor-gray51">[预算]</span>
+                                            <?php if($detail->action_id > 0): ?>
+                                                <p><span class="cor-orange text-size36"><?php echo e($detail->min_price); ?>~<?php echo e($detail->max_price); ?></span>元</p>
+                                            <?php else: ?>
+                                                <p><span class="cor-orange text-size36"><?php echo e($detail->bounty); ?></span>元</p>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <?php if($detail->bounty_status == 2): ?>
+                                        <span class="text-size14 cor-gray51">已托管赏金:</span>
+                                        <p><span class="cor-orange text-size36"><?php echo e($detail->bounty); ?></span>元</p>
+                                    <?php else: ?>
+                                        <span class="text-size14 cor-gray51">未托管赏金:</span>
+                                        <p><span class="cor-orange text-size36"><?php echo e($detail->bounty); ?></span>元</p>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white clearfix b-border timer-shaft task-background" style="margin-top: 5px;">
+                        <div data-target="#step-container" class=" row-fluid clearfix task-taskdisplay" id="fuelux-wizard">
+                            <?php if($detail->type_id == 2): ?>
+                                <ul class="wizard-steps">
+                                    <li class="<?php echo e(($detail->status > 1 ) ? 'active' : ''); ?>" data-target="#step1">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-chevron-right"></i></span></div>
+                                        <span class="title">发布需求</span>
+                                        <span class="title"><?php echo e(date('Y.m.d', strtotime($detail->created_at))); ?></span>
+                                    </li>
+                                    <li class="<?php echo e(($detail->status > 2) ? 'active' : ''); ?>" data-target="#step2">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-chevron-right"></i></span></div>
+                                        <span class="title">竞标中</span>
+                                        <?php if($detail->status > 2 && $detail->bid_at): ?>
+                                            <span class="title"><?php echo e(date('Y.m.d', strtotime($detail->bid_at))); ?></span>
+                                        <?php endif; ?>
+                                    </li>
+                                    <li class="<?php echo e(($detail->status > 3) ? 'active' : ''); ?>" data-target="#step3">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-chevron-right"></i></span></div>
+                                        <span class="title">选标中，托管赏金</span>
+                                        <?php if($detail->status > 3 && $detail->selected_work_at): ?>
+                                            <span class="title"><?php echo e(date('Y.m.d', strtotime($detail->selected_work_at))); ?></span>
+                                        <?php endif; ?>
+                                    </li>
+                                    <li class="<?php echo e(($detail->status > 4) ? 'active' : ''); ?>" data-target="#step4">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-chevron-right"></i></span></div>
+                                        <span class="title">工作中</span>
+                                        <?php if($detail->status > 4 && $detail->work_at): ?>
+                                            <span class="title"><?php echo e(date('Y.m.d', strtotime($detail->work_at))); ?></span>
+                                        <?php endif; ?>
+                                    </li>
+                                    <li class="<?php echo e(($detail->status > 5) ? 'active' : ''); ?>" data-target="#step5">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-chevron-right"></i></span></div>
+                                        <span class="title">交付中</span>
+                                        <?php if($detail->status > 5 && $detail->checked_at): ?>
+                                            <span class="title"><?php echo e(date('Y.m.d', strtotime($detail->checked_at))); ?></span>
+                                        <?php endif; ?>
+                                    </li>
+                                    <li class="<?php echo e(($detail->status > 6) ? 'active' : ''); ?>" data-target="#step6">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-check"></i></span></div>
+                                        <span class="title">圆满完成</span>
+                                        <?php if($detail->status > 6 && $detail->end_at): ?>
+                                            <span class="title"><?php echo e(date('Y.m.d', strtotime($detail->end_at))); ?></span>
+                                        <?php endif; ?>
+                                    </li>
+                                </ul>
+                            <?php else: ?>
+                                <ul class="wizard-steps">
+                                    <li class="<?php echo e(($detail->status > 1 ) ? 'active' : ''); ?>" data-target="#step1">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-chevron-right"></i></span></div>
+                                        <span class="title">发布需求，托管赏金</span>
+                                        <span class="title"><?php echo e(date('Y.m.d', strtotime($detail->created_at))); ?></span>
+                                    </li>
+                                    <li class="<?php echo e(($detail->status > 2) ? 'active' : ''); ?>" data-target="#step2">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-chevron-right"></i></span></div>
+                                        <span class="title">竞标中</span>
+                                        <?php if($detail->status > 2 && $detail->bid_at): ?>
+                                            <span class="title"><?php echo e(date('Y.m.d', strtotime($detail->bid_at))); ?></span>
+                                        <?php endif; ?>
+                                    </li>
+                                    <li class="<?php echo e(($detail->status > 3) ? 'active' : ''); ?>" data-target="#step3">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-chevron-right"></i></span></div>
+                                        <span class="title">选标中</span>
+                                        <?php if($detail->status > 3 && $detail->selected_work_at): ?>
+                                            <?php echo e(date('Y.m.d', strtotime($detail->selected_work_at))); ?>
+
+                                        <?php endif; ?>
+                                    </li>
+                                    <li class="<?php echo e(($detail->status > 4) ? 'active' : ''); ?>" data-target="#step4">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-chevron-right"></i></span></div>
+                                        <span class="title">工作中</span>
+                                        <?php if($detail->status > 4 && $detail->work_at): ?>
+                                            <span class="title"><?php echo e(date('Y.m.d', strtotime($detail->work_at))); ?></span>
+                                        <?php endif; ?>
+                                    </li>
+                                    <li class="<?php echo e(($detail->status > 5) ? 'active' : ''); ?>" data-target="#step5">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-chevron-right"></i></span></div>
+                                        <span class="title">交付中</span>
+                                        <?php if($detail->status > 5 && $detail->checked_at): ?>
+                                            <span class="title"><?php echo e(date('Y.m.d', strtotime($detail->checked_at))); ?></span>
+                                        <?php endif; ?>
+                                    </li>
+                                    <li class="<?php echo e(($detail->status > 6)?'active':''); ?>" data-target="#step6">
+                                        <div class="clearfix"><span class="step"><i class="fa fa-check"></i></span></div>
+                                        <span class="title">圆满完成</span>
+                                        <?php if($detail->status > 6 && $detail->end_at): ?>
+                                            <span class="title"><?php echo e(date('Y.m.d', strtotime($detail->end_at))); ?></span>
+                                        <?php endif; ?>
+                                    </li>
+                                </ul>
+                            <?php endif; ?>
+                            <div class="space-6"></div>
+                        </div>
+                    </div>
+
+                    <div class="space-10"></div>
+                </div>
+                <?php /*tab*/ ?>
+                <ul class="tasknav clearfix mg-margin nav nav-tabs">
+                    <li class="<?php echo e((empty($_COOKIE['table_index']) || $_COOKIE['table_index'] == 1) ? 'active' : ''); ?>" index="1" onclick="rememberTable($(this))">
+                        <a href="#home" data-toggle="tab" class="text-size16">任务详情</a>
+                    </li>
+                    <li class="<?php echo e((!empty($_COOKIE['table_index']) && $_COOKIE['table_index'] == 2) ? 'active' : ''); ?>" index="2" onclick="rememberTable($(this))">
+                        <a href="#home2" data-toggle="tab" class="text-size16">投稿记录<span class="badge bg-blue"><?php echo e($works_count); ?></span></a>
+                    </li>
+                    <?php if(!empty($delivery['data']) && $user_type != 3 && ($is_delivery || $user_type == 1)): ?>
+                        <li class="<?php echo e((!empty($_COOKIE['table_index']) && $_COOKIE['table_index'] == 3) ? 'active' : ''); ?>" index="3" onclick="rememberTable($(this))">
+                            <a href="#home3" data-toggle="tab" class="text-size16">交付内容<span class="badge badge-primary bg-blue"><?php echo e($delivery_count); ?></span></a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if(!empty($comment['data'])): ?>
+                        <li class="<?php echo e((!empty($_COOKIE['table_index']) && $_COOKIE['table_index'] == 4) ? 'active' : ''); ?>" index="4" onclick="rememberTable($(this))">
+                            <a href="#home4" data-toggle="tab" class="text-size16">评价<span class="badge badge-primary allbtn"><?php echo e($comment_count); ?></span></a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if(!empty($works_rights['data'])): ?>
+                        <li class="<?php echo e((!empty($_COOKIE['table_index']) && $_COOKIE['table_index'] == 5) ? 'active' : ''); ?>" index="5" onclick="rememberTable($(this))">
+                            <a href="#home5" data-toggle="tab" class="text-size16">交易维权<span class="badge badge-primary allbtn"><?php echo e($works_rights_count); ?></span></a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+                <div class="tab-content b-border0 pd-padding0">
+                    <?php /*任务详情*/ ?>
+                    <div id="home" class="tab-pane fade pd-padding30  bg-white b-border <?php echo e((empty($_COOKIE['table_index']) || $_COOKIE['table_index'] == 1) ? 'active' : ''); ?> in">
+                        <div class="task-description cor-gray51">
+                            <div class="description-main">
+                                <p class="h4 description-title">任务描述</p>
+                                <div class="h5 height-line24" style="word-break:break-all">
+                                    <?php echo $detail->desc; ?>
+
+                                </div>
+                            </div>
+                            <div class="description-main task-taskdisplay">
+                                <div>
+                                    <p class="h4 description-title"><b><i class="fa fa-paperclip fa-rotate-90"></i> 附件 <span class="text-muted">(<?php echo e(count($attatchment)); ?>)</span></b></p>
+                                    <span class="hr"></span>
+                                </div>
+                                <div class="user-profile clearfix">
+                                    <ul class="ace-thumbnails">
+                                        <?php foreach($attatchment as $v): ?>
+                                            <li>
+                                                <a>
+                                                    <img alt="150x150" src="<?php echo Theme::asset()->url('images/task-xiazai/' . matchImg($v->type) . '.png'); ?>">
+                                                    <div class="text">
+                                                        <div class="inner"></div>
+                                                    </div>
+                                                </a>
+                                                <div class="tools tools-bottom">
+                                                    <a href="<?php echo e(URL('task/download', ['id' => $v->id])); ?>">下载</a>
+                                                </div>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="space"></div>
+                        </div>
+                    </div>
+                    <!--投标记录-->
+                    <div id="home2" class="tab-pane fade <?php echo e((!empty($_COOKIE['table_index']) && $_COOKIE['table_index'] == 2) ? 'active' : ''); ?> in">
+                        <div class="tab-content bg-white task-taskdisplay">
+                            <ul class="nav nav-pills mg-margin">
+                                <li class="<?php echo e(!isset($merge['work_type']) ? 'active' : ''); ?>"><a href="javascript:void(0);" onclick="ajaxPageWorks($(this))"  url="<?php echo e(URL('task/ajaxPageWorks/') . "/$detail->id"); ?>" class="<?php echo e(!isset($merge['work_type']) ? 'btn-blue' : ''); ?>">全部</a></li>
+                                <li class="<?php echo e((isset($merge['work_type']) && $merge['work_type'] == 1) ? 'active' : ''); ?>"><a class="<?php echo e((isset($merge['work_type']) && $merge['work_type'] == 1) ? 'btn-blue' : ''); ?>" href="javascript:void(0)" onclick="ajaxPageWorks($(this))" url="<?php echo e(URL('task/ajaxPageWorks/') . "/$detail->id?" . http_build_query(['work_type' => 1])); ?>">未中标<span> (<?php echo e(($works_count - $works_bid_count)); ?>)</span></a></li>
+                                <li class="<?php echo e((isset($merge['work_type']) && $merge['work_type'] == 2) ? 'active' : ''); ?>"><a class="<?php echo e((isset($merge['work_type']) && $merge['work_type'] == 2) ? 'btn-blue' : ''); ?>" href="javascript:void(0)" onclick="ajaxPageWorks($(this))" url="<?php echo e(URL('task/ajaxPageWorks/') . "/$detail->id?" . http_build_query(['work_type' => 2])); ?>">中标<span> (<?php echo e($works_bid_count); ?>)</span></a></li>
+                            </ul>
+                        </div>
+                        <?php $__empty_1 = true; foreach($works['data'] as $v): $__empty_1 = false; ?>
+                            <?php if(!($detail->work_status && $detail->server_status == 2)
+                            || $user_type == 1
+                            || $v['uid'] == Auth::user()->id): ?>
+                                <?php if($detail->type_id == 2): ?>
+                                    <div class="bidrecords">
+                                        <div class="evaluate row">
+                                            <div class="col-md-1 col-xs-2 task-bidMedia evaluateimg">
+                                                <a href="/zone/models/<?php echo e($v['uid']); ?>/0" target="_blank">
+                                                    <img src="<?php echo e($domain . '/' . CommonClass::getAvatar($v['uid'])); ?>" onerror="onerrorImage('<?php echo e(Theme::asset()->url('images/defauthead.png')); ?>', $(this))" class="img-r"/>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-11 col-xs-10 evaluatemain">
+                                                <div class="evaluateinfo clearfix">
+                                                    <div class="pull-left">
+                                                        <p>
+                                                            <b><?php echo e(isset($v['nickname']) ? $v['nickname'] : $v['username']); ?></b>
+                                                            &nbsp;|&nbsp;
+                                                            <span class="label-tender">标价：￥<?php echo e($v['bidding_price']); ?></span>
+                                                            &nbsp;|&nbsp;
+                                                            <span class="label-tender">开发周期：<?php echo e($v['work_time']); ?>天</span>
+                                                            &nbsp;|&nbsp;
+                                                            好评率：<span class="text-orange"><?php echo e(CommonClass::applauseRate($v['uid'])); ?>%</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        </p>
+                                                        <p class="evaluatetime">提交于<?php echo e($v['created_at']); ?></p>
+                                                    </div>
+                                                    <?php if($detail->status == 3 && $user_type == 1 && $v['status'] == 0): ?>
+                                                        <div id="select-attachment-<?php echo e($v['id']); ?>" class="select-attachment">
+                                                            <div class="pull-right">
+                                                                <button data-target="#myModal<?php echo e($v['id']); ?>" data-toggle="modal" class="btn btn-primary btn-sm btn-big1 bor-radius2">选TA</button>
+                                                            </div>
+                                                            <!-- 模态框（Modal） -->
+                                                            <div class="modal fade" id="myModal<?php echo e($v['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header widget-header-flat">
+                                                                            <span class="modal-title" id="myModalLabel">审核提示：</span>
+                                                                        </div>
+                                                                        <div class="modal-body text-center">
+                                                                            <p class="h5">确定将“<span class="text-primary"><?php echo e($v['nickname']); ?></span>”设置为中标吗？</p>
+                                                                            <div class="space"></div>
+                                                                            <p>
+                                                                                <button class="btn btn-primary btn-sm btn-big1 bor-radius2 win-bid" type="button" task_id="<?php echo e($detail->id); ?>" work_id="<?php echo e($v['id']); ?>" onclick="winBid($(this))" data-dismiss="modal">确定</button>
+                                                                                <button class="btn btn-default btn-sm btn-big1 btn-gray999 bor-radius2" type="button" data-dismiss="modal">取消</button>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+
+                                                <div class="evaluatext detail-noborder"><?php echo $v['desc']; ?></div>
+                                                <div class="detail-border">
+                                                    <?php if(in_array($v['status'], [1, 2, 3])): ?>
+                                                        <div class="selecte" id="selecte-<?php echo e($v['id']); ?>" ></div>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div>
+                                                    <div>
+                                                        <p class="h4 description-title"><b><i class="fa fa-paperclip fa-rotate-90"></i> 附件 <span class="text-muted">(<?php echo e(count($v['children_attachment'])); ?>)</span></b></p>
+                                                    </div>
+                                                    <div class="user-profile clearfix">
+                                                        <ul class="ace-thumbnails">
+                                                            <?php foreach($v['children_attachment'] as $value): ?>
+                                                                <li>
+                                                                    <a>
+                                                                        <img alt="150x150" src="<?php echo Theme::asset()->url('images/task-xiazai/'.matchImg($value['type']).'.png'); ?>">
+                                                                        <div class="text">
+                                                                            <div class="inner"></div>
+                                                                        </div>
+                                                                    </a>
+                                                                    <div class="tools tools-bottom">
+                                                                        <a href="<?php echo e(URL('task/download',['id'=>$value['attachment_id']])); ?>">下载</a>
+                                                                    </div>
+                                                                </li>
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="text-right">
+                                                    <?php if(Auth::check()): ?>
+                                                        <a class="evaluateshow text-under blue get-comment" url="/task/getComment" work_id='<?php echo e($v['id']); ?>' num="0" onclick="evaluateshow($(this))">回复(<?php echo e(count($v['children_comment'])); ?>)</a>
+                                                    <?php else: ?>
+                                                        <a class="evaluateshow text-under blue" url="/task/getComment" work_id='<?php echo e($v['id']); ?>' onclick="loginremaind($(this))">回复<?php echo e(count($v['children_comment'])); ?></a>
+                                                    <?php endif; ?>
+                                                    <a class="blue text-under" work_id="<?php echo e($v['id']); ?>" onclick="report($(this))" data-toggle="modal" data-target="#modal9">举报</a>
+                                                </div>
+                                                <div class="evaluatehide">
+                                                    <div class="space"></div>
+                                                    <div class="widget-box">
+                                                        <div class="widget-body">
+                                                            <div class="widget-main no-padding">
+                                                                <form>
+                                                                    <input id="work-comment-pid-<?php echo e($v['id']); ?>" type="hidden" name="pid"/>
+                                                                    <div class="form-actions">
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control" id="work-comment-answer-<?php echo e($v['id']); ?>" name="comment" placeholder="说点什么"/>
+                                                                            <span class="input-group-btn">
+                                                                                <button class="btn btn-primary" type="button" url="/task/ajaxComment" work_id="<?php echo e($v['id']); ?>" task_id="<?php echo e($v['task_id']); ?>" token="<?php echo e(csrf_token()); ?>" onclick="ajaxComment($(this))"><i class="ace-icon fa fa-share"></i> 提交</button>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                                <div class="" id="work-comment-<?php echo e($v['id']); ?>" >
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="bidrecords">
+                                        <div class="evaluate row">
+                                            <div class="col-md-1 col-xs-2 task-bidMedia evaluateimg">
+                                                <img src="<?php echo e($domain . '/' . CommonClass::getAvatar($v['uid'])); ?>" onerror="onerrorImage('<?php echo e(Theme::asset()->url('images/defauthead.png')); ?>', $(this))" class="img-r"></div>
+                                            <div class="col-md-11 col-xs-10 evaluatemain">
+                                                <div class="evaluateinfo clearfix">
+                                                    <div class="pull-left">
+                                                        <p>
+                                                            <b><?php echo e(isset($v['nickname']) ? $v['nickname'] : $v['username']); ?></b>
+                                                            &nbsp;|&nbsp;
+                                                            好评率：<span class="text-orange"><?php echo e(CommonClass::applauseRate($v['uid'])); ?>%</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        </p>
+                                                        <p class="evaluatetime">提交于<?php echo e($v['created_at']); ?></p>
+                                                    </div>
+                                                    <?php if($detail->status == 3 && $user_type == 1 && $v['status'] == 0): ?>
+                                                        <div id="select-attachment-<?php echo e($v['id']); ?>" class="select-attachment">
+                                                            <div class="pull-right">
+                                                                <button data-target="#myModal<?php echo e($v['id']); ?>" data-toggle="modal" class="btn btn-primary btn-blue btn-big1 bor-radius2">选TA</button>
+                                                            </div>
+                                                            <!-- 模态框（Modal） -->
+                                                            <div class="modal fade" id="myModal<?php echo e($v['id']); ?>" tabindex="-1" role="dialog"aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header widget-header-flat">
+                                                                            <span class="modal-title" id="myModalLabel">
+                                                                                审核提示：
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="modal-body text-center">
+                                                                            <p class="h5">确定将“<span class="text-primary"><?php echo e($v['nickname']); ?></span>”设置为中标吗？</p>
+                                                                            <div class="space"></div>
+                                                                            <p><button class="btn btn-primary btn-sm btn-big1 btn-blue bor-radius2 win-bid" type="button" task_id="<?php echo e($detail->id); ?>" work_id="<?php echo e($v['id']); ?>" onclick="winBid($(this))" data-dismiss="modal">确定</button> <button class="btn btn-default btn-sm btn-big1 btn-gray999 bor-radius2" type="button" data-dismiss="modal">取消</button></p>
+                                                                        </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal -->
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="evaluatext detail-noborder"><?php echo $v['desc']; ?></div>
+                                                <div class="detail-border">
+                                                    <?php if(in_array($v['status'], [1, 2, 3])): ?>
+                                                        <div class="selecte" id="selecte-<?php echo e($v['id']); ?>" ></div>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <p class="h4 description-title">
+                                                    <b><a href="/view-<?php echo e($v['action_id']); ?>" class="btn btn-link" target="_blank" style="font-size: 16px"><i class="fa fa-paperclip fa-rotate-90"></i> 查看作品</a></b>
+                                                </p>
+                                                <div class="text-right">
+                                                    <?php if(Auth::check()): ?>
+                                                        <a class="evaluateshow text-under blue get-comment" url="/task/getComment" work_id='<?php echo e($v['id']); ?>' num="0" onclick="evaluateshow($(this))">回复(<?php echo e(count($v['children_comment'])); ?>)</a>
+                                                    <?php else: ?>
+                                                        <a class="evaluateshow text-under blue" url="/task/getComment" work_id='<?php echo e($v['id']); ?>' onclick="loginremaind($(this))">回复<?php echo e(count($v['children_comment'])); ?></a>
+                                                    <?php endif; ?>
+                                                    <a class="blue text-under" work_id="<?php echo e($v['id']); ?>" onclick="report($(this))" data-toggle="modal" data-target="#modal9">举报</a>
+                                                </div>
+                                                <div class="evaluatehide">
+                                                    <div class="space"></div>
+                                                    <div class="widget-box">
+                                                        <div class="widget-body">
+                                                            <div class="widget-main no-padding">
+                                                                <form>
+                                                                    <input id="work-comment-pid-<?php echo e($v['id']); ?>" type="hidden" name="pid"/>
+                                                                    <div class="form-actions">
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control" id="work-comment-answer-<?php echo e($v['id']); ?>" name="comment" placeholder="说点什么"/>
+                                                                            <span class="input-group-btn">
+                                                                                <button class="btn btn-primary" type="button" url="/task/ajaxComment" work_id="<?php echo e($v['id']); ?>" task_id="<?php echo e($v['task_id']); ?>" token="<?php echo e(csrf_token()); ?>" onclick="ajaxComment($(this))"><i class="ace-icon fa fa-share"></i> 提交</button>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                                <div class="" id="work-comment-<?php echo e($v['id']); ?>" >
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <div class="norecord">
+                                    <div class="tab-content text-center text-gray" style="background-color: #000 !important;">
+                                        <p><img src="/themes/default/assets/images/nomessage.png"/></p>
+                                        <p>此稿件已隐藏哦</p>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; if ($__empty_1): ?>
+                            <div class="norecord">
+                                <div class="tab-content text-center text-gray">
+                                    <div class="detail-nomessage">暂无消息哦！</div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <div class="pull-right">
+                            <ul class="pagination ">
+                                <?php if(! empty($works['prev_page_url'])): ?>
+                                    <li><a href="javascript:void(0)" onclick="ajaxPageWorks($(this))" url="<?php echo URL('task/ajaxPageWorks') . "/$detail->id?" . http_build_query(array_merge($merge, ['page' => $works['current_page'] - 1])); ?>">«</a></li>
+                                <?php elseif($works['last_page'] > 1): ?>
+                                    <li class="disabled"><span>«</span></li>
+                                <?php endif; ?>
+                                <?php if($works['last_page'] > 1): ?>
+                                    <?php for($i = 1; $i <= $works['last_page']; $i++): ?>
+                                        <li class="<?php echo e(($i == $works['current_page']) ? 'active disabled' : ''); ?>"><a href="javascript:void(0)" onclick="ajaxPageWorks($(this))" url="<?php echo URL('task/ajaxPageWorks') . "/$detail->id?" . http_build_query(array_merge($merge, ['page' => $i])); ?>"><?php echo e($i); ?></a></li>
+                                    <?php endfor; ?>
+                                <?php endif; ?>
+                                <?php if(! empty($works['next_page_url'])): ?>
+                                    <li><a href="javascript:void(0)" onclick="ajaxPageWorks($(this))" url="<?php echo URL('task/ajaxPageWorks') . "/$detail->id?" . http_build_query(array_merge($merge,['page' => $works['current_page'] + 1])); ?>">»</a></li>
+                                <?php elseif($works['last_page'] > 1): ?>
+                                    <li class="disabled"><span>»</span></li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--交付内容-->
+                    <?php if(!empty($delivery['data']) && $user_type != 3  && ($is_delivery || $user_type == 1)): ?>
+                        <div id="home3" class="tab-pane fade <?php echo e((!empty($_COOKIE['table_index']) && $_COOKIE['table_index'] == 3) ? 'active' : ''); ?> in">
+                            <?php foreach($delivery['data'] as $v): ?>
+                                <?php if($detail->type_id == 2): ?>
+                                    <div class="bidrecords">
+                                        <div class="evaluate row evaluatetop">
+                                            <div class="col-md-1  col-xs-2 task-bidMedia evaluateimg"><img src="<?php echo e($domain . '/' . CommonClass::getAvatar($v['uid'])); ?>" onerror="onerrorImage('<?php echo e(Theme::asset()->url('images/defauthead.png')); ?>',$(this))"></div>
+                                            <div class="col-md-11 col-xs-10 evaluatemain">
+                                                <div class="evaluateinfo clearfix">
+                                                    <div class="pull-left">
+                                                        <p>
+                                                            <b><?php echo e(isset($v['nickname']) ? $v['nickname'] : $v['username']); ?></b>
+                                                            &nbsp;|&nbsp;
+                                                            <span class="label-tender">标价：￥<?php echo e($v['bidding_price']); ?></span>
+                                                            &nbsp;|&nbsp;
+                                                            <span class="label-tender">开发周期：<?php echo e($v['work_time']); ?>天</span>
+                                                            &nbsp;|&nbsp;
+                                                            好评率：<span class="text-orange"><?php echo e(CommonClass::applauseRate($v['uid'])); ?>%</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        </p>
+                                                        <p class="evaluatetime">提交于<?php echo e($v['created_at']); ?></p>
+                                                    </div>
+
+                                                    <div class="pull-right" id="check-<?php echo e($v['id']); ?>">
+                                                        <?php if($v['status'] == 2 && $user_type == 1): ?>
+                                                            <button class="btn btn-primary btn-sm btn-blue btn-big1 bor-radius2 " data-toggle="modal" data-target="#modal<?php echo e($v['id']); ?>">验收付款</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <!--验收付款 模态框（Modal） -->
+                                                            <div class="modal fade" id="modal<?php echo e($v['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header widget-header-flat">
+                                                                            <span class="modal-title cor-gray51 text-size14 text-blod">交稿提示：</span>
+                                                                            <button type="button" class="bootbox-close-button close text-size14" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                        </div>
+                                                                        <div class="modal-body text-center">
+                                                                            <form action="/task/check" method="get" id="form">
+                                                                                <input type="hidden" name="work_id" value="<?php echo e($v['id']); ?>"/>
+                                                                                <div class="space"></div>
+                                                                                <p class="cor-gray51 text-size14">请确认您是否已查看源文件，并通过验收！</p>
+                                                                                <div class="clearfix text-size12">
+                                                                                    <label class="inline">
+                                                                                        <input type="checkbox" class="ace" name="agree" checked="checked" datatype="*" nullmsg="请先阅读并同意">
+                                                                                        <span class="lbl text-muted">&nbsp;&nbsp;&nbsp;我已阅读并同意 <a href="/bre/agree/task_delivery" target="_blank" style="color: #ffc1c1;">《<?php echo $agree->name; ?>》</a></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="space"></div>
+                                                                                <button class="btn btn-primary btn-sm btn-big1 btn-blue bor-radius2" type="submit" >确定</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                <button href="javascript:;" class="btn btn-default btn-sm btn-big1 btn-gray999 bor-radius2" data-dismiss="modal" aria-hidden="true">取消</button>
+                                                                                <div class="space"></div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                        <?php if($v['status'] == 2 && $user_type == 1): ?>
+                                                            <button class="btn btn-default btn-sm btn-big1 btn-gray999 bor-radius2 " data-toggle="modal" data-target="#modallost<?php echo e($v['id']); ?>">交易维权</button>
+                                                            <!--交易维权 模态框（Modal） -->
+                                                            <div class="modal fade" id="modallost<?php echo e($v['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header widget-header-flat">
+                                                                        <span class="modal-title cor-gray51 text-size14 text-blod">交易维权：</span>
+                                                                            <button type="button" class="bootbox-close-button close text-size14" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form action="/task/ajaxRights" class="form-horizontal text-size14 cor-gray51" role="form" method="post" >
+                                                                                <?php echo e(csrf_field()); ?>
+
+                                                                                <input name="task_id" value="<?php echo e($detail['id']); ?>" type="hidden" />
+                                                                                <input name="work_id" value="<?php echo e($v['id']); ?>" type="hidden" />
+                                                                                <div class="space"></div>
+                                                                                <div class="clearfix">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">维权类型：</label>
+                                                                                        <div class="col-sm-9">
+                                                                                            <div class="row">
+                                                                                                <select name="type" style="background-color: #191919;color: #fff;">
+                                                                                                    <option value="1">违规信息</option>
+                                                                                                    <option value="2">虚假交稿</option>
+                                                                                                    <option value="3">涉嫌抄袭</option>
+                                                                                                    <option value="4">其他</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">维权原因：</label>
+                                                                                        <div class="col-sm-9">
+                                                                                            <div class="row">
+                                                                                                <textarea type="text" name="desc" placeholder="请输入维权原因" rows="3" cols="50" style="background-color: #191919;color: #fff;"></textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="clearfix text-center">
+                                                                                    <button class="btn btn-primary btn-sm btn-big1 btn-blue bor-radius2" type="submit" >确定</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                    <button class="btn btn-default btn-sm btn-big1 btn-gray999 bor-radius2" data-dismiss="modal" aria-hidden="true">取消</button>
+                                                                                </div>
+                                                                                <div class="space"></div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal -->
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <?php if($v['status']==3  && $user_type==1 && CommonClass::ownerEvalute($v['task_id'], Auth::user()->id, $v['uid']) == 0): ?>
+                                                        <div class="pull-right">
+                                                            <a href="<?php echo e(URL('/task/evaluate') . '?' . http_build_query(['id' => $v['task_id'],'work_id' => $v['id']])); ?>" class="btn btn-primary btn-sm btn-blue btn-big1 bor-radius2 ">去评价</a>
+                                                        </div>
+                                                    <?php elseif($v['status'] == 3 && $user_type == 2 && CommonClass::evaluted($v['task_id'], Auth::user()->id) == 0 && $v['uid'] == Auth::user()->id): ?>
+                                                        <div class="pull-right">
+                                                            <a href="<?php echo e(URL('/task/evaluate').'?'.http_build_query(['id'=>$v['task_id'],'work_id'=>$v['id']])); ?>" class="btn btn-primary btn-sm btn-blue btn-big1 bor-radius2 ">去评价</a>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="evaluatext" style="word-break:break-all">
+                                                    <p style="color: #fff"><i class="fa fa-hourglass-end" aria-hidden="true"></i> 最后交稿时间<?php echo e($detail->delivery_deadline); ?></p>
+                                                </div>
+                                                <p class="h4 description-title">
+                                                    <b><a href="/view-<?php echo e($v['action_id']); ?>" class="btn btn-link" target="_blank" style="font-size: 16px"><i class="fa fa-paperclip fa-rotate-90"></i> 验收作品</a></b>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="bidrecords">
+                                        <div class="evaluate row evaluatetop">
+                                            <div class="col-md-1  col-xs-2 task-bidMedia evaluateimg"><img src="<?php echo e($domain . '/' . CommonClass::getAvatar($v['uid'])); ?>" onerror="onerrorImage('<?php echo e(Theme::asset()->url('images/defauthead.png')); ?>',$(this))"></div>
+                                            <div class="col-md-11 col-xs-10 evaluatemain">
+                                                <div class="evaluateinfo clearfix">
+                                                    <div class="pull-left">
+                                                        <p>
+                                                            <b><?php echo e(isset($v['nickname']) ? $v['nickname'] : $v['username']); ?></b>
+                                                            &nbsp;|&nbsp;
+                                                            好评率：<span class="text-orange"><?php echo e(CommonClass::applauseRate($v['uid'])); ?>%</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        </p>
+                                                        <p class="evaluatetime">提交于<?php echo e($v['created_at']); ?></p>
+                                                    </div>
+
+                                                    <div class="pull-right" id="check-<?php echo e($v['id']); ?>">
+                                                        <?php if($v['status'] == 2 && $user_type == 1): ?>
+                                                            <button class="btn btn-primary btn-sm btn-blue btn-big1 bor-radius2 " data-toggle="modal" data-target="#modal<?php echo e($v['id']); ?>">验收付款</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <!--验收付款 模态框（Modal） -->
+                                                            <div class="modal fade" id="modal<?php echo e($v['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header widget-header-flat">
+                                                                            <span class="modal-title cor-gray51 text-size14 text-blod">交稿提示：</span>
+                                                                            <button type="button" class="bootbox-close-button close text-size14" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                        </div>
+                                                                        <div class="modal-body text-center">
+                                                                            <form action="/task/check" method="get" id="form">
+                                                                                <input type="hidden" name="work_id" value="<?php echo e($v['id']); ?>"/>
+                                                                                <div class="space"></div>
+                                                                                <p class="cor-gray51 text-size14">请确认您是否已查看源文件，并通过验收！</p>
+                                                                                <div class="clearfix text-size12">
+                                                                                    <label class="inline">
+                                                                                        <input type="checkbox" class="ace" name="agree" checked="checked" datatype="*" nullmsg="请先阅读并同意">
+                                                                                        <span class="lbl text-muted">&nbsp;&nbsp;&nbsp;我已阅读并同意 <a href="/bre/agree/task_delivery" target="_blank" style="color: #ffc1c1;">《<?php echo $agree->name; ?>》</a></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="space"></div>
+                                                                                <button class="btn btn-primary btn-sm btn-big1 btn-blue bor-radius2" type="submit" >确定</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                <button href="javascript:;" class="btn btn-default btn-sm btn-big1 btn-gray999 bor-radius2" data-dismiss="modal" aria-hidden="true">取消</button>
+                                                                                <div class="space"></div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                        <?php if($v['status'] == 2 && $user_type == 1): ?>
+                                                            <button class="btn btn-default btn-sm btn-big1 btn-gray999 bor-radius2 " data-toggle="modal" data-target="#modallost<?php echo e($v['id']); ?>">交易维权</button>
+                                                            <!--交易维权 模态框（Modal） -->
+                                                            <div class="modal fade" id="modallost<?php echo e($v['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header widget-header-flat">
+                                                                            <span class="modal-title cor-gray51 text-size14 text-blod">交易维权：</span>
+                                                                            <button type="button" class="bootbox-close-button close text-size14" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form action="/task/ajaxRights" class="form-horizontal text-size14 cor-gray51" role="form" method="post" >
+                                                                                <?php echo e(csrf_field()); ?>
+
+                                                                                <input name="task_id" value="<?php echo e($detail['id']); ?>" type="hidden" />
+                                                                                <input name="work_id" value="<?php echo e($v['id']); ?>" type="hidden" />
+                                                                                <div class="space"></div>
+                                                                                <div class="clearfix">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">维权类型：</label>
+                                                                                        <div class="col-sm-9">
+                                                                                            <div class="row">
+                                                                                                <select name="type" style="background-color: #191919;color: #fff;">
+                                                                                                    <option value="1">违规信息</option>
+                                                                                                    <option value="2">虚假交稿</option>
+                                                                                                    <option value="3">涉嫌抄袭</option>
+                                                                                                    <option value="4">其他</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">维权原因：</label>
+                                                                                        <div class="col-sm-9">
+                                                                                            <div class="row">
+                                                                                                <textarea type="text" name="desc" placeholder="请输入维权原因" rows="3" cols="50" style="background-color: #191919;color: #fff;"></textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="clearfix text-center">
+                                                                                    <button class="btn btn-primary btn-sm btn-big1 btn-blue bor-radius2" type="submit" >确定</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                    <button class="btn btn-default btn-sm btn-big1 btn-gray999 bor-radius2" data-dismiss="modal" aria-hidden="true">取消</button>
+                                                                                </div>
+                                                                                <div class="space"></div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div><!-- /.modal-content -->
+                                                                </div><!-- /.modal -->
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <?php if($v['status']==3  && $user_type==1 && CommonClass::ownerEvalute($v['task_id'], Auth::user()->id, $v['uid']) == 0): ?>
+                                                        <div class="pull-right">
+                                                            <a href="<?php echo e(URL('/task/evaluate') . '?' . http_build_query(['id' => $v['task_id'],'work_id' => $v['id']])); ?>" class="btn btn-primary btn-sm btn-blue btn-big1 bor-radius2 ">去评价</a>
+                                                        </div>
+                                                    <?php elseif($v['status'] == 3 && $user_type == 2 && CommonClass::evaluted($v['task_id'], Auth::user()->id) == 0 && $v['uid'] == Auth::user()->id): ?>
+                                                        <div class="pull-right">
+                                                            <a href="<?php echo e(URL('/task/evaluate').'?'.http_build_query(['id'=>$v['task_id'],'work_id'=>$v['id']])); ?>" class="btn btn-primary btn-sm btn-blue btn-big1 bor-radius2 ">去评价</a>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="evaluatext" style="word-break:break-all"></div>
+                                                <p class="h4 description-title">
+                                                    <b><a href="/view-<?php echo e($v['action_id']); ?>" class="btn btn-link" target="_blank" style="font-size: 16px"><i class="fa fa-paperclip fa-rotate-90"></i> 验收作品</a></b>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                            <div class="pull-right">
+                                <ul class="pagination">
+                                    <?php if(!empty($delivery['prev_page_url'])): ?>
+                                        <li><a href="javascript:void(0)" onclick="ajaxPageDelivery($(this))" url="<?php echo URL('task/ajaxPageDelivery') . "/{$detail->id}?" . http_build_query(array_merge($merge, ['page' => $delivery['current_page'] - 1])); ?>">«</a></li>
+                                    <?php elseif($delivery['last_page'] > 1): ?>
+                                        <li class="disabled"><span>«</span></li>
+                                    <?php endif; ?>
+                                    <?php if($delivery['last_page'] > 1): ?>
+                                        <?php for($i=1; $i <= $delivery['last_page']; $i++): ?>
+                                            <li class="<?php echo e(($i == $delivery['current_page']) ? 'active disabled' : ''); ?>"><a href="javascript:void(0)" onclick="ajaxPageDelivery($(this))" url="<?php echo URL('task/ajaxPageDelivery') . "/{$detail->id}?" . http_build_query(array_merge($merge, ['page' => $i])); ?>"><?php echo e($i); ?></a></li>
+                                        <?php endfor; ?>
+                                    <?php endif; ?>
+                                    <?php if(!empty($delivery['next_page_url'])): ?>
+                                        <li><a href="javascript:void(0)" onclick="ajaxPageDelivery($(this))" url="<?php echo URL('task/ajaxPageDelivery') . "/{$detail->id}?" . http_build_query(array_merge($merge, ['page' => $delivery['current_page'] + 1])); ?>">»</a></li>
+                                    <?php elseif($delivery['last_page']>1): ?>
+                                        <li class="disabled"><span>»</span></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <!--评价-->
+                    <?php if(!empty($comment['data'])): ?>
+                        <div id="home4" class="tab-pane fade <?php echo e((!empty($_COOKIE['table_index']) && $_COOKIE['table_index'] == 4) ? 'active' : ''); ?> in">
+                            <div class="tab-content bg-white task-taskdisplay">
+                                <ul class="nav nav-pills mg-margin">
+                                    <li class="<?php echo e((!isset($merge['evaluate_type']) && !isset($merge['evaluate_from'])) ? 'active' : ''); ?>"><a href="javascript:void(0)" onclick="ajaxPageComment($(this))" url="<?php echo e(URL('task/ajaxPageComment/') . "/$detail->id"); ?>" class="btn-blue">全部</a></li>
+                                    <li class="<?php echo e((isset($merge['evaluate_type']) && $merge['evaluate_type']==1) ? 'active' : ''); ?>"><a href="javascript:void(0)" onclick="ajaxPageComment($(this))" url="<?php echo e(URL('task/ajaxPageComment/') . "/$detail->id?" . http_build_query(['evaluate_type' => 1 ])); ?>">好评<span> (<?php echo e($good_comment); ?>)</span></a></li>
+                                    <li class="<?php echo e((isset($merge['evaluate_type']) && $merge['evaluate_type']==2) ? 'active' : ''); ?>"><a href="javascript:void(0)" onclick="ajaxPageComment($(this))" url="<?php echo e(URL('task/ajaxPageComment/') . "/$detail->id?" . http_build_query(['evaluate_type' => 2])); ?>">中评<span> (<?php echo e($middle_comment); ?>)</span></a></li>
+                                    <li class="<?php echo e((isset($merge['evaluate_type']) && $merge['evaluate_type']==3) ? 'active' : ''); ?>"><a href="javascript:void(0)" onclick="ajaxPageComment($(this))" url="<?php echo e(URL('task/ajaxPageComment/') . "/$detail->id?" . http_build_query(['evaluate_type' => 3])); ?>">差评<span> (<?php echo e($bad_comment); ?>)</span></a></li>
+                                    <li class="<?php echo e((isset($merge['evaluate_from']) && $merge['evaluate_from']==1) ? 'active' : ''); ?>"><a href="javascript:void(0)" onclick="ajaxPageComment($(this))" url="<?php echo e(URL('task/ajaxPageComment/') . "/$detail->id?" . http_build_query(['evaluate_from' => 1])); ?>">给设计师</a></li>
+                                    <li class="<?php echo e((isset($merge['evaluate_from']) && $merge['evaluate_from']==2) ? 'active' : ''); ?>"><a href="javascript:void(0)" onclick="ajaxPageComment($(this))" url="<?php echo e(URL('task/ajaxPageComment/') . "/$detail->id?" . http_build_query(['evaluate_from' => 2])); ?>">给发布者</a></li>
+                                </ul>
+                            </div>
+                            <?php foreach($comment['data'] as $v): ?>
+                                <div class="bidrecords">
+                                    <div class="evaluate">
+                                    <div class="record pd-pdtp0">
+                                        <div class="row">
+                                            <div class="col-md-1 col-xs-2 task-bidMedia evaluateimg"><img src="<?php echo e("$domain/{$v['avatar']}"); ?>" onerror="onerrorImage('<?php echo e(Theme::asset()->url('images/defauthead.png')); ?>',$(this))"></div>
+                                                <div class="col-md-11 col-xs-10 evaluatemain">
+                                                    <div class="evaluateinfo">
+                                                        <div>
+                                                            <p>
+                                                                <b><?php echo e(isset($v['f_nickname']) ? $v['f_nickname'] : $v['f_username']); ?></b> 对 <b><?php echo e(isset($v['nickname']) ? $v['nickname'] : $v['username']); ?></b> 评价
+                                                                &nbsp;
+                                                                <?php if($v['type'] == 1): ?>
+                                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/flower1.png')); ?>"/>
+                                                                    <span style="color: #d81e06;">好评</span>
+                                                                <?php elseif($v['type']==2): ?>
+                                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/flower2.png')); ?>"/>
+                                                                    <span style="color: #2a8818;">中评</span>
+                                                                <?php elseif($v['type']==3): ?>
+                                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/flower3.png')); ?>"/>
+                                                                    <span style="color: #525252;">差评</span>
+                                                                <?php endif; ?>
+                                                            </p>
+                                                            <p class="evaluatetime">提交于<?php echo e($v['created_at']); ?></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="evaluatext"><?php echo e($v['comment']); ?></div>
+                                                    <div class="recordstar">
+                                                        <?php if($detail['uid']!=$v['to_uid']): ?>
+                                                            <div class="mg-right visible-lg-inline-block visible-md-inline-block visible-sm-inline-block visible-xs-inline-block">
+                                                                工作速度：
+                                                                <?php for($i = 0; $i < $v['speed_score']; $i++): ?>
+                                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/start2.png')); ?>"/>
+                                                                <?php endfor; ?>
+                                                                <?php for($i = 0; $i < (5 - $v['speed_score']); $i++): ?>
+                                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/start1.png')); ?>"/>
+                                                                <?php endfor; ?>
+                                                            </div>
+                                                            <div class="mg-right visible-lg-inline-block visible-md-inline-block visible-sm-inline-block visible-xs-inline-block">
+                                                                工作质量：
+                                                                <?php for($i = 0; $i < $v['quality_score']; $i++): ?>
+                                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/start2.png')); ?>"/>
+                                                                <?php endfor; ?>
+                                                                <?php for($i = 0; $i < (5 - $v['quality_score']); $i++): ?>
+                                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/start1.png')); ?>"/>
+                                                                <?php endfor; ?>
+                                                            </div>
+                                                            <div class="visible-lg-inline-block visible-md-inline-block visible-sm-inline-block visible-xs-inline-block">
+                                                                工作态度：
+                                                                <?php for($i = 0; $i < $v['attitude_score']; $i++): ?>
+                                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/start2.png')); ?>"/>
+                                                                <?php endfor; ?>
+                                                                <?php for($i = 0; $i < (5 - $v['attitude_score']); $i++): ?>
+                                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/start1.png')); ?>"/>
+                                                                <?php endfor; ?>
+                                                            </div>
+                                                        <?php else: ?>
+                                                            <div class="mg-right visible-lg-inline-block visible-md-inline-block visible-sm-inline-block visible-xs-inline-block">
+                                                                付款及时性：
+                                                                <?php for($i = 0; $i < $v['speed_score']; $i++): ?>
+                                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/start2.png')); ?>"/>
+                                                                <?php endfor; ?>
+                                                                <?php for($i = 0; $i < (5 - $v['speed_score']); $i++): ?>
+                                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/start1.png')); ?>"/>
+                                                                <?php endfor; ?>
+                                                            </div>
+                                                            <div class="mg-right visible-lg-inline-block visible-md-inline-block visible-sm-inline-block visible-xs-inline-block">
+                                                                合作愉快：
+                                                                <?php for($i = 0; $i < $v['quality_score']; $i++): ?>
+                                                                        <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/start2.png')); ?>"/>
+                                                                <?php endfor; ?>
+                                                                <?php for($i = 0; $i < (5 - $v['quality_score']); $i++): ?>
+                                                                        <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/start1.png')); ?>"/>
+                                                                <?php endfor; ?>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                            <div class="pull-right">
+                                <ul class="pagination ">
+                                    <?php if(!empty($comment['prev_page_url'])): ?>
+                                        <li><a href="javascript:void(0)" onclick="ajaxPageComment($(this))" url="<?php echo URL('task/ajaxPageComment') . "/$detail->id?" . http_build_query(array_merge($merge, ['page' => $comment['current_page'] - 1])); ?>">«</a></li>
+                                    <?php elseif($comment['last_page'] > 1): ?>
+                                        <li class="disabled"><span>«</span></li>
+                                    <?php endif; ?>
+                                    <?php if($comment['last_page'] > 1): ?>
+                                        <?php for($i=1; $i <= $comment['last_page']; $i++): ?>
+                                            <li class="<?php echo e(($i == $comment['current_page']) ? 'active disabled' : ''); ?>"><a href="javascript:void(0)" onclick="ajaxPageComment($(this))" url="<?php echo URL('task/ajaxPageComment') . "/$detail->id?" . http_build_query(array_merge($merge, ['page' => $i])); ?>"><?php echo e($i); ?></a></li>
+                                        <?php endfor; ?>
+                                    <?php endif; ?>
+                                    <?php if(!empty($comment['next_page_url'])): ?>
+                                        <li><a href="javascript:void(0)" onclick="ajaxPageComment($(this))" url="<?php echo URL('task/ajaxPageComment') . "/$detail->id?" . http_build_query(array_merge($merge, ['page' => $comment['current_page'] + 1])); ?>">»</a></li>
+                                    <?php elseif($comment['last_page'] > 1): ?>
+                                        <li class="disabled"><span>»</span></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <?php /*维权*/ ?>
+                    <?php if(!empty($works_rights['data']) && $user_type != 3  && ($is_rights || $user_type == 1)): ?>
+                        <div id="home5" class="tab-pane fade <?php echo e((!empty($_COOKIE['table_index']) && $_COOKIE['table_index']==5)?'active':''); ?> in">
+                            <?php foreach($works_rights['data'] as $v): ?>
+                                <div class="bidrecords">
+                                    <div class="evaluate row evaluatetop">
+                                        <div class="col-md-1  col-xs-2 task-bidMedia evaluateimg"><img src="<?php echo e(CommonClass::getDomain().'/'.CommonClass::getAvatar($v['uid'])); ?>" onerror="onerrorImage('<?php echo e(Theme::asset()->url('images/defauthead.png')); ?>',$(this))"></div>
+                                        <div class="col-md-11 col-xs-10 evaluatemain">
+                                            <div class="evaluateinfo clearfix">
+                                                <div class="pull-left">
+                                                    <p><b><?php echo e(isset($v['nickname']) ? $v['nickname'] : $v['username']); ?></b> | 好评率：<span class="cor-orange"><?php echo e(CommonClass::applauseRate($v['uid'])); ?>%</span></p>
+                                                    <p class="evaluatetime">提交于<?php echo e($v['created_at']); ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="evaluatext" style="word-break:break-all">
+                                                <?php echo htmlspecialchars_decode($v['desc']); ?>
+
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <p class="h4 description-title"><b><i class="fa fa-ban"></i> 维权</b></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                            <div class="pull-right">
+                                <ul class="pagination ">
+                                    <?php if(!empty($works_rights['prev_page_url'])): ?>
+                                        <li><a href="javascript:void(0)" onclick="ajaxPageRights($(this))" url="<?php echo URL('task/ajaxPageRights') . "/$detail->id?" . http_build_query(array_merge($merge, ['page' => $works_rights['current_page'] - 1])); ?>">«</a></li>
+                                    <?php elseif($works_rights['last_page'] > 1): ?>
+                                        <li class="disabled"><span>«</span></li>
+                                    <?php endif; ?>
+                                    <?php if($works_rights['last_page'] > 1): ?>
+                                        <?php for($i = 1; $i <= $works_rights['last_page']; $i++): ?>
+                                            <li class="<?php echo e(($i == $works_rights['current_page']) ? 'active disabled' : ''); ?>"><a href="javascript:void(0)" onclick="ajaxPageRights($(this))" url="<?php echo URL('task/ajaxPageRights') . "/$detail->id?" . http_build_query(array_merge($merge, ['page' => $i])); ?>"><?php echo e($i); ?></a></li>
+                                        <?php endfor; ?>
+                                    <?php endif; ?>
+                                    <?php if(!empty($works_rights['next_page_url'])): ?>
+                                        <li><a href="javascript:void(0)" onclick="ajaxPageRights($(this))" url="<?php echo URL('task/ajaxPageRights') . "/$detail->id?" . http_build_query(array_merge($merge, ['page' => $works_rights['current_page'] + 1])); ?>">»</a></li>
+                                    <?php elseif($works_rights['last_page'] > 1): ?>
+                                        <li class="disabled"><span>»</span></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class="space"></div>
+                <div class="space"></div>
+        </div>
+        <div class="col-lg-3 task-l taskMedia visible-lg-block col-left">
+            <?php /*中标提示*/ ?>
+            <div class="taskside taskside-points ">
+                <div class="task-sidetime clearfix">
+                    <div class="visible-lg-inline-block visible-md-inline-block visible-sm-inline-block visible-xs-inline-block col-xs-6">
+                        <div class="row taskside-points-border">
+                            <p class="cor-grayac text-center text-size12">预期中标</p>
+                            <p class="text-size20 text-center mg-margin text-blod"><?php echo e($detail->worker_num); ?></p>
+                        </div>
+                    </div>
+                    <div class="visible-lg-inline-block visible-md-inline-block visible-sm-inline-block visible-xs-inline-block col-xs-6">
+                        <div class="row">
+                            <p class="cor-grayac text-center text-size12">已中标</p>
+                            <p class="text-size20 text-center mg-margin text-primary text-blod"><?php echo e($works_winbid_count); ?></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-8"></div>
+                <p>快去分享，提高任务的曝光率吧</p>
+                <div class="bdsharebuttonbox" data-tag="share_1">
+                    <div class="shop-sharewrap">
+                        <!-- JiaThis Button BEGIN -->
+                        <div class="jiathis_style">
+                            <a class="jiathis_button_tsina"></a>
+                            <a class="jiathis_button_weixin"></a>
+                            <a class="jiathis_button_qzone"></a>
+                            <a class="jiathis_button_tqq"></a>
+                            <a class="jiathis_button_cqq"></a>
+                            <a class="jiathis_button_douban"></a>
+                        </div>
+                        <script type="text/javascript" >
+                            var jiathis_config={
+                                summary: "",
+                                shortUrl: false,
+                                hideMore: false
+                            }
+                        </script>
+                        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                        <!-- JiaThis Button END --></div>
+                    <div class="shop-share"></div>
+                </div>
+            </div>
+            <div class="taskside">
+                <div class="task-sidetime text-center">
+                    <?php if($detail->status == 3): ?>
+                        <p class="h4">此任务当前处于：<span class="text-primary">竞标</span> 状态</p>
+                        <p>离竞标结束还剩：</p>
+                        <p class="text-center">
+                            <b class="cor-orange text-size22" id="show_status_time" data-time="<?php echo e($detail->delivery_deadline); ?>">
+                                <span class="day">00</span>天
+                                <span class="hour">00</span>小时
+                                <span class="minute">00</span>分
+                                <span class="second">00</span>秒
+                            </b>
+                        </p>
+                    <?php elseif( $detail->status == 4): ?>
+                        <p class="h4">此任务当前处于：<span class="text-primary">选标</span> 状态</p>
+                    <?php elseif($detail->status == 5): ?>
+                        <p class="h4">此任务当前处于：<span class="text-primary">工作</span> 状态</p>
+                        <p>离交付结束还剩：</p>
+                        <p class="text-center">
+                            <b class="cor-orange text-size22" id="show_status_time" data-time="<?php echo e($detail->delivery_deadline); ?>">
+                                <span class="day">00</span>天
+                                <span class="hour">00</span>小时
+                                <span class="minute">00</span>分
+                                <span class="second">00</span>秒
+                            </b>
+                        </p>
+                    <?php elseif($detail->status == 6): ?>
+                        <p class="h4">此任务当前处于：<span class="text-primary">交付</span> 状态</p>
+                    <?php elseif($detail->status == 7): ?>
+                        <p class="h4">此任务当前处于：<span class="text-primary">互评</span> 状态</p>
+                    <?php elseif($detail->status == 8): ?>
+                        <p class="h4">此任务当前处于：<span class="text-primary">圆满完成</span></p>
+                    <?php endif; ?>
+                </div>
+                <?php if($detail->status == 3 && $user_type != 1): ?>
+                    <div class="text-center"><a href="/task/workdelivery/<?php echo e($detail->id); ?>" class="btn btn-primary btn-block allbtn btn-blue bor-radius2">立即投稿</a></div>
+                <?php elseif($user_type == 1 && $detail->type_id == 2 && $detail->bounty_status == 1 && $detail->status == 4): ?>
+                    <div class="text-center"><a href="/member/bounty/<?php echo e($detail->id); ?>/task/2" class="btn btn-primary btn-block allbtn btn-blue">托管赏金</a></div>
+                <?php elseif(in_array($detail->status, [5, 6]) && $user_type == 2 && $is_win_bid && !$is_delivery): ?>
+                    <div class="text-center"><a href="/task/delivery/<?php echo e($detail->id); ?>" class="btn btn-primary btn-block allbtn btn-blue">去交付</a></div>
+                <?php elseif($user_type == 2 && CommonClass::evaluted($v['task_id'], Auth::user()->id) == 0 && $is_delivery): ?>
+                    <?php if($is_delivery['status'] == 3): ?>
+                        <div class="text-center"><a href="<?php echo e(URL('/task/evaluate') . '?' . http_build_query(['id' => $detail->id, 'work_id' => $v['id']])); ?>" class="btn btn-primary btn-block allbtn">去评价</a></div>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
+            <div class="taskside1" >
+                <?php if(count($ad)): ?>
+                    <a href="<?php echo $ad[0]['ad_url']; ?>"><img src="<?php echo URL($ad[0]['ad_file']); ?>" alt="" class="img-responsive" width="100%"></a>
+                <?php else: ?>
+                    <img src="<?php echo e(Theme::asset()->url('images/task-gg.png')); ?>" alt="" class="img-responsive" width="100%">
+                <?php endif; ?>
+            </div>
+            <div class="space"></div>
+        </div>
+    </div>
+</div>
+
+<!--维权举报 模态框（Modal） -->
+<form action="/task/report" method="post" enctype="multipart/form-data" id="report-form">
+    <?php echo e(csrf_field()); ?>
+
+    <input type="hidden" name="task_id" value="<?php echo e($detail->id); ?>">
+    <input type="hidden" name="work_id" value="" id="report-work-id">
+    <div class="modal fade" id="modal9" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header widget-header-flat">
+                <span class="modal-title cor-gray51 text-size14 text-blod">
+                    举报：
+                </span>
+                <button type="button" class="bootbox-close-button close text-size14" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="space"></div>
+                <div class="clearfix">
+                    <div class="form-group clearfix">
+                        <label class="col-sm-3 control-label row">举报类型：</label>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <select name="type" style="background-color: #191919;color: #fff;">
+                                    <option value="1">滥发广告</option>
+                                    <option value="2">违规信息</option>
+                                    <option value="3">虚假交换</option>
+                                    <option value="4">涉嫌抄袭</option>
+                                    <option value="5">重复交稿</option>
+                                    <option value="6">其他</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="col-sm-3 control-label row">举报内容：</label>
+                        <div class="col-sm-8 ">
+                            <div class="row ">
+                                <textarea type="text" name="desc" placeholder="请输入举报内容"  rows="3" class="col-xs-12 jbchat-text" style="background-color: #191919;color: #fff;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix text-center">
+                    <button class="btn btn-primary btn-sm btn-big1 btn-blue bor-radius2" type="button" onclick="ajaxReport()" data-dismiss="modal" aria-hidden="true">确定</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-default btn-sm btn-big1 btn-gray999 bor-radius2" data-dismiss="modal" aria-hidden="true">取消</button>
+                </div>
+                <div class="space"></div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+</form>
+
+<?php echo Theme::asset()->container('old-css')->usepath()->add('main','css/main.css'); ?>
+
+<?php echo Theme::asset()->container('old-css')->usepath()->add('header','css/header.css'); ?>
+
+<?php echo Theme::asset()->container('old-css')->usepath()->add('footer','css/index/common.css'); ?>
+
+    
+<?php echo Theme::widget('popup')->render(); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usepath()->add('issuetask','css/taskbar/issuetask.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usepath()->add('taskcommon','css/taskbar/taskcommon.css'); ?>
+
+
+<?php /*回复*/ ?>
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('ace-extra','plugins/ace/js/ace-extra.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('easypiechart','plugins/ace/js/jquery.easypiechart.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('sparkline','plugins/ace/js/jquery.sparkline.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('flot.min','plugins/ace/js/flot/jquery.flot.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('flot.pie','plugins/ace/js/flot/jquery.flot.pie.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('flot.resize','plugins/ace/js/flot/jquery.flot.resize.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('task-js-layer', 'agent/plugin/layer/layer.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('task-js-jquery.base64', 'agent/plugin/jq.cookie/jquery.base64.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('task-js-jquery.cookie', 'agent/plugin/jq.cookie/jquery.cookie.js'); ?>
+
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('ace-elements','plugins/ace/js/ace-elements.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('ace','plugins/ace/js/ace.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('taskdetail','js/doc/taskdetail.js'); ?>
+
+
+<?php echo Theme::asset()->container('specific-css')->usepath()->add('validform-css','plugins/jquery/validform/css/style.css'); ?>
+
+<?php echo Theme::asset()->container('specific-js')->usepath()->add('validform-js','plugins/jquery/validform/js/Validform_v5.3.2_min.js'); ?>
+

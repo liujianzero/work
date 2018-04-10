@@ -1,0 +1,121 @@
+<div class="container-fluid bg">
+    <input type="hidden" class="shop_id" value="<?php echo e($extra['models']['store_id']); ?>">
+    <div class="row">
+        <img src="<?php if(file_exists($extra['models']['goods_cover'])): ?><?php echo url($extra['models']['goods_cover']); ?><?php else: ?><?php echo Theme::asset()->url('images/folder_no_cover.png'); ?><?php endif; ?>"
+        <?php /*<img src="<?php if(file_exists($extra['models']['upload_cover_image'])): ?><?php echo url($extra['models']['upload_cover_image']); ?><?php elseif(file_exists($extra['models']['cover_img'])): ?><?php echo url($extra['models']['cover_img']); ?><?php else: ?><?php echo Theme::asset()->url('images/folder_no_cover.png'); ?><?php endif; ?>"*/ ?>
+             style="width: 100%;"/>
+    </div>
+</div>
+<div class="container-fluid bg2">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <p><?php echo e($extra['models']['goods_name']); ?></p>
+            <?php /*<p><?php echo e($extra['models']['title']); ?></p>*/ ?>
+            <h3>￥<?php echo e($extra['models']['goods_price']); ?>
+
+            <?php /*<h3>￥<?php echo e($extra['models']['price']); ?>*/ ?>
+                <span class="pull-right bottom">库存：<?php echo e($extra['models']['goods_number']); ?> 件</span>
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg2 footer">
+    <div class="nav_bottom bordert">
+        <div class="row" style="position: relative;">
+            <form id="shopForm" action="<?php echo e(route('agent.pages.goods_buy')); ?>" method="post"
+                  onsubmit="$('#formSubmit').attr('disabled', true).html('正在处理 <i class=\'fa fa-spinner fa-spin\'></i>');">
+                <div class=" position bg2" style="display: none;">
+                    <?php /* 商品价格与库存 */ ?>
+                    <div class="img">
+                        <img src="<?php if(file_exists($extra['models']['goods_cover'])): ?><?php echo url($extra['models']['goods_cover']); ?><?php else: ?><?php echo Theme::asset()->url('images/folder_no_cover.png'); ?><?php endif; ?>"
+                        <?php /*<img src="<?php if(file_exists($extra['models']['upload_cover_image'])): ?><?php echo url($extra['models']['upload_cover_image']); ?><?php elseif(file_exists($extra['models']['cover_img'])): ?><?php echo url($extra['models']['cover_img']); ?><?php else: ?><?php echo Theme::asset()->url('images/folder_no_cover.png'); ?><?php endif; ?>"*/ ?>
+                             class="pull-left"/>
+                        <h5 class="browse-price">￥
+                            <span id="price" class="pri"
+                                  data-price="<?php echo e($extra['models']['goods_price']); ?>"><?php echo e($extra['models']['goods_price']); ?>
+
+                        </span>
+                        </h5>
+                        <span id="stock" class="tot"
+                              data-stock="<?php if(!empty($extra['goods_number'])): ?><?php echo e($extra['goods_number']); ?><?php else: ?><?php echo e($extra['models']['goods_number']); ?><?php endif; ?>">
+                        库存<?php if(!empty($extra['goods_number'])): ?><?php echo e($extra['goods_number']); ?><?php else: ?><?php echo e($extra['models']['goods_number']); ?><?php endif; ?>
+                            件</span>
+                    </div>
+                    <?php /* 规格 */ ?>
+                    <?php if(count($extra['spec']/*['list']*/) > 0): ?>
+                        <div class="shuxing">
+                            <?php foreach($extra['spec']/*['list']*/ as $v): ?>
+                                <h4><?php echo e($v['name']); ?></h4>
+                                <div class="color row">
+                                    <?php foreach($v['children'] as $k1 => $v1): ?>
+                                        <a class="attr-list <?php if($k1 == 0): ?> active <?php endif; ?>" onclick="changeAttr(this);">
+                                            <?php /*<?php echo e($v1['attr_value']); ?>*/ ?>
+                                            <?php echo e($v1['name']); ?>
+
+                                        </a>
+                                        <input type="radio" name="attr[<?php echo e($v1['attr_id']); ?>]"
+                                        <?php /*<input type="radio" name="attr[<?php echo e($v1['attribute_id']); ?>]"*/ ?>
+                                               value="<?php echo e($v1['id']); ?>" data-price="<?php echo e($v1['price']); ?>"
+                                               <?php /*value="<?php echo e($v1['attr_id']); ?>" data-price="<?php echo e($v1['attr_price']); ?>"*/ ?>
+                                               <?php if($k1 == 0): ?> checked <?php endif; ?> style="display: none;"/>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php /*<hr style="border: none;border-bottom: 3px solid black; width: 80%;"/>*/ ?>
+                    <?php /* 商品数量 */ ?>
+                    <h4 class="padt">数量
+                        <div class="input-group ">
+                            <a class="input-group-addon bg2" id="subtract">-</a>
+                            <input type="number" class="form-control bg2" style="text-align: center;" value="1"
+                                   id="number" name="number"/>
+                            <a class="input-group-addon bg2" id="addition">+</a>
+                        </div>
+                    </h4>
+                    <div class="confirm">
+                        <div class="col-sm-5">
+                            <button type="submit" id="formSubmit" class="<?php /*btn btn-default*/ ?> btn btn-primary"
+                                    style="width: 100%" onclick="addCart(this);">确定
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="goods_id" value="<?php echo e($extra['models']['models_id']); ?>"/>
+                <?php echo e(csrf_field()); ?>
+
+            </form>
+        </div>
+        <ul class="row">
+            <li class="col-xs-3 col-sm-3 collect">
+                <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/start1.png")); ?>"
+                     width="30px" class="center-block"/>
+                <p class="text-center">收藏</p>
+            </li>
+            <li class="col-xs-3 col-sm-3 shopping">
+                <div class="tu">
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/shopping_cart.png")); ?>"
+                         width="30px" class="center-block"/>
+                </div>
+                <p class="text-center">加入购物车
+                </p>
+            </li>
+            <li class="col-xs-offset-2 col-sm-offset-2 col-sm-4 col-xs-4 buy">
+                <button class="btn btn-primary">立即购买</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('theme-css-content', "{$shop->dir}/css/content.css"); ?>
+
+<?php /*<?php echo Theme::asset()->container('custom-css')->usePath()->add('goods-css-infoWeb', 'css/myOrder/goods/infoWeb.css'); ?>*/ ?>
+<?php /*<?php echo Theme::asset()->container('custom-js')->usePath()->add('goods-js-infoWeb', 'js/myOrder/goods/infoWeb.js'); ?>*/ ?>
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('plugin-css-layer', $shop->module . '/plugin/layer_mobile/need/layer.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('plugin-js-layer', $shop->module  . '/plugin/layer_mobile/layer.js'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('theme-js-content', "{$shop->dir}/js/content.js"); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('theme-js-layer', "{$shop->module}/plugin/layer/layer.js"); ?>
+

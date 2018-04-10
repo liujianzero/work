@@ -1,0 +1,153 @@
+
+<div class="g-banner hidden-sm hidden-xs hidden-md" style="margin-top:60px;">
+    <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel">
+        <!-- Indicators -->
+        <?php if(!empty(Theme::get('banner'))): ?>
+        <ol class="carousel-indicators">
+            <?php foreach(Theme::get('banner') as $k => $v): ?>
+            <li data-target="#carousel-example-generic" data-slide-to="<?php echo $k; ?>" <?php if($k == 0): ?> class="active" <?php endif; ?>></li>
+            <?php endforeach; ?>
+        </ol>
+        <?php else: ?>
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+        </ol>
+        <?php endif; ?>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <?php if(!empty(Theme::get('banner'))): ?>
+                <?php foreach(Theme::get('banner') as $key => $value): ?>
+            <div  class="item <?php if($key == 0): ?>active <?php endif; ?> item-banner<?php echo $key+1; ?>" >
+                <a href="<?php echo $value['ad_url']; ?>" target="_blank">
+                    <div>
+                        <img src="<?php echo URL($value['ad_file']); ?>" alt="..." class="img-responsive itm-banner" data-adaptive-background='<?php echo $key+1; ?>'>
+                    </div>
+                </a>
+            </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+            <div  class="item active item-banner1" >
+                <a href="javascript:;">
+                    <div>
+                        <img src="<?php echo Theme::asset()->url('images/banner1.jpg'); ?>" alt="..." class="img-responsive itm-banner" data-adaptive-background='1'>
+                    </div>
+                </a>
+            </div>
+            <div class="item item-banner2">
+                <a href="javascript:;">
+                    <div>
+                        <img src="<?php echo Theme::asset()->url('images/banner2.jpg'); ?>" alt="..." class="img-responsive itm-banner" data-adaptive-background='2'>
+                    </div>
+                </a>
+            </div>
+            <div class="item item-banner3">
+                <a href="javascript:;">
+                    <div>
+                        <img src="<?php echo Theme::asset()->url('images/banner3.jpg'); ?>" alt="..." class="img-responsive itm-banner" data-adaptive-background='3'>
+                    </div>
+                </a>
+            </div>
+            <div class="item item-banner4">
+                <a href="javascript:;">
+                    <div>
+                        <img src="<?php echo Theme::asset()->url('images/banner4.jpg'); ?>" alt="..." class="img-responsive itm-banner" data-adaptive-background='4'>
+                    </div>
+                </a>
+            </div>
+            <div class="item item-banner5">
+                <a href="javascript:;">
+                    <div>
+                        <img src="<?php echo Theme::asset()->url('images/banner5.jpg'); ?>" alt="..." class="img-responsive itm-banner" data-adaptive-background='5'>
+                    </div>
+                </a>
+            </div>
+            <div class="item item-banner6">
+                <a href="javascript:;">
+                    <div>
+                        <img src="<?php echo Theme::asset()->url('images/banner1.jpg'); ?>" alt="..." class="img-responsive itm-banner" data-adaptive-background='6'>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<div class="space-6 hidden-lg hidden-md hidden-sm visible-xs-block "></div>
+<div class="container hidden-lg visible-md-block visible-sm-block visible-xs-block " style="margin-top:38px;">
+    <div class="row">
+        <div class="col-xs-12 col-left col-right">
+            <div class="g-banner">
+                <div><img style="width: 100%" src="<?php echo Theme::asset()->url('images/banner-mobile.jpg'); ?>"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--top-->
+<div class="go-top dn" id="go-top">
+	<div class="erweima u-hov">
+      
+        <div class=" pic">
+        	<img src="<?php echo Theme::asset()->url('images/index-right/sub.jpg'); ?>" width="70%" height="70%"/>
+        </div>
+        <div class="arrow">
+            <div class="arrow-sanjiao"></div>
+            <div class="arrow-sanjiao-big"></div>
+        </div>
+    </div>
+    <div class="uc-2vm u-hov">
+        <?php /*<a href="javascript:;" class="uc-2vm u-hov"></a>*/ ?>
+        <form class="form-horizontal" action="/bre/feedbackInfo" method="post" enctype="multipart/form-data" id="complain">
+            <?php echo csrf_field(); ?>
+
+            <div class="u-pop dn clearfix">
+                    <input type="text" name="uid" <?php if(!empty(Theme::get('complaints_user'))): ?> value="<?php echo Theme::get('complaints_user')->uid; ?>"<?php endif; ?> style="display:none">
+                    <h2 class="mg-margin text-size12 cor-gray51">反馈</h2>
+                    <div class="space-4"></div>
+                    <textarea class="form-control  text-m" style="background-color: #2d2d2d;color: #ffffff;" rows="3" name="desc" placeholder="期待您的一句话点评！！！"></textarea>
+                    <?php echo $errors->first('desc'); ?>
+
+                    <div class="space-4"></div>
+                <div class="clearfix" style="width: 100%;">
+                    <input type="text" style="width:75%;background-color: #2d2d2d !important; float:left; color: #ffffff;" name="phone" <?php if(!empty(Theme::get('complaints_user'))): ?> value="<?php echo Theme::get('complaints_user')->mobile; ?>" readonly <?php endif; ?> placeholder="填写手机号">
+                    <?php echo $errors->first('phone'); ?>
+
+                    <button type="submit" style="width:20%;float: right;padding: 4px 5px;" class="btn-blue btn btn-sm btn-primary">提交</button>
+                </div>
+                <div class="arrow">
+                    <div class="arrow-sanjiao"></div>
+                    <div class="arrow-sanjiao-big"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="feedback u-hov">
+        <div class="dn dnd">
+            <h2 class="mg-margin text-size12 cor-gray51">在线时间：09:00 -18:00</h2>
+            <div class="space-4"></div>
+            <div class="hr"></div>
+             <div class="iss-ico2">
+                <p class="cor-gray51 mg-margin">QQ技术支持：</p>
+                 <p class="text-size12 cor-gray51" style="color: white"><a href="<?php echo CommonClass::contactClient(Theme::get('basis_config')['qq']); ?>" target="_blank"><?php echo Theme::get('basis_config')['qq']; ?></a></p>
+            </div>
+            <div class="hr"></div>
+            <div class="iss-ico1">
+                <p class="cor-gray51 mg-margin">电话客服：</p>
+                <p class="text-size20 cor-gray51"><?php echo Theme::get('site_config')['phone']; ?></p>
+            </div>
+            <div class="arrow">
+                <div class="arrow-sanjiao feedback-sanjiao"></div>
+                <div class="arrow-sanjiao-big feedback-sanjiao-big"></div>
+            </div>
+        </div>
+    </div>
+    <a href="javascript:;" class="go u-hov"></a>
+</div>
+
+
+

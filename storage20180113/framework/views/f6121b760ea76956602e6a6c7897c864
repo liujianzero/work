@@ -1,0 +1,43 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+
+    <div class="app-container"><!--内容-->
+        <div class="appmaket clearfix">
+            <div class="appmaket-l">
+                <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/model1.png')); ?>"/>
+            </div>
+            <div class="appmaket-r">
+                <h3>滑动</h3>
+                <p class="infor">该模版具有强烈的滑动感觉，美感与功能并存，可在精美的动效页面中展现出美丽的动画。使造型精美的VR产品能有更好的观看方式！</p>
+                <div class="service-price">
+                    <span>服务价格：</span>
+                    <span class="range">￥28.00</span>
+                    <span class="month" style="display: none;">(￥0.03/每月)</span>
+                </div>
+                <div class="sku-area">
+                    <span class="sku-label">应用版本:</span>
+                    <div class="sku-item">
+                        <span>1024个月</span>
+                    </div>
+                </div>
+                <div class="btn-area">
+                    <a href="javascript:buynow(this);">立即订购</a>
+                </div>
+            </div>
+        </div>
+        <div class="zent-tabs">
+            <div class="zent-title">
+                应用详情
+            </div>
+            <div class="zent-img">
+                <p>
+                    <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/model2.png')); ?>"/>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('modelpage-css-index', Theme::get('dir_prefix') . '/shop/css/modelpage.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('modelpage-js-index', Theme::get('dir_prefix') . '/shop/js/modelpage.js'); ?>

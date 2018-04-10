@@ -1,0 +1,170 @@
+<script src="/themes/default/assets/js/models/echo.min.js"></script>
+<div id="cleat">
+    <div class="banner">
+        <span>发现价值&nbsp;&nbsp;成就传奇</span>
+        <samp>Find value achievement legend</samp>
+    </div>
+    <div class="menu">
+        <div class="container">
+            <ul class="nav nav-pills clearfix" style="height: 60px;">
+                <li class="dropdown all-camera-dropdown pad10 drop-left">
+                    <a class="dropdown-toggle hide1" data-toggle="dropdown" href="#">
+                        行业
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu cation-menu clearfix">
+                        <li class="<?php echo (!isset($merge['category']) || $merge['category']==$pid)?'active':''; ?>">
+                            <a href="<?php echo URL('models').'?'.http_build_query(array_merge(array_except($merge,['searche']),['category'=>0])); ?>"
+                               class="<?php echo (!isset($merge['category']) || $merge['category']==$pid)?'list-on':''; ?>">全部</a>
+                        </li>
+                            <?php foreach(array_slice($category,0,8) as $v): ?>
+                                <li class="<?php echo (isset($merge['category']) && $merge['category']==$v['id'])?'active':''; ?>">
+                                    <a href="<?php echo URL('models').'?'.http_build_query(array_merge(array_except($merge,'page'), ['category'=>$v['id']])); ?>"
+                                       class="<?php echo (isset($merge['category']) && $merge['category']==$v['id'])?'list-on':''; ?>"><?php echo e($v['name']); ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php if(isset($_GET['category'])): ?>
+                            <?php if( count($category) > 7 ): ?>
+                                <li>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        更多
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <?php foreach(array_slice($category,8,700) as $v): ?>
+                                            <li class="<?php echo (isset($merge['category']) && $merge['category']==$v['id'])?'active':''; ?>">
+                                                <a href="<?php echo URL('models').'?'.http_build_query(array_merge(array_except($merge,'page'), ['category'=>$v['id']])); ?>"
+                                                   class="<?php echo (isset($merge['category']) && $merge['category']==$v['id'])?'list-on':''; ?>"><?php echo e($v['name']); ?></a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </li>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </ul>
+                </li>
+                <li class="dropdown all-camera-dropdown dropcom drop-right" style="float: right;padding: 10px 0;">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <?php if(isset($_GET['desc']) && $_GET['desc']=='fcount'): ?>
+                            好评最多
+                        <?php elseif(isset($_GET['desc']) && $_GET['desc']=='view_count'): ?>
+                            查看最多
+                        <?php elseif(isset($_GET['desc']) && $_GET['desc']=='ccount'): ?>
+                            评论最多
+                        <?php elseif(isset($_GET['desc']) && $_GET['desc']=='create_time'): ?>
+                            最新发布
+                        <?php else: ?>
+                            特别推荐
+                        <?php endif; ?>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="<?php echo e((isset($_GET['desc']) && $_GET['desc']=='sort')?'active':''); ?>"><a
+                                    href="<?php echo URL('models').'?'.http_build_query(array_merge($merge,['desc'=>'sort'])); ?>"><i
+                                        class="fa fa-bookmark">&nbsp;</i>特别推荐</a></li>
+                        <li class="<?php echo e((isset($_GET['desc']) && $_GET['desc']=='fcount')?'active':''); ?>"><a
+                                    href="<?php echo URL('models').'?'.http_build_query(array_merge($merge,['desc'=>'fcount'])); ?>"><i
+                                        class="fa fa-thumbs-up">&nbsp;</i>好评最多</a></li>
+                        <li class="<?php echo e((isset($_GET['desc']) && $_GET['desc']=='view_count')?'active':''); ?>"><a
+                                    href=" <?php echo URL('models').'?'.http_build_query(array_merge($merge,['desc'=>'view_count'])); ?>"><i
+                                        class="fa fa-eye">&nbsp;</i>查看最多</a></li>
+                        <li class="<?php echo e((isset($_GET['desc']) && $_GET['desc']=='ccount')?'active':''); ?>"><a
+                                    href=" <?php echo URL('models').'?'.http_build_query(array_merge($merge,['desc'=>'ccount'])); ?>"><i
+                                        class="fa fa-comment">&nbsp;</i>评论最多</a></li>
+                        <li class="<?php echo e((isset($_GET['desc']) && $_GET['desc']=='create_time')?'active':''); ?>"><a
+                                    href=" <?php echo URL('models').'?'.http_build_query(array_merge($merge,['desc'=>'create_time'])); ?>"><i
+                                        class="fa fa-clock-o">&nbsp;</i>最新发布</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container grid-wrap" style="margin-top: 40px">
+        <?php /*列表*/ ?>
+        <ul class="row grid swipe-right" id="grid">
+
+            <?php foreach($list as $v): ?>
+                <li class="col-md-2 col-xs-6 col-sm-4 case-list-item" style="padding: 5px">
+                    <div class="pic">
+                        <a>
+                            <img  class="lazy" src="<?php echo e(Theme::asset()->url('images/models/backdrop.png')); ?>" data-echo="<?php if(!empty($v['upload_cover_image'])): ?> <?php echo $domain.'/'.$v['upload_cover_image']; ?> <?php else: ?> <?php echo $domain.'/'.$v['cover_img']; ?> <?php endif; ?>" alt="">
+                        </a>
+                        <?php if($v['is_goods']  == 1 ): ?>
+                            <?php if($v['transaction_mode']  == 1 ): ?>
+                                <img class="img1" src="<?php echo Theme::asset()->url('images/myShop/goods/mode1.png'); ?>" />
+                            <?php elseif($v['transaction_mode']  == 2 ): ?>
+                                <img class="img1" src="<?php echo Theme::asset()->url('images/myShop/goods/mode2.png'); ?>" />
+                            <?php elseif($v['transaction_mode']  == 3 ): ?>
+                                <img class="img1" src="<?php echo Theme::asset()->url('images/myShop/goods/mode3.png'); ?>" />
+                            <?php elseif($v['transaction_mode']  == 4 ): ?>
+                                <img class="img1" src="<?php echo Theme::asset()->url('images/myShop/goods/mode4.png'); ?>" />
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <a class="data" href="/view-<?php echo e($v['id']); ?>" target="_self">
+                            <div class="state">
+                                <i class="browse-icon"></i><span><?php echo $v['view_count']; ?></span>
+                                <i class="thumb-up-icon"></i>
+                                <?php if($v['fcount']): ?>
+                                    <span><?php echo $v['fcount']; ?> </span>
+                                <?php else: ?>
+                                    <span>0</span>
+                                <?php endif; ?>
+                                <?php if($v['ccount']): ?>
+                                    <span style="float: right"><?php echo $v['ccount']; ?> </span>
+                                <?php else: ?>
+                                    <span style="float: right">0</span>
+                                <?php endif; ?>
+
+                                <i class="comment-icon" style="float: right;"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="info">
+                        <dl class="clearfix">
+                            <dt><a href="/zone/models/<?php echo e($v['uid']); ?>/0" target="_blank"><img
+                                            class="lazy" src="<?php echo e(Theme::asset()->url('images/models/blank.gif')); ?>" data-echo="<?php if(!empty($v['avatar'])): ?> <?php echo url($v['avatar']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?> <?php endif; ?>"/></a>
+                            </dt>
+                            <dd>
+                                <h4>
+                                    <a class="case-list-item-img" href="/view-<?php echo e($v['id']); ?>" target="_blank">
+                                        <?php echo e(mb_strimwidth($v['title'],0,16,'..')); ?>
+
+                                    </a>
+                                </h4>
+                                <span class="anthor_title">
+                                    <a href="/zone/models/<?php echo e($v['uid']); ?>/0" target="_blank">
+                                        <?php if($v['nickname']): ?>
+                                            <?php echo e(mb_strimwidth($v['nickname'],0,12,'..')); ?>
+
+                                        <?php else: ?>
+                                            未命名
+                                        <?php endif; ?>
+                                    </a>
+                                    <?php /*<i></i>*/ ?>
+                                </span>
+                                <?php if($v['is_goods']  == 1 ): ?>
+                                    <?php if($v['price'] == 0.00 ): ?>
+                                        <span class="price">免费</span>
+                                    <?php else: ?>
+                                        <span class="price_two"><?php echo $v['price']; ?>元</span>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </dd>
+                        </dl>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php /*<?php echo Theme::asset()->container('custom-css')->usepath()->add('case','css/case.css'); ?>*/ ?>
+<?php echo Theme::asset()->container('custom-css')->usepath()->add('model','css/models/models.css'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('resize','js/models/resize.js'); ?>
+
+<script>
+    Echo.init({
+        offset: -200,
+        throttle: 10
+    });
+</script>

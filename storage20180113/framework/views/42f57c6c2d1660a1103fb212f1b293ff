@@ -1,0 +1,26 @@
+<!--全景图-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="head">
+            <img style="width: 320px;height: 500px;" src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/template/spring.jpg')); ?>"/>
+            <?php /*<i class="iconfont icon-eye" id="eye"></i>
+            <p>2600</p>*/ ?>
+        </div>
+    </div>
+</div>
+<!--顶部导航-->
+<div class="container-fluid">
+
+</div>
+<!--商品列表-->
+<div class="container-fluid">
+
+</div>
+<!--底部导航-->
+<div class="nav_bottom" >
+
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('mobile-css-mobile', $info->module . '/' . $info->flag . '/mobile/css/mobile.css'); ?>
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_432602_j1fwfi994bqbmx6r.css"/>

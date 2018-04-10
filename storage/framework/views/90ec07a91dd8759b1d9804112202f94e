@@ -1,0 +1,124 @@
+<div class="bg pad" id="cart_lists">
+    <input type="hidden" class="shop_id" value="<?php echo e($shop['store_id']); ?>">
+    <div class="head_title">
+        <h3>购物车(<?php echo e($extra['goods_number']); ?>)</h3>
+    </div>
+    <!--主体-->
+    <?php if(count($extra['list']) > 0): ?>
+        <form method="post" action="<?php echo e(route('agent.pages.change_number')); ?>" id="cartFrom"
+              onsubmit="$('#formSubmit').attr('disabled', true).html('提交中 <i class=\'fa fa-spinner fa-spin\'></i>');">
+            <?php foreach($extra['list'] as $k => $v): ?>
+                <div class="container-fluid borderb">
+                    <div class="head">
+                        <div class="row padtb">
+                            <div class="col-xs-1">
+                                <div class="img total">
+                                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/check2.png")); ?>"
+                                         class="img-responsive empty"/>
+                                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/check1.png")); ?>"
+                                         class="img-responsive full"/>
+                                    <input type="checkbox"
+                                           <?php /*class="left-input cart-normal" */ ?>style="display: none;"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-2 shop_logo">
+                                <img src="<?php echo e(url($v['shop_cover'])); ?>"
+                                     width="40px"/>
+                            </div>
+                            <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'index'])); ?>">
+                                <div class="col-xs-5">
+						<span class="shop_name">
+							<?php echo e($v['shop_name']); ?> >
+						</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid borderb2 padb" style="overflow: hidden;">
+                    <div class="con">
+                        <?php foreach($v['children'] as $v1): ?>
+                            <div class="row padtb max ">
+                                <div class="col-xs-1 height">
+                                    <div class="img">
+                                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/check2.png")); ?>"
+                                             class="img-responsive empty"/>
+                                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/check1.png")); ?>"
+                                             class="img-responsive full"/>
+                                        <input type="checkbox" name="normal[<?php echo e($v1['id']); ?>][id]"
+                                               class="left-input cart-normal" value="<?php echo e($v1['id']); ?>"
+                                               style="display: none;"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 height" id="goods_cover">
+                                    <img src="<?php echo e($v1['image']); ?>" id="goods_cover" class="img-responsive"/>
+                                </div>
+                                <div class="col-xs-2 height">
+                                    <div class="goods_name">
+                                        <p><?php echo e($v1['goods_name']); ?></p>
+                                    </div>
+                                    <div class="goods_attr">
+                                        <h5><?php echo e($v1['goods_attr']); ?></h5>
+                                    </div>
+                                </div>
+                                <div class="col-xs-1 height">
+                                    <div class="input">
+                                        <div class="input-group center-vertical">
+                                            <a class="input-group-addon" href="javascript:void(0);" id="jia">+</a>
+                                            <input type="text" class="form-control"
+                                                   data-price="<?php echo e($v1['goods_price']); ?>"
+                                                   name="normal[<?php echo e($v1['id']); ?>][number]"
+                                                   value="<?php echo e($v1['goods_number']); ?>"
+                                                   style="text-align: center; padding: 0 !important" value="1"
+                                                   id="num"/>
+                                            <a class="input-group-addon" href="javascript:void(0);" id="jian">-</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 height">
+                                    <div class="jiage">
+                                        <h3 class="center-vertical text-center">￥<?php echo e($v1['goods_price'] * $v1['goods_number']); ?></h3>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2  height">
+                                    <div class="del" onclick="delCart(this);" data-id="<?php echo e($v1['id']); ?>"
+                                         data-name="<?php echo e($v1['goods_name']); ?>">
+                                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/del.png")); ?>"
+                                             class="center-block center-vertical "/>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="normal[<?php echo e($v1['id']); ?>][number_id]" value="<?php echo e($v1['id']); ?>"/>
+                            <input type="hidden" name="normal[<?php echo e($v1['id']); ?>][shop_id]" value="<?php echo e($v['shop_id']); ?>"/>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <!--底部-->
+            <div class="footer">
+                <span class="marginl">总价格</span>
+                <?php /*<a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'firm_order'])); ?>">*/ ?>
+                <button type="submit" id="formSubmit" class="btn btn-primary pull-right btnn marginr" disabled>结算</button>
+                <?php /*</a>*/ ?>
+                <span class="pull-right marginr total-price">0</span>
+            </div>
+            <?php echo csrf_field(); ?>
+
+        </form>
+    <?php else: ?>
+        <div class="container-fluid borderb3">
+            <h3>购物车为空<img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/shopping_cart.png")); ?>"/>
+            </h3>
+            <?php /*<img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/check2.png")); ?>"/>*/ ?>
+        </div>
+    <?php endif; ?>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('theme-css-shopping_cart', "{$shop->dir}/css/shopping_cart.css"); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('theme-js-shopping_cart', "{$shop->dir}/js/shopping_cart.js"); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('theme-js-custom', "{$shop->module}/plugin/jquery_mobile/jquery.mobile.custom.js"); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('theme-js-layer', "{$shop->module}/plugin/layer/layer.js"); ?>
+

@@ -1,0 +1,159 @@
+<div class="head">
+    <div class="container-fluid">
+        <div class="row" id="all">
+            <?php /*<div style="position: relative;">
+                <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/1.jpg")); ?>"/>
+                <div class="progress jindu" style="position: absolute;bottom: 0;left: 50%; margin-left: -50px;">
+                    <div class="progress-bar model-progress active pro" role="progressbar" aria-valuenow="50"
+                         aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                </div>
+                <div style="color: #fff;position: absolute;bottom: 20px;text-align: center;width: 100px; padding: 5px; left: 50%; margin-left: -50px; height: 30px;">
+                    加载 3D 数据
+                </div>*/ ?>
+            <iframe id="content" class="browse-box" src="<?php echo url('http://www.11dom.com/embedView-' . $extra['id']); ?>"
+                    style="/*display: none;*/height: 300px;width: 100%;border: none">
+            </iframe>
+            <?php /*</div>*/ ?>
+        </div>
+    </div>
+</div>
+<div class="con">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 title">
+                <h4><?php echo e($extra['models']['goods_name']); ?>
+
+                </h4>
+            </div>
+            <div class="collect">
+                <a class="btn-bg btn-collection btn_sc btn_sc_e <?php /*<?php if($userinfo['isCollect']): ?>  btn-active <?php else: ?> <?php endif; ?>*/ ?>"
+                   id="collectNum" <?php /*data-id="<?php echo e($content['id']); ?>"*/ ?>>
+                    <?php if(empty($collect)): ?>
+                        <i class="fa fa-star"></i>
+                    <?php else: ?>
+                        <i class="fa fa-star-o"></i>
+                    <?php endif; ?>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="title">
+                    <h5>基本信息</h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 padr margint">
+                        <div class="border">
+                            <h6>级别：一级</h6>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 padl margint">
+                        <div class="border">
+                            <h6>单位：<?php echo e($shop['store_name']); ?></h6>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 padr margint">
+                        <div class="border">
+                            <h6>类别：青铜类</h6>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 padl margint">
+                        <div class="border">
+                            <h6>朝代：唐代</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php /*<div class="row">
+            <div class="col-xs-12">
+                <div class="title">
+                    <h5>词条播报</h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <audio id="audio-player"
+                               src="<?php echo e(Theme::asset()->url("{$shop->module}/plugin/source/happy_days.mp3")); ?>"
+                               controls="controls" style="width: 100%;">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>*/ ?>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="title">
+                    <h5>详情介绍</h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 detailed_div">
+                        <p class="introduce"><?php echo str_replace('<p>','', $extra['models']['goods_content']); ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php /*<div class="row">
+            <div class="col-xs-12">
+                <div class="title">
+                    <h5>相关视频</h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <video id="video-player"
+                               src="<?php echo e(Theme::asset()->url("{$shop->module}/plugin/source/06n888piCANy.mp4")); ?>"
+                               width="100%;"></video>
+                        <div id="controls">
+                            <div class="col-xs-1">
+                                <i class="fa fa-play video-action" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-xs-3 video-time">
+                                00:00:00
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="progress">
+                                    <div class="progress-bar video-progress progress-bar-striped active"
+                                         role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 0%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*/ ?>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="title">
+                    <h5>更多商品</h5>
+                </div>
+                <div class="padb">
+                    <ul class="row">
+                        <?php foreach($extra['more_goods'] as $v): ?>
+                            <li class="col-xs-4 col-sm-4">
+                                <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'content'])); ?>?id=<?php echo e($v['models_id']); ?>">
+                                    <img src="<?php echo e(url($v['goods_cover'])); ?>"/>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.ready = function(){
+        $('.detailed_div img').css('width', '100%');
+    }
+</script>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('plugin-css-plyr', "{$shop->module}/plugin/plyr/plyr.css"); ?>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('theme-css-content', "{$shop->dir}/css/content.css"); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('plugin-js-plyr', "{$shop->module}/plugin/plyr/plyr.js"); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('theme-js-video', "{$shop->dir}/js/video.js"); ?>
+

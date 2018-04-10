@@ -1,0 +1,125 @@
+<div id="shop-right"><!--购物车页面-->
+    <?php if(count($list) > 0): ?>
+        <form method="post" action="<?php echo e(route('myCart.changeNumber')); ?>" onsubmit="$('#formSubmit').attr('disabled', true).html('提交中 <i class=\'fa fa-spinner fa-spin\'></i>');">
+            <div class="shop-main">
+                <h3>购物车</h3>
+                <div class="info clearfix">
+                    <span class="mation">商品信息</span>
+                    <ol>
+                        <li>价格</li>
+                        <li>数量</li>
+                        <li>操作</li>
+                    </ol>
+                </div>
+                <div id="cart-list" class="scroll">
+                    <?php foreach($list as $k => $v): ?>
+                        <div class="store-name"><!--购物选项1-->
+                            <div class="store shop clearfix" style="padding-left: 0">
+                                <div class="store-left">
+                                    <label for="shop_<?php echo e($k); ?>">
+                                        <input id="shop_<?php echo e($k); ?>" type="checkbox" name="shop[]" value="<?php echo e($v['shop_id']); ?>"/>
+                                        <span>店铺：<?php echo e($v['shop_name']); ?></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <?php foreach($v['children'] as $v1): ?>
+                                <?php if($v1['is_effective'] == 'Y'): ?>
+                                    <div class="store clearfix">
+                                        <div class="store-left">
+                                            <dl>
+                                                <input type="checkbox" name="normal[<?php echo e($v1['id']); ?>][id]" class="left-input cart-normal" value="<?php echo e($v1['id']); ?>" />
+                                                <dt><img class="normal" src="<?php echo e($v1['image']); ?>"/></dt>
+                                                <dd class="dd-name">
+                                                    <span>
+                                                       <?php echo e($v1['goods_name']); ?>
+
+                                                    </span>
+                                                </dd>
+                                                <dd class="dd-size">
+                                                    <?php echo e($v1['goods_attr']); ?>
+
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="store-right">
+                                            <ul class="ul1 clearfix">
+                                                <li>￥<?php echo e($v1['goods_price']); ?></li>
+                                                <li>
+                                                    <input type="text" class="goods_number cart-number" data-id="<?php echo e($v1['id']); ?>" data-price="<?php echo e($v1['goods_price']); ?>" name="normal[<?php echo e($v1['id']); ?>][number]" value="<?php echo e($v1['goods_number']); ?>"/>
+                                                    <span>
+                                                          <small class="addition"><i class="fa fa-sort-asc" ></i></small>
+                                                          <small class="subtract"><i class="fa fa-sort-desc"></i></small>
+                                                    </span>
+                                                </li>
+                                                <li><i onclick="delCart(this);" data-id="<?php echo e($v1['id']); ?>" data-name="<?php echo e($v1['goods_name']); ?>" class="fa fa-trash-o fa-2x"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="normal[<?php echo e($v1['id']); ?>][number_id]" value="<?php echo e($v1['id']); ?>"/>
+                                    <input type="hidden" name="normal[<?php echo e($v1['id']); ?>][shop_id]" value="<?php echo e($v['shop_id']); ?>"/>
+                                <?php else: ?>
+                                    <div class="store clearfix invalid-div">
+                                        <div class="store-left">
+                                            <dl>
+                                                <input type="checkbox" name="invalid[]" checked disabled class="left-input" value="<?php echo e($v1['id']); ?>"/>
+                                                <dt>
+                                                    <img class="invalid" src="<?php echo e(Theme::asset()->url('images/myOrder/cart/invalid.png')); ?>"/>
+                                                </dt>
+                                                <dd class="dd-name">
+                                                    <?php echo e($v1['goods_name']); ?>
+
+                                                </dd>
+                                                <dd class="dd-size">
+                                                    <?php echo e($v1['goods_attr']); ?>
+
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="store-right">
+                                            <ul class="ul1 clearfix">
+                                                <li>￥<?php echo e($v1['goods_price']); ?></li>
+                                                <li>
+                                                    <input type="text" disabled style="cursor: not-allowed;background-color: #292929 !important;" name="goods_number[]" value="<?php echo e($v1['goods_number']); ?>"/>
+                                                    <span>
+                                                          <small style="cursor: not-allowed"><i class="fa fa-sort-asc"></i></small>
+                                                          <small style="cursor: not-allowed"><i class="fa fa-sort-desc"></i></small>
+                                                    </span>
+                                                </li>
+                                                <li><i onclick="delCart(this);" data-id="<?php echo e($v1['id']); ?>" data-name="<?php echo e($v1['goods_name']); ?>" class="fa fa-trash-o fa-2x"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div><!--购物选项结束1-->
+                    <?php endforeach; ?>
+                    <br/>
+                </div>
+                <div class="total clearfix">
+                    <strong>总价</strong>
+                    <small>￥<span id="price">0.00</span></small>
+                </div>
+                <div class="setment">
+                    <button id="formSubmit" type="submit" disabled>结算</button>
+                </div>
+            </div>
+            <?php echo csrf_field(); ?>
+
+        </form>
+    <?php else: ?>
+        <div class="shop-main">
+            <h3>购物车为空</h3>
+        </div>
+    <?php endif; ?>
+</div>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('myCart-shop', 'css/myOrder/cart/shop.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('myShop-futurico', 'js/myShop/icheck/futurico/futurico.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('myShop-polaris', 'js/myShop/icheck/polaris/polaris.css'); ?>
+
+<?php echo Theme::asset()->container('specific-js')->usePath()->add('myShop-icheck', 'js/myShop/icheck/icheck.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('myShop-goods', 'js/myOrder/cart/cart.js'); ?>
+

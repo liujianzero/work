@@ -1,0 +1,208 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+
+    <div class="app-container"><!--资产-->
+        <div class="g-main">
+            <h4>收支明细</h4>
+            <div class="well clearfix">
+                <dl class="clearfix">
+                    <dt><img src="<?php if(file_exists($info->store_logo)): ?><?php echo e("/$info->store_logo"); ?><?php else: ?><?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/property/images/codeinfo.jpg')); ?><?php endif; ?>"/></dt>
+                    <dd>
+                        <p>
+                            <span>店铺名称：</span>
+                            <span><?php echo e($info->store_name); ?></span>
+                        </p>
+                        <p>
+                            <span>店铺类型：</span>
+                            <span><?php echo e($info->store_type_name); ?></span>
+                        </p>
+                        <p>
+                            <span>认证信息：</span>
+                            <span class="w-blue">
+                                <?php if($info->auth_status == 1): ?>
+                                    <span class="label label-default"><a href="javascript:void(0);">立即认证</a></span>
+                                <?php elseif($info->auth_status == 2): ?>
+                                    <span class="label label-warning">认证中</span>
+                                <?php elseif($info->auth_status == 3): ?>
+                                    <span class="label label-success">已认证</span>
+                                <?php elseif($info->auth_status == 4): ?>
+                                    <span class="label label-danger">认证失败</span>
+                                <?php endif; ?>
+                            </span>
+                        </p>
+                    </dd>
+                </dl>
+                <div class="pull-left">
+                    我的资产
+                    <span class="orangesize">
+                        <?php if($info->balance_status == 0): ?>
+                            <?php echo e($info->balance); ?>
+
+                        <?php else: ?>
+                            0.00
+                        <?php endif; ?>
+                    </span>
+                    元
+                </div>
+                <div class="pull-left">
+                    <a href="javascript:void(0);" class="rechange" onclick="recharge(this);">充值</a>
+                    <a href="javascript:void(0);" class="widget" onclick="withdrawals(this);">提现</a>
+                    <a href="javascript:void(0);" class="authentication" onclick="authentication(this);">支付认证 <i class="fa fa-question-circle" data-html="true" data-toggle="tooltip" data-placement="right" title="用于余额体现"></i></a>
+                </div>
+            </div>
+            <div class="record">
+                最近交易记录
+                <span class="line-record">
+                    <a href="?action=11">充值记录</a>
+                    <span class="shu">|</span>
+                    <a href="?action=4">提现记录</a>
+                </span>
+                <?php if($merge['action'] == 11): ?>
+                    <span class="shu">|</span>
+                    <span class="label label-info">
+                    充值记录
+                    <a href="<?php echo e(route(Route::currentRouteName())); ?>"><i class="fa fa-close" aria-hidden="true"></i></a>
+                </span>
+                <?php elseif($merge['action'] == 4): ?>
+                    <span class="shu">|</span>
+                    <span class="label label-info">
+                    提现记录
+                    <a href="<?php echo e(route(Route::currentRouteName())); ?>"><i class="fa fa-close" aria-hidden="true"></i></a>
+                </span>
+                <?php endif; ?>
+            </div>
+            <div class="ctable"><!--表格-->
+                <table class="table table-hover">
+                    <thead class="t-head">
+                        <tr>
+                            <th>编号</th>
+                            <th>流水</th>
+                            <th>项目收支 <a href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="+ 表示收入，- 表示支出"><i class="iconfont icon-xingzhuang89"></i></a></th>
+                            <th>收支行为</th>
+                            <th>支付方式</th>
+                            <th>状态</th>
+                            <th>时间</th>
+                        </tr>
+                    </thead>
+                    <tbody class="t-body">
+                        <?php $__empty_1 = true; foreach($list as $v): $__empty_1 = false; ?>
+                            <tr>
+                                <td><?php echo e($v->id); ?></td>
+                                <td><?php echo e($v->title); ?></td>
+                                <td>
+                                    <?php if(in_array($v->action, $addition)): ?>
+                                        +
+                                    <?php elseif(in_array($v->action, $subtract)): ?>
+                                        -
+                                    <?php endif; ?>
+                                    ￥<?php echo e($v->cash); ?>
+
+                                </td>
+                                <td>
+                                    <?php if($v->action == 1): ?>
+                                        发布任务
+                                    <?php elseif($v->action == 2): ?>
+                                        接受任务
+                                    <?php elseif($v->action == 3 || $v->action == 11): ?>
+                                        账户充值
+                                    <?php elseif($v->action == 4): ?>
+                                        用户提现
+                                    <?php elseif($v->action == 5): ?>
+                                        购买增值服务
+                                    <?php elseif($v->action == 6): ?>
+                                        购买用户商品
+                                    <?php elseif($v->action == 7): ?>
+                                        任务失败退款
+                                    <?php elseif($v->action == 8): ?>
+                                        提现失败退款
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php if($v->pay_type == 1): ?>
+                                        余额
+                                    <?php elseif($v->pay_type == 2): ?>
+                                        支付宝
+                                    <?php elseif($v->pay_type == 3): ?>
+                                        微信
+                                    <?php elseif($v->pay_type == 4): ?>
+                                        银联
+                                    <?php elseif($v->pay_type == 12): ?>
+                                        系统
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php if($v->action == 4): ?>
+                                        <?php if($v->status == 0): ?>
+                                            <span class="label label-warning">审核中</span>
+                                        <?php elseif($v->status == 1): ?>
+                                            <span class="label label-success">成功</span>
+                                        <?php elseif($v->status == 2): ?>
+                                            <span class="label label-danger">失败</span>
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <span class="label label-info">正常</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td><?php echo e($v->created_at); ?></td>
+                            </tr>
+                        <?php endforeach; if ($__empty_1): ?>
+                            <tr>
+                                <td class="text-center" colspan="7">没有找到匹配的记录</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagtion">
+                <nav aria-label="Page navigation">
+                    <?php echo $list->appends($merge)->render(); ?>
+
+                </nav>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<?php /* 支付弹窗 */ ?>
+<div class="modal fade bs-pay-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">支付提示</h4>
+            </div>
+            <div class="modal-body text-center">
+                <h1 style="font-size: 1.5em;margin-top: 15px;margin-bottom: 30px;">
+                    <i class="fa fa-exclamation-circle" style="color: #ff9934;"></i>
+                    请在打开的页面上完成付款！
+                </h1>
+                <p>
+                    <button class="btn btn-primary" onclick="window.location.reload();"><i class="fa fa-check"></i> 已完成付款</button>
+                    <button type="button" class="btn btn-link" data-dismiss="modal" onclick="layer.closeAll();"><i class="fa fa-close"></i> 支付失败</button>
+                </p>
+                <p>
+                    <button type="button" class="btn btn-link" data-dismiss="modal">
+                        返回选择其他支付方式
+                        <i class="fa fa-angle-double-right"></i>
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-iCheck-square-blue', Theme::get('module') . '/plugin/iCheck/skins/square/blue.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-iCheck', Theme::get('module') . '/plugin/iCheck/icheck.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-jquery.validate', Theme::get('module') . '/plugin/bootstrap-validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-messages_zh', Theme::get('module') . '/plugin/bootstrap-validate/messages_zh.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('property-css-index', Theme::get('dir_prefix') . '/property/css/index.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('property-js-finance', Theme::get('dir_prefix') . '/property/js/finance.js'); ?>
+

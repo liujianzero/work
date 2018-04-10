@@ -1,0 +1,152 @@
+<?php /* 属性 */ ?>
+<?php if(count($data['manual'])): ?>
+    <div class="form-group">
+        <label for="goods_type_id" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="label label-primary">属性</span></label>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+            <p class="form-control-static">用于展示商品参数</p>
+        </div>
+    </div>
+    <?php foreach($data['manual'] as $v): ?>
+        <div class="form-group">
+            <label for="manual-<?php echo e($v['attr_id']); ?>" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><?php echo e($v['name']); ?></label>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                <input type="hidden" name="manual[<?php echo e($v['attr_id']); ?>][attr_id]" value="<?php echo e($v['attr_id']); ?>"/>
+                <input type="hidden" name="manual[<?php echo e($v['attr_id']); ?>][goods_attr_id]" value="<?php echo e($v['goods_attr_id']); ?>"/>
+                <input type="text" class="form-control" id="manual-<?php echo e($v['attr_id']); ?>" name="manual[<?php echo e($v['attr_id']); ?>][val]" value="<?php echo e($v['value']); ?>">
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
+<?php /* /属性 */ ?>
+
+<?php /* 规格 */ ?>
+<?php if(count($data['list'])): ?>
+    <div class="form-group">
+        <label for="" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="label label-primary">规格</span></label>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+            <p class="form-control-static">用户可根据自身所需选取商品</p>
+        </div>
+    </div>
+    <?php foreach($data['list'] as $key => $val): ?>
+        <div class="form-group">
+            <label for="" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><?php echo e($val['name']); ?></label>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <div class="row">
+                    <?php foreach($val['value'] as $k => $v): ?>
+                        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
+                            <label class="checkbox-inline">
+                                <input type="hidden" name="list[<?php echo e($index = $v['attr_id'] . '_' . $k); ?>][attr_id]" value="<?php echo e($v['attr_id']); ?>"/>
+                                <input type="hidden" name="list[<?php echo e($index); ?>][goods_attr_id]" value="<?php echo e($v['goods_attr_id']); ?>"/>
+                                <input type="hidden" name="list[<?php echo e($index); ?>][val]" value="<?php echo e($v['name']); ?>"/>
+                                <input type="checkbox" data-price="<?php echo e(isset($v['price']) ? $v['price'] : '0.00'); ?>" data-index="<?php echo e($index); ?>" data-goods_attr_id="<?php echo e($v['goods_attr_id']); ?>" name="list[<?php echo e($index); ?>][checked]" value="<?php echo e($v['name']); ?>" <?php if($v['checked']): ?> checked <?php endif; ?>> <abbr title="<?php echo e($v['name']); ?>"><?php echo e(cut_str($v['name'], 3)); ?></abbr>
+                            </label>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
+<?php /* /规格 */ ?>
+
+<?php /* 库存表 */ ?>
+<div class="type-table" <?php if(! count($data['table'])): ?> style="display: none;" <?php endif; ?>>
+    <div class="form-group">
+        <label for="" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="label label-primary">库存</span></label>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+            <p class="form-control-static">为每一种组合设置相应的库存量，支持批量设置</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"></label>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+            <div class="input-group">
+                <input type="text" class="form-control" value="0">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="oneKeySetNumber(this);">一键设置库存</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"></label>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 table-responsive attr-goods-number">
+            <?php if(count($data['table'])): ?>
+                <table class="table table-hover table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <?php foreach($data['table']['head'] as $v): ?>
+                                <th><?php echo e($v->name); ?></th>
+                            <?php endforeach; ?>
+                            <th>库存</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($data['table']['body'] as $key => $value): ?>
+                            <tr>
+                                <?php foreach($value as $k => $v): ?>
+                                    <td>
+                                        <?php if($data['table']['head'][$k]['id'] = $v['attr_id']): ?>
+                                            <?php echo e($v['val']); ?>
+
+                                            <input type="hidden" name="stock[<?php echo e($key); ?>][name][]" value="<?php echo e($v['val']); ?>"/>
+                                            <input type="hidden" name="stock[<?php echo e($key); ?>][attr_id][]" value="<?php echo e($v['attr_id']); ?>"/>
+                                            <input type="hidden" name="stock[<?php echo e($key); ?>][goods_attr_id][]" value="<?php echo e($v['goods_attr_id']); ?>"/>
+                                        <?php endif; ?>
+                                    </td>
+                                <?php endforeach; ?>
+                                <td>
+                                    <div>
+                                        <label class="sr-only" for="">属性库存</label>
+                                        <input type="text" class="form-control" id="" name="stock[<?php echo e($key); ?>][val]" value="<?php echo e($data['table']['list'][$data['table']['stock'][$key]]); ?>">
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                            <tr>
+                                <td colspan="<?php echo e(count($data['table']['head']) + 2); ?>">
+                                    <span class="label label-success">共有 <?php echo e(count($data['table']['body'])); ?> 种组合</span>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<?php /* /库存表 */ ?>
+
+<?php /* 价格 */ ?>
+<div class="price-table" <?php if(! count($data['price'])): ?> style="display: none;" <?php endif; ?>>
+    <div class="form-group">
+        <label for="" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="label label-primary">价格</span></label>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+            <p class="form-control-static">设置单个规格的价格，支持批量设置</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"></label>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+            <div class="input-group">
+                <input type="text" class="form-control" data-price="0.00" value="0.00">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="oneKeySetPrice(this);">一键设置价格</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="price-table-list">
+        <?php foreach($data['price'] as $v): ?>
+            <div class="form-group" data-index="list_<?php echo e($v['index']); ?>">
+                <label for="<?php echo e($v['index']); ?>" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><?php echo e($v['attr_value']); ?></label>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">￥</div>
+                        <input type="text" class="form-control" id="<?php echo e($v['index']); ?>" data-price="<?php echo e(isset($v['attr_price']) ? $v['attr_price'] : '0.00'); ?>" name="list[<?php echo e($v['index']); ?>][price]" value="<?php echo e(isset($v['attr_price']) ? $v['attr_price'] : '0.00'); ?>">
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<?php /* /价格 */ ?>

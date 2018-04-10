@@ -1,0 +1,378 @@
+<link rel="stylesheet"	href="/themes/default/assets/plugins/layui/css/layui.css">
+<link rel="stylesheet" href="/themes/default/assets/css/modelsType.css">
+
+<div id="modelsTypeDiv">
+	<!--信息编辑开始 -->
+	<div class="mation">	
+		<!--<h4 class="clearfix">
+			信息编辑 
+		</h4>-->
+		<div class="cha">
+			<span class="layui-layer-setwin">
+				<a class=" layui-layer-close layui-layer-close1 closeBtn" href="javascript:;"></a>
+			</span>
+		</div>
+		<form action="" method="post">
+			<div class="layui-form-item">
+				<label class="layui-form-label" style="color: #999;">上传到</label>
+				<select  id="folder_id" name="folder_id">
+					<?php if( Session::get('children')['id'] ): ?>
+						<?php foreach($folder as $item): ?>
+							<?php if(in_array(Session::get('children')['id'],explode(',',$item['team_id']))): ?>
+								<option class="modelsTan"  value="<?php echo e($item['id']); ?>"><?php echo e($item['name']); ?></option>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					<?php else: ?>
+						<option value="0">默认文件夹</option>
+						<?php foreach($folder as $item): ?>
+							<option class="modelsTan"  value="<?php echo e($item['id']); ?>"><?php echo e($item['name']); ?></option>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				</select>
+			</div>
+			<div class="layui-form-item">
+	
+				<label class="layui-form-label">名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="title" lay-verify="title" id="title" style="width:360px;"
+						value="" autocomplete="off"
+						placeholder="" class="layui-input">
+				</div>	
+					
+			</div>
+			
+			<div class="layui-form-item">
+				<label class="layui-form-label">分类</label>
+				<div class="layui-input-inline" style="margin-right: 0px">
+					<select class="models_pid" name="models_pid"
+						lay-filter="models_pid">
+						<option value="">请选择行业</option> <?php if(!empty($list)): ?> <?php foreach($list
+						as $item): ?>
+						<option class="modelsTan"  value="<?php echo e($item['id']); ?>"><?php echo e($item['name']); ?></option>
+						<?php endforeach; ?> <?php endif; ?>
+
+					</select>
+					
+				</div>
+				<div class="layui-input-inline">
+					<select id="models_id" name="models_id">
+						<option value="">请选择分类</option> <?php if(!empty($list1)): ?>
+						<?php foreach($list1 as $item): ?>
+						<option class="modelsTan"  value="<?php echo e($item['id']); ?>"><?php echo e($item['name']); ?></option>
+						<?php endforeach; ?> <?php endif; ?>
+					</select>
+					
+				</div>
+			</div>
+			
+			
+			<div class="layui-form-item paramaters">
+					<label class="layui-form-label">参数</label>
+					<div class="layui-input-inline para1">
+						<input type="text" name="paramaters" value="制作时长"
+							autocomplete="off" placeholder="制作时长" class="layui-input">
+					</div>
+	
+					<div class="layui-input-inline para2">
+						<input type="text" name="paramaters" value="" 
+							autocomplete="off" placeholder="" class="layui-input">
+					</div>
+				</div>
+				
+				<div class="layui-form-item paramaters">
+					<label class="layui-form-label"></label>
+					<div class="layui-input-inline para1">
+						<input type="text" name="paramaters" value="制作方式"
+							autocomplete="off" placeholder="制作方式" class="layui-input para1">
+					</div>
+	
+					<div class="layui-input-inline para2">
+						<input type="text" name="paramaters" value=""
+							autocomplete="off" placeholder="" class="layui-input para2">
+					</div>
+				</div>
+				
+				
+				<div class="layui-form-item paramaters">
+					<label class="layui-form-label"></label>
+					<div class="layui-input-inline para1">
+						<input type="text" name="paramaters" value="文件格式"
+							autocomplete="off" placeholder="文件格式" class="layui-input para1">
+					</div>
+	
+					<div class="layui-input-inline para2">
+						<input type="text" name="paramaters" value=""
+							autocomplete="off" placeholder="" class="layui-input para2">
+					</div>
+				</div>
+				
+				<div class="layui-form-item paramaters">
+					<label class="layui-form-label"></label>
+					<div class="layui-input-inline para1">
+						<input type="text" name="paramaters" value="文件大小"
+							autocomplete="off" placeholder="文件大小" class="layui-input para1">
+					</div>
+	
+					<div class="layui-input-inline para2">
+						<input type="text" name="paramaters" value=""
+							autocomplete="off" placeholder="" class="layui-input para2">
+					</div>
+				</div>
+			
+				<button id="addBtn" type="button" class="layui-btn layui-btn-small"
+					style="float: right; margin-right:40px;margin-top: -52px;height: 35px;line-height: 35px;border-radius: 20px;background-color: #191919;">
+					<i class="layui-icon"></i>
+				</button>
+			
+			
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">服务描述</label>
+					<div class="layui-input-block">
+						<textarea placeholder="请输入内容" value="" style="width:360px;" id="content"
+							name="content" class="layui-textarea"></textarea>
+					</div>
+				</div>
+
+			<br>
+			<div class="layui-progress layui-progress" lay-filter="process" lay-showPercent="true" style="    width: 64%;
+    margin-left: 18%;display: none">
+				<div class="layui-progress-bar layui-bg-blue" lay-percent="80%"></div>
+			</div>
+				<br>
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<input type="checkbox" name="yes" checked="checked" style="vertical-align: middle;" /><label for="" style="font-size: 12px;">我同意《十一维度任务发布协议》</label>
+						<button class="layui-btn" type="button" id="submitBtn"lay-submit="" lay-filter="demo1" style="background-color: #399cdb;margin-left: 26px;width: 140px;border-radius: 13px;height: 32px;line-height: 32px">立即提交</button>
+						<?php /*<button type="reset" class="layui-btn layui-btn-primary">重置</button>*/ ?>
+					</div>
+				</div>
+				
+		
+	
+		</form>
+
+	</div>
+	<div class="member">
+		<div class="cha">
+			<span class="layui-layer-setwin">
+				<a class=" layui-layer-close layui-layer-close1 closeBtn1" href="javascript:;"></a>
+			</span>
+		</div>
+		<div class="text">
+			你的版本不够，请升级至更高版本 !
+		</div>
+		<div >
+			<button class="layui-btn closeBtn1" type="button"  style="background-color: grey;width: 130px;border-radius: 13px;height: 32px;line-height: 32px">取消</button>
+			<a href="member" target="_blank" class="layui-btn"  style="background-color: #399cdb;margin-left: 26px;width: 140px;border-radius: 13px;height: 32px;line-height: 32px">立即升级版本</a>
+		</div>
+	</div>
+</div>
+
+<div id="showMessage">
+	<div class="close">
+		<img src="/E2.0/image/show/close.png">
+	</div>
+	<div class="container">
+		<div class="header">
+			<span style="font-size: 24px; font-weight: bolder">发布信息</span> <span
+				style="float: right">分享
+				<div style="display: inline; position: relative; top: 7px">
+					<img src="/E2.0/image/but/open.png">
+				</div>
+			</span>
+		</div>
+		<table class="showOption">
+			<tr>
+				<td><div>
+						<img src="/E2.0/image/show/logo.png">
+					</div> <input id="title" class="titleTan" type="text"
+					placeholder="名称"></td>
+			</tr>
+
+		</table>
+		<div style="display: none; color: #fff" class="progressbar">
+			<div class="per"></div>
+		</div>
+		<div class="sSubmit">
+			<span style="position: relative; top: 7px">确认并提交</span>
+		</div>
+	</div>
+</div>
+<script src="/E2.0/js/libs/jquery-2.1.1.js"></script>
+<script>
+    var path = "<?php echo e($uid); ?>";
+	$("#addBtn").on("click",function(){
+		var html = '<div class="layui-form-item paramaters"><label class="layui-form-label"></label><div class="layui-input-inline para1"><input type="text" name="paramaters" lay-verify=""' +
+				' autocomplete="off" placeholder="自定义" class="layui-input"></div><div class="layui-input-inline para2">	<input type="text" name="paramaters" lay-verify=""' +
+				'	autocomplete="off" placeholder="" class="layui-input">	</div>	</div>';
+		$(html).insertBefore("#addBtn");
+	});
+
+
+</script>
+<script src="/E2.0/js/addv2.js?t=20170930"></script>
+<script src="/E2.0/js/libs/three.js?t=20170913"></script>
+<script src="/E2.0/js/libs/tween.min.js"></script>
+<script src="/E2.0/js/libs/newLib/materialLib.js"></script>
+<!--<script src="/E2.0/js/libs/composer/Mirror.js"></script>-->
+<script src="/E2.0/js/libs/composer/Mirror2.js"></script>
+<script src="/E2.0/js/libs/composer/shaders/WaterShader.js"></script>
+<script src="/E2.0/js/libs/composer/mirrorMap.js"></script>
+<script src="/E2.0/js/MatcapShader.js"></script>
+<script src="/E2.0/js/libs/ui.js?t=20170822"></script>
+<script src="/E2.0/js/libs/signals.min.js"></script>
+
+<script src="/E2.0/js/libs/11dom.js?t=20170829"></script>
+<script src="/E2.0/js/libs/controls/OrbitControls.js"></script>
+<script src="/E2.0/js/libs/controls/PointerLockControls.js"></script>
+<script src="/E2.0/js/libs/controls/FlyControls.js"></script>
+<script src="/E2.0/js/libs/controls/myTransformControls.js"></script>
+<script src="/E2.0/js/libs/controls/PointerLockControls.js"></script>
+
+
+<script src="/E2.0/js/libs/renderer/Projector.js"></script>
+
+<script src="/E2.0/js/libs/loaders/AssimpJSONLoader.js"></script>
+<script src="/E2.0/js/libs/loaders/OBJLoader.js"></script>
+<!--<script src="/E2.0/js/libs/loaders/MTLLoader.js"></script>-->
+<!--<script src="/E2.0/js/libs/loaders/OBJMTLLoader.js"></script>-->
+<script src="/E2.0/js/libs/loaders/ColladaLoader.js"></script>
+
+<script src="/E2.0/js/libs/loaders/collada/Animation.js"></script>
+<script src="/E2.0/js/libs/loaders/collada/AnimationHandler.js"></script>
+<script src="/E2.0/js/libs/loaders/collada/KeyFrameAnimation.js"></script>
+
+<script src="/E2.0/js/libs/composer/postprocessing/postProcess.js"></script>
+
+
+<script src="/E2.0/js/libs/newLib/Arrayremove.js"></script>
+<script src="/E2.0/js/libs/newLib/inputSlider.js?t=20170822"></script>
+<script src="/E2.0/js/libs/newLib/ui-color-picker.js"></script>
+<script src="/E2.0/js/libs/newLib/FileSaver.js"></script>
+<script src="/E2.0/js/libs/newLib/composer.js"></script>
+
+<script src="/E2.0/js/Share.js"></script>
+<script src="/E2.0/js/eventSystem.js"></script>
+<script src="/E2.0/js/loader.js"></script>
+<script src="/E2.0/js/pathImport.js"></script>
+<script src="/E2.0/js/loadShaders.js"></script>
+<script src="/E2.0/js/Editor.js?t=20170823"></script>
+<script src="/E2.0/js/Menubar.js?t=20170822"></script>
+<script src="/E2.0/js/Menubar.object.js"></script>
+<script src="/E2.0/js/Menubar.object.event.js"></script>
+<script src="/E2.0/js/Menubar.object.animation.js"></script>
+<?php if($userType==0): ?>
+	<script src="/E2.0/js_free/Menubar.labels.js?t=20170822"></script>
+	<script src="/E2.0/js_free/Menubar.background.js?t=20170822"></script>
+	<script src="/E2.0/js_free/Menubar.Personal.js?t=20170822"></script>
+	<script src="E2.0/js_free/Menubar.3dLabels.js?t=20170822"></script>
+	<script src="/E2.0/js_free/Menubar.scenarios.js?t=20170823"></script>
+
+<?php else: ?>
+	<script src="/E2.0/js/Menubar.labels.js?t=20170822"></script>
+	<script src="/E2.0/js/Menubar.background.js?t=20170822"></script>
+	<script src="/E2.0/js/Menubar.Personal.js?t=20170918"></script>
+	<script src="E2.0/js/Menubar.3dLabels.js?t=20170822"></script>
+	<script src="/E2.0/js/Menubar.scenarios.js?t=20170930"></script>
+<?php endif; ?>
+<script src="/E2.0/js/labelObject.js?t=20170828"></script>
+
+<script src="E2.0/js/label3DObject.js?t=20170822"></script>
+
+<script src="/E2.0/js/Menubar.object.Material.js"></script>
+<script src="/E2.0/js/Menubar.light.js"></script>
+<?php /*<script src="/E2.0/js/Menubar.Vr.js"></script>*/ ?>
+<script src="/E2.0/js/hotSpotObject.js?t=20170822"></script>
+<script src="E2.0/js/Menubar.camera.js?t=20170930"></script>
+
+<script src="/E2.0/js/Lib.js"></script>
+<script src="/E2.0/js/Viewport.js?t=20170822"></script>
+<!--<script src="/E2.0/js/switchlight.js"></script>-->
+<script src="/E2.0/js/Preview.js?t=20170822"></script>
+
+<script>
+
+    var editor = new Editor();
+    var Share = new Share(editor);
+    var labelObject = new labelObject(editor);
+    var hotObject = new hotSpotObject(editor);
+	var labelObject3D = new labelObject3D(editor);
+    var tool = new Tool(editor);
+    document.body.appendChild(tool.dom);
+
+    var viewport = new Viewport(editor);
+    document.body.appendChild(viewport.dom);
+
+    var menubar = new Menubar(editor);
+    document.body.appendChild(menubar.dom);
+
+    var lib = new Lib(editor);
+    document.body.appendChild(lib.dom);
+
+    var preview=new Preview(editor);
+    document.body.appendChild(preview.dom );
+
+
+    window.onkeydown = function (event) {
+        switch (event.keyCode) {
+            case 17: // ctrl
+                editor.keyCode["ctrl"] = true;
+                break;
+            case 46: // ctrl
+                editor.deleteFrame();
+                break;
+        }
+    };
+    window.onkeyup = function (event) {
+        switch (event.keyCode) {
+            case 17: // ctrl
+                editor.keyCode = {};
+                break;
+        }
+    };
+
+    editor.signals.windowResize.dispatch();
+    function confirm2(event){
+        switch (event.keyCode) {
+            case 13:
+                $("input").blur();
+        }
+    }
+    document.addEventListener('keydown',confirm2, true);
+	/*camera-gai*/
+	var oldPosition = new THREE.Vector3().copy(editor.camera.position);
+	var resetPosition = new THREE.Vector3().copy(editor.camera.position);
+	var resetControls = new THREE.Vector3().copy(editor.controls.center);
+
+	function resetP(a) {
+		if(editor.controlLimit.pan.minDistance > resetPosition.z){
+			resetPosition.z = editor.controlLimit.pan.minDistance;
+		}
+		else resetPosition.z = oldPosition.z;
+
+		new TWEEN.Tween(editor.camera.position).to({
+			x: resetPosition.x,
+			y: resetPosition.y,
+			z: resetPosition.z
+		}, 1000).start();
+		new TWEEN.Tween(editor.controls.center).to({
+			x: resetControls.x,
+			y: resetControls.y,
+			z: resetControls.z
+		}, 1000).start();
+		new TWEEN.Tween(editor.controls.object.scale).to({
+			x:1,
+			y:1
+		}, 1000).start();
+	}
+
+
+</script>
+<script src="/E2.0/js/keyAnimationObj.js"></script>
+<script src="/E2.0/js/Menubar.object.hiddenList.js"></script>
+<script src="/E2.0/js/initTHREE.js?t=20170930"></script>
+
+
+<script src="/themes/default/assets/js/layer/layer.js"></script>
+<script src="/themes/default/assets/js/cate.js"></script>
+

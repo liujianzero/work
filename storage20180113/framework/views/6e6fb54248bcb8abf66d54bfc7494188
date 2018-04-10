@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class=" col-xs-12 col-sm-12 addr">
+            <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag  . '/shop/images/addr/qinghai.png')); ?>"
+                 class="center-block" width="85%"/>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="adr">
+                <h1>地址：</h1>
+                <p>
+                    <i class="iconfont icon-address"></i>
+                    <span><?php echo e($province); ?><?php echo e($city); ?><?php echo e($area); ?><?php echo e($detail); ?></span>
+                </p>
+                <p class="tel">
+                    <i class="iconfont icon-icon30"></i>
+                    <span>+010-85007422</span>
+                <h3>提示：夏季：9:00—16:30；冬季：9:30—16:00，每周一闭馆休整</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="adr2">
+                <h1>出行小贴士：</h1>
+                <p>旺季：8:30--17:00（4月1日至10月31日）</p>
+                <p>淡季：8:30--17:00（11月1日至3月31日）</p>
+                <p>旅游最佳时间：4月-10月</p>
+                <p>大约浏览时间：3小时</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('mobile-css-addr', $info->module . '/' . $info->flag  . '/mobile/css/addr.css'); ?>
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_432602_8pysmpv1zr02uik9.css"/>
+<?php /*<?php echo Theme::asset()->container('common-js')->usePath()->add('templet5-js-index2', Theme::get('dir_prefix') . '/templet5/js/index2.js'); ?>*/ ?>

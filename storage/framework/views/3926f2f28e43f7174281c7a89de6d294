@@ -1,0 +1,230 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+
+    <div class="row" style="margin: 10px;">
+        <div class="col-sm-12">
+            <div class="alert alert-info alert-dismissible text-center fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong><i class="fa fa-info-circle"></i> 提示：</strong> 您在更新完店铺信息后重新登录即可显示更新后的信息
+            </div>
+        </div>
+    </div>
+
+    <!--设置-表单-->
+    <form id="setupFrom" action="<?php echo e(route(Theme::get('route_prefix') . '.setup.edit')); ?>" method="post">
+        <?php echo csrf_field(); ?>
+
+        <div class="set">
+            <ul style="margin-bottom: 50px;">
+                <li>
+                    <span>店铺名称：</span>
+                    <p id="store-name-p"><?php echo e(isset($info->store_name) ? $info->store_name : '未命名'); ?></p>
+                    <a href="javascript:void(0);" onclick="upd(this)">修改</a>
+                </li>
+                <li>
+                    <span>登录密码 <i class="fa fa-question-circle" data-html="true" data-toggle="tooltip" data-placement="top" title="用于账号登录"></i>：</span>
+                    <a href="javascript:void(0);" data-type="password" onclick="updatePassword(this)">修改</a>
+                </li>
+                <li>
+                    <span>支付密码 <i class="fa fa-question-circle" data-html="true" data-toggle="tooltip" data-placement="top" title="用于支付、提现时使用"></i>：</span>
+                    <a href="javascript:void(0);" data-type="alternate" onclick="updatePassword(this)">修改</a>
+                </li>
+                <li>
+                    <span>主体信息：</span>
+                    <p>主体信息</p>
+                </li>
+                <li>
+                    <span>店铺认证：</span>
+                    <?php if($info->auth_status == 1): ?>
+                        <p><span class="label label-default">未认证</span></p>
+                        <a href="<?php echo e(route(Theme::get('route_prefix') . '.setup.authorize', ['action' => 'apply'])); ?>">立即认证</a>
+                    <?php elseif($info->auth_status == 2): ?>
+                        <p><span class="label label-warning">认证中</span></p>
+                        <a href="<?php echo e(route(Theme::get('route_prefix') . '.setup.authorize', ['action' => 'progress'])); ?>">查看进度</a>
+                    <?php elseif($info->auth_status == 3): ?>
+                        <p><span class="label label-success">已认证</span></p>
+                        <a href="<?php echo e(route(Theme::get('route_prefix') . '.setup.authorize', ['action' => 'progress'])); ?>">查看认证</a>
+                    <?php elseif($info->auth_status == 4): ?>
+                        <p><span class="label label-danger">认证失败</span></p>
+                        <a href="<?php echo e(route(Theme::get('route_prefix') . '.setup.authorize', ['action' => 'apply'])); ?>">重新认证</a>
+                    <?php endif; ?>
+                </li>
+                <li>
+                    <span>店铺类型：</span>
+                    <p><?php echo e($info->store_type_name); ?></p>
+                </li>
+                <li>
+                    <span>主营类目：</span>
+                    <p><?php echo e($info->store_cat_name); ?></p>
+                </li>
+                <li>
+                    <span>创建时间：</span>
+                    <p><?php echo e(isset($info->created_at) ? $info->created_at : 'N/A'); ?></p>
+                </li>
+                <li>
+                    <span>有效期至：</span>
+                    <p><?php echo e(isset($info->expire_at) ? $info->expire_at : '已过期'); ?></p>
+                </li>
+                <li>
+                    <span style="float: left; margin: 0 10px 0 0 ;">店铺状态：</span>
+                    <div class="switch" style="display: inline-block;">
+                        <div class="onoffswitch">
+                            <input type="checkbox" class="onoffswitch-checkbox" id="store_status" name="store_status" value="on" <?php if($info->store_status == 'on'): ?> checked <?php endif; ?>/>
+                            <label class="onoffswitch-label" for="store_status">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span style="float: left; margin: 0 10px 0 0 ;">手机注册：</span>
+                    <div class="switch" style="display: inline-block;">
+                        <div class="onoffswitch">
+                            <input type="checkbox" class="onoffswitch-checkbox" id="mobile_register" name="mobile_register" value="on" <?php if($info->mobile_register == 'on'): ?> checked <?php endif; ?>/>
+                            <label class="onoffswitch-label" for="mobile_register">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span style="float: left; margin: 0 10px 0 0 ;">商店LOGO：</span>
+                    <div id="uploadimg" style="display: inline-block;">
+                        <div id="imgPicker">选择图片</div>
+                        <div id="theList" class="uploader-list">
+                            <img id="avatar" style="margin-right: 5px" src="<?php if(file_exists($info->store_logo)): ?><?php echo e("/$info->store_logo"); ?><?php else: ?><?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/survey/images/codeinfo.jpg')); ?><?php endif; ?>"/>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span><span class="need">*</span>店铺地址：</span>
+                    <select id="province" name="province" onchange="getCity(this);" style="width: 131px;">
+                        <option value="">请选择</option>
+                        <?php foreach($province as $k => $v): ?>
+                            <option value="<?php echo e($k); ?>" <?php if($info->province == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <select id="city" name="city" onchange="getArea(this);" style="width: 131px;">
+                        <option value="">请选择</option>
+                        <?php foreach($city as $k => $v): ?>
+                            <option value="<?php echo e($k); ?>" <?php if($info->city == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <select id="area" name="area" style="width: 131px;">
+                        <option value="">请选择</option>
+                        <?php foreach($area as $k => $v): ?>
+                            <option value="<?php echo e($k); ?>" <?php if($info->area == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </li>
+                <li>
+                    <span><span class="need">*</span>详细地址：</span>
+                    <input type="text" name="address" style="padding: 3px;width: 400px;" value="<?php echo e($info->address); ?>"/>
+                </li>
+                <li>
+                    <span >店铺简介：</span>
+                    <textarea name="store_desc" style="width: 400px;height: 85px; vertical-align: middle; padding: 7px;resize: none;" maxlength="100" placeholder="简介不能超过100字"><?php echo e($info->store_desc); ?></textarea>
+                </li>
+                <li>
+                    <span >联系人qq：</span>
+                    <input type="text" name="qq" style="padding: 3px;" value="<?php echo e($info->qq); ?>"/>
+                </li>
+                <li>
+                    <button type="submit" class="btn btn-primary zzz" id="setupSubmit">保存</button>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+<!--修改店铺名称-->
+<div id="store-name-div" class="store_name" style="display: none;">
+    <form class="form-horizontal" id="nameFrom" style="margin: 20px 0;width: 95%;">
+        <div class="form-group">
+            <label for="store_name" class="col-sm-3 control-label">店铺名称</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="store_name" name="store_name" value="<?php echo e($info->store_name); ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-8">
+                <button type="submit" class="btn btn-primary" id="nameSubmit">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="store-password-div" class="store_name" style="display: none;">
+    <form class="form-horizontal" id="passwordFrom" style="margin: 20px 0;width: 95%;">
+        <div class="form-group">
+            <label for="old_password" class="col-sm-3 control-label"><span class="need">*</span>旧登录密码</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="old_password" name="old_password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label"><span class="need">*</span>新登录密码</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="password" name="password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password_confirm" class="col-sm-3 control-label"><span class="need">*</span>确认新登录密码</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="password_confirm" name="password_confirm"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-8">
+                <button type="submit" class="btn btn-primary" id="passwordSubmit">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="store-alternate-div" class="store_name" style="display: none;">
+    <form class="form-horizontal" id="alternateFrom" style="margin: 20px 0;width: 95%;">
+        <div class="form-group">
+            <label for="old_alternate_password" class="col-sm-3 control-label"><span class="need">*</span>旧支付密码</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="old_alternate_password" name="old_alternate_password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="alternate_password" class="col-sm-3 control-label"><span class="need">*</span>新支付密码</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="alternate_password" name="alternate_password"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="alternate_password_confirm" class="col-sm-3 control-label"><span class="need">*</span>确认新支付密码</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="alternate_password_confirm" name="alternate_password_confirm"/>
+            </div>
+        </div>
+        <input type="hidden" name="type" value="alternate_"/>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-8">
+                <button type="submit" class="btn btn-primary" id="alternateSubmit">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('setup-css-webuploader', Theme::get('module') . '/plugin/webuploader/webuploader.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('setup-js-webuploader', Theme::get('module') . '/plugin/webuploader/webuploader.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('setup-js-jquery.validate', Theme::get('module') . '/plugin/bootstrap-validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('setup-js-messages_zh', Theme::get('module') . '/plugin/bootstrap-validate/messages_zh.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('setup-css-index', Theme::get('dir_prefix') . '/shop/css/index.css'); ?>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('setup-css-setup', Theme::get('dir_prefix') . '/setup/css/setup.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('setup-js-setup', Theme::get('dir_prefix') . '/setup/js/setup.js'); ?>
+

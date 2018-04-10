@@ -1,0 +1,113 @@
+<style>
+    .registerform input[disabled] {
+        color: #848484!important;
+        background-color: #1c1c1c!important;
+        cursor: not-allowed;
+    }
+</style>
+<div class="part" style="display: block;">
+    <form class="registerform" role="form" action="<?php echo e(URL('/user/infoUpdate')); ?>" method="post">
+        <?php echo csrf_field(); ?>
+
+        <div class="infor">
+            <label>用户名</label><input type="text" disabled id="inputText" placeholder="昵称" value="<?php echo e(Auth::user()['name']); ?>"/>
+        </div>
+        <div class="infor">
+            <label>电子邮箱</label><input type="text" disabled id="inputText" value="<?php echo e(Auth::user()['email']); ?>"/>
+            <?php if(Auth::user()->email_status == 2): ?>
+                <?php /*<span class="span1"><i class="fa fa-check-circle"></i>邮箱已认证</span>*/ ?>
+                <span class="span1"><i></i>邮箱已认证</span>
+            <?php else: ?>
+                <span class="span2"><a href="<?php echo url('user/emailAuth'); ?>"><i class="fa fa-exclamation-circle"></i> 点击绑定</a></span>
+            <?php endif; ?>
+        </div>
+        <div class="infor">
+            <label>昵称</label><input type="text" id="inputPassword3" name="nickname" value="<?php echo e($uinfo['nickname']?$uinfo['nickname']:''); ?>" placeholder="昵称"/>
+        </div>
+        <div class="infor">
+            <label>真实姓名</label><input type="text" id="inputPassword3" name="realname" value="<?php echo e($uinfo['realname']?$uinfo['realname']:''); ?>" placeholder="真实姓名"/>
+        </div>
+        <div class="infor">
+            <label>性别</label>
+            <select name="sex" class="sel1">
+                <option value="0" <?php echo e(($uinfo['sex']==0)?'selected':''); ?>>不公开</option>
+                <option value="2" <?php echo e(($uinfo['sex']==2)?'selected':''); ?>>男</option>
+                <option value="1" <?php echo e(($uinfo['sex']==1)?'selected':''); ?>>女</option>
+            </select>
+        </div>
+        <div class="infor">
+            <label>所在地</label>
+            <select name="province" onchange="checkprovince(this)" class="sel2" style="width: 105px;" datatype="*" nullmsg="请选择省份！" errormsg="请选择省份！">
+                <?php foreach($province as $v): ?>
+                    <option value=<?php echo e($v['id']); ?> <?php echo e(($uinfo['province']==$v['id'])?'selected':''); ?>><?php echo e($v['name']); ?></option>
+                <?php endforeach; ?>
+            </select>
+            <select name="city" id="province_check" onchange="checkcity(this)" datatype="*" nullmsg="请选择城市！" errormsg="请选择城市！" class="sel2" style="width: 105px;">
+                <?php foreach($city as $v): ?>
+                    <option value=<?php echo e($v['id']); ?> <?php echo e(($uinfo['city']==$v['id'])?'selected':''); ?>><?php echo e($v['name']); ?></option>
+                <?php endforeach; ?>
+            </select>
+            <select name="area" id="area_check" datatype="*" nullmsg="请选择区域！" errormsg="请选择区域！" class="sel2" style="width: 105px;">
+                <?php foreach($area as $v): ?>
+                    <option value=<?php echo e($v['id']); ?> <?php echo e(($uinfo['area']==$v['id'])?'selected':''); ?>><?php echo e($v['name']); ?></option>
+                <?php endforeach; ?>
+            </select>
+            <label></label><input type="text" id="road" name="road" value="<?php echo e($uinfo['road']?$uinfo['road']:''); ?>" placeholder="街道地址"/>
+        </div>
+        <div class="infor" style="height: 35px;">
+            <label>手机号</label><input style="width: 230px;" type="text" disabled="disabled" name="mobile" id="inputNumber" value="<?php echo e($user['mobile']?$user['mobile']:''); ?>" placeholder="请填写手机号" errormsg="手机号格式错误！"/>
+            <select name="mobile_status" class="sel1" style="width: 108px;">
+                <option value=0 <?php echo e($uinfo['mobile_status']==0?'selected':''); ?>>不公开</option>
+                <option value=1 <?php echo e($uinfo['mobile_status']==1?'selected':''); ?>>公开</option>
+            </select>
+            <?php if($user['mobile']): ?>
+                <span class="span1"><i class="fa fa-check-circle"></i><a href="<?php echo e(URL('user/unbindMobile')); ?>" style="color: #74af45">修改手机号</a></span>
+            <?php else: ?>
+                <?php /*<span class="span2"><a href="<?php echo url('user/phoneAuth'); ?>"><i class="fa fa-exclamation-circle"></i> 立即绑定</a></span>*/ ?>
+                <span class="span2"><a href="<?php echo url('user/phoneAuth'); ?>"><i></i>立即绑定</a></span>
+            <?php endif; ?>
+        </div>
+        <div class="infor">
+            <label>微信</label><input style="width: 230px;" type="text" id="inputEmail" name="wechat" value="<?php echo e($uinfo['wechat']?$uinfo['wechat']:''); ?>" placeholder="微信号"/>
+            <select name="wechat_status" class="sel1" style="width: 108px;">
+                <option value=0 <?php echo e($uinfo['wechat_status']==0?'selected':''); ?>>不公开</option>
+                <option value=1 <?php echo e($uinfo['wechat_status']==1?'selected':''); ?>>公开</option>
+            </select>
+        </div>
+        <div class="infor">
+            <label>QQ</label><input style="width: 230px;" type="text" id="QQ" name="qq"  value="<?php echo e($uinfo['qq']?$uinfo['qq']:''); ?>" placeholder="QQ"  errormsg="请填写QQ！"/>
+            <select name="qq_status" class="sel1" style="width: 108px;">
+                <option value=0 <?php echo e($uinfo['qq_status']==0?'selected':''); ?>>不公开</option>
+                <option value=1 <?php echo e($uinfo['qq_status']==1?'selected':''); ?>>公开</option>
+            </select>
+        </div>
+        <div class="infor">
+            <label>个人信息</label>
+            <textarea class="user_text" name="introduce" rows="5" cols="" placeholder="以下信息将展现您的个人能力"><?php echo e($uinfo['introduce']?$uinfo['introduce']:''); ?></textarea>
+            <span class="error_text cor-red"  style="display: none;margin-left: 220px;"></span>
+        </div>
+        <div class="infors" >
+            <input style="border: solid 1px #1dabf5" type="submit" id="edit_info" class="sub" value="保存"/>
+        </div>
+    </form>
+</div>
+
+<?php echo Theme::asset()->container('specific-css')->usepath()->add('detail','css/usercenter/finance/finance-detail.css'); ?>
+
+<?php echo Theme::asset()->container('specific-css')->usepath()->add('safety','css/usercenter/safety/safety-layout.css'); ?>
+
+<?php echo Theme::asset()->container('specific-css')->usepath()->add('validform-style','plugins/jquery/validform/css/style.css'); ?>
+
+<?php echo Theme::asset()->container('specific-js')->usepath()->add('validform','plugins/jquery/validform/js/Validform_v5.3.2_min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('paypassword','js/doc/userinfo.js'); ?>
+
+<?php echo Theme::widget('popup')->render(); ?>
+
+<?php echo Theme::widget('avatar')->render(); ?>
+
+<?php if(Session::has('code') && Session::get('code') == 'error'): ?>
+    <script src="/themes/default/assets/js/layer/layer.js"></script>
+    <?php echo Theme::asset()->container('custom-js')->usepath()->add('paypassword-userinfo_error','js/doc/userinfo_error.js'); ?>
+
+<?php endif; ?>

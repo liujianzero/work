@@ -1,0 +1,267 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+    <input type="hidden" class="id" value="<?php echo e($id); ?>">
+    <input type="hidden" class="page_detail" value="<?php echo e($page_detail); ?>">
+    <!--内容-->
+    <div class="app-container">
+        <!--选择栏-->
+        <div class="app-container-head gray clearfix">
+            <div class="shop-left">
+                <a href="<?php echo e(route(Theme::get('route_prefix') . '.shop.select.template')); ?>">选择模板</a>
+                <a href="<?php echo e(route(Theme::get('route_prefix') . '.shop.customTemplate')); ?>"
+                   class="modular">自定义模块</a><?php /*<?php echo e(url('/bre/study/settled')); ?>*/ ?>
+                <?php /*<span>配色方案</span>*/ ?>
+                <?php /*<ul id="model">*/ ?>
+                <?php /*<li class="active">*/ ?>
+                <?php /*<span style="background:#444;"></span>*/ ?>
+                <?php /*<span style="background: #e7e1cd;"></span>*/ ?>
+                <?php /*<span style="background: #fff;"></span>*/ ?>
+                <?php /*</li>*/ ?>
+                <?php /*<li>*/ ?>
+                <?php /*<span style="background: #ff9300;"></span>*/ ?>
+                <?php /*<span style="background: #ff5e15;"></span>*/ ?>
+                <?php /*<span style="background: #fff;"></span>*/ ?>
+                <?php /*</li>*/ ?>
+                <?php /*<li>*/ ?>
+                <?php /*<span style="background: #6cbf72;"></span>*/ ?>
+                <?php /*<span style="background: #ffe7e9;"></span>*/ ?>
+                <?php /*<span style="background: #fff;"></span>*/ ?>
+                <?php /*</li>*/ ?>
+                <?php /*<li>*/ ?>
+                <?php /*<span class="span1"></span>*/ ?>
+                <?php /*<span class="span2"></span>*/ ?>
+                <?php /*<span class="span3"></span>*/ ?>
+                <?php /*</li>*/ ?>
+                <?php /*</ul>*/ ?>
+            </div>
+            <div class="shop-right">
+                <a href="javascript:editPic(this);">更改背景</a>
+                <a href="javascript:bindName(this);">绑定域名</a>
+                <?php /*<a href="javascript:void(0);" class="mar">手机预览</a>*/ ?>
+                <a href="javascript:void(0);" class="active" id="default_issue">进入店铺</a>
+            </div>
+        </div>
+        <!--模板展示-->
+        <div id="preview-wrap" class="preview-wrap">
+            <div id="phone-component" class="phone-6plus">
+                <div class="phone-head">
+                    <span id="go-back">返回</span>
+                </div>
+                <div id="phone-container" class="phone-content">
+                    <iframe class="preview-iframe" id="preview-iframe" frameborder="0" allowtransparency="true"
+                            seamless=""
+                            src="<?php echo e(route("$info->module.pages.show",[$info->store_id, 'index'])); ?>"></iframe>
+                </div>
+            </div>
+            <!--模板编辑-->
+            <?php if($info->store_type_id == "2"): ?>
+                <form class="form-horizontal" id="validateFrom"
+                      action="<?php echo e(route(Theme::get('route_prefix') . '.shop.validate.from')); ?>" method="post">
+                    <div class="panel-group" id="accordion">
+                        <?php /* 1 index*/ ?>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a id="page" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                       data-route="index">
+                                        首页
+                                        <i class="iconfont icon-jiahao pull-right"></i>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <span class="text-center"><strong>头部导航</strong></span>
+                                    <div class="form-group">
+                                        <?php /*<label class="col-sm-2 control-label">推荐</label>*/ ?>
+                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/theme/'. $info['theme'] .'/images/index/pic1.png')); ?>"
+                                             class="center-block" id="nav">
+                                        <div class="col-sm-3">
+                                            <input type="text" name="head_nav_one" class="form-control"
+                                                   value=<?php if(empty($page_detail['head_nav_one'])): ?>推荐<?php else: ?><?php echo e($page_detail['head_nav_one']); ?><?php endif; ?>>
+                                        </div>
+                                        <?php /*<label class="col-sm-2 col-sm-offset-1  control-label">简介</label>*/ ?>
+                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/theme/'. $info['theme'] .'/images/index/pic2.png')); ?>"
+                                             class="center-block" id="nav">
+                                        <div class="col-sm-3">
+                                            <input type="text" name="head_nav_tow" class="form-control"
+                                                   value=<?php if(empty($page_detail['head_nav_tow'])): ?>简介<?php else: ?><?php echo e($page_detail['head_nav_tow']); ?><?php endif; ?>>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <?php /*<label class="col-sm-2 control-label">地址</label>*/ ?>
+                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/theme/'. $info['theme'] .'/images/index/pic3.png')); ?>"
+                                             class="center-block" id="nav">
+                                        <div class="col-sm-3">
+                                            <input type="text" name="head_nav_three" class="form-control"
+                                                   value=<?php if(empty($page_detail['head_nav_three'])): ?>地址<?php else: ?><?php echo e($page_detail['head_nav_three']); ?><?php endif; ?>>
+                                        </div>
+                                        <?php /*<label class="col-sm-2 col-sm-offset-1  control-label">预订</label>*/ ?>
+                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/theme/'. $info['theme'] .'/images/index/pic4.png')); ?>"
+                                             class="center-block" id="nav">
+                                        <div class="col-sm-3">
+                                            <input type="text" name="head_nav_four" class="form-control"
+                                                   value=<?php if(empty($page_detail['head_nav_four'])): ?>预订<?php else: ?><?php echo e($page_detail['head_nav_four']); ?><?php endif; ?>>
+                                        </div>
+                                    </div>
+                                    <?php /*<span class="text-center"><strong>底部导航</strong></span>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">首页</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <label class="col-sm-2 col-sm-offset-1  control-label">文物</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">我的</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>*/ ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php /* 2 summary*/ ?>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a id="page" data-toggle="collapse" data-parent="#accordion" data-type="upload"
+                                       href="#collapseTwo" data-route="summary">
+                                        简介页
+                                        <i class="iconfont icon-jiahao pull-right"></i>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="file" class="col-xs-12 col-sm-2 control-label">图片</label>
+                                        <div class="col-xs-12 col-sm-5">
+                                            <div class="dropzone" id="dropzone">
+                                                <div class="fallback">
+                                                    <input type="file" id="file" name="file" multiple/>
+                                                </div>
+                                            </div>
+                                            <div id="file_update"></div>
+                                                <?php /*<input type="hidden" name="summary" id="summary" value="summary">*/ ?>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">概况</label>
+                                        <div class="col-sm-10">
+                                            <textarea name="summary_desc"
+                                                      placeholder="店铺介绍"><?php echo e($page_detail['summary_desc']); ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php /* 3 address*/ ?>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a id="page" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                                       data-route="address">
+                                        地址页
+                                        <i class="iconfont icon-jiahao pull-right"></i>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label for="file" class="col-xs-12 col-sm-2 control-label">图片</label>
+                                        <div class="col-xs-12 col-sm-5">
+                                            <div class="dropzone" id="dropzone">
+                                                <div class="fallback">
+                                                    <input type="file" id="file" name="file" multiple/>
+                                                </div>
+                                            </div>
+                                            <div id="file_update"></div>
+                                            <?php /*<input type="hidden" name="address" id="address" value="address">*/ ?>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">地址</label>
+                                        <div class="col-sm-10">
+                                            <textarea name="address_details"
+                                                      placeholder="地址详情"><?php echo e($page_detail['address_details']); ?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">出行小贴士</label>
+                                        <div class="col-sm-9">
+                                            <textarea name="travel_tips"
+                                                      placeholder="如开放时间、门票、游客所需注意事项等"><?php echo e($page_detail['travel_tips']); ?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--提交保存-->
+                        <button type="submit" class="btn btn-primary center-block size" id="pageFormSubmit">保存</button>
+                    </div>
+                    <?php echo csrf_field(); ?>
+
+                </form>
+            <?php else: ?>
+
+            <?php endif; ?>
+        </div>
+    </div>
+    <!--内容 结束-->
+</div>
+<!--绑定域名-->
+<div id="bindname" style="display: none;">
+    <form action="" method="post">
+        <div class="form-group pull clearfix">
+            <label for="" class="col-md-3 tar control-label">绑定的域名:</label>
+            <div class="col-md-9">
+                <input type="text" name="bindname" class="form-control" placeholder="请输入正确的域名"/>
+            </div>
+        </div>
+    </form>
+</div>
+<!--全景图链接-->
+<div id="editPic" style="display: none;">
+    <form id="editPicForm" action="" method="post">
+        <div class="form-group pull clearfix">
+            <label for="" class="col-md-3 tar control-label">全景图链接:</label>
+            <div class="col-md-9">
+                <input type="text" name="editPic" class="form-control" placeholder="请输入全景图链接"/>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <button id="formSubmit" class="btn btn-primary" style="margin-left: 60%;margin-top: 10%;">提交</button>
+        </div>
+        <?php echo csrf_field(); ?>
+
+    </form>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('shop-css-index', Theme::get('dir_prefix') . '/shop/css/index.css', [], ['id' => 'theme', 'data-type' => Theme::get('flag'), 'data-module' => Theme::get('module')]); ?>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('shop-css-default', Theme::get('dir_prefix') . '/shop/css/default.css'/*, [], ['id' => 'theme', 'data-type' => Theme::get('flag'), 'data-module' => Theme::get('module')]*/); ?>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('shop-css-set', Theme::get('dir_prefix') . '/shop/css/set.css'); ?>
+
+<?php /*<?php echo Theme::asset()->container('plugin-css')->usePath()->add('shop-css-webuploader', Theme::get('module') . '/plugin/webuploader/webuploader.css'); ?>*/ ?>
+<?php /*<?php echo Theme::asset()->container('plugin-js')->usePath()->add('shop-js-webuploader', Theme::get('module') . '/plugin/webuploader/webuploader.min.js'); ?>*/ ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('shop-js-jquery.validate', Theme::get('module') . '/plugin/bootstrap-validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('shop-js-messages_zh', Theme::get('module') . '/plugin/bootstrap-validate/messages_zh.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('shop-css-dropzone.basic', Theme::get('module') . '/plugin/dropzone/min/basic.min.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('shop-css-dropzone.min', Theme::get('module') . '/plugin/dropzone/min/dropzone.min.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('shop-js-dropzone.min', Theme::get('module') . '/plugin/dropzone/min/dropzone.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('shop-js-index', Theme::get('dir_prefix') . '/shop/js/index.js'); ?>
+
+<?php /*<?php echo Theme::asset()->container('common-js')->usePath()->add('shop-js-set', Theme::get('dir_prefix') . '/shop/js/set.js'); ?>*/ ?>

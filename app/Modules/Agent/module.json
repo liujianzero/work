@@ -1,0 +1,9 @@
+{
+	"name": "Agent",
+	"slug": "Agent",
+	"namespace": "Agent",
+	"version": "1.0",
+	"author": "null",
+	"license": "MIT",
+	"description": "This is the description for the Agent module."
+}

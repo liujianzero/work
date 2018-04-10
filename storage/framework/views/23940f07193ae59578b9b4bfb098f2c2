@@ -1,0 +1,145 @@
+<div class="addr">
+    <div class="container-fluid">
+        <?php /*<?php $__empty_1 = true; foreach($address as $v): $__empty_1 = false; ?>
+            <div class="row padtb borderb">
+                <div class="col-xs-8">
+                    <p><?php echo e($v['name']); ?>&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;<span><?php echo e($v['mobile']); ?></span>
+                    </p>
+                </div>
+                <div class="col-xs-4">
+				<span class="pull-right" id="set_default" onclick="setDefault(this)">
+					默认地址
+				</span>
+                </div>
+                <div class="col-xs-12 padt">
+                    <p><?php echo e($address['province']); ?><?php echo e($address['city']); ?><?php echo e($address['area']); ?><?php echo e($address['detail']); ?></p>
+                    <p>湖北省武汉市区 水果湖新区东安新居3栋四单元506室</p>
+                </div>
+                <div class="col-xs-12">
+                    <div class="anniu">
+                        <a class="pull-right"
+                           href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'address_edit'])); ?>">
+                            <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/edit.png")); ?>"
+                                 width="15px"/>
+                            编辑
+                        </a>
+                        <a class="pull-right" onclick="delAddress(this)">
+                            <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/del.png")); ?>"
+                                 width="15px"/>
+                            删除
+                        </a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; if ($__empty_1): ?>
+            <div class="row padtb borderb">
+                <div>
+                    <h3>您还没有设置收货地址</h3>
+                </div>
+            </div>
+        <?php endif; ?>*/ ?>
+
+        <div class="row padtb borderb">
+            <div class="col-xs-8">
+                <p>张三&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;<span>15266921568</span>
+                </p>
+            </div>
+            <div class="col-xs-4">
+				<span class="pull-right" id="set_default" onclick="setDefault(this)">
+					默认地址
+				</span>
+            </div>
+            <div class="col-xs-12 padt">
+                <p>湖北省武汉市区 水果湖新区东安新居3栋四单元506室</p>
+            </div>
+            <div class="col-xs-12" id="edit">
+                <div class="anniu">
+                    <a class="pull-right"
+                       href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'address_edit'])); ?>">
+                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/edit.png")); ?>"
+                             width="15px"/>
+                        编辑
+                    </a>
+                    <a class="pull-right" onclick="delAddress(this)">
+                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/del.png")); ?>" width="15px"/>
+                        删除
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="row padtb borderb">
+            <div class="col-xs-8">
+                <p>张三&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;<span>15266921568</span>
+                </p>
+            </div>
+            <div class="col-xs-4" style="display: none;">
+				<span class="pull-right" id="set_dafault" onclick="setDefault(this)">
+					默认地址
+				</span>
+            </div>
+            <div class="col-xs-12 padt">
+                <p>湖北省武汉市区 水果湖新区东安新居3栋四单元506室</p>
+            </div>
+            <div class="col-xs-12" id="edit" style="display: none;">
+                <div class="anniu">
+                    <a class="pull-right">
+                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/edit.png")); ?>"
+                             width="15px"/>
+                        编辑
+                    </a>
+                    <a class="pull-right" onclick="delAddress(this)">
+                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/del.png")); ?>" width="15px"/>
+                        删除
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row padtb borderb">
+            <div class="col-xs-8">
+                <p>张三&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;<span>15266921568</span>
+                </p>
+            </div>
+            <div class="col-xs-4" style="display: none;">
+				<span class="pull-right" id="set_default" onclick="setDefault(this)">
+					默认地址
+				</span>
+            </div>
+            <div class="col-xs-12 padt">
+                <p>湖北省武汉市区 水果湖新区东安新居3栋四单元506室</p>
+            </div>
+            <div class="col-xs-12" id="edit" style="display: none;">
+                <div class="anniu">
+                    <a class="pull-right">
+                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/edit.png")); ?>"
+                             width="15px"/>
+                        编辑
+                    </a>
+                    <a class="pull-right" onclick="delAddress(this)">
+                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/del.png")); ?>" width="15px"/>
+                        删除
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="add_address">
+            <div class="col-sm-5">
+                <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'address_edit'])); ?>">
+                    <button type="submit" id="formSubmit" class="btn btn-primary"
+                            style="width: 100%" <?php /*onclick="addCart(this);"*/ ?>>添加收货地址
+                    </button>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('theme-css-address', "{$shop->dir}/css/address.css"); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('theme-js-address', "{$shop->dir}/js/address.js"); ?>
+

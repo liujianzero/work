@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="ban">
+        <div class="row">
+            <img src="<?php if(!empty($info['store_logo'])): ?><?php echo url($info['store_logo']); ?><?php else: ?><?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/personal/codeinfo.jpg')); ?><?php endif; ?>"
+                 class="center-block">
+            <p class="text-center">昵称：<strong><?php echo e($info['store_name']); ?></strong></p>
+            <p class="text-center">等级：星球之光</p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="ull">
+        <ul class="row">
+            <li class="col-xs-12 col-sm-12">
+                <a href="#">
+                    <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/personal/pic8.png')); ?>"
+                         class="logo"/>
+                    <span>申请成为分销商</span>
+                    <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/personal/arrow.png')); ?>"
+                         class="arrow pull-right"/>
+                </a>
+            </li>
+            <li class="col-xs-12 col-sm-12">
+                <a href="#">
+                    <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/personal/pic12.png')); ?>"
+                         class="logo"/>
+                    <span>全部订单</span>
+                    <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/personal/arrow.png')); ?>"
+                         class="arrow pull-right"/>
+                </a>
+            </li>
+            <li class="col-xs-12 col-sm-12">
+                <a href="#">
+                    <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/personal/pic9.png')); ?>"
+                         class="logo"/>
+                    <span>购物车</span>
+                    <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/personal/arrow.png')); ?>"
+                         class="arrow pull-right"/>
+                </a>
+            </li>
+            <li class="col-xs-12 col-sm-12">
+                <a href="#">
+                    <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/personal/pic10.png')); ?>"
+                         class="logo"/>
+                    <span>我的收藏</span>
+                    <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/personal/arrow.png')); ?>"
+                         class="arrow pull-right"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('mobile-css-personal', $info->module . '/' . $info->flag . '/mobile/css/personal.css'); ?>
+

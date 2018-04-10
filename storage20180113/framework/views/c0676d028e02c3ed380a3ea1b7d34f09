@@ -1,0 +1,229 @@
+<?php /*<!DOCTYPE html>*/ ?>
+<?php /*<html>*/ ?>
+<?php /*<head>*/ ?>
+    <?php /*<meta charset="UTF-8">*/ ?>
+    <?php /*<meta http-equiv="X-UA-Compatible" content="IE=edge">*/ ?>
+    <?php /*<meta name="viewport" content="width=device-width, initial-scale=1">*/ ?>
+    <?php /*<link rel="stylesheet" type="text/css" href="plugin/bootstrap.min.css"/>*/ ?>
+    <?php /*<link rel="stylesheet" href="css/order.css" />*/ ?>
+    <?php /*<title></title>*/ ?>
+<?php /*</head>*/ ?>
+<?php /*<body>*/ ?>
+<div class="head">
+    <div class="container-fluid">
+        <div class="row">
+            <ul>
+                <li><a class="active">全部</a></li>
+                <li><a>待付款</a></li>
+                <li><a>待发货</a></li>
+                <li><a>待收货</a></li>
+                <li><a>待评价</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="goods" data-num = "3">
+    <div class="container-fluid">
+        <div class="row borderb">
+            <div class="col-xs-4">
+                <p>日韩衣橱
+                    &nbsp;&nbsp;<span>></span>
+                </p>
+            </div>
+            <div class="col-xs-8">
+                <p class="pull-right">待收货</p>
+            </div>
+        </div>
+        <div class="row sec borderb">
+            <div class="col-xs-4">
+                <a href="<?php echo url($info->module . '/shop/dark/order_detail/' . $id); ?>">
+                    <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/order/tu.png')); ?>" class="img-responsive"/>
+                </a>
+            </div>
+            <div class="col-xs-5">
+                <p>秋冬低圆领中长款宽松套头打底毛衣</p>
+                <h5>白色 均码</h5>
+            </div>
+            <div class="col-xs-3 height">
+                <div class="center-vertical jiage">
+                    <h4 class=" pull-right">$69.00
+
+                    </h4>
+                    <br />
+                    <p class="pull-right ">x1</p>
+                </div>
+            </div>
+        </div>
+        <div class="row third">
+            <div class="col-xs-3 col-xs-offset-6 ">
+                <a href="logistics.html"><button class="btn btn-primary color pull-right">查看物流</button></a>
+            </div>
+            <div class="col-xs-3 ">
+                <button class="btn btn-primary pull-right">确认收货</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="goods" data-num = "1">
+    <div class="container-fluid">
+        <div class="row borderb">
+            <div class="col-xs-4">
+                <p>日韩衣橱
+                    &nbsp;&nbsp;<span>></span>
+                </p>
+            </div>
+            <div class="col-xs-8">
+                <p class="pull-right">待付款</p>
+            </div>
+        </div>
+        <div class="row sec borderb">
+            <div class="col-xs-4">
+                <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/order/tu.png')); ?>" class="img-responsive"/>
+            </div>
+            <div class="col-xs-5">
+                <p>秋冬低圆领中长款宽松套头打底毛衣</p>
+                <h5>白色 均码</h5>
+            </div>
+            <div class="col-xs-3 height">
+                <div class="center-vertical jiage">
+                    <h4 class=" pull-right">$69.00
+
+                    </h4>
+                    <br />
+                    <p class="pull-right ">x1</p>
+                </div>
+            </div>
+        </div>
+        <div class="row third">
+            <div class="col-xs-3 col-xs-offset-6 ">
+                <a href="logistics.html"><button class="btn btn-primary color pull-right">取消订单</button></a>
+            </div>
+            <div class="col-xs-3 ">
+                <button class="btn btn-primary pull-right width">代付款</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="goods" data-num = "2">
+    <div class="container-fluid">
+        <div class="row borderb">
+            <div class="col-xs-4">
+                <p>日韩衣橱
+                    &nbsp;&nbsp;<span>></span>
+                </p>
+            </div>
+            <div class="col-xs-8">
+                <p class="pull-right">待发货</p>
+            </div>
+        </div>
+        <div class="row sec borderb">
+            <div class="col-xs-4">
+                <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/order/tu.png')); ?>" class="img-responsive"/>
+            </div>
+            <div class="col-xs-5">
+                <p>秋冬低圆领中长款宽松套头打底毛衣</p>
+                <h5>白色 均码</h5>
+            </div>
+            <div class="col-xs-3 height">
+                <div class="center-vertical jiage">
+                    <h4 class=" pull-right">$69.00
+
+                    </h4>
+                    <br />
+                    <p class="pull-right ">x1</p>
+                </div>
+            </div>
+        </div>
+        <div class="row third">
+
+            <div class="col-xs-5 col-xs-offset-7">
+                <button class="btn btn-primary pull-right">提醒卖家发货</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="goods" data-num = "4">
+    <div class="container-fluid">
+        <div class="row borderb">
+            <div class="col-xs-4">
+                <p>日韩衣橱
+                    &nbsp;&nbsp;<span>></span>
+                </p>
+            </div>
+            <div class="col-xs-8">
+                <p class="pull-right">待评价</p>
+            </div>
+        </div>
+        <div class="row sec borderb">
+            <div class="col-xs-4">
+                <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/order/tu.png')); ?>" class="img-responsive"/>
+            </div>
+            <div class="col-xs-5">
+                <p>秋冬低圆领中长款宽松套头打底毛衣</p>
+                <h5>白色 均码</h5>
+            </div>
+            <div class="col-xs-3 height">
+                <div class="center-vertical jiage">
+                    <h4 class=" pull-right">$69.00
+
+                    </h4>
+                    <br />
+                    <p class="pull-right ">x1</p>
+                </div>
+            </div>
+        </div>
+        <div class="row third">
+
+            <div class="col-xs-3 col-xs-offset-9 ">
+                <a href="evaluate.html"><button class="btn btn-primary pull-right width">代评价</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="goods" data-num = "1">
+    <div class="container-fluid">
+        <div class="row borderb">
+            <div class="col-xs-4">
+                <p>日韩衣橱
+                    &nbsp;&nbsp;<span>></span>
+                </p>
+            </div>
+            <div class="col-xs-8">
+                <p class="pull-right">待付款</p>
+            </div>
+        </div>
+        <div class="row sec borderb">
+            <div class="col-xs-4">
+                <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/order/tu.png')); ?>" class="img-responsive"/>
+            </div>
+            <div class="col-xs-5">
+                <p>秋冬低圆领中长款宽松套头打底毛衣</p>
+                <h5>白色 均码</h5>
+            </div>
+            <div class="col-xs-3 height">
+                <div class="center-vertical jiage">
+                    <h4 class=" pull-right">$69.00
+
+                    </h4>
+                    <br />
+                    <p class="pull-right ">x1</p>
+                </div>
+            </div>
+        </div>
+        <div class="row third">
+            <div class="col-xs-3 col-xs-offset-6 ">
+                <a href="logistics.html"><button class="btn btn-primary color pull-right">取消订单</button></a>
+            </div>
+            <div class="col-xs-3 ">
+                <button class="btn btn-primary pull-right width">代付款</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('shop-css-order', $info->module . '/' . $info->flag . '/shop/css/dark/order.css'); ?>
+
+<?php /*</body>*/ ?>
+<?php /*<script src="plugin/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>*/ ?>
+<?php /*<script src="js/order.js" type="text/javascript" charset="utf-8"></script>*/ ?>
+<?php /*</html>*/ ?>

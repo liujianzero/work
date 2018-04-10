@@ -1,0 +1,38 @@
+<style>
+    #user .user .user-r{
+        height: auto;
+    }
+</style>
+
+<div class="container" style="width: 100%;background:#1c1c1e;">
+    <div class="menu clearfix">
+        <ul class="cation-menu clearfix">
+            <li class="<?php if(! isset($merge['type']) || (isset($merge['type']) && $merge['type'] == 0)): ?> active <?php endif; ?>"><a href="?type=0">全部</a></li>
+            <?php foreach($type as $v): ?>
+                <li class="<?php if(isset($merge['type']) && $merge['type'] == $v->id): ?> active <?php endif; ?>"><a href="?type=<?php echo e($v->id); ?>"><?php echo e($v->name); ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+        <div class="found">
+            <a href="<?php echo e(route('shop.type')); ?>">创建店铺</a>
+        </div>
+    </div>
+</div>
+<div class="container" style="width: 100%">
+    <div id="list" data-type="<?php echo e(isset($merge['type']) ? $merge['type'] : 0); ?>" class="row" style="margin-top: 15px;margin-bottom: 20px;">
+
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('task-css-iCheck-square', 'agent/plugin/iCheck/skins/square/square.css'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('task-js-iCheck', 'agent/plugin/iCheck/icheck.js'); ?>
+
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('plugin-layui', 'plugins/layui/css/layui.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('shop-list', 'css/myShop/store/shop.css'); ?>
+
+<?php echo Theme::asset()->container('specific-js')->usePath()->add('plugin-layui', 'plugins/layui/layui.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('shop-list', 'js/myShop/store/shop.js'); ?>
+

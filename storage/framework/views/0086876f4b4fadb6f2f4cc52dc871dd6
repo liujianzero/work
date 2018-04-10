@@ -1,0 +1,54 @@
+
+<section>
+
+<div id="changlle">
+    <div class="canvaszz"></div>
+    <canvas id="canvas" style="width:100%;height: 100%;"></canvas>
+    <div class="main cbody">
+        <ul>
+            <li>
+                <div class="main-t">
+                    <a href="/bre/challenge/race_hx">
+                        <img src="<?php echo Theme::asset()->url('/images/challenge/haixia1.png'); ?>"/>
+                    </a>
+                </div>
+                <div class="main-b clearfix">
+                    <div class="m-left">
+                        <p class="p1">海峡工业设计大赛</p>
+                        <p class="p2">活动时间：2017.09 —2017.11</p>
+                    </div>
+                    <span class="m-right colorY">进行中</span>
+                </div>
+            </li>
+            <li>
+                <div class="main-t">
+                    <img src="<?php echo Theme::asset()->url('/images/challenge/guanjie2.png'); ?>"/>
+                </div>
+                <div class="main-b clearfix">
+                    <div class="m-left">
+                        <p class="p1">冠捷工业设计大赛</p>
+                        <p class="p2">活动时间：2016.03 —2016.09</p>
+                    </div>
+                    <span class="m-right colorBlack">已结束</span>
+                </div>
+            </li>
+            <?php /*<li>*/ ?>
+                <?php /*<div class="main-t">*/ ?>
+                    <?php /*<p class="p1"></p>*/ ?>
+                    <?php /*<p class="p2"></p>*/ ?>
+                <?php /*</div>*/ ?>
+                <?php /*<div class="main-b clearfix">*/ ?>
+                <?php /*</div>*/ ?>
+            <?php /*</li>*/ ?>
+        </ul>
+    </div>
+</div>
+
+    <?php echo Theme::asset()->container('custom-css')->usepath()->add('cindex','css/challenge/cindex.css'); ?>
+
+    <?php echo Theme::asset()->container('custom-css')->usepath()->add('public','css/public.css'); ?>
+
+    <?php echo Theme::asset()->container('custom-js')->usepath()->add('bgp','js/challenge/bgp.js'); ?>
+
+
+</section>

@@ -1,0 +1,46 @@
+
+	
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 g-address col-left" style="text-align: center">
+                <div>
+                    <?php if(!empty(Theme::get('article_cate'))): ?>
+                        <?php foreach(Theme::get('article_cate') as $item): ?>
+                            <a target="_blank" href="/article/aboutUs/<?php echo $item['id']; ?>"><?php echo $item['cate_name']; ?></a>
+                            <span></span>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+                <div class="space-6"></div>
+                <p class="cor-gray87">公司名称：<?php echo Theme::get('site_config')['company_name']; ?> &nbsp;&nbsp;地址：<?php echo Theme::get('site_config')['company_address']; ?></p>
+                <p class="cor-gray87 kppw-tit">
+                    <?php /*<?php echo config('kppw.kppw_powered_by'); ?><?php echo config('kppw.kppw_version'); ?>*/ ?>
+                    <?php echo Theme::get('site_config')['copyright']; ?><?php echo Theme::get('site_config')['record_number']; ?>
+
+                </p>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b6191cc14dc2596c4b2f0c2226bbae99";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<?php /*<?php echo Theme::get('site_config')['statistic_code']; ?>*/ ?>
+<?php echo Theme::widget('popup')->render(); ?>
+
+<?php if(Theme::get('is_IM_open') == 1): ?>
+<?php echo Theme::widget('im',
+array('attention' => Theme::get('attention'),
+'ImIp' => Theme::get('basis_config')['IM_config']['IM_ip'],
+'ImPort' => Theme::get('basis_config')['IM_config']['IM_port']))->render(); ?>
+
+<?php endif; ?>

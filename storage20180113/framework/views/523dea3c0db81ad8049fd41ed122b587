@@ -1,0 +1,252 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+    <div class="app-container"><!--店铺-->
+        <!--主体内容开始-->
+        <div class="head-survey">
+            <nav class="navbar navbar-default marginb">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav qiehuan">
+                        <?php foreach($screen as $k => $v): ?>
+                            <li class="<?php if(isset($merge[$v['name']]) && ($merge[$v['name']] == $v['value'])): ?> active <?php elseif(! isset($merge[$v['name']]) && $k == 0): ?> active <?php endif; ?> hg">
+                                <a href="?<?php echo e($v['name']); ?>=<?php echo e($v['value']); ?>"><?php echo e($v['txt']); ?> <span class="badge"><?php echo e($v['count']); ?></span></a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="app-inner clearfix">
+            <div class="js-appinner ">
+                <!-- 上方按钮 -->
+                <div class="anniu">
+                    <?php if(Auth::check() && (Auth::user()->id == Session::get('agentAdmin')->pid)): ?>
+                        <button class="btn btn-danger" id="btn1" type="button" onclick="selectFolder()" style="margin-right: 10px;">发布商品</button>
+                    <?php endif; ?>
+                    <a href="<?php echo e(route(Theme::get('route_prefix') . '.goods.task.list')); ?>"><button class="btn btn-danger" id="btn1" type="button">任务列表</button></a>
+                    <form>
+                        <div class="dropdown mar">
+                            <div class="form-group" style="margin-top: 15px" data-toggle="tooltip" data-placement="top" title="每页显示一定条目的数据">
+                                <label for="perPage" class="sr-only">每页显示一定条目的数据</label>
+                                <select class="form-control" id="perPage" name="perPage">
+                                    <?php foreach($perPageList as $v): ?>
+                                        <option value="<?php echo e($v['value']); ?>" <?php if(isset($merge['perPage']) && $merge['perPage'] == $v['value']): ?> selected <?php endif; ?>><?php echo e($v['name']); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="dropdown mar">
+                            <div class="form-group" style="margin-top: 15px" data-toggle="tooltip" data-placement="top" title="请选择商品分组">
+                                <label for="goods_cat_id" class="sr-only">商品分组</label>
+                                <select class="form-control chosen-select" id="goods_cat_id" name="goods_cat_id" style="width: 162px;">
+                                    <option value="">全部分组</option>
+                                    <?php foreach($cat as $v): ?>
+                                        <option value="<?php echo e($v->id); ?>" <?php if(isset($merge['goods_cat_id']) && $merge['goods_cat_id'] == $v->id): ?> selected <?php endif; ?>><?php echo e($v->cat_name); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group goods-search" data-toggle="tooltip" data-placement="top" title="请输入商品名称">
+                            <span class="input-group-addon iconfont icon-search">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            <label for="title" class="sr-only">商品名称</label>
+                            <input class="form-control" id="title" type="text" name="title" value="<?php echo e(isset($merge['title']) ? $merge['title'] : ''); ?>" placeholder="请输入商品名称">
+                        </div>
+                        <div class="dropdown mar" style="margin-right: 5px;">
+                            <!-- Split button -->
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-info">搜索</button>
+                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li data-toggle="tooltip" data-placement="left" title="清空当前的搜索条件"><a href="<?php echo e(route(Route::currentRouteName())); ?>?screen=<?php echo e(isset($merge['screen']) ? $merge['screen'] : 'Y'); ?>"><i class="fa fa-ban"></i> 清空搜索</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li data-toggle="tooltip" data-placement="left" title="新建一个商品分组"><a href="javascript:void(0);" onclick="catCreate();"><i class="fa fa-plus"></i> 新建分组</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <input type="hidden" name="screen" value="<?php echo e(isset($merge['screen']) ? $merge['screen'] : 'Y'); ?>"/>
+                    </form>
+                </div>
+                <!-- /上方按钮 -->
+                <div class="biaoge zzz">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="kb fu"></th>
+                                <th>商品</th>
+                                <th>价格</th>
+                                <th>访问量</th>
+                                <th>库存</th>
+                                <th>创建时间</th>
+                                <th>更新时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $__empty_1 = true; foreach($list as $v): $__empty_1 = false; ?>
+                                <tr>
+                                    <td><input type="checkbox" class="kb zi" value="<?php echo e($v->id); ?>"></td>
+                                    <td>
+                                        <div class="media">
+                                            <div class="media-left ">
+                                                <a class="thumbnail goodsImg">
+                                                    <img src="<?php echo e((!empty($v->upload_cover_image) && file_exists($v->upload_cover_image) ? url($v->upload_cover_image) : (!empty($v->cover_img) && file_exists($v->cover_img) ? url($v->cover_img) : '/themes/default/assets/images/folder_no_cover.png') )); ?>" />
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <p><?php echo e($v->title); ?></p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>￥<?php echo e($v->price); ?></td>
+                                    <td><?php echo e($v->view_count); ?></td>
+                                    <td><?php echo e($v->goods_number); ?></td>
+                                    <td><?php echo e(date('Y-m-d H:i:s', $v->create_time)); ?></td>
+                                    <td><?php echo e(date('Y-m-d H:i:s', $v->update_time)); ?></td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" href="<?php echo e(route(Theme::get('route_prefix') . '.goods.edit', ['id' => $v->id])); ?>"><i class="fa fa-edit"></i> 编辑</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; if ($__empty_1): ?>
+                                <tr class="text-center">
+                                    <td colspan="8">没有找到匹配的记录</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation" class="text-right">
+                        <?php echo $list->appends($merge)->render(); ?>
+
+                    </nav>
+                    <div class="anniuBottom">
+                        <div class="but">
+                            <?php /* <a href="<?php echo e(route(Theme::get('route_prefix') . '.goods.distribution')); ?>" class="btn btn-default">分销商城</a> */ ?>
+                            <?php if(! isset($merge['screen']) || (isset($merge['screen']) && $merge['screen'] != 'N')): ?>
+                                <button class="btn btn-default goods-manage" data-url="/goods/batch/cat" data-type="type" disabled>改分组</button>
+                                <button class="btn btn-default goods-manage" data-url="/goods/batch/sale/off" data-type="sale" disabled>下架</button>
+                            <?php endif; ?>
+                            <button class="btn btn-default goods-manage" data-url="/goods/batch/back" data-type="back" disabled>交还设计师</button>
+                        </div>
+                        <div class="wenzi">
+                            <p>共<?php echo e($list->total()); ?>条，每页<?php echo e($perPage); ?>条</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--主体内容结束-->
+    </div>
+
+</div>
+
+<div id="cat-create" class="container">
+    <form class="form-horizontal" id="validateFrom">
+        <div class="form-group">
+            <label for="cat_name" class="col-sm-2 control-label"><span class="need">*</span>分组名称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="cat_name" name="cat_name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="parent_id" class="col-sm-2 control-label">父级分组</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="parent_id" name="parent_id">
+                    <option value="0">顶级分组</option>
+                    <?php foreach($cat as $v): ?>
+                        <option value="<?php echo e($v->id); ?>"><?php echo e($v->cat_name); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cat_alias_name" class="col-sm-2 control-label">分组别名</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="cat_alias_name" name="cat_alias_name">
+                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 建议为4个字以便更美观展示，分组别名比分组名称优先展示</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sort_order" class="col-sm-2 control-label">推荐排序</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="sort_order" name="sort_order" value="0">
+                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 越小越靠前</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success" id="formSubmit">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container" id="batch-cat">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="batch_cat_id" class="col-sm-3 control-label">转移至</label>
+            <div class="col-sm-9">
+                <select class="form-control" id="batch_cat_id" name="batch_cat_id">
+                    <?php foreach($cat as $v): ?>
+                        <option value="<?php echo e($v->id); ?>"><?php echo e($v->cat_name); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('goods-css-index', Theme::get('dir_prefix') . '/shop/css/index.css'); ?>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('goods-css-goods', Theme::get('dir_prefix') . '/goods/css/goods.css'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-iCheck-grey', Theme::get('module') . '/plugin/iCheck/skins/square/grey.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-iCheck', Theme::get('module') . '/plugin/iCheck/icheck.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-chosen.min', Theme::get('module') . '/plugin/chosen/chosen.min.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-correcting.chosen', Theme::get('module') . '/plugin/chosen/correcting.chosen.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-chosen.jquery', Theme::get('module') . '/plugin/chosen/chosen.jquery.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-jquery.validate', Theme::get('module') . '/plugin/bootstrap-validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-messages_zh', Theme::get('module') . '/plugin/bootstrap-validate/messages_zh.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('goods-js-goods', Theme::get('dir_prefix') . '/goods/js/goods.js'); ?>
+
+
+<?php if(Auth::check() && (Auth::user()->id == Session::get('agentAdmin')->pid)): ?>
+    <div class="container" id="folder">
+        <div class="row" id="folder-list">
+            <div class="col-md-2 col-sm-3 col-xs-4">
+                <div class="thumbnail">
+                    <a href="javascript:selectGoods(0);">
+                        <img src="<?php echo Theme::asset()->url('images/folder_no_cover.png'); ?>">
+                    </a>
+                    <div class="caption">
+                        <h3 data-toggle="tooltip" data-placement="top" title="默认文件夹">默认文件夹</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="models">
+        <div class="row" id="models-list">
+
+        </div>
+    </div>
+
+    <?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-layui', Theme::get('module') . '/plugin/layui/css/layui.css'); ?>
+
+    <?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-layui', Theme::get('module') . '/plugin/layui/layui.js'); ?>
+
+    <?php echo Theme::asset()->container('common-js')->usePath()->add('goods-js-auth', Theme::get('dir_prefix') . '/goods/js/auth.js'); ?>
+
+<?php endif; ?>

@@ -1,0 +1,424 @@
+<section>
+<input type="hidden" class="login" value="<?php echo e($login); ?>">
+<div id="container">
+	<!--banner-->
+	<div id="banner">
+		<div class="texts">
+			<span>海峡</span>工业设计大赛
+		</div>
+	</div>
+	<!--banner结束-->
+
+	<!--选项部分-->
+	<div id="menu">
+		<div class="submenu cbody clearfix">
+			<ul class="clearfix">
+				<li><a href="javascript:void(0)" class="hov">活动介绍</a></li>
+				<li class="getMatch"><a href="javascript:void(0)">作品展示</a></li>
+				<li class="Video"><a href="javascript:void(0)">教学视频</a></li>
+				<?php /*<li><a href="javascript:void(0)">获奖作品</a></li>*/ ?>
+				<?php /*<li><a href="<?php echo e(url('bre/down')); ?>">素材下载</a></li>*/ ?>
+			</ul>
+			<div class="submenu-r">
+				<a href="javascript:void(0)">我要参赛</a>
+			</div>
+		</div>
+	</div>
+	<!--内容部分-->
+	<div id="main">
+		<div class="mains" style="display: block;">
+			<div class="main1 cbody">
+				<h3><span>活动介绍</span></h3>
+				<h4></h4>
+				<div class="text">
+					<p style="text-indent: 20px;">为促进厦门制造向厦门创新升级，建设“工业设计之城”，深化海峡两岸工业设计产业交流合作，厦门市人民政府与福建省经济和信息化委员会、中国工业报社、台湾优良设计协会决定在成功举办两届大奖赛的基础上，继续举办2017年海峡工业设计大奖赛。</p>
+				</div>
+				<h5></h5>
+				<h3><span>活动时间</span></h3>
+				<ul class="ul1 clearfix">
+					<li>
+						<p>比赛征集时期</p>
+						<span>2017年5月</span>
+					</li>
+					<li>
+						<p>公布结果日</p>
+						<span>2017年10月</span>
+					</li>
+				</ul>
+				<div class="bgp"></div>
+				<h3><span>奖项设置</span></h3>
+			</div>
+			<!--表格部分-->
+			<div class="tab clearfix">
+				<div class="tab-l">
+					<h1>海西工业设计奖</h1>
+					<table class="tab1">
+						<tbody>
+						<tr class="tr1">
+							<td>奖项设置</td>
+							<td>奖项类别</td>
+							<td>名额</td>
+							<td>奖金（万元）</td>
+							<td>备注</td>
+						</tr>
+
+						<tr>
+							<td rowspan="2">金奖</td>
+							<td>产品设计金奖</td>
+							<td>8</td>
+							<td>10</td>
+							<td>证书</td>
+						</tr>
+						<tr>
+							<td>作品概念奖</td>
+							<td>2</td>
+							<td>1</td>
+							<td>证书</td>
+						</tr>
+						<tr>
+							<td>优秀奖</td>
+							<td>优秀奖</td>
+							<td>30</td>
+							<td>0.5</td>
+							<td>证书</td>
+						</tr>
+						<tr>
+							<td>网络人气奖</td>
+							<td>网络人气奖</td>
+							<td>5</td>
+							<td>0.5</td>
+							<td>证书</td>
+						</tr>
+
+						<tr>
+							<td>优秀组织奖</td>
+							<td>优秀组织奖</td>
+							<td>5</td>
+							<td>1</td>
+							<td>证书</td>
+						</tr>
+						<tr>
+							<td>参赛</td>
+							<td colspan="4">详见大赛网址(http://www.11dom.com/)</td>
+						</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			<!--表格结束-->
+			<div class="main1">
+				<h3><span>作品要求</span></h3>
+				<h4></h4>
+				<div class="text">
+					<p>1、作品应为原创作品，不得侵犯他人的知识产权。跟已发表的作品相同或近似的、曾经在其他工业设计大赛上获奖的作品不得参赛。</p>
+					<p style="text-indent: 20px;"> 如因参赛者的剽窃作品、窃取商业秘密等行为所引起的法律责任由参赛者自负，且大赛组委会有权取消其参赛及获奖资格；</p>
+					<p>
+						2、申报范围：智能装备、电子信息、家居用品、运动休闲用品、文化旅游产品五大类。</p>
+					<p>3、作品应充分考虑市场价值和可实现性；</p>
+					<p>4、围绕上述五类产品，设计符合经济社会发展和消费结构升级要求、具有前瞻性的概念产品。</p>
+					<p>5、参赛作品在获奖后，如有发现并经核实存在知识产权侵权行为，组委会将取消其获奖资格，并收回奖金证书等。</p>
+				</div>
+				<h5></h5>
+				<div class="sour">
+					<a href="<?php echo e(url('bre/down')); ?>">素材下载</a>
+				</div>
+				<h3><span>组织机构</span></h3>
+				<h4></h4>
+				<div class="text">
+					<p>主办单位：厦门市人民政府、福建省经济和信息化委员会、中国工业报社、台湾优良设计协会</p>
+					<p>承办单位：厦门市经济和信息化局、厦门市集美区人民政府</p>
+					<p>支持单位：中国工业报社、福建省工业设计协会、台湾设计学会、清华大学美术学院、江南大学、西北工业大学、闽南师范大学</p>
+					<p>执行单位：厦门市工业设计协会、厦门市天下集美文广传媒有限公司、厦门大千振宇集团有限公司、厦门海峡工业设计促进中心</p>
+					<p>协办单位：厦门大学、福州大学、集美大学、厦门理工学院</p>
+				</div>
+				<h5></h5>
+				<h3><span>评审标准</span></h3>
+				<h4></h4>
+				<div class="text">
+					<p>1、创新性：设计理念独特新颖，创新点突出，解决生活中的问题，带来新的产业机会;</p>
+					<p>2、实用性：性能稳定、技术先进、功能合理，满足使用、维护及安全方面的要求;</p>
+					<p>3、环保性：符合可持续发展要求，在制造、流通、使用、回收全过程中注重节能、环保;</p>
+					<p>4、经济性：工业设计因素对提高产品附加值和品牌价值贡献较大，有利于促进产业升级;</p>
+					<p>5、商业性：响应国家“大众创业、万众创新”号召，具有较强商业转化价值的创新性产品。</p>
+				</div>
+				<h5></h5>
+			</div>
+			<div class="canvaszz"></div>
+			<canvas id="canvas" style="width:100%;height: 100%;"></canvas>
+		</div>
+
+		<div class="mains">
+			<?php if($content == null): ?>
+				<div class="cbody works">
+					<ul class="pc hidden-sm hidden-xs clearfix">
+						<div class="col-md-12  close-space-tip center">
+							<img src="/themes/default/assets/images/close_space_tips.png"style="padding: 20px">
+							<p style="font-size: 20px;font-weight: 600;color: white;padding: 20px">活动还未开始，敬请期待！</p>
+						</div>
+					</ul>
+				</div>
+			<?php else: ?>
+				<div class="cbody works">
+					<ul class="pc hidden-sm hidden-xs clearfix">
+						<?php foreach($content as $k => $v): ?>
+						<li>
+							<span class="idtip">ID：<?php echo e($v['id']); ?></span>
+							<div class="pic">
+								<a href="/view-<?php echo e($v['id']); ?>">
+									<img src="/<?php echo e($v['cover_img']); ?>"/>
+									<div class="">
+									</div>
+								</a>
+							</div>
+							<div class="work-info">
+								<dl class="clearfix">
+									<dt><a href="/zone/models/<?php echo e($v['uid']); ?>/0" class="ace"><img src="<?php if(!empty($v['avatar'])): ?> <?php echo url($v['avatar']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?> <?php endif; ?>"/></a></dt>
+									<dd>
+										<h5>
+											<div class="username">
+												<a href="/view-<?php echo e($v['id']); ?>"  style="color:#908f8f;"  class="works"><?php echo e($v['title']); ?></a>
+											</div>
+											<div class="sign">
+												<span style="color: #555;">票数：</span>
+												<span style="color: red;font-size: 15px;"><?php echo e($num[$k]['vote_num']); ?></span>
+												<span style="color: red;font-size: 15px;">投一票</span>
+											</div>
+										</h5>
+										<p><?php if($v['nickname']): ?>
+												<a  style="color:#908f8f;" class="name" href="/zone/models/<?php echo e($v['uid']); ?>/0"><?php echo $v['nickname']; ?></a>
+											<?php else: ?>
+												未命名
+											<?php endif; ?></p>
+									</dd>
+								</dl>
+							</div>
+						</li>
+						<?php endforeach; ?>
+					</ul>
+					<ul class="mobile hidden-md hidden-lg clearfix">
+						<?php foreach($content as $k => $v): ?>
+						<li>
+							<span class="idtip">ID：<?php echo e($v['id']); ?></span>
+							<div class="pic">
+								<a href="/view-<?php echo e($v['id']); ?>">
+									<img src="/<?php echo e($v['cover_img']); ?>"/>
+								</a>
+							</div>
+							<div class="work-info">
+								<dl class="clearfix">
+									<dt><a href="/zone/models/<?php echo e($v['uid']); ?>/0" class="ace"><img src="<?php if(!empty($v['avatar'])): ?> <?php echo url($v['avatar']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?> <?php endif; ?>"/></a></dt>
+									<dd>
+										<h5>
+											<div class="username">
+												<a href="/view-<?php echo e($v['id']); ?>"  style="color:#908f8f;"  class="works"><?php echo e($v['title']); ?></a>
+											</div>
+											<div class="sign">
+												<span style="color: #555;">票数：</span>
+												<span style="color: red;font-size: 15px;"><?php echo e($num[$k]['vote_num']); ?></span>
+												<span style="color: red;font-size: 15px;">投一票</span>
+											</div>
+										</h5>
+										<p><?php if($v['nickname']): ?>
+												<a  style="color:#908f8f;" class="name" href="/zone/models/<?php echo e($v['uid']); ?>/0"><?php echo $v['nickname']; ?></a>
+											<?php else: ?>
+												未命名
+											<?php endif; ?></p>
+									</dd>
+								</dl>
+							</div>
+						</li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+				<?php endif; ?>
+		</div>
+
+		<div class="mains">
+			<div class="cbody works">
+				<ul class="pc hidden-sm hidden-xs clearfix">
+					<li>
+						<div class="pic">
+							<a href="/bre/challenge/case/1">
+								<img src="<?php echo Theme::asset()->url('images/challenge/proe.jpg'); ?>"/>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="pic">
+							<a href="/bre/challenge/case/2">
+								<img src="<?php echo Theme::asset()->url('images/challenge/zaowu.jpg'); ?>"/>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="pic">
+							<a href="/bre/challenge/case/3">
+								<img src="<?php echo Theme::asset()->url('images/challenge/jianmian.jpg'); ?>"/>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<?php /*<div class="mains">
+			<div class="winning">
+				<div class="win-m">
+					<p>各位获奖设计师：</p>
+					<p>您好！</p>
+					<p>获奖通知将通过站内私信方式发送至获奖者私信。请确保提供真实有效的联系方式（包括姓名，QQ，邮箱，电话及有效收货地址等）。若参加者在收到私信 5 个工作日内未对获奖通知做回应，则视为放弃奖项。</p>
+					<p>本次比赛采用官方评审+特邀评审结合的综合评审方式。奖项公示如下：</p>
+				</div>
+				<div class="win-photo clearfix">
+					<h3>金奖</h3>
+					<div class="win-user">
+						<a href="javascript:void(0);">爱上一只兔子</a>
+					</div>
+					<a href="javascript:void(0);" class="box"><img src="<?php echo Theme::asset()->url('images/challenge/moren.jpg'); ?>" alt="dayu"/></a>
+				</div>
+
+				<div class="win-photo clearfix">
+					<h3>银奖</h3>
+					<a href="javascript:void(0);" class="box">
+						<span class="img1"><img src="<?php echo Theme::asset()->url('images/challenge/moren.jpg'); ?>"/></span>
+						<em>作者：Nightwish</em>
+					</a>
+					<a href="javascript:void(0);" class="box">
+						<span class="img2"><img src="<?php echo Theme::asset()->url('images/challenge/moren.jpg'); ?>"/></span>
+						<em>作者：WGSJLLG</em>
+					</a>
+				</div>
+				<div class="win-photo clearfix">
+					<h3>铜奖</h3>
+					<a href="javascript:void(0);" class="box">
+						<span class="img3"><img src="<?php echo Theme::asset()->url('images/challenge/moren.jpg'); ?>"/></span>
+						<em>作者：LGD</em>
+					</a>
+					<a href="javascript:void(0);" class="box">
+						<span class="img3"><img src="<?php echo Theme::asset()->url('images/challenge/moren.jpg'); ?>"/></span>
+						<em>作者：SktT薇恩</em>
+					</a>
+				</div>
+				<div class="win-photo pc hidden-sm hidden-xs clearfix">
+					<h3>优秀奖</h3>
+					<?php for($i = 0; $i < 10; $i++): ?>
+					<a href="javascript:void(0);" class="box">
+						<span class="img5"><img src="<?php echo Theme::asset()->url('images/challenge/moren.jpg'); ?>"/></span>
+						<em>ainey-晴天</em>
+					</a>
+					<?php endfor; ?>
+				</div>
+			</div>
+		</div>*/ ?>
+
+		<?php /*素材下载*/ ?>
+		<?php /*<div class="mains">
+			<div class="cbody suchai">
+				<ul class="pc hidden-sm hidden-xs">
+					<li></li>
+				</ul>
+			</div>
+		</div>*/ ?>
+	</div>
+</div>
+
+	<div class="warp">
+		<div class="popup">
+			<form action="" method="post" onkeydown="if(event.keyCode == 13) return false;">
+			<span class="img" id="close"><img src="<?php echo Theme::asset()->url('images/click.png'); ?>"/></span>
+			<label>参赛地址：<input type="text" name="address" class="name cs_address" placeholder="请输入参赛地址"/></label>
+			<span class="promt">
+				提示：<i>请上传本站网址，且必须是本人作品！</i>
+			</span>
+			<input type="button" value="提交" class="btn1 address_btn" id=""/>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="/E2.0/js/libs/jquery-2.1.1.js"></script>
+	<script src="/themes/default/assets/js/layer/layer.js"></script>
+	<script src="/themes/default/assets/js/models/jquery-2.1.4.js"></script>
+
+		<script type="text/javascript">
+			var oMenu = document.getElementById("menu"),
+				oBtn = document.querySelector(".submenu-r a");
+			var oClose = document.getElementById("close");
+			var oPopup = document.querySelector(".warp");
+			var oMain = document.getElementById("main"),
+					aLi = oMenu.querySelectorAll(".submenu ul li a"),
+					aMains = oMain.querySelectorAll(".mains"),
+					length = aLi.length,
+					index = 0;
+			oBtn.onclick = function(){
+				oPopup.style.display = "block";
+			};
+			oClose.onclick = function(){
+				oPopup.style.display = "none";
+			};
+
+			for (var i = 0; i < length; i++) {
+				aLi[i].goudan = i;
+				aLi[i].onclick = function(){
+					aLi[index].className ="";
+					aMains[index].style.display ="none";
+					index = this.goudan;
+					aLi[index].className ="hov";
+					aMains[index].style.display ="block";
+//				for (var j = 0; j < length; j++) {
+//					aLi[j].className = "";
+//				}
+//				aLi[this.goudan].className = "hov";
+				}
+			}
+
+            //参赛作品提交
+			$(".address_btn").click(function(){
+                var login =  $('.login').val();
+                if(login == 0){
+                    layer.msg('请先登录');
+                    window.location.href = "<?php echo e(url('/login')); ?>";
+                }else{
+                    var address = $('.cs_address').val();
+                    if(address){
+                        if (address.match(/^(http[s]?|ftp):\/\/[w{3}.zwuvr.com\/view-]+[0-9]{0,4}$/i) == null){
+                            layer.alert('地址格式必须为http://www.zwuvr.com/view-123的官网网址')
+                        }else{
+							$.ajax({
+								type : 'post',
+								headers : {'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')},
+								url : '/bre/match',
+								data : {
+									address : address
+								},
+								dataType : 'json',
+								success : function(data) {
+									if (data.result) {
+										$('.warp').css({display:'none'});
+//									alert('成功');
+										layer.msg(data.message);
+									} else {
+//									alert('失败');
+										$('.warp').css({display:'none'});
+										layer.msg(data.message);
+//									layer.close(index);
+									}
+								}
+							});
+                        }
+                    }else{
+                        layer.msg('参赛地址不可以为空');
+                    }
+				}
+			});
+		</script>
+
+
+<?php echo Theme::asset()->container('custom-css')->usepath()->add('desgin','css/challenge/desgin.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usepath()->add('public','css/public.css'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('bgp','js/challenge/bgp.js'); ?>
+
+<?php /*<?php echo Theme::asset()->container('custom-js')->usepath()->add('show','js/challenge/show.js'); ?>*/ ?>
+</section>

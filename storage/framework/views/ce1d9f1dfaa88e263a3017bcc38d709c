@@ -1,0 +1,268 @@
+<?php /*分类*/ ?>
+<div id="nav">
+	<ul class="cbody clearfix hidden-xs hidden-sm">
+		<li class="des-li1"><a href="/models?category=170" target="_blank">电商展示</a></li>
+		<li class="des-li2"><a href="/models?category=169" target="_blank">建筑设计</a></li>
+		<li class="des-li3"><a href="/models?category=245" target="_blank">游戏动漫</a></li>
+		<li class="des-li4"><a href="/models?category=246" target="_blank">工业设计</a></li>
+		<li class="des-li5"><a href="/models?category=247" target="_blank">旅游拍摄</a></li>
+		<li class="des-li6"><a href="#" target="_blank">原画设计</a></li>
+	</ul>
+</div>
+<div class="space-10"></div>
+<div class="space-10"></div>
+<div class="space-10"></div>
+<div class="space-10"></div>
+<?php /*<div class="space-10"></div>*/ ?>
+<!-- 精品推荐 -->
+<div class="cbody cTitle">
+	<h3 class="h3"><i class="rh3"></i>精品推荐</h3>
+	<span>已累计推荐 3528 件作品</span>
+</div>
+<div id="rModel" class="cbody model">
+	<?php /*电脑端*/ ?>
+	<div class="pc hidden-xs hidden-sm">
+		<ul class="clearfix" >
+			<?php if($modelsIndex): ?>
+				<?php foreach($modelsIndex as $k1 => $v1): ?>
+					<li>
+						<a  href="/view-<?php echo e($v1['id']); ?>" target="_blank" class="cover">
+							<img src="<?php if(!empty($v1['upload_cover_image'])): ?> <?php echo url($v1['upload_cover_image']); ?> <?php else: ?> <?php echo url($v1['cover_img']); ?> <?php endif; ?>" alt="">
+						</a>
+						<div class="info">
+							<dl class="clearfix">
+								<dt><a href="/zone/models/<?php echo e($v1['uid']); ?>/0" target="_blank"><img src="<?php if(!empty($v1['avatar'])): ?> <?php echo url($v1['avatar']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?> <?php endif; ?>"/></a></dt>
+								<dd>
+									<h4><?php echo e(mb_strimwidth($v1['title'],0,16,'..')); ?></h4>
+									<span><?php echo e(mb_strimwidth($v1['nickname'],0,12,'..')); ?>
+
+										<?php if($v1['user_type'] ==1 || $v1['user_type'] ==2 ): ?>
+											<i></i>
+										<?php elseif($v1['user_type'] ==3 || $v1['user_type'] ==4 ): ?>
+											<span></span>
+										<?php endif; ?>
+									</span>
+								</dd>
+							</dl>
+						</div>
+					</li>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</ul>
+	</div>
+	<div  class="mobile hidden-lg hidden-md">
+		<ul class="clearfix" >
+			<?php if($modelsIndex): ?>
+				<?php foreach($modelsIndex as $k1 => $v1): ?>
+					<li>
+						<a  href="/view-<?php echo e($v1['id']); ?>" target="_blank" class="cover">
+							<img src="<?php if(!empty($v1['upload_cover_image'])): ?> <?php echo url($v1['upload_cover_image']); ?> <?php else: ?> <?php echo url($v1['cover_img']); ?> <?php endif; ?>" alt="">
+						</a>
+						<div class="info">
+							<dl class="clearfix">
+								<dt><a href="/zone/models/<?php echo e($v1['uid']); ?>/0" target="_blank"><img src="<?php if(!empty($v1['avatar'])): ?> <?php echo url($v1['avatar']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?> <?php endif; ?>"/></a></dt>
+								<dd>
+									<h4><?php echo e(mb_strimwidth($v1['title'],0,16,'..')); ?></h4>
+									<span><?php echo e(mb_strimwidth($v1['nickname'],0,12,'..')); ?>
+
+										<?php if($v1['user_type'] ==1 || $v1['user_type'] ==2 ): ?>
+											<i></i>
+										<?php elseif($v1['user_type'] ==3 || $v1['user_type'] ==4 ): ?>
+											<span></span>
+										<?php endif; ?>
+									</span>
+								</dd>
+							</dl>
+						</div>
+					</li>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</ul>
+	</div>
+</div>
+
+<div class="space-10"></div>
+<div class="space-10"></div>
+
+<!-- 最新发现 -->
+<div class="cbody cTitle">
+	<h3 class="h3"><i class="zh3"></i>最新发现</h3>
+	<span>已累计推荐 3528 件作品</span>
+</div>
+
+<div id="zModel" class="cbody model">
+	<div class="pc hidden-sm hidden-xs">
+		<ul class="clearfix ">
+			<?php if($models): ?>
+				<?php foreach($models as $k4 => $v4): ?>
+					<li>
+						<a href="/view-<?php echo e($v4['id']); ?>" class="cover"><img src="<?php if(!empty($v4['upload_cover_image'])): ?> <?php echo url($v4['upload_cover_image']); ?> <?php else: ?> <?php echo url($v4['cover_img']); ?> <?php endif; ?>" alt="First slide"></a>
+						<?php if($v4['is_goods']  == 1 ): ?>
+							<?php if($v4['transaction_mode']  == 1 ): ?>
+								<img class="img1" src="<?php echo Theme::asset()->url('images/myShop/goods/mode1.png'); ?>" style="position: absolute; top: 0; width: 80px; height: 79px;"  />
+							<?php elseif($v4['transaction_mode']  == 2 ): ?>
+								<img class="img1" src="<?php echo Theme::asset()->url('images/myShop/goods/mode2.png'); ?>" style="position: absolute; top: 0; width: 80px; height: 79px;"  />
+							<?php elseif($v4['transaction_mode']  == 3 ): ?>
+								<img class="img1" src="<?php echo Theme::asset()->url('images/myShop/goods/mode3.png'); ?>" style="position: absolute; top: 0; width: 80px; height: 79px;"  />
+							<?php elseif($v4['transaction_mode']  == 4 ): ?>
+								<img class="img1" src="<?php echo Theme::asset()->url('images/myShop/goods/mode4.png'); ?>" style="position: absolute; top: 0; width: 80px; height: 79px;"  />
+							<?php endif; ?>
+						<?php endif; ?>
+						<div class="info">
+							<dl class="clearfix">
+								<dt><a href="/zone/models/<?php echo e($v4['uid']); ?>/0" target="_blank"><img src="<?php if(!empty($v4['avatar'])): ?> <?php echo url($v4['avatar']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?> <?php endif; ?>"/></a></dt>
+								<dd>
+									<h4><?php echo e(mb_strimwidth($v4['title'],0,16,'..')); ?></h4>
+									<span class="author_title"><?php echo e(mb_strimwidth($v4['nickname'],0,12,'..')); ?>
+
+										<?php if($v4['user_type'] ==1 || $v4['user_type'] ==2 ): ?>
+											<i></i>
+										<?php elseif($v4['user_type'] ==3 || $v4['user_type'] ==4 ): ?>
+											<span></span>
+										<?php endif; ?>
+									</span>
+									<?php if($v4['is_goods']  == 1 ): ?>
+										<?php if($v4['price'] == 0.00 ): ?>
+											<span class="price">免费</span>
+										<?php else: ?>
+											<span class="price_two"><?php echo $v4['price']; ?>元</span>
+										<?php endif; ?>
+									<?php endif; ?>
+								</dd>
+							</dl>
+						</div>
+					</li>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</ul>
+	</div>
+	<div class="mobile hidden-md hidden-lg">
+		<ul class="clearfix ">
+			<?php if($models): ?>
+				<?php foreach($models as $k4 => $v4): ?>
+					<li>
+						<a href="/view-<?php echo e($v4['id']); ?>" class="cover"><img src="<?php if(!empty($v4['upload_cover_image'])): ?> <?php echo url($v4['upload_cover_image']); ?> <?php else: ?> <?php echo url($v4['cover_img']); ?> <?php endif; ?>" alt="First slide"></a>
+						<div class="info">
+							<dl class="clearfix">
+								<dt><a href="/zone/models/<?php echo e($v4['uid']); ?>/0" target="_blank"><img src="<?php if(!empty($v4['avatar'])): ?> <?php echo url($v4['avatar']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?> <?php endif; ?>"/></a></dt>
+								<dd>
+									<h4><?php echo e(mb_strimwidth($v4['title'],0,16,'..')); ?></h4>
+									<span class="author_title"><?php echo e(mb_strimwidth($v4['nickname'],0,12,'..')); ?>
+
+										<?php if($v4['user_type'] ==1 || $v4['user_type'] ==2 ): ?>
+											<i></i>
+										<?php elseif($v4['user_type'] ==3 || $v4['user_type'] ==4 ): ?>
+											<span></span>
+										<?php endif; ?>
+									</span>
+								</dd>
+							</dl>
+						</div>
+					</li>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</ul>
+
+	</div>
+</div>
+
+<div class="space-10"></div>
+<div class="space-10"></div>
+<!-- 装备start -->
+<div class="cbody cTitle hidden-sm hidden-xs">
+	<h3 class="h3"><i class="eqh3"></i>配套设备</h3>
+</div>
+<div class="space-10"></div>
+<div class="space-10"></div>
+<div id="equipment" class="cbody hidden-xs hidden-sm">
+	<div  class="tb">
+		<ul class="clearfix">
+			<li>
+				<a href="http://www.mi.com/mj-panorama-camera/" target="_blank"><img src="<?php echo Theme::asset()->url('images/new5.png'); ?>"/></a>
+				<p>穿越时空看看似曾相识的故事  小米￥1699</p>
+			</li>
+			<li>
+				<a href="https://store.dji.com/cn/product/mavic-pro" target="_blank"><img src="<?php echo Theme::asset()->url('images/new6.png'); ?>"/></a>
+				<p>唤醒你对记忆的渴望  大疆￥6599</p>
+			</li>
+			<li>
+				<a href="http://mall.dpvr.cn/index.php?route=product/product&path=62&product_id=75" target="_blank"><img src="<?php echo Theme::asset()->url('images/new7.png'); ?>"/></a>
+				<p>主要看体验 彼此有需求  大鹏￥3299</p>
+			</li>
+			<li>
+				<a href="javascript:;"><img src="<?php echo Theme::asset()->url('images/new8.png'); ?>"/></a>
+				<p>虚拟的世界 虚拟的你  何为￥12388</p>
+			</li>
+			<li>
+				<a href="http://www.mmsonline.com.cn/creaform/handyscan-300-700-3d-laser-scanner.shtml " target="_blank"><img src="<?php echo Theme::asset()->url('images/new9.png'); ?>"/></a>
+				<p>一物在手 世界在手  形创￥198888</p>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- 装备end -->
+	
+<!-- 合作伙伴start -->
+<div class="space-10"></div>
+<div class="space-10"></div>
+<div class="cbody cTitle hidden-sm hidden-xs">
+	<h3 class="h3"><i class="ph3"></i>合作伙伴</h3>
+</div>
+<div class="space-10"></div>
+<div class="space-10"></div>
+<div id="partner" class=" cbody hidden-sm hidden-xs">
+	<ul class="clearfix">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+	
+<!-- 合作伙伴end -->	
+			
+<div class="col-sm-12 col-left col-right">
+	<div class="space-10"></div>
+	<!--广告位-->
+	<?php if(count($ad)): ?>
+	<div class="for-advertise">
+		<a target="_blank" href="<?php echo e(url($ad[0]['ad_url'])); ?>"><img
+			src="<?php echo e(url($ad[0]['ad_file'])); ?>" alt=""></a>
+	</div>
+	<?php endif; ?>
+	<div class="space-10"></div>
+</div>
+
+<?php echo Theme::asset()->container('custom-css')->usepath()->add('index','css/index.css'); ?> <?php echo Theme::asset()->container('specific-js')->usepath()->add('SuperSlide','plugins/jquery/superSlide/jquery.SuperSlide.2.1.1.js'); ?> <?php echo Theme::asset()->container('custom-js')->usepath()->add('homepage','js/doc/homepage.js'); ?> <?php echo Theme::asset()->container('specific-js')->usepath()->add('adaptive','plugins/jquery/adaptive-backgrounds/jquery.adaptive-backgrounds.js'); ?> <?php echo Theme::asset()->container('custom-css')->usepath()->add('style','css/style.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usepath()->add('global','css/global.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usepath()->add('public','css/public.css'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('mains','js/mains.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('nest','js/nest.min.js'); ?>
+
+
+
+

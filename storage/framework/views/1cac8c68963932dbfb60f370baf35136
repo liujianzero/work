@@ -1,0 +1,26 @@
+<div id="app-first-sidebar" class=" col-lg-1 col-md-2 col-xs-1">
+    <div class="transform">
+        <div class="team-logo-wrap">
+        </div>
+        <nav>
+            <ul class="clearfix">
+                <?php foreach(Theme::get('menu') as $v): ?>
+                    <li class="<?php if(Theme::get('menu_active') == $v['active']): ?> active <?php endif; ?>">
+                        <a href="<?php echo e(route($v['href'])); ?>" >
+                            <i class="iconfont icon-<?php echo e($v['icon']); ?>"></i>
+                            <?php echo e($v['name']); ?>
+
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </nav>
+    </div>
+    <div class="signout">
+        <?php if(Auth::check() && (Auth::user()->id == Session::get('agentAdmin')->pid)): ?>
+            <a href="<?php echo e(route('shop.list')); ?>">切换店铺</a>
+        <?php else: ?>
+            <a href="<?php echo e(route(Theme::get('module') . '.admin.logout')); ?>">退出店铺</a>
+        <?php endif; ?>
+    </div>
+</div>

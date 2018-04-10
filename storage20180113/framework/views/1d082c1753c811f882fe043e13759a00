@@ -1,0 +1,199 @@
+<div id="background">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="head">
+                <iframe src="http://www.11dom.com/embedView-1292"></iframe>
+                <?php /*<img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/pic1.png')); ?>"*/ ?>
+                <?php /*class="center-block">*/ ?>
+            </div>
+        </div>
+    </div>
+    <!--顶部导航-->
+    <div class="container-fluid">
+        <div class="nav">
+            <div class="row">
+                <ul class="nav <?php /*nav-justified*/ ?>" id="navv">
+                    <li class="col-xs-3">
+                        <a href="javascript:void(0)" id="noth">
+                            <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/pic2.png')); ?>"
+                                 class="center-block"/>
+                            <p class="text-center">T恤</p>
+                        </a>
+                    </li>
+                    <li class="col-xs-3">
+                        <a href="javascript:void(0)" id="noth">
+                            <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/pic3.png')); ?>"
+                                 class="center-block"/>
+                            <p class="text-center">外套</p>
+                        </a>
+                    </li>
+                    <li class="col-xs-3">
+                        <a href="javascript:void(0)" id="noth">
+                            <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/pic5.png')); ?>"
+                                 class="center-block"/>
+                            <p class="text-center">鞋子</p>
+                        </a>
+                    </li>
+                    <li class="col-xs-3">
+                        <a href="javascript:void(0)" id="noth">
+                            <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/pic4.png')); ?>"
+                                 class="center-block"/>
+                            <p class="text-center">裤子</p>
+                        </a>
+                    </li>
+                    <?php /*<li class="col-xs-3">*/ ?>
+                    <?php /*<a href="#" id="noth">*/ ?>
+                    <?php /*<img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/pic7.png')); ?>"*/ ?>
+                    <?php /*class="center-block"/>*/ ?>
+                    <?php /*<p class="text-cener">帽子</p>*/ ?>
+                    <?php /*</a>*/ ?>
+                    <?php /*</li>*/ ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--商品列表-->
+    <div class="container-fluid">
+        <div class="img">
+            <ul class="row">
+                <?php if($models && $count != 0): ?>
+                    <?php foreach($models as $v): ?>
+                        <li class="col-xs-6 col-sm-6">
+                            <a href="<?php echo url($info->module . '/shop/dark/content/' . $v['id']); ?>">
+                                <img src="<?php if(file_exists($v['upload_cover_image'])): ?><?php echo url($v['upload_cover_image']); ?><?php elseif(file_exists($v['cover_img'])): ?><?php echo url($v['cover_img']); ?><?php else: ?><?php echo Theme::asset()->url('images/folder_no_cover.png'); ?><?php endif; ?>"/>
+                                <div class="goods">
+                                    <p><?php echo e($v['title']); ?></p>
+                                    <h4>￥9.9
+                                        <span class="pull-right">销售量: 10</span>
+                                    </h4>
+                                </div>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li class="col-xs-6 col-sm-6">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/goods1.png')); ?>"/>
+                        <p>暂无商品</p>
+                    </li>
+                <?php endif; ?>
+                <?php /*<li class="col-xs-6 col-sm-6">
+                    <a href="javascript:void(0)">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/goods1.png')); ?>"/>
+                        <div class="goods">
+                            <p>黑色短袖</p>
+                            <h4>￥23.00
+                                <span class="pull-right">销售量：500</span>
+                            </h4>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-xs-6 col-sm-6">
+                    <a href="javascript:void(0)">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/goods.png')); ?>"/>
+                        <div class="goods">
+                            <p>白色短袖</p>
+                            <h4>￥25.00
+                                <span class="pull-right">销售量：500</span>
+                            </h4>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-xs-6 col-sm-6">
+                    <a href="javascript:void(0)">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/goods.png')); ?>"/>
+                        <div class="goods">
+                            <p>白色短袖</p>
+                            <h4>￥25.00
+                                <span class="pull-right">销售量：500</span>
+                            </h4>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-xs-6 col-sm-6">
+                    <a href="javascript:void(0)">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/goods.png')); ?>"/>
+                        <div class="goods">
+                            <p>白色短袖</p>
+                            <h4>￥25.00
+                                <span class="pull-right">销售量：500</span>
+                            </h4>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-xs-6 col-sm-6">
+                    <a href="javascript:void(0)">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/goods.png')); ?>"/>
+                        <div class="goods">
+                            <p>白色短袖</p>
+                            <h4>￥25.00
+                                <span class="pull-right">销售量：500</span>
+                            </h4>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-xs-6 col-sm-6">
+                    <a href="javascript:void(0)">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/goods.png')); ?>"/>
+                        <div class="goods">
+                            <p>白色短袖</p>
+                            <h4>￥25.00
+                                <span class="pull-right">销售量：500</span>
+                            </h4>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-xs-6 col-sm-6">
+                    <a href="javascript:void(0)">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/goods.png')); ?>"/>
+                        <div class="goods">
+                            <p>白色短袖</p>
+                            <h4>￥25.00
+                                <span class="pull-right">销售量：500</span>
+                            </h4>
+                        </div>
+                    </a>
+                </li>*/ ?>
+            </ul>
+        </div>
+    </div>
+    <!--底部导航-->
+    <div class="nav_bottom">
+        <div class="row">
+            <ul>
+                <li class="col-xs-3">
+                    <a href="javascript:void(0)" id="noth">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/pic10.png')); ?>"
+                             class="center-block"/>
+                        <p class="text-center">首页</p>
+                    </a>
+                </li>
+                <li class="col-xs-3">
+                    <a href="javascript:void(0)" id="noth">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/pic11.png')); ?>"
+                             class="center-block"/>
+                        <p class="text-center">分类</p>
+                    </a>
+                </li>
+                <li class="col-xs-3">
+                    <a href="javascript:void(0)" id="noth">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/pic12.png')); ?>"
+                             class="center-block"/>
+                        <p class="text-center">购物车</p>
+                    </a>
+                </li>
+                <li class="col-xs-3">
+                    <a href="<?php echo url($info->module . '/shop/dark/personal/' . $id); ?>" id="noth">
+                        <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag . '/shop/images/dark/index/pic13.png')); ?>"
+                             class="center-block"/>
+                        <p class="text-center">我的</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('shop-css-index', $info->module . '/' . $info->flag . '/shop/css/dark/index.css'); ?>
+
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title><?php echo e(Theme::get('title')); ?></title>
+    <meta name="description" content="">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <?php /*<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">*/ ?>
+    <?php if(Theme::get('basis_config')['css_adaptive'] == 1): ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <?php else: ?>
+        <meta name="viewport" content="initial-scale=0.1">
+        <?php endif; ?>
+    <link rel="shortcut icon" href="<?php echo e(Theme::asset()->url('images/favicon.ico')); ?>" />
+    <!-- Place favicon.ico in the root directory -->
+    
+    <link rel="stylesheet" href="/E2.0/css/main.css">
+    <link rel="stylesheet" href="/E2.0/css/ui-color-picker.css">
+    <link rel="stylesheet" href="/E2.0/css/show.css">
+
+</head>
+<body>
+
+	    <?php echo Theme::content(); ?>
+
+
+</body>
+</html>

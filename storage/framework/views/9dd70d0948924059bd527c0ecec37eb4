@@ -1,0 +1,330 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+    <div class="app-container" style="width: 99%;"><!--店铺-->
+        <div class="head-survey">
+            <nav class="navbar navbar-default marginb">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav qiehuan">
+                        <li role="presentation" class="active"><a href="javascript:void(0);">基本信息</a></li>
+                        <li role="presentation"><a href="javascript:void(0);">属性设置</a></li>
+                        <li role="presentation"><a href="javascript:void(0);">参数设置</a></li>
+                        <li role="presentation"><a href="javascript:void(0);">商品描述</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <form class="form-horizontal" id="validateFrom" action="<?php echo e(route(Theme::get('route_prefix') . '.goods.update')); ?>" method="post" enctype="multipart/form-data">
+
+            <!--主体内容开始-->
+            <div class="app-inner clearfix">
+                <div class="js-appinner">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <div class="alert alert-info alert-dismissible text-center fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <strong><i class="fa fa-info-circle"></i> 提示：</strong> 如果您是首次对本商品编辑，请您详细填写商品信息
+                                </div>
+                            </div>
+                        </div>
+                        <?php if(count($errors) > 0): ?>
+                            <div class="row">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="alert alert-danger alert-dismissible text-center fade in" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <?php foreach($errors->all() as $error): ?>
+                                            <p><strong><i class='fa fa-times-circle'></i></strong> <?php echo e($error); ?></p>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <?php /* 基本信息 */ ?>
+                        <div class="nav-div">
+                            <div class="form-group">
+                                <label for="cover-image" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">商品图片</label>
+                                <div class="col-xs-3 col-sm-3 col-md-2 col-lg-1">
+                                    <img class="models-img" id="cover-image" src="<?php if(! empty($info->upload_cover_image) && file_exists($info->upload_cover_image)): ?><?php echo e(url($info->upload_cover_image)); ?><?php elseif(! empty($info->cover_img) && file_exists($info->cover_img)): ?><?php echo e(url($info->cover_img)); ?><?php else: ?><?php echo Theme::asset()->url('images/folder_no_cover.png'); ?><?php endif; ?>"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="title" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="notice">*</span>商品名称</label>
+                                <div class="col-xs-8 col-sm-9 col-md-9 col-lg-6">
+                                    <input type="text" class="form-control" id="title" name="title" value="<?php echo e($info->title); ?>" aria-describedby="inputSuccess2Status">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="goods_cat_id" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="notice">*</span>商品分组</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+                                    <select class="form-control chosen-select" id="goods_cat_id" name="goods_cat_id">
+                                        <option value="">请选择</option>
+                                        <?php foreach($cat as $v): ?>
+                                            <option value="<?php echo e($v->id); ?>" <?php if($info->goods_cat_id == $v->id): ?> selected <?php endif; ?>><?php echo e($v->cat_name); ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <span class="input-tips"><i class="fa fa-info-circle"></i> 如果没有分组请点击右边`<i class="fa fa-plus"></i>`进行新建</span>
+                                </div>
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                    <button class="btn btn-info" type="button" onclick="catCreate();" data-toggle="tooltip" data-placement="left" title="新建分组"><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="price" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="notice">*</span>商品价格</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+                                    <input type="text" class="form-control" id="price" name="price" value="<?php echo e($info->price); ?>">
+                                    <span class="input-tips"><i class="fa fa-info-circle"></i> 交易货币为人民币（RMB）</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="goods_number" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="notice">*</span>商品库存</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+                                    <input type="text" class="form-control" id="goods_number" name="goods_number" value="<?php echo e($info->goods_number); ?>">
+                                    <span class="input-tips"><i class="fa fa-info-circle"></i> 当设置属性库存时，此设置无效</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="is_on_sale" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="notice">*</span>是否上架</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+                                    <?php foreach($sale as $v): ?>
+                                        <label class="checkbox-inline">
+                                            <input type="radio" id="<?php echo e($v['name']); ?>" name="<?php echo e($v['name']); ?>" value="<?php echo e($v['value']); ?>" <?php if($info->is_on_sale == $v['value']): ?> checked <?php endif; ?>> <?php echo e($v['txt']); ?>
+
+                                        </label>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php /* /基本信息 */ ?>
+
+                        <?php /* 设置属性 */ ?>
+                        <div class="nav-div" style="display: none;">
+                            <div class="form-group">
+                                <label for="goods_type_id" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">属性类型</label>
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                                    <select class="form-control" id="goods_type_id" data-id="<?php echo e($info->id); ?>" name="goods_type_id" onchange="getAttrs(this);">
+                                        <option value="0">请选择</option>
+                                        <?php foreach($type as $k => $v): ?>
+                                            <option value="<?php echo e($k); ?>" <?php if($info->goods_type_id == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <input type="hidden" name="old_goods_type_id" value="<?php echo e(isset($info->goods_type_id) ? $info->goods_type_id : 0); ?>"/>
+                                </div>
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                    <button class="btn btn-default" type="button" onclick="refreshAttr(this);" data-toggle="tooltip" data-placement="top" title="更新当前属性"><i class="fa fa-refresh"></i></button>
+                                </div>
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                    <button class="btn btn-info" type="button" onclick="manageType(this);"><i class="fa fa-bars"></i> 管理属性类型</button>
+                                </div>
+                            </div>
+                            <div id="type-config">
+
+                            </div>
+                        </div>
+                        <?php /* /设置属性 */ ?>
+
+                        <?php /* 参数设置 */ ?>
+                        <div class="nav-div" style="display: none;">
+                            <div class="form-group">
+                                <label for="" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">说明</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+                                    <p class="form-control-static">此处设置的参数将用于VR界面展示时显示，参数至少设置两个</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="price" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">操作</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+                                    <button class="btn btn-info" type="button" onclick="addParameter(this);"><i class="fa fa-plus"></i> 新增参数</button>
+                                </div>
+                            </div>
+                            <?php foreach($info->param as $v): ?>
+                                <div class="form-group">
+                                    <label for="param[key][] param[val][]" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><i class="fa fa-certificate"></i></label>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2">
+                                        <input type="text" class="form-control" id="param[key][]" name="param[key][]" value="<?php echo e($v[0]); ?>" style="text-align: center;">
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2">
+                                        <input type="text" class="form-control" id="param[val][]" name="param[val][]" value="<?php echo e($v[1]); ?>">
+                                    </div>
+                                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                                        <button class="btn btn-danger" type="button" onclick="delParam(this, 1)"><i class="fa fa-minus"></i></button>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <?php /* /参数设置 */ ?>
+
+                        <?php /* 商品描述 */ ?>
+                        <div class="nav-div" style="display: none;">
+                            <div class="form-group">
+                                <label for="content" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">商品描述</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <textarea class="form-control" id="content" name="content"><?php echo e($info->content); ?></textarea>
+                                    <span class="input-tips"><i class="fa fa-info-circle"></i> 可直接拖拽图片进行上传，支持的格式为：png、jpg、jpeg、gif、bmp，每张大小限制为：2MB，操作图片时请耐心等候片刻</span>
+                                </div>
+                            </div>
+                        </div>
+                        <?php /* /商品描述 */ ?>
+                        <div class="form-group">
+                            <div class="col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-4 col-md-offset-3 col-md-4 col-lg-offset-3 col-lg-2">
+                                <button type="submit" class="btn btn-primary btn-block" id="formSubmit">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php /* 上一个/下一个 */ ?>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    <?php if($prev): ?>
+                        <a href="<?php echo e(route(Theme::get('route_prefix') . '.goods.edit', ['id' => $prev])); ?>" class="btn btn-link"><i class="fa fa-angle-double-left" aria-hidden="true"></i> 上一个商品</a>
+                    <?php else: ?>
+                        <a class="btn btn-link" disabled><i class="fa fa-ban fa-rotate-90" aria-hidden="true"></i> 上一个商品</a>
+                    <?php endif; ?>
+                    |
+                    <?php if($next): ?>
+                        <a href="<?php echo e(route(Theme::get('route_prefix') . '.goods.edit', ['id' => $next])); ?>" class="btn btn-link">下一个商品 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    <?php else: ?>
+                        <a class="btn btn-link" disabled>下一个商品 <i class="fa fa-ban fa-rotate-90" aria-hidden="true"></i></a>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <!--主体内容结束-->
+            <input type="hidden" id="goods_id" name="id" value="<?php echo e($info->id); ?>"/>
+            <?php echo csrf_field(); ?>
+
+        </form>
+    </div>
+
+
+</div>
+
+<div class="container" id="cat-create">
+    <form class="form-horizontal" id="catValidateFrom">
+        <div class="form-group">
+            <label for="cat_name" class="col-sm-2 control-label"><span class="need">*</span>分组名称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="cat_name" name="cat_name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="parent_id" class="col-sm-2 control-label">父级分组</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="parent_id" name="parent_id">
+                    <option value="0">顶级分组</option>
+                    <?php foreach($cat as $v): ?>
+                        <option value="<?php echo e($v->id); ?>"><?php echo e($v->cat_name); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cat_alias_name" class="col-sm-2 control-label">分组别名</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="cat_alias_name" name="cat_alias_name">
+                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 建议为4个字以便更美观展示，分组别名比分组名称优先展示</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sort_order" class="col-sm-2 control-label">推荐排序</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="sort_order" name="sort_order" value="0">
+                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 越小越靠前</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success" id="catFormSubmit">提交</button>
+            </div>
+        </div>
+        <input type="hidden" name="goods" value="1"/>
+    </form>
+</div>
+
+<div id="add-param">
+    <div class="form-group">
+        <label for="param[key][] param[val][]" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><i class="fa fa-certificate"></i></label>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2">
+            <input type="text" class="form-control" id="param[val][]" name="param[key][]" placeholder="参数名称" style="text-align: center;">
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-2">
+            <input type="text" class="form-control" id="param[val][]" name="param[val][]" placeholder="参数值">
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <button class="btn btn-danger" type="button" onclick="delParam(this, 0)"><i class="fa fa-minus"></i></button>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="type-list">
+    <div id="type-lists">
+        <button class="btn btn-success" type="button" onclick="addType(this);" style="margin-bottom: 10px;"><i class="fa fa-plus"></i> 新增类型</button>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>类型名称</th>
+                    <th>属性数</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="container" id="type-children-list">
+    <div id="type-children-lists">
+        <button class="btn btn-success add-attr" type="button" onclick="addAttr(this);" data-id="0" style="margin-bottom: 10px;"><i class="fa fa-plus"></i> 新增属性</button>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>属性类型</th>
+                    <th>商品数</th>
+                    <th>属性值录入方式</th>
+                    <th>可选值列表</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-summernote', Theme::get('module') . '/plugin/summernote/summernote.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-summernote', Theme::get('module') . '/plugin/summernote/summernote.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-summernote-zh-CN', Theme::get('module') . '/plugin/summernote/lang/summernote-zh-CN.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-iCheck-purple', Theme::get('module') . '/plugin/iCheck/skins/flat/purple.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-iCheck', Theme::get('module') . '/plugin/iCheck/icheck.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-chosen.min', Theme::get('module') . '/plugin/chosen/chosen.min.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-correcting.chosen', Theme::get('module') . '/plugin/chosen/correcting.chosen.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-chosen.jquery', Theme::get('module') . '/plugin/chosen/chosen.jquery.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-jquery.validate', Theme::get('module') . '/plugin/bootstrap-validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-messages_zh', Theme::get('module') . '/plugin/bootstrap-validate/messages_zh.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-layui', Theme::get('module') . '/plugin/layui/css/layui.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-layui', Theme::get('module') . '/plugin/layui/layui.js'); ?>
+
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('goods-css-index', Theme::get('dir_prefix') . '/shop/css/index.css'); ?>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('goods-css-add_goods', Theme::get('dir_prefix') . '/goods/css/add_goods.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('goods-js-add_goods', Theme::get('dir_prefix') . '/goods/js/edit_goods.js'); ?>

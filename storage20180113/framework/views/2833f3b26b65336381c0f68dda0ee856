@@ -1,0 +1,21 @@
+<div class="user-l">
+    <ul class="<?php echo e((preg_match('/^\/user\/(info|realnameAuth|safeSet|bindWeChat|skill|loginPassword|emailAuth|phoneAuth|unbindMobile|paylist|bankAuth|verifyBankAuthCash|alipayAuth|verifyAlipayAuthCash|enterpriseAuth|organizationAuth|reAuthRealname|reAuthOrganization)/',$_SERVER['REQUEST_URI'])) ? 'active' : ''); ?>">
+        <li class="title"><i class="fa fa-circle-o" aria-hidden="true"></i>个人信息</li>
+        <li class="titles<?php echo e(($_SERVER['REQUEST_URI']=='/user/info')?' click':''); ?>" onclick="location.href='/user/info'">信息设置</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(realnameAuth|organizationAuth|reAuthRealname|reAuthOrganization)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='/user/realnameAuth'">实名认证</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(safeSet|loginPassword|emailAuth|phoneAuth|unbindMobile|paylist|bankAuth|verifyBankAuthCash|alipayAuth|verifyAlipayAuthCash|bindWeChat|enterpriseAuth)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='/user/safeSet'">安全认证</li>
+        <li class="titles<?php echo e(($_SERVER['REQUEST_URI']=='/user/skill')?' click':''); ?>" onclick="location.href='/user/skill'">技能标签</li>
+    </ul>
+    <ul class="<?php echo e((preg_match('/^\/finance\/(list|cash|cashout)/',$_SERVER['REQUEST_URI'])) ? 'active' : ''); ?>">
+        <li class="title"><i class="fa fa-circle-o" aria-hidden="true"></i>资金管理</li>
+        <li class="titles<?php echo e(($_SERVER['REQUEST_URI']=='/finance/list')?' click':''); ?>" onclick="location.href='/finance/list'">资金明细</li>
+        <li class="titles<?php echo e(($_SERVER['REQUEST_URI']=='/finance/cash')?' click':''); ?>" onclick="location.href='/finance/cash'">资金充值</li>
+        <li class="titles<?php echo e(($_SERVER['REQUEST_URI']=='/finance/cashout')?' click':''); ?>" onclick="location.href='/finance/cashout'">资金提现</li>
+    </ul>
+    <ul class="<?php echo e((preg_match('/^\/user\/(messageList)/',$_SERVER['REQUEST_URI'])) ? 'active' : ''); ?>">
+        <li class="title"><i class="fa fa-circle-o" aria-hidden="true"></i>消息中心</li>
+        <li class="titles">我的私信</li>
+        <li class="titles">站内通知</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(messageList\/2)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='/user/messageList/2'">交易动态</li>
+    </ul>
+</div>

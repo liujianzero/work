@@ -1,0 +1,26 @@
+<div class="user-l">
+    <ul class="<?php echo e((preg_match('/^\/user\/(myOrderTaskOut|myOrderViewOut|myOrderMaterialOut|myOrderGoodsOut|goods.order.outInfo|goods.express.info|goods.user.evaluate)/',$_SERVER['REQUEST_URI'])) ? 'active' : ''); ?>">
+        <li class="title"><i class="fa fa-circle-o" aria-hidden="true"></i>已购订单</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myOrderTaskOut)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myOrder.myTaskOut')); ?>'">任务订单<?php if(Theme::get('userCount')): ?> <span class=""><?php echo e(Theme::get('userCount')); ?></span> <?php endif; ?></li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myOrderGoodsOut|goods.order.outInfo|goods.express.info|goods.user.evaluate)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myOrder.myGoodsOut')); ?>'">商品订单</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myOrderViewOut)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>"  onclick="location.href='<?php echo e(route('myOrder.myViewOut')); ?>'">付费订单</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myOrderMaterialOut)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myOrder.myMaterialOut')); ?>'">素材订单</li>
+    </ul>
+    <ul class="<?php echo e((preg_match('/^\/user\/(myOrderTaskIn|myOrderViewIn|myOrderMaterialIn|myOrderGoodsIn|goods.expressIn.info|goods.order.inInfo|goods.shop.evaluate)/',$_SERVER['REQUEST_URI'])) ? 'active' : ''); ?>">
+        <li class="title"><i class="fa fa-circle-o" aria-hidden="true"></i>已售订单</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myOrderTaskIn)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myOrder.myTaskIn')); ?>'">任务订单<?php if(Theme::get('shopCount')): ?> <span class=""><?php echo e(Theme::get('shopCount')); ?></span> <?php endif; ?></li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myOrderGoodsIn|goods.expressIn.info|goods.order.inInfo|goods.shop.evaluate)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myOrder.myGoodsIn')); ?>'">商品订单</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myOrderViewIn)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myOrder.myViewIn')); ?>'">付费订单</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myOrderMaterialIn)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myOrder.myMaterialIn')); ?>'">素材订单</li>
+    </ul>
+    <ul class="<?php echo e((preg_match('/^\/user\/(myTasksList|myWorkHistory|myfocus)/',$_SERVER['REQUEST_URI'])) ? 'active' : ''); ?>">
+        <li class="title"><i class="fa fa-circle-o" aria-hidden="true"></i>众包服务</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myTasksList)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myTasksList')); ?>'">发布的任务</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myWorkHistory)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myWorkList')); ?>'">竞标的任务</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myfocus)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myfocusList')); ?>'">收藏的任务</li>
+    </ul>
+    <ul class="<?php echo e((preg_match('/^\/user\/(myCart)/',$_SERVER['REQUEST_URI'])) ? 'active' : ''); ?>">
+        <li class="title"><i class="fa fa-circle-o" aria-hidden="true"></i>购物中心</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myCart)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myCart.cart')); ?>'">我的购物车</li>
+    </ul>
+</div>

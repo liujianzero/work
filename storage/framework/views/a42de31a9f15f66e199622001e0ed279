@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, shrink-to-fit=no" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <title><?php echo e(Theme::get('title')); ?></title>
+    
+      <div id='wx_pic' style="margin:0 auto;display:none;">
+        <img src=""/>
+    </div>
+    <script>
+        var isMobile = function () {
+            var sUserAgent = navigator.userAgent.toLowerCase(),
+                    bIsIpad = sUserAgent.match(/ipad/i) == "ipad",
+                    bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os",
+                    bIsMidp = sUserAgent.match(/midp/i) == "midp",
+                    bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4",
+                    bIsUc = sUserAgent.match(/ucweb/i) == "ucweb",
+                    bIsAndroid = sUserAgent.match(/android/i) == "android",
+                    bIsCE = sUserAgent.match(/windows ce/i) == "windows ce",
+                    bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile",
+                    bIsWebview = sUserAgent.match(/webview/i) == "webview";
+            return (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM || bIsWebview);
+        };
+        var mobileDevice = isMobile();
+        if(mobileDevice){
+            document.write("<link rel='stylesheet' href='/c/css/cMobile.css?t=20171009'>");
+        }else{
+            document.write("<link rel='stylesheet' href='/c/css/c.css?t=20171009'>");
+        }
+    </script>
+    <link href="/c/css/reset.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/themes/default/assets/plugins/bootstrap/css/bootstrap.min.css">
+	      <?php echo Theme::asset()->container('specific-css')->styles(); ?>
+
+	      <link rel="stylesheet" href="/themes/default/assets/plugins/ace/css/ace.min.css">
+	      <link rel="stylesheet" href="/themes/default/assets/css/header.css">
+		  <link rel="stylesheet" href="/themes/default/assets/css/<?php echo Theme::get('color'); ?>/style.css">
+          <link rel="stylesheet" href="/themes/default/assets/css/font-awesome.min.css">
+    <?php echo Theme::asset()->container('custom-css')->styles(); ?>
+
+    <link href="/c/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/themes/default/assets/css/models/share.min.css">
+    <link rel="stylesheet" href="/themes/default/assets/css/view.min.css">
+    <link rel="stylesheet" href="/themes/default/assets/css/member/fonts/iconfont.css">
+    <?php /*<link rel="stylesheet" href="/themes/default/assets/css/models/swiper.min.css">*/ ?>
+</head>
+<body style="background: #000">
+
+ <?php /*<header>*/ ?>
+    <?php /*<?php echo Theme::partial('homeheaderModel'); ?>*/ ?>
+<?php /*</header>*/ ?>
+
+<style>
+    @media  screen and (min-width: 1200px){
+    .container {
+        width: 1400px;
+    }
+    }
+    @media  screen and (max-width:768px){
+        .browse-box{
+             height: calc(100% - 60px);
+        }
+    }
+
+
+</style>
+
+
+<section class="ll-box">
+
+        <?php /*<div class="row">*/ ?>
+            <?php echo Theme::content(); ?>
+
+        <?php /*</div>*/ ?>
+
+</section>
+
+
+
+</body>
+
+</html>
+

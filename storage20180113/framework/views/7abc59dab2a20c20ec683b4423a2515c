@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 tu">
+            <img src="<?php echo e(Theme::asset()->url($info->module . '/' . $info->flag  . '/shop/images/default/summary/qinghai.png')); ?>"
+                 class="center-block" width="70%"/>
+        </div>
+    </div>
+</div>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 ">
+            <div class="content1">
+                <h1><?php echo e($name); ?></h1>
+                <?php /*<h2>景区级别：4A级
+                    <span>特色：国家一级博物馆</span>
+                </h2>
+                <p>故宫博物馆是世界上规模最大，保存最完整的木结构宫殿建筑群。故宫位于北京市中心，也称“紫禁城”，是北京中轴线的一颗明珠。</p>*/ ?>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 ">
+            <div class="content2">
+                <h1>概况</h1>
+                <p><?php echo e($desc); ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('shop-css-summary', $info->module . '/' . $info->flag . '/shop/css/default/summary.css'); ?>
+
+<?php /*<?php echo Theme::asset()->container('common-js')->usePath()->add('templet5-js-index2', Theme::get('dir_prefix') . '/templet5/js/index2.js'); ?>*/ ?>

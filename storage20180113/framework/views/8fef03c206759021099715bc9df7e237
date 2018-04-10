@@ -1,0 +1,138 @@
+<div class="head">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 ">
+                <span class="borderb">故宫博物馆</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="time border ">
+    <div class="container-fluid">
+        <div class="row height">
+            <div class="col-xs-12 col-sm-12 top">
+                <span>游玩日期</span>
+                <a>
+                    <p class="text-center">明天(10月16日)</p>
+                    <p class="text-center">￥80</p>
+                </a>
+                <a class="active">
+                    <p class="text-center">明天(10月16日)</p>
+                    <p class="text-center">￥80</p>
+                </a>
+                <a>
+                    <p class="text-center">明天(10月16日)</p>
+                    <p class="text-center">￥80</p>
+                </a>
+                <!--<a>
+                    <p class="text-center" id="date">选择时间</p>
+                </a>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 prompt">
+                <p>游玩日期：2017-10-16</p>
+                <span>请在当天游玩的18:00前完成预定，预定3小时后便可入园</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="add col-xs-12 col-sm-12">
+                <span>购买张数</span>
+                <div class="input-group">
+                    <a class="input-group-addon" href="#" id="jia">+</a>
+                    <input type="text" class="form-control" style="text-align: center;" value="1" id="num"/>
+                    <a class="input-group-addon" href="#" id="jian">-</a>
+                </div>
+                <span class="notice">最多可购买30张</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 bottom ">
+                <h1 class="borderb">游客信息
+                    <span>请任意填写一位游客信息</span>
+                    <a class="text-primary">登陆</a><span>查看联系人</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="borderb kuang">
+                <div class="col-xs-2 left height2 ">
+                    <span>1</span>
+                </div>
+                <div class="col-xs-10 col-sm-10 right height2">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 col-xs-2 control-label padnew">名字</label>
+                            <div class="col-sm-5 col-xs-5 padnew">
+                                <input type="text" class="form-control tcss" placeholder="请输入名字">
+                            </div>
+                        </div>
+                        <div class="form-group marginb">
+                            <label class="col-sm-2 col-xs-2 control-label padnew">手机号码</label>
+                            <div class="col-sm-2 col-xs-2 padnew">
+                                <input type="text" class="form-control  tcss" value="86"/>
+                            </div>
+                            <div class="col-sm-5 col-xs-5 padnew">
+                                <input type="text" class="form-control tcss" placeholder="请输入手机号码">
+                            </div>
+                            <span class="col-sm-3 col-xs-3 padnew">用于接收取票信息和入园</span>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10 col-xs-10 col-xs-offset-2">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" checked="checked">
+                                        <p>保存常用联系人</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="msg">
+                <h1>出行小贴士：</h1>
+                <p class="margint">旺季价格：40元</p>
+                <p>淡季价格：40元</p>
+                <p>珍宝馆参观门票：10元</p>
+                <p>钟表馆参观门票：10元</p>
+                <p>注意： 故宫博物院于2015年11月开始，淡季每月第一个星期三继续实行主题免费开放日，医务人员和志愿者将于11月4日免费参观故宫。</p>
+                <p>其他优惠：所有优惠均不含珍宝馆，钟表馆。</p>
+                <p>1.大、中、小学生（含港、澳、台学生;不含成人教育、研究生），可凭学生证或者学校介绍信购买学生门票，每张20元/人。</p>
+                <p>2.60岁以上（包含60岁），出示有效证件，门票减半。</p>
+                <p>3.离休干部凭借离休证免费参观。</p>
+                <p class="padb">4.残疾人凭借残疾证免费参观。</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="checkbox text-center bot">
+                <label class="center-block">
+                    <input type="checkbox" class="ch" checked="checked">
+                    我已阅读并接受条款合同条款，补充条款以及其他所有内容
+                </label>
+            </div>
+        </div>
+        <button class="btn btn-success btn-lg center-block">提交订单</button>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('shop-css-order', $info->module . '/' . $info->flag . '/shop/css/default/order.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('shop-js-order', $info->module . '/' . $info->flag . '/shop/js/default/order.js'); ?>
+

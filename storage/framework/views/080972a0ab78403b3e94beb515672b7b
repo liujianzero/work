@@ -1,0 +1,36 @@
+<div id="payment">
+    <div class="payment">
+        <dl class="clearfix">
+            <dt><img src="<?php echo e(Theme::asset()->url('images/myOrder/goods/img1.png')); ?>"/></dt>
+            <dd>
+                <h2>订单提交成功，仅差一步完成购买，请尽快付款。</h2>
+                <p class="p1">请在24小时时间内完成支付</p>
+                <p>应付金额  <span>￥<?php echo e($money); ?></span></p>
+            </dd>
+        </dl>
+        <h4>收货地址</h4>
+        <div class="address">
+            <p>
+                <i></i>
+                <span>收货地址</span>
+                <span class="span1">
+                    <?php echo e($address->provinces->name); ?>
+
+                    <?php echo e($address->cities->name); ?>
+
+                    <?php echo e($address->areas->name); ?>
+
+                    <?php echo e($address->address); ?>
+
+                </span>
+                <span class="span2">收件人：<?php echo e($address->consignee); ?></span>
+                <span class="span2">联系方式：<?php echo e($address->mobiles->prefix); ?>-<?php echo e($address->mobile); ?></span>
+            </p>
+        </div>
+        <div class="sure-pay">
+            <a href="<?php echo e(route('myOrder.goodsPay', ['id' => 0, 'ids' => $ids])); ?>">确认支付</a>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('myOrder-address', 'css/myOrder/goods/payment.css'); ?>

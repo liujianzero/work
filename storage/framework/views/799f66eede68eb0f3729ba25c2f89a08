@@ -1,0 +1,70 @@
+<?php /*<form action="<?php echo e(route('')); ?>" method="post"
+      onsubmit="$('#formSubmit').attr('disabled', true).html('正在保存 <i class=\'fa fa-spinner fa-spin\'></i>');">
+
+</form>*/ ?>
+<div class="bianji">
+    <div class="container-fluid">
+        <div class="row padtb borderb">
+            <div class="col-xs-4">
+                <p>收货人:</p>
+            </div>
+            <div class="col-xs-8">
+                <input type="text" placeholder="收件人姓名"/>
+            </div>
+        </div>
+        <div class="row padtb borderb">
+            <div class="col-xs-4">
+                <p>联系电话:</p>
+            </div>
+            <div class="col-xs-8">
+                <input type="text" placeholder="电话号码"/>
+            </div>
+        </div>
+        <div class="row padtb borderb">
+            <div class="col-xs-4">
+                <p>所在地区:</p>
+            </div>
+            <div class="col-xs-8">
+                <div id="diqu" class="pull-right">请选择&nbsp;&nbsp;&nbsp;&nbsp;></div>
+            </div>
+        </div>
+        <?php /*<div class="row padtb borderb">
+            <div class="col-xs-4">
+                <p>所在街道:</p>
+            </div>
+            <div class="col-xs-8">
+                <div id="jiedao" class="pull-right">请选择&nbsp;&nbsp;&nbsp;&nbsp;></div>
+            </div>
+        </div>*/ ?>
+        <div class="row padtb borderb">
+            <div class="col-xs-4">
+                <p>详细地址:</p>
+            </div>
+            <div class="col-xs-8">
+                <textarea placeholder="请输入详细地址"></textarea>
+            </div>
+        </div>
+    <?php /*<div class="row padtb borderb">
+        <div class="col-xs-4 del" >
+            <a>删除地址</a>
+        </div>
+    </div>*/ ?>
+    <!--保存添加的收货地址-->
+        <div class="confirm">
+            <div class="col-sm-5">
+                <button type="submit" id="formSubmit" class="btn btn-primary"
+                        style="width: 100%" <?php /*onclick="addCart(this);"*/ ?>>保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('theme-css-edit', "{$shop->dir}/css/address_edit.css"); ?>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('plugin-css-mobileSelect', $shop->module . '/plugin/mobileSelect/css/mobileSelect.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('plugin-js-mobileSelect', $shop->module  . '/plugin/mobileSelect/js/mobileSelect.js'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('theme-js-edit', "{$shop->dir}/js/address_edit.js"); ?>
+

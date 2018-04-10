@@ -1,0 +1,145 @@
+<?php /* 样式 */ ?>
+<style>
+    #user .user .user-r{
+        height: auto;
+    }
+</style>
+<?php /* 头 */ ?>
+<div class="container" style="width: 100%;background:#1c1c1e;">
+    <div class="type-title">
+        <h4>店铺类型：<em><?php echo e($info->name); ?></em>，请填写店铺基本信息</h4>
+    </div>
+</div>
+<?php /* 提示信息 */ ?>
+<div class="container" style="width: 100%;">
+    <div class="row">
+        <div class="alert alert-info alert-dismissible text-center" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong><i class="fa fa-info-circle"></i> 提示：</strong> 店铺创建后将会生成一个与店铺关联的账号，初始密码为「123456」，为保障安全，请及时修改密码！
+        </div>
+    </div>
+</div>
+<?php /* 错误信息 */ ?>
+<?php if(count($errors) > 0): ?>
+    <div class="container" style="width: 100%;">
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php foreach($errors->all() as $error): ?>
+                        <p><strong><i class='fa fa-times-circle'></i></strong> <?php echo e($error); ?></p>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<?php /* 表单 */ ?>
+<div class="container" style="width: 100%;margin: 20px 0;">
+    <form class="form-horizontal" id="validateFrom" method="post" action="<?php echo e(route('shop.creating')); ?>">
+        <div class="form-group">
+            <label for="nickname" class="col-sm-3 control-label">店铺名称</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="nickname" name="nickname" value="<?php echo e(old('nickname')); ?>">
+                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 店铺名称长度建议在8个字及以下</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="major_business" class="col-sm-3 control-label">主营商品</label>
+            <div class="col-sm-6">
+                <select class="form-control" id="major_business" name="major_business">
+                    <option value="">请选择</option>
+                    <?php foreach($major as $k => $v): ?>
+                        <option value="<?php echo e($k); ?>"><?php echo e($v); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="district" class="col-sm-3 control-label">店铺地址</label>
+            <div class="col-sm-2">
+                <label for="province" class="sr-only">省份</label>
+                <select class="form-control" id="province" name="province" onchange="checkprovince(this)">
+                    <option value="">请选择</option>
+                    <?php foreach($province as $v): ?>
+                        <option value="<?php echo e($v['id']); ?>"><?php echo e($v['name']); ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <label for="city" class="sr-only">城市</label>
+                <select class="form-control" id="city" name="city" onchange="checkcity(this)">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <label for="area" class="sr-only">地区</label>
+                <select class="form-control" id="area" name="area">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="road" class="col-sm-3 control-label">详细地址</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="road" name="road" value="<?php echo e(old('road')); ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-8">
+                <div class="checkbox">
+                    <div class="inc">
+                        <label for="agree" class="sr-only">详细地址</label>
+                        <input type="checkbox" id="agree" name="agree" checked>
+                        阅读并同意
+                        <a onclick="agreeServer();">《十一维度代理销售服务和结算协议》</a>
+                        和
+                        <a onclick="agreeDServer();">《担保交易服务协议》</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+                <button type="submit" class="btn btn-default btn-block" id="formSubmit">创建店铺</button>
+            </div>
+        </div>
+        <input type="hidden" name="store_type_id" value="<?php echo e($info->id); ?>"/>
+        <?php echo csrf_field(); ?>
+
+    </form>
+</div>
+<?php /* 加载 */ ?>
+<div class="container" id="loader">
+    <div class="content-loading-2">
+        <img src="<?php echo e(Theme::asset()->url('plugins/layui/css/modules/layer/default/loading-1.gif')); ?>"/>
+    </div>
+</div>
+<?php /* 十一维度代理销售服务和结算协议 */ ?>
+<div id="agreement" style="display: none;">
+    <div class="text-center" style="color: #cbcbcb;margin: 20px 0;">
+        <h1>十一维度代理销售服务和结算协议</h1>
+        <p class="intro">... ...</p>
+    </div>
+</div>
+<?php /* 担保交易服务协议 */ ?>
+<div id="server-agreement" style="display: none;">
+    <div class="text-center" style="color: #cbcbcb;margin: 20px 0;">
+        <h1>担保交易服务协议</h1>
+        <p class="intro">... ...</p>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('shop-list', 'css/myShop/store/shop.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('shop-loader', 'css/myShop/store/loader.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('myOrder-polaris', 'js/myShop/icheck/polaris/polaris.css'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('myOrder-jquery.validate.min', 'js/myShop/order/validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('myOrder-messages_zh.min', 'js/myShop/order/validate/messages_zh.min.js'); ?>
+
+<?php echo Theme::asset()->container('specific-js')->usePath()->add('myOrder-icheck', 'js/myShop/icheck/icheck.min.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('shop-create', 'js/myShop/store/create.js'); ?>

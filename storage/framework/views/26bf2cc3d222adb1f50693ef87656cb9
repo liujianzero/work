@@ -1,0 +1,443 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+    <div class="app-container" style="width: 99%;"><!--店铺-->
+        <div class="head-survey">
+            <nav class="navbar navbar-default marginb">
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav qiehuan">
+                        <li role="presentation" class="active"><a href="javascript:void(0);">订单信息</a></li>
+                        <li role="presentation"><a href="javascript:void(0);">商品信息</a></li>
+                        <li role="presentation"><a href="javascript:void(0);">物流跟踪</a></li>
+                        <li role="presentation"><a href="javascript:void(0);">评价信息</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <form class="form-horizontal" id="detailFrom">
+            <div class="app-inner clearfix">
+                <div class="js-appinner">
+                    <div class="container-fluid">
+
+                        <?php if(count($errors) > 0): ?>
+                            <div class="row">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="alert alert-danger alert-dismissible text-center fade in" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <?php foreach($errors->all() as $error): ?>
+                                            <p><strong><i class='fa fa-times-circle'></i></strong> <?php echo e($error); ?></p>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php /* 订单信息 */ ?>
+                        <div class="nav-div">
+                            <div class="form-group">
+                                <label for="order_sn_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">订单号</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e($info->order_sn); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="total_price_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">订单总价</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static">￥<?php echo e($info->total_price); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="order_status_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">订单状态</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static">
+                                        <?php if($info->order_status == 1): ?>
+                                            <span class="label label-sm label-success">正常</span>
+                                        <?php elseif($info->order_status == 2): ?>
+                                            <span class="label label-sm label-danger">关闭</span>
+                                        <?php endif; ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="created_at_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">下单时间</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e(isset($info->created_at) ? $info->created_at : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pay_status_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">支付状态</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static">
+                                        <?php if($info->pay_status == 1): ?>
+                                            <span class="label label-sm label-warning">待支付</span>
+                                        <?php elseif($info->pay_status == 2): ?>
+                                            <span class="label label-sm label-success">已支付</span>
+                                        <?php endif; ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pay_at_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">支付时间</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e(isset($info->pay_at) ? $info->pay_at : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="post_status_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">发货状态</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static">
+                                        <?php if($info->post_status == 1): ?>
+                                            <span class="label label-sm label-warning">未发货</span>
+                                        <?php elseif($info->post_status == 2): ?>
+                                            <span class="label label-sm label-info">已发货</span>
+                                        <?php elseif($info->post_status == 3): ?>
+                                            <span class="label label-sm label-success">已收货</span>
+                                        <?php elseif($info->post_status == 4): ?>
+                                            <span class="label label-sm label-danger">已拒收</span>
+                                        <?php endif; ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="post_at_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">发货时间</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e(isset($info->post_at) ? $info->post_at : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="post_number_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">物流单号</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e(isset($info->post_number) ? $info->post_number : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="from_at_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">订单来源</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
+                                    <p class="form-control-static"><?php echo e(isset($info->from_at) ? $info->from_at : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="consignee_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">收货人</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e(isset($info->consignee) ? $info->consignee : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">手机号</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e(isset($info->mobile) ? $info->mobile : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">收货地址</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static">
+                                        <?php echo e(isset($info->province_name) ? $info->province_name : '无省份信息'); ?>-<?php echo e(isset($info->city_name) ? $info->city_name : '无城市信息'); ?>-<?php echo e(isset($info->area_name) ? $info->area_name : '无地区信息'); ?>
+
+                                        <?php echo e(isset($info->address) ? $info->address : '无详细地址信息'); ?>
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="user_desc_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">买家备注</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e(isset($info->user_desc) ? $info->user_desc : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php /* 商品信息 */ ?>
+                        <div class="nav-div" style="display: none;">
+                            <div class="form-group">
+                                <label for="goods_p" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>商品图片</th>
+                                                <th>商品名称/规格</th>
+                                                <th>商品单价</th>
+                                                <th>商品数量</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach($goods as $k => $v): ?>
+                                                <tr>
+                                                    <td><img class="img-rounded" src="<?php if(file_exists($v->upload_cover_image)): ?><?php echo e("/$v->upload_cover_image"); ?><?php elseif(file_exists($v->cover_img)): ?><?php echo e("/$v->cover_img"); ?><?php else: ?><?php echo Theme::asset()->url('images/folder_no_cover.png'); ?><?php endif; ?>" data-holder-rendered="true" style="width: 100px; height: 100px;"></td>
+                                                    <td>
+                                                        <p><b><?php echo e($v->goods_name); ?></b></p>
+                                                        <br/>
+                                                        <p><?php echo e(isset($v->goods_attr) ? $v->goods_attr : 'N/A'); ?></p>
+                                                    </td>
+                                                    <td>￥<?php echo e($v->goods_price); ?></td>
+                                                    <td><?php echo e($v->goods_number); ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                                <td>合计：￥<?php echo e($info->total_price); ?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php /* 物流跟踪 */ ?>
+                        <div class="nav-div" style="display: none;">
+                            <?php if($info->order_status == 1 && $info->pay_status == 2 && $info->post_status == 1): ?>
+                                <div class="form-group">
+                                    <label for="post_at_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">开始发货</label>
+                                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                        <a class="btn btn-primary btn-sm" onclick="delivery(this);" data-id="<?php echo e($info->id); ?>">
+                                            <i class="fa fa-truck" aria-hidden="true"></i> 去发货
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            <div class="form-group">
+                                <label for="post_status_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">发货状态</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static">
+                                        <?php if($info->post_status == 1): ?>
+                                            <span class="label label-sm label-warning">未发货</span>
+                                        <?php elseif($info->post_status == 2): ?>
+                                            <span class="label label-sm label-info">已发货</span>
+                                        <?php elseif($info->post_status == 3): ?>
+                                            <span class="label label-sm label-success">已收货</span>
+                                        <?php elseif($info->post_status == 4): ?>
+                                            <span class="label label-sm label-danger">已拒收</span>
+                                        <?php endif; ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="post_at_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">发货时间</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e(isset($info->post_at) ? $info->post_at : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="express_name_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">物流公司</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e(isset($info->express_name) ? $info->express_name : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="express_name_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">客服电话</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e(isset($info->express_tel) ? $info->express_tel : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="post_number_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">物流单号</label>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <p class="form-control-static"><?php echo e(isset($info->post_number) ? $info->post_number : 'N/A'); ?></p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="post_number" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"></label>
+                                <div class="col-xs-8 col-sm-8 col-md-7 col-lg-7">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th><i class="fa fa-truck" aria-hidden="true"></i> 物流状态-<small style="color: #737373;">2小时更新一次</small></th>
+                                                <th><i class="ace-icon fa fa-clock-o" aria-hidden="true"></i> 更新时间</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if($post['status'] == '0'): ?>
+                                                <?php foreach($post['result']['list'] as $k => $v): ?>
+                                                    <tr class="<?php if($k == 0): ?> <?php if($post['result']['deliverystatus'] == 3): ?><?php echo e('success'); ?><?php elseif(in_array($post['result']['deliverystatus'], [1, 2])): ?><?php echo e('warning'); ?><?php else: ?><?php echo e('danger'); ?><?php endif; ?> <?php endif; ?>">
+                                                        <td>
+                                                            <?php if($k == 0): ?>
+                                                                <?php if($post['result']['deliverystatus'] == 3): ?>
+                                                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                                                <?php elseif(in_array($post['result']['deliverystatus'], [1, 2])): ?>
+                                                                    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                                                                <?php else: ?>
+                                                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                                                <?php endif; ?>
+                                                            <?php else: ?>
+                                                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                                            <?php endif; ?>
+                                                            <?php echo e($v['status']); ?>
+
+                                                        </td>
+                                                        <td><?php echo e($v['time']); ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php else: ?>
+                                                <tr class="danger">
+                                                    <td><i class="fa fa-times" aria-hidden="true"></i> <?php echo e($post['msg']); ?></td>
+                                                    <td><?php echo e($post['time']); ?></td>
+                                                </tr>
+                                            <?php endif; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <?php /* 评价信息 */ ?>
+                        <div class="nav-div" style="display: none;">
+                            <?php if($info->order_status == 1): ?>
+                                <?php if($info->pay_status == 2 && $info->post_status == 3): ?>
+                                    <?php if($info->shop_evaluate != 'Y'): ?>
+                                        <div class="form-group">
+                                            <label for="post_at_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="label label-primary">您的评价</span></label>
+                                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                <a class="btn btn-primary btn-sm" onclick="evaluates(this);" data-id="<?php echo e($info->id); ?>">
+                                                    <i class="fa fa-heart" aria-hidden="true"></i> 去评价
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="form-group">
+                                            <label for="post_at_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="label label-primary">您的评价</span></label>
+                                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                <p class="form-control-static">已评价</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="shop-1&shop-2&shop-3" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">总体评价</label>
+                                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                <label class="radio-inline" style="padding-left: 0;">
+                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/flower1.png')); ?>"/> 好评 <input type="radio" id="shop-1" name="shop" value="1" <?php if($info->s_evaluate == 1): ?> checked <?php else: ?> disabled <?php endif; ?>/>
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/flower2.png')); ?>"/> 中评 <input type="radio" id="shop-2" name="shop" value="2" <?php if($info->s_evaluate == 2): ?> checked <?php else: ?> disabled <?php endif; ?>/>
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/flower3.png')); ?>"/> 差评 <input type="radio" id="shop-3" name="shop" value="3" <?php if($info->s_evaluate == 3): ?> checked <?php else: ?> disabled <?php endif; ?>/>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="s_comment" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">评语</label>
+                                            <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
+                                                <textarea class="form-control" id="s_comment" name="s_comment" rows="3" placeholder="没有评语" disabled><?php echo e($info->s_comment); ?></textarea>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                    <hr/>
+                                    <?php if($info->user_evaluate != 'Y'): ?>
+                                        <div class="form-group">
+                                            <label for="express_name_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="label label-info">买家评价</span></label>
+                                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                <p class="form-control-static">等待评价</p>
+                                            </div>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="form-group">
+                                            <label for="express_name_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label"><span class="label label-info">买家评价</span></label>
+                                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                <p class="form-control-static">已评价</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="user-1&user-2&user-3" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">总体评价</label>
+                                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                <label class="radio-inline" style="padding-left: 0;">
+                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/flower1.png')); ?>"/> 好评 <input type="radio" id="user-1" name="user" value="1" <?php if($info->u_evaluate == 1): ?> checked <?php else: ?> disabled <?php endif; ?>/>
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/flower2.png')); ?>"/> 中评 <input type="radio" id="user-2" name="user" value="2" <?php if($info->u_evaluate == 2): ?> checked <?php else: ?> disabled <?php endif; ?>/>
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <img src="<?php echo e(Theme::asset()->url('images/myOrder/task/flower3.png')); ?>"/> 差评 <input type="radio" id="user-3" name="user" value="3" <?php if($info->u_evaluate == 3): ?> checked <?php else: ?> disabled <?php endif; ?>/>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="express_name_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">描述相符</label>
+                                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                <div id="task_quality_star" data-value="<?php echo e($info->task_quality_star); ?>">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="express_name_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">服务态度</label>
+                                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                <div id="working_attitude_star" data-value="<?php echo e($info->working_attitude_star); ?>">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="express_name_p" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">物流服务</label>
+                                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                                <div id="making_speed_star" data-value="<?php echo e($info->making_speed_star); ?>">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="u_comment" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label">评语</label>
+                                            <div class="col-xs-8 col-sm-8 col-md-6 col-lg-4">
+                                                <textarea class="form-control" id="u_comment" name="u_comment" rows="3" placeholder="没有评语" disabled><?php echo e($info->u_comment); ?></textarea>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <div class="form-group">
+                                        <label for="post_at_p" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                            <p class="form-control-static">订单交易中，暂无评价信息</p>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <div class="form-group">
+                                    <label for="post_at_p" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label"></label>
+                                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                        <p class="form-control-static">订单已关闭，无评价信息</p>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php /* 上一个/下一个 */ ?>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                    <?php if($prev): ?>
+                        <a href="<?php echo e(route(Theme::get('route_prefix') . '.order.detail', ['id' => $prev])); ?>" class="btn btn-link"><i class="fa fa-angle-double-left" aria-hidden="true"></i> 上一个订单</a>
+                    <?php else: ?>
+                        <a class="btn btn-link" disabled><i class="fa fa-ban fa-rotate-90" aria-hidden="true"></i> 上一个订单</a>
+                    <?php endif; ?>
+                    |
+                    <?php if($next): ?>
+                        <a href="<?php echo e(route(Theme::get('route_prefix') . '.order.detail', ['id' => $next])); ?>" class="btn btn-link">下一个订单 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    <?php else: ?>
+                        <a class="btn btn-link" disabled>下一个订单 <i class="fa fa-ban fa-rotate-90" aria-hidden="true"></i></a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('order-css-jquery.raty', Theme::get('module') . '/plugin/jquery.raty/jquery.raty.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('order-js-jquery.raty', Theme::get('module') . '/plugin/jquery.raty/jquery.raty.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-iCheck-flat-purple', Theme::get('module') . '/plugin/iCheck/skins/flat/purple.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('order-js-iCheck', Theme::get('module') . '/plugin/iCheck/icheck.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('order-js-jquery.validate', Theme::get('module') . '/plugin/bootstrap-validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('order-js-messages_zh', Theme::get('module') . '/plugin/bootstrap-validate/messages_zh.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('order-css-index', Theme::get('dir_prefix') . '/shop/css/index.css'); ?>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('order-css-add_goods', Theme::get('dir_prefix') . '/goods/css/add_goods.css'); ?>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('order-css-detail', Theme::get('dir_prefix') . '/order/css/detail.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('order-js-detail', Theme::get('dir_prefix') . '/order/js/detail.js'); ?>

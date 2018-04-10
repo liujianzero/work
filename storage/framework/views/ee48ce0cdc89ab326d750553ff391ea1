@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 tu">
+            <?php if(empty($extra['img'])): ?>
+                <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/exhibition.png")); ?>"
+                     class="center-block" width="70%"/>
+            <?php else: ?>
+                <img src="<?php echo url($extra['img']); ?>" class="center-block" width="70%"/>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 ">
+            <div class="content1">
+                <h1><?php echo e($shop['store_name']); ?></h1>
+                <?php /*<h2>景区级别：4A级
+                    <span>特色：国家一级博物馆</span>
+                </h2>*/ ?>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 ">
+            <div class="content2">
+                <h1>概况</h1>
+                <?php if(!empty($extra['page_detail']['summary_desc'])): ?>
+                    <p><?php echo e($extra['page_detail']['summary_desc']); ?></p>
+                <?php else: ?>
+                    <p>暂无介绍</p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('theme-css-summary', "{$shop->dir}/css/summary.css"); ?>
+

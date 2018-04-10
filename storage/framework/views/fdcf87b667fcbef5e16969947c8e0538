@@ -1,0 +1,317 @@
+<style>
+	section {
+		margin: 0 auto;
+
+	}
+</style>
+<link rel="stylesheet"
+	  href="/themes/default/assets/css/usercenter/user_info.css">
+<link rel="stylesheet"
+	  href="/themes/default/assets/css/usercenter/usercenter.css">
+<script src="/themes/default/assets/js/doc/flotr2.min.js"></script>
+<script type="text/javascript">
+
+
+	window.onload=function(){
+		var conment = document.getElementById('conment');
+		// Fill series s1 and s2.
+		var s1 = { label: '', data: [
+					[0, <?php echo Theme::get('zanNum'); ?>],
+					[1, <?php echo Theme::get('serviceNum'); ?>],
+					[2, <?php echo Theme::get('collectNum'); ?>],
+					[3, <?php echo Theme::get('replyNum'); ?>],
+					[4, <?php echo Theme::get('modelsNum'); ?>]
+				] },
+				ticks = [
+					[0, "博学"],
+					[1, "勤劳"],
+					[2, "坚毅"],
+					[3, "热忱"],
+					[4, "才华"],
+					//  [5, "oops"]
+				];
+
+		// Draw the graph.
+		graph = Flotr.draw(conment, [s1, ], {
+			radar: { show: true },
+
+			grid: { circular: true, minorHorizontalLines: true },
+			yaxis: { min: 0, max: 100, minorTickFreq: 2, showLabels: false },
+			xaxis: { ticks:[[0, "博学"],
+				[1, "勤劳"],
+				[2, "坚毅"],
+				[3, "热忱"],
+				[4, "才华"]], // 自定义X轴
+				minorTicks: null,
+				showLabels:true,                             // 是否显示X轴刻度
+				showMinorLabels:false,
+				labelsAngle:0,                              //x轴文字倾斜角度                                //x轴标题
+				titleAngle:0,                                //x轴标题倾斜角度
+				noTicks:12,                                   //当使用自动增长时,x轴刻度的个数
+				minorTickFreq:null,                           //
+				tickFormatter: Flotr.defaultTickFormatter,   //刻度的格式化方式
+				tickDecimals:0,                              //刻度小数点后的位数
+				min:null,                                    //刻度最小值  X轴起点的值
+				max:null,                                    //刻度最大值
+				autoscale:true,
+				autoscaleMargin:0,
+				color:null,                             //x轴刻度的颜色
+				mode:'normal',
+				timeFormat:null,
+				timeMode:'UTC',                               //For UTC time ('local' for local time).
+				timeUnit:'year',                             //时间单位 (millisecond, second, minute, hour, day, month, year)
+				scaling:'linear',                            //linear or logarithmic
+				base:Math.E,
+				titleAlign:'center',                         //标题对齐方式
+				margin:true},
+			mouse: { track: false }
+		});
+	}
+
+</script>
+
+
+<style>
+	#person .editable-image{
+		margin-left:50px;
+	}
+</style>
+
+<div class="warp">
+	<?php if(Session::get('children')): ?>
+		<input type="hidden" class="session_id" value="<?php echo e(Session::get('children')->id); ?>">
+	<?php else: ?>
+		<input type="hidden" class="session_id" value="">
+	<?php endif; ?>
+
+	<div id="person" class="cbody clearfix" style="margin-top: 59px; " >
+
+			<div class="person-l clearfix">
+				<div class="persons-l">
+					<div class="recat">
+						<div class="cue">
+							您的会员将于<span><?php echo e(Theme::get('member_expire_date')); ?></span>到期
+						</div>
+						<a href="<?php echo e(url('/member')); ?>">
+						<?php if(Auth::user()->user_type == 1 || Auth::user()->user_type == 2): ?>
+							<img class='vip-image' src="<?php echo Theme::asset()->url('images/vip.png'); ?>" />
+						<?php elseif(Auth::user()->user_type == 3 || Auth::user()->user_type == 4): ?>
+							<img class='vip-image' src="<?php echo Theme::asset()->url('images/vipqi.png'); ?>" />
+						<?php else: ?>
+							<img class='vip-image' width="0" border="0"  src="" style="z-index:-1"/>
+						<?php endif; ?>
+						</a>
+						<img id="avatar"
+							 class='user-image  img-responsive a1'
+							 src="<?php if(!empty(Theme::get('avatar'))): ?> <?php echo url(Theme::get('avatar')); ?> <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?> <?php endif; ?>" />
+					</div>
+
+
+					<div class="names">
+						<?php echo Theme::get('nickname'); ?>
+
+						<?php if(Theme::get('sex') == 1): ?> <i class="fa fa-female" style="color: #f43499;"></i>  <?php endif; ?>
+						<?php if(Theme::get('sex') == 2): ?>	<i class="fa fa-male" style="color: #000;"></i> <?php endif; ?>
+					</div>
+					<p title="<?php echo e(Theme::get('introduce')); ?>"><?php echo e(mb_strimwidth(Theme::get('introduce'),0,28,'..')); ?></p>
+					<p>关注： <?php echo Theme::get('focus_num'); ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						粉丝：<?php echo Theme::get('fans_num'); ?></p>
+					<div class="texs">
+						<span>等级</span> <span class="bar progress"
+											  style="margin-bottom: 0px;">
+					<div class="progress-bar" role="progressbar"
+						 aria-valuenow="<?php echo Theme::get('experience'); ?>}"
+						 aria-valuemin="<?php echo Theme::get('user_level_min'); ?>"
+						 aria-valuemax="<?php echo Theme::get('user_level_max'); ?>"
+						 style="width: <?php echo Theme::get('level_width'); ?>%;"></div>
+				</span> <span><?php echo Theme::get('experience'); ?>/<?php echo Theme::get('user_level_max'); ?></span>
+
+
+					</div>
+					<?php /*<div class="grade-3  g-usericon">*/ ?>
+						<?php /*<?php if(Theme::get('authUser')['bank'] == true): ?> <a class="u-bankiconact" href="/user/bankAuth"*/ ?>
+																	   <?php /*data-toggle="tooltip" data-placement="top" title="银行卡已认证"></a>*/ ?>
+						<?php /*<?php else: ?> <a class="u-bankicon" data-toggle="tooltip" href="/user/bankAuth"*/ ?>
+								 <?php /*data-placement="top" title="银行卡未认证"></a> <?php endif; ?>*/ ?>
+
+						<?php /*<?php if(Theme::get('authUser')['realname'] == true): ?> <a href="/user/realnameAuth"*/ ?>
+																		   <?php /*class="u-infoiconact" data-toggle="tooltip" data-placement="top"*/ ?>
+																		   <?php /*title="实名已认证"></a> <?php else: ?> <a class="u-infoicon" href="/user/realnameAuth"*/ ?>
+																									   <?php /*data-toggle="tooltip" data-placement="top" title="实名未认证"></a>*/ ?>
+						<?php /*<?php endif; ?> <?php if(Auth::User()->email_status != 2): ?> <a class="u-messageicon" href="/user/emailAuth"*/ ?>
+																	   <?php /*data-toggle="tooltip" data-placement="top" title="邮箱未认证"></a> <?php else: ?>*/ ?>
+							<?php /*<a class="u-messageiconact" data-toggle="tooltip"  href="/user/emailAuth"*/ ?>
+							   <?php /*data-placement="top" title="邮箱已认证"></a> <?php endif; ?>*/ ?>
+
+						<?php /*<?php if(Theme::get('authUser')['alipay']== true): ?> <a class="u-aliiconact"  href="/user/paylist"*/ ?>
+																		<?php /*data-toggle="tooltip" data-placement="top" title="支付已认证"></a> <?php else: ?>*/ ?>
+							<?php /*<a class="u-aliicon" data-toggle="tooltip" data-placement="top"  href="/user/paylist"*/ ?>
+							   <?php /*title="支付未认证"></a> <?php endif; ?> <?php if(Theme::get('authUser')['organization'] == true): ?> <a class="u-comicon" data-toggle="tooltip"*/ ?>
+																											  <?php /*data-placement="top" title="企业已认证"></a> <?php else: ?> <a*/ ?>
+								<?php /*class="u-comicon-no" data-toggle="tooltip" data-placement="top"*/ ?>
+								<?php /*title="企业未认证"></a> <?php endif; ?>*/ ?>
+					<?php /*</div>*/ ?>
+				</div>
+				<div class="persons-r">
+					<div class="cube clearfix">
+						<div class="cube-l">
+							<span>金额</span>
+							<?php if(Session::get('children')): ?>
+								<span class="bars">您无权查看</span>
+							<?php else: ?>
+								<span class="bars"><?php echo Theme::get('balance'); ?></span>
+							<?php endif; ?>
+							<a href="/finance/list">明细</a>
+						</div>
+						<div class="cube-c">
+							<i class="hb"></i><span class="hbao"><b>
+								<?php if(Session::get('children')): ?>
+									无权查看
+								<?php else: ?>
+									<?php echo Theme::get('randNum'); ?>
+
+								<?php endif; ?>
+								</b></span>
+						</div>
+						<div class="cube-r">
+							<a href="/finance/cash" class="a1">立即充值</a> <a href="/finance/cashout" class="a2">提现</a>
+						</div>
+					</div>
+					<div class="data clearfix">
+						<div id="conment"></div>
+						<div class="data-s">
+							<span>博学<font>(拥有学习数)</font>:<b><?php echo Theme::get('zanNum'); ?></b></span>
+							<span>才华<font>(作品提交数)</font>:<b><?php echo Theme::get('modelsNum'); ?></b></span>
+							<span>勤劳<font>(拥有服务数)</font>:<b><?php echo Theme::get('serviceNum'); ?></b></span>
+							<span>热忱<font>(点评作品数)</font>:<b><?php echo Theme::get('replyNum'); ?></b></span>
+							<span>坚毅<font>(拥有收藏数)</font>:<b><?php echo Theme::get('collectNum'); ?></b></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<?php /*<!-- 最新任务 @start  -->*/ ?>
+			<?php if( !Theme::get('newbie_task') ): ?>
+				<div class="person-r" id="person1">
+					<div class="person-r-top">
+						<h2>最新任务</h2>
+						<span class="person-text" style="cursor: pointer" onclick="location.href='/user/acceptTasksList'">已完成任务</span>
+						<?php if(Theme::get('first_sign')): ?>
+							<a href="javascript:daily_sign();" style="color: #fff" class="a6">签到</a>
+						<?php else: ?>
+							<a style="cursor: not-allowed" class="a6">已签到</a>
+						<?php endif; ?>
+					</div>
+					<div class="person-r-bottom">
+						<ul>
+							<?php if(Theme::get('task')): ?>
+								<?php foreach(Theme::get('task') as $k1 => $v1): ?>
+									<li>
+                            <span>
+                                <?php if(mb_strlen($v1['title']) > 12): ?>
+									<?php echo mb_substr($v1['title'],0,12,'utf-8'); ?>...
+								<?php else: ?>
+									<?php echo $v1['title']; ?>
+
+								<?php endif; ?>
+                            </span>
+										<span class="span2">金额<?php echo e($v1['show_cash']); ?>元 经验<?php echo e($v1['show_cash']/100); ?></span>
+										<a href="/task/<?php echo e($v1['id']); ?>">前往</a>
+									</li>
+								<?php endforeach; ?>
+							<?php endif; ?>
+						</ul>
+					</div>
+				</div>
+			<?php endif; ?>
+			<?php /*<!-- 最新任务 @end  -->*/ ?>
+
+			<?php /*<!-- 新手任务 @start  -->*/ ?>
+			<?php if( Theme::get('newbie_task') ): ?>
+				<div class="person-r" id="person2">
+					<div class="person-r-top">
+						<h2>新手任务</h2>
+						<span class="person-text">完成后您将成为认证设计师</span>
+						<?php if(Theme::get('first_sign')): ?>
+							<a href="javascript:daily_sign();" style="color: #fff" class="a6">签到</a>
+						<?php else: ?>
+							<a style="cursor: not-allowed" class="a6">已签到</a>
+						<?php endif; ?>
+					</div>
+					<div class="person-r-bottom">
+						<ul>
+							<?php foreach( Theme::get('newbie_task') as $v ): ?>
+								<li>
+									<span><?php echo e($v['title']); ?> (经验x<?php echo e($v['experience']); ?>)</span>
+									<span class="span2"><?php echo e($v['desc']); ?></span>
+									<a href="<?php echo e($v['url']); ?>">前往</a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+				</div>
+			<?php endif; ?>
+			<?php /*<!-- 新手任务 @end  -->*/ ?>
+		<?php /*<?php endif; ?>*/ ?>
+	</div>
+</div>
+
+<div id="east" style="margin-top: 20px;">
+	<div class="east-main cbody clearfix">
+	<ul class="ulbox clearfix">
+		<?php foreach(Theme::get('menuTitle') as $k => $v): ?>
+		<li	class="<?php echo e((preg_match('/^\/user\/('.$v['url_array'].')/',$_SERVER['REQUEST_URI'])) ? 'on':''); ?>">
+			<?php if(!empty(Session::get('children')['id'])): ?>
+				<?php if( !in_array( Session::get('children')['id'] , explode(',',$v['team_id'] ))): ?>
+					<a href="javascript:layer.msg('对不起！您的权限不足，无法完成此操作！')">
+				<?php else: ?>
+					<a href="<?php echo e($v['url']); ?>">
+				<?php endif; ?>
+			<?php else: ?>
+				<?php if( (Auth::user()->user_type < 3 && $v['id'] == 4) || (Auth::user()->user_type < 1 && $v['id'] == 2)): ?>
+					<a href="javascript:layer.msg('对不起！您的权限不足，请升级高级版会员！')">
+				<?php else: ?>
+					<a href="<?php echo e($v['url']); ?>">
+				<?php endif; ?>
+			<?php endif; ?>
+				<label for="tab<?php echo e($k); ?>"><?php echo e($v['title']); ?>
+
+					<?php if( $k == 2 && ( Theme::get('userCount') || Theme::get('shopCount') ) ): ?>
+						<i class="fa fa-volume-up"></i>
+					<?php endif; ?>
+				</label>
+			</a>
+		</li>
+		<?php endforeach; ?>
+	</ul>
+		<a href="/member/bounty/2/capacity/0">
+			<div class="progres" title="您已使用容量<?php echo Theme::get('percentage'); ?>，点击升级容量！">
+			<span class="span1"><i></i>容量</span>
+				<div class="progress-bar progress-bar-success progress-bar-striped active" style="width:<?php echo e(Theme::get('percentage')); ?>;">
+				</div>
+			<span class="span2"><i></i><?php echo e(Theme::get('storage')); ?></span>
+		</div>
+		</a>
+	</div>
+</div>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('custom-layer','js/layer/layer.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('custom-dailySign','js/dailySign.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('team_info','js/team/info.js'); ?>
+
+
+<?php echo Theme::widget('avatar')->render(); ?>
+
+
+<script type="text/javascript">
+	var oRecatimg = document.querySelector(".recat img.vip-image");
+	var oCue = document.querySelector(".cue");
+	oRecatimg.onmouseenter = function(){
+		oCue.style.display = "block";
+	};
+	oRecatimg.onmouseleave = function(){
+		oCue.style.display = "none";
+	};
+</script>

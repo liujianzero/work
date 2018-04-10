@@ -1,0 +1,137 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+    <div class="app-container"><!--客户开始-->
+        <div class="head">
+            <a href="javascript:newbuild(this);">新建客户</a>
+        </div>
+        <form id="filterFrom" class="scrm-from">
+            <div class="from-main row">
+                <div class="from-son col-md-4">
+                    <label for="mobile">手机号码：</label>
+                    <input type="text" id="mobile" name="mobile" value="<?php echo e($merge['mobile']); ?>"/>
+                </div>
+                <div class="from-son col-md-4">
+                    <label for="identity">客户身份：</label>
+                    <select class="select1" id="identity" name="vip">
+                        <option value="">全部</option>
+                        <?php foreach($vip as $k => $v): ?>
+                            <option value="<?php echo e($k); ?>" <?php if($merge['vip'] == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="from-son col-md-4">
+                    <label for="from_at">客户来源：</label>
+                    <select class="select1" id="from_at" name="from_at">
+                        <option value="">全部</option>
+                        <?php foreach($from_at as $k => $v): ?>
+                            <option value="<?php echo e($k); ?>" <?php if($merge['from_at'] == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="screen">
+                <input type="submit" class="fiter" value="筛选"/>
+                <a href="<?php echo e(route(Route::currentRouteName())); ?>" class="btn btn-link">清空筛选条件</a>
+            </div>
+        </form>
+        <div class="zent-table">
+            <table class="table table-striped">
+                <thead class="tab">
+                    <tr>
+                        <th>姓名</th>
+                        <th>手机号</th>
+                        <th>微信号</th>
+                        <th>客户来源</th>
+                        <th>客户身份</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $__empty_1 = true; foreach($list as $v): $__empty_1 = false; ?>
+                        <tr id="<?php echo e($v->id); ?>">
+                            <td><?php echo e($v->name); ?></td>
+                            <td><?php echo e($v->mobile); ?></td>
+                            <td><?php echo e(isset($v->wechat) ? $v->wechat : 'N/A'); ?></td>
+                            <td><?php echo e(isset($from_at[$v->from_at]) ? $from_at[$v->from_at] : 'N/A'); ?></td>
+                            <td><?php echo e($vip[$v->vip]); ?></td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="upd('<?php echo e($v->id); ?>')"><i class="fa fa-edit"></i> 编辑</button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="del('<?php echo e($v->id); ?>', '<?php echo e($v->name); ?>')"><i class="fa fa-trash"></i> 删除</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; if ($__empty_1): ?>
+                        <tr>
+                            <td class="text-center" colspan="6">没有找到匹配的记录</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="am-fr pull-right">
+            <ul class="am-pagination">
+                <?php echo $list->appends($merge)->render(); ?>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<?php /* 新建客户 */ ?>
+<div id="add-customer" style="display: none;">
+    <form class="form-horizontal" id="validateFrom">
+        <div class="form-group">
+            <label for="name" class="col-sm-3 control-label"><span class="need">*</span>姓名</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="name" name="name"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="vip" class="col-sm-3 control-label"><span class="need">*</span>客户身份</label>
+            <div class="col-sm-8">
+                <?php foreach($vip as $k => $v): ?>
+                    <label class="radio-inline" <?php if($k == 'Y'): ?> style="padding-left: 0;" <?php endif; ?>>
+                        <input type="radio" id="vip" name="vip" value="<?php echo e($k); ?>" <?php if($k == 'N'): ?> checked <?php endif; ?>> <?php echo e($v); ?>
+
+                    </label>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="mobile" class="col-sm-3 control-label"><span class="need">*</span>手机号</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="mobile" name="mobile"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="wechat" class="col-sm-3 control-label">微信号</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="wechat" name="wechat"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="remark" class="col-sm-3 control-label">备注</label>
+            <div class="col-sm-8">
+                <textarea class="form-control" id="remark" name="remark" rows="3" maxlength="200" placeholder="备注不要超过200字"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-8">
+                <button type="submit" class="btn btn-info" id="formSubmit">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('customer-js-jquery.validate', Theme::get('module') . '/plugin/bootstrap-validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('customer-js-messages_zh', Theme::get('module') . '/plugin/bootstrap-validate/messages_zh.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('goods-css-iCheck-purple', Theme::get('module') . '/plugin/iCheck/skins/flat/purple.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('goods-js-iCheck', Theme::get('module') . '/plugin/iCheck/icheck.js'); ?>
+
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('customer-css-index', Theme::get('dir_prefix') . '/customer/css/index.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('customer-js-customer', Theme::get('dir_prefix') . '/customer/js/customer.js'); ?>
+

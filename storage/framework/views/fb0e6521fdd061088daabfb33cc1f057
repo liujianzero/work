@@ -1,0 +1,106 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+    <div class="app-container" ><!--概况-->
+        <?php if($store->expire_day > 30): ?>
+            <div class="app-container-head clearfix" style="background-color: skyblue;">
+                <dl class="clearfix">
+                    <dt><a href="javascript:void(0);"><img src="<?php if(file_exists($store->store_logo)): ?><?php echo e("/$store->store_logo"); ?><?php else: ?><?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/survey/images/codeinfo.jpg')); ?><?php endif; ?>" width="45" height="43"/></a></dt>
+                    <dd>
+                        <h4><?php echo e($store->store_name); ?></h4>
+                        <p>
+                            <span class="<?php if($store->auth_status == 3): ?> span1 <?php endif; ?>"><i class="iconfont icon-dagou"></i>店铺认证</span>
+                            <span class="<?php if($store->assure_status == 'on'): ?> span1 <?php endif; ?>"><i class="iconfont icon-dagou"></i>担保交易</span>
+                        </p>
+                    </dd>
+                </dl>
+                <div class="app-main">
+                    <span>店铺有效期至：<?php echo e(date('Y-m-d', strtotime($store->expire_at))); ?>。</span>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="app-container-head clearfix">
+                <dl class="clearfix">
+                    <dt><a href="javascript:void(0);"><img src="<?php if(file_exists($store->store_logo)): ?><?php echo e("/$store->store_logo"); ?><?php else: ?><?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/survey/images/codeinfo.jpg')); ?><?php endif; ?>" width="45" height="43"/></a></dt>
+                    <dd>
+                        <h4><?php echo e(isset($store->store_name) ? $store->store_name : 'N/A'); ?></h4>
+                        <p>
+                            <span class="<?php if($store->auth_status == 3): ?> span1 <?php endif; ?>"><i class="iconfont icon-dagou"></i>店铺认证</span>
+                            <span class="<?php if($store->assure_status == 'on'): ?> span1 <?php endif; ?>"><i class="iconfont icon-dagou"></i>担保交易</span>
+                        </p>
+                    </dd>
+                </dl>
+                <div class="app-main">
+                    <?php if($store->expire_day == 0): ?>
+                        <span>店铺已过期。</span>
+                    <?php else: ?>
+                        <span>店铺有效期（还剩<em><?php echo e($store->expire_day); ?></em>天）；逾期未续费的店铺将被打样，影响店铺的正常运营。</span>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="ordertitle">
+            订单详情
+        </div>
+        <div class="order-head">
+            <ul>
+                <li>
+                    <h5><a href="javascript:void(0);"><?php echo e($count['wait']); ?></a></h5>
+                    <p>待发货订单</p>
+                </li>
+                <li>
+                    <h5><a href="javascript:void(0);"><?php echo e($count['refund']); ?></a></h5>
+                    <p>维权订单</p>
+                </li>
+                <li>
+                    <h5><a href="javascript:void(0);"><?php echo e($count['yesterday']); ?></a></h5>
+                    <p>昨日订单</p>
+                </li>
+                <li>
+                    <h5><a href="javascript:void(0);"><em class="unit">￥</em><?php echo e(price_format($count['yesterday_money'])); ?></a></h5>
+                    <p>昨日交易额</p>
+                </li>
+                <li>
+                    <h5><a href="javascript:void(0);"><em class="unit">￥</em><?php echo e(price_format($count['withdrawals_money'])); ?></a></h5>
+                    <p>可提现余额</p>
+                </li>
+            </ul>
+        </div>
+        <div class="order-head order-bg">
+            <ul>
+                <li>
+                    <h5><a href="javascript:void(0);"><?php echo e($view_count->yestody_store_pv); ?></a></h5>
+                    <p>昨日浏览量</p>
+                </li>
+                <li>
+                    <h5><a href="javascript:void(0);"><?php echo e($view_count->yestody_store_uv); ?></a></h5>
+                    <p>昨日访客数</p>
+                </li>
+                <li>
+                    <h5><a href="javascript:void(0);"><?php echo e($view_count->yestody_goods_pv); ?></a></h5>
+                    <p>昨日商品浏览量</p>
+                </li>
+                <li>
+                    <h5><a href="javascript:void(0);"><?php echo e($view_count->yestody_goods_uv); ?></a></h5>
+                    <p>昨日商品访客数</p>
+                </li>
+                <li>
+                    <h5><a href="javascript:void(0);"><?php echo e($goods['all']); ?></a></h5>
+                    <p>商品数</p>
+                </li>
+            </ul>
+        </div>
+        <div class="ordertitle">
+            常用功能
+        </div>
+        <div class="common">
+            <ul>
+                <li><a href="javascript:layer.msg('敬请期待');"><i class="iconfont icon-weixin"></i><span>微信</span></a></li>
+                <li><a href="javascript:layer.msg('敬请期待');"><i class="iconfont icon-fabushangpin"></i><span>发布商品</span></a></li>
+                <li><a href="javascript:layer.msg('敬请期待');"><i class="iconfont icon-kefuxitong"></i><span>客服系统</span></a></li>
+                <li><a href="javascript:layer.msg('敬请期待');"><i class="iconfont icon-xingzhuang89"></i><span>帮助中心</span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('survey-css-index', Theme::get('dir_prefix') . '/survey/css/index.css'); ?>
+

@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row">
+        <?php if(empty($extra['img'])): ?>
+            <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/map.jpg")); ?>"
+                 class="center-block" width="85%"/>
+        <?php else: ?>
+            <img src="<?php echo url($extra['img']); ?>" class="center-block" width="85%"/>
+        <?php endif; ?>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="adr">
+                <h1>地址：</h1>
+                <p>
+                    <i class="iconfont icon-address"></i>
+                    <span><?php echo e($extra['province']); ?><?php echo e($extra['city']); ?><?php echo e($extra['area']); ?><?php echo e($extra['detail']); ?></span>
+                </p>
+                <?php /*<p class="tel">
+                    <i class="iconfont icon-icon30"></i>
+                    <span>+010-85007422</span>
+                <h3>提示：从2013.4.1,除法定节假日外和暑期外，淡季周一下午开始闭馆（每周一开馆时间：8:30---12:00）</h3>
+                </p>*/ ?>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <div class="adr2">
+                <h1>出行小贴士：</h1>
+                <p><?php echo e($extra['page_detail']['travel_tips']); ?></p>
+                <?php /*<p>旺季：8:30--17:00（4月1日至10月31日）</p>*/ ?>
+                <?php /*<p>淡季：8:30--17:00（11月1日至3月31日）</p>*/ ?>
+                <?php /*<p>旅游最佳时间：4月-10月</p>*/ ?>
+                <?php /*<p>大约浏览时间：3小时</p>*/ ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('theme-css-address', "{$shop->dir}/css/address.css"); ?>
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_432602_8pysmpv1zr02uik9.css" />

@@ -1,0 +1,66 @@
+
+<?php /* 发布商品 */ ?>
+<div class="part" style="display: block;">
+    <div class="goods">
+        <ul class="clearfix" id="goodsList" style="height: 800px;overflow:auto;">
+            <li <?php if($permission['code']): ?> class="addto" <?php else: ?>
+            class="deny" data-msg="<?php echo e($permission['msg']); ?>" onclick="denyNotice(this)" <?php endif; ?>>
+                <i class="fa fa-plus-circle fa-4x"></i>
+                <p>发布商品</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--发布商品服务弹出框 -->
+<div id="alert-service">
+    <?php /**/ ?>
+    <div class="service">
+        <span class="cha"><img src="<?php echo e(Theme::asset()->url('images/myShop/goods/click.png')); ?>"/></span>
+        <h2>请选择您需要发布商品的文件夹</h2>
+        <ul id="Folders" class="clearfix flow-default" style="height: 535px;overflow:auto;">
+            <li>
+                <div class="picture">
+                    <img onclick="showModels(this);" data-id="0" src="<?php echo Theme::asset()->url('images/folder_no_cover.png'); ?>"/>
+                    <span class="pic-num-count">
+                        <span class="count"><?php echo e($defaultFolderCount); ?></span>
+                    </span>
+                </div>
+                <div class="folder">
+                    <span>默认文件夹</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <?php /**/ ?>
+    <!--发布商品服务弹出框2-->
+    <div class="service">
+        <span class="cha"><img src="<?php echo e(Theme::asset()->url('images/myShop/goods/click.png')); ?>"/></span>
+        <h2>请选择您需要发布的商品</h2>
+        <dl class="clearfix" id="FolderInfo">
+
+        </dl>
+        <ul class="clearfix" id="Models" style="height: 356px;overflow:auto;">
+
+        </ul>
+    </div>
+    <!--最后统计价格-->
+    <div class="mation">
+        <span class="cha"><img src="<?php echo e(Theme::asset()->url('images/myShop/goods/click.png')); ?>"/></span>
+        <form id="addGoods">
+
+        </form>
+    </div>
+</div>
+<?php echo Theme::asset()->container('common-css')->usePath()->add('plugin-layui', 'plugins/layui/css/layui.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('myShop-goods', 'css/myShop/goods/goods.css'); ?>
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('myShop-futurico', 'js/myShop/icheck/futurico/futurico.css'); ?>
+
+<?php echo Theme::asset()->container('specific-js')->usePath()->add('myShop-icheck', 'js/myShop/icheck/icheck.min.js'); ?>
+
+<?php echo Theme::asset()->container('specific-js')->usePath()->add('plugin-layui', 'plugins/layui/layui.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('myShop-goods', 'js/myShop/goods/goods.js'); ?>
+

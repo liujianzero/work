@@ -1,0 +1,448 @@
+<form class="form-horizontal" id="validateFrom" action="<?php echo e(route('updateTask')); ?>" method="post">
+    <?php if(count($errors) > 0): ?>
+        <div class="container" id="err-msg">
+            <div class="alert alert-danger alert-dismissible" role="alert" style="border-radius: 4px;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fa fa-close"  style="color: #000;"></i></span></button>
+                <strong>对不起，您还需要完善以下信息：</strong>
+                <?php foreach($errors->all() as $error): ?>
+                    <p><i class="fa fa-times-circle"></i> <?php echo e($error); ?></p>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+    <div class="container" id="validate-error-msg">
+
+    </div>
+    <?php /* 1 */ ?>
+    <div class="container view-pay-denied">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <?php /* 1.1 */ ?>
+            <div class="panel panel-default panel-task">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a class="collapse-task" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-paint-brush"></i> 描述需求 <i class="fa fa-hand-pointer-o"></i>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="phone" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>联系手机</label>
+                            <div class="col-xs-12 col-sm-6">
+                                <input type="text" class="form-control" id="phone" name="phone" value="<?php echo e($info->phone); ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cate_pid&cate_id" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>任务类型</label>
+                            <div class="col-xs-6 col-sm-3">
+                                <label for="cate_pid" class="sr-only">行业</label>
+                                <select class="form-control" id="cate_pid" name="cate_pid" onchange="getCategory(this);">
+                                    <option value="">请选择</option>
+                                    <?php foreach($cate as $k => $v): ?>
+                                        <option value="<?php echo e($k); ?>" <?php if($info->cate_pid == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-xs-6 col-sm-3">
+                                <label for="cate_id" class="sr-only">分类</label>
+                                <select class="form-control" id="cate_id" name="cate_id">
+                                    <option value="">请选择</option>
+                                    <?php foreach($cate_children as $k => $v): ?>
+                                        <option value="<?php echo e($k); ?>" <?php if($info->cate_id == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="region_limit0&region_limit1" class="col-xs-12 col-sm-2 control-label">指定地域</label>
+                            <div class="col-xs-12 col-sm-6">
+                                <label class="radio-inline">
+                                    <input type="radio" name="region_limit" value="1" <?php if(1 == $info->region_limit): ?> checked <?php endif; ?>> 不限地区
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="region_limit" value="2" <?php if(2 == $info->region_limit): ?> checked <?php endif; ?>> 指定地区
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group" id="district" style="display: none;">
+                            <div class="col-xs-12 col-sm-2 col-sm-offset-2">
+                                <label for="province" class="sr-only">省份</label>
+                                <select class="form-control" id="province" name="province" onchange="getCity(this);">
+                                    <option value="">请选择</option>
+                                    <?php foreach($province as $k => $v): ?>
+                                        <option value="<?php echo e($k); ?>" <?php if($info->province == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <label for="city" class="sr-only">城市</label>
+                                <select class="form-control" id="city" name="city" onchange="getArea(this);">
+                                    <option value="">请选择</option>
+                                    <?php foreach($city as $k => $v): ?>
+                                        <option value="<?php echo e($k); ?>" <?php if($info->city == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-2">
+                                <label for="area" class="sr-only">地区</label>
+                                <select class="form-control" id="area" name="area">
+                                    <option value="">请选择</option>
+                                    <?php foreach($area as $k => $v): ?>
+                                        <option value="<?php echo e($k); ?>" <?php if($info->area == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>需求标题</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <input type="text" class="form-control" id="title" name="title" value="<?php echo e($info->title); ?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="desc" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>需求详情</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <textarea class="form-control" id="desc" name="desc"><?php echo e($info->desc); ?></textarea>
+                                <span class="input-tips hidden-xs"><i class="fa fa-info-circle"></i> 可直接拖拽图片进行上传，支持的格式为：png、jpg、jpeg、gif、bmp，每张大小限制为：2MB</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="file" class="col-xs-12 col-sm-2 control-label">需求附件</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <div class="dropzone" id="dropzone" data-file="<?php echo e($files); ?>">
+                                    <div class="fallback">
+                                        <input type="file" id="file" name="file" multiple/>
+                                    </div>
+                                </div>
+                                <div id="file_update"></div>
+                                <span class="input-tips hidden-xs"><i class="fa fa-info-circle"></i> 可直接拖拽文件进行上传，支持的格式为：png、jpg、jpeg、gif、bmp、zar、doc、docx、xls、xlsx、ppt、pptx、pdf，每个大小限制为：2MB，最多只能添加3个文件</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php /* 1.2 */ ?>
+            <div class="panel panel-default panel-task">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <i class="fa fa-gavel"></i> 交易模式 <i class="fa fa-hand-pointer-o"></i>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="type_id" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>交易模式</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <?php foreach($type as $k => $v): ?>
+                                    <div class="col-xs-6 col-sm-3" style="padding-left: 0;">
+                                        <label class="checkbox-inline">
+                                            <input type="radio" data-type="<?php echo e($type_choice[$v->id]); ?>" name="type_id" value="<?php echo e($v->id); ?>" <?php if($v->id == $info->type_id): ?> checked <?php endif; ?>> <?php echo e($v->name); ?>
+
+                                        </label>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <div class="type-choice">
+                            <?php /* 招标 */ ?>
+                            <div class="type-none" id="tender">
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-offset-2 col-sm-9">
+                                        <p class="form-control-static">先选中标威客，TA再工作。找到中标威客后托管赏金。</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="bounty_select_01" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>赏金</label>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="bounty_select" value="0" <?php if(! $info->action_id): ?> checked <?php endif; ?>> 直接填写赏金
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="bounty_select" value="1" <?php if($info->action_id): ?> checked <?php endif; ?>> 选择赏金区间
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-offset-2 col-sm-4" id="bounty_select">
+                                        <div class="tender-bounty">
+                                            <label for="tender_bounty" class="sr-only">直接填写赏金</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-rmb"></i></span>
+                                                <input type="text" class="form-control" id="tender_bounty" name="tender_bounty" value="<?php echo e($info->bounty); ?>">
+                                            </div>
+                                        </div>
+                                        <div class="tender-bounty" style="display: none;">
+                                            <label for="tender_bounty_id" class="sr-only">选择赏金区间</label>
+                                            <select class="form-control" id="tender_bounty_id" name="tender_bounty_id">
+                                                <option value="">请选择</option>
+                                                <?php foreach($price_range as $v): ?>
+                                                    <option value="<?php echo e($v->id); ?>" <?php if($info->action_id == $v->id): ?> selected <?php endif; ?>>￥<?php echo e($v->min_price); ?> - <?php echo e($v->max_price); ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php /* 单人 */ ?>
+                            <div class="type-none" id="single">
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-offset-2 col-sm-9">
+                                        <p class="form-control-static">威客们先工作，再选中标作品。只设置1个中标者。</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="single_bounty" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>赏金</label>
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-rmb"></i></span>
+                                            <input type="text" class="form-control" id="single_bounty" name="single_bounty" value="<?php echo e($info->bounty); ?>" onchange="handlePrice();">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php /* 多人 */ ?>
+                            <div class="type-none" id="multiple">
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-offset-2 col-sm-9">
+                                        <p class="form-control-static">威客们先工作，再选中标作品。设置多个中标者，平分赏金。</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="multiple_bounty" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>赏金</label>
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-rmb"></i></span>
+                                            <input type="text" class="form-control" id="multiple_bounty" name="multiple_bounty" value="<?php echo e($info->bounty); ?>" onchange="setMultipleWorker(this);">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="multiple_worker_num" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>中标人数</label>
+                                    <div class="col-xs-12 col-sm-4">
+                                        <input type="text" class="form-control" id="multiple_worker_num" name="multiple_worker_num" value="<?php echo e($info->worker_num); ?>" onchange="setMultipleWorker('#multiple_bounty');">
+                                        <span class="input-tips"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php /* 计件 */ ?>
+                            <div class="type-none" id="job">
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-offset-2 col-sm-9">
+                                        <p class="form-control-static">威客们先工作，再选中标作品。合格一标，支付一标，均摊赏金。</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="job_bounty" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>赏金</label>
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-rmb"></i></span>
+                                            <input type="text" class="form-control" id="job_bounty" name="job_bounty" value="<?php echo e($info->bounty); ?>" onchange="setJobWorker(this);">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="job_worker_num" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>所需件数</label>
+                                    <div class="col-xs-12 col-sm-4">
+                                        <input type="text" class="form-control" id="job_worker_num" name="job_worker_num" value="<?php echo e($info->worker_num); ?>" onchange="setJobWorker('#job_bounty');">
+                                        <span class="input-tips"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php /* 时间 */ ?>
+                        <div class="form-group">
+                            <label for="delivery_deadline" class="col-xs-12 col-sm-2 control-label"><span class="need">*</span>竞标结束时间</label>
+                            <div class="col-xs-12 col-sm-4">
+                                <div class="input-daterange input-group datepicker">
+                                    <span class="input-group-addon date-icon"><i class="fa fa-calendar bigger-110"></i></span>
+                                    <label for="delivery_deadline" class="sr-only">竞标结束时间</label>
+                                    <input type="text" class="form-control text-center" id="delivery_deadline" name="delivery_deadline" value="<?php echo e(date('Y-m-d', strtotime($info->delivery_deadline))); ?>" placeholder="结束时间" readonly style="cursor: pointer;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php /* 1.3 */ ?>
+            <div class="panel panel-default panel-task">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <i class="fa fa-rocket"></i> 增值服务 <i class="fa fa-hand-pointer-o"></i>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <?php if(count($service)): ?>
+                            <?php foreach($service as $v): ?>
+                                <div class="form-group">
+                                    <div class="col-xs-4 col-sm-offset-2 col-sm-1">
+                                        <div class="checkbox">
+                                            <label style="padding-left: 0;">
+                                                <input type="checkbox" data-class="<?php echo e(isset($server_active[$v->identify]) ? $server_active[$v->identify] : ''); ?>" data-price="<?php echo e($v->price); ?>" name="product[]" value="<?php echo e($v->id); ?>" <?php if(in_array($v->id, $task_service)): ?> checked <?php endif; ?>>
+                                                <span class="server-span <?php if(in_array($v->id, $task_service)): ?><?php echo e($server_active[$v->identify]); ?><?php endif; ?>"><?php echo e(substr($v->title, 3, 3)); ?></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-8 col-sm-2">
+                                        <p class="form-control-static height price-p">￥<?php echo e($v->price); ?></p>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <p class="form-control-static height"><b class="notice-b"><?php echo e($v->title); ?></b></p>
+                                        <p class="form-control-static height"><?php echo e($v->description); ?></p>
+                                    </div>
+                                    <div class="col-xs-12 visible-xs-block">
+                                        <hr style="border-top: 1px solid #000;">
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-offset-2 col-sm-9">
+                                    <div class="checkbox">
+                                        <label style="padding-left: 0;">
+                                            <input type="checkbox" name="product-all">
+                                            全选
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php else: ?>
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-offset-2 col-sm-9">
+                                    <p class="form-control-static">暂无增值服务</p>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php /* 2 */ ?>
+    <div class="container view-pay-denied">
+        <div class="content" style="padding: 15px;margin-bottom: 50px;">
+            <div class="form-group">
+                <label for="title" class="col-xs-4 col-sm-2 control-label">托管赏金</label>
+                <div class="col-xs-8 col-sm-9">
+                    <p class="form-control-static price-p-size13">￥<span id="bounty-money"><?php echo e($info->bounty); ?></span></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-xs-4 col-sm-2 control-label">增值服务</label>
+                <div class="col-xs-8 col-sm-9">
+                    <p class="form-control-static price-p-size13">￥<span id="server-money"><?php echo e($service_price); ?></span></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-offset-2 col-sm-9">
+                    <table class="table table-server">
+                        <?php foreach($service as $v): ?>
+                            <tr id="product-<?php echo e($v->id); ?>" <?php if(! in_array($v->id, $task_service)): ?>style="display: none;"<?php endif; ?>>
+                                <td>
+                                    <span class="server-span <?php echo e($server_active[$v->identify]); ?>"><?php echo e(substr($v->title, 3, 3)); ?></span>
+                                    <?php echo e($v->title); ?>
+
+                                </td>
+                                <td>￥<?php echo e($v->price); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="title" class="col-xs-4 col-sm-2 control-label">应付总额</label>
+                <div class="col-xs-8 col-sm-9">
+                    <p class="form-control-static price-p-size13">￥<span id="total-money"><?php echo e($total_price); ?></span></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="status1&status2" class="col-xs-12 col-sm-2 control-label">任务状态</label>
+                <div class="col-xs-12 col-sm-6">
+                    <label class="radio-inline">
+                        <input type="radio" name="status" value="1" <?php if($info->status == 1): ?> checked <?php endif; ?>> 暂不发布
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="status" value="2" <?php if($info->status == 2): ?> checked <?php endif; ?>> 正常发布
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-offset-2 col-sm-9">
+                    <div class="checkbox">
+                        <label  style="padding-left: 0;">
+                            <input type="checkbox" id="agree" name="agree" checked> 我已阅读并同意 <a class="modal-p" data-toggle="modal" data-target=".bs-example-modal-lg">《任务发布协议》</a>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-offset-2 col-sm-9">
+                    <button type="submit" class="btn btn-primary btn-block" id="formSubmit">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="id" value="<?php echo e($info->id); ?>"/>
+    <input type="hidden" name="params" value="<?php echo e($params); ?>"/>
+    <?php echo csrf_field(); ?>
+
+</form>
+
+<?php /* 任务发布协议 */ ?>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myLargeModalLabel"><?php echo e($agree->name); ?></h4>
+            </div>
+            <div class="modal-body">
+                <?php echo e($agree->content); ?>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">我同意</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('task-css-iCheck-square', 'agent/plugin/iCheck/skins/square/square.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('task-js-iCheck', 'agent/plugin/iCheck/icheck.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('task-css-summernote', 'agent/plugin/summernote/summernote.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('task-js-summernote', 'agent/plugin/summernote/summernote.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('task-js-summernote-zh-CN', 'agent/plugin/summernote/lang/summernote-zh-CN.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('task-css-dropzone.basic', 'agent/plugin/dropzone/min/basic.min.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('task-css-dropzone.min', 'agent/plugin/dropzone/min/dropzone.min.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('task-js-dropzone.min', 'agent/plugin/dropzone/min/dropzone.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-css')->usePath()->add('task-css-bootstrap-datetimepicker', 'agent/plugin/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('task-js-bootstrap-datetimepicker', 'agent/plugin/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('task-js-bootstrap-datetimepicker.zh-CN', 'agent/plugin/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js'); ?>
+
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('task-js-jquery.validate', 'agent/plugin/bootstrap-validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('task-js-messages_zh', 'agent/plugin/bootstrap-validate/messages_zh.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('custom-css')->usePath()->add('task-create', 'css/task/create.css'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usePath()->add('task-create', 'js/task/update.js'); ?>
+

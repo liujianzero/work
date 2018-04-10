@@ -1,0 +1,14 @@
+<div class="user-l">
+    <ul class="<?php echo e((preg_match('/^\/user\/(myShopReleaseGoods|goodsType|goodsAttr|editAttr)/',$_SERVER['REQUEST_URI'])) ? 'active' : ''); ?>">
+        <li class="title"><i class="fa fa-circle-o" aria-hidden="true"></i>我的店铺</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(myShopReleaseGoods)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myShop.releaseGoods')); ?>'">发布商品</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(goodsType|goodsAttr|editAttr)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('myShop.goodsType')); ?>'">属性类型</li>
+        <li class="titles">交易评价</li>
+    </ul>
+    <ul class="<?php echo e((preg_match('/^\/user\/(shop.list|shop.type|shop.create)/',$_SERVER['REQUEST_URI'])) ? 'active' : ''); ?>">
+        <li class="title"><i class="fa fa-circle-o" aria-hidden="true"></i>店铺管理</li>
+        <li class="titles">店铺装修</li>
+        <li class="titles<?php echo e((preg_match('/^\/user\/(shop.list|shop.type|shop.create)/',$_SERVER['REQUEST_URI'])) ? ' click' : ''); ?>" onclick="location.href='<?php echo e(route('shop.list')); ?>'">查看店铺</li>
+        <li class="titles">店铺服务</li>
+    </ul>
+</div>

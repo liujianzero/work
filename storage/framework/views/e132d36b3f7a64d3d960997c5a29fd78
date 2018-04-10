@@ -1,0 +1,114 @@
+<!--全景图-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="head">
+            <?php if(!empty($shop['pic'])): ?>
+                <iframe src="<?php echo e($shop['pic']); ?>"></iframe>
+            <?php else: ?>
+                <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/banner.png")); ?>"/>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<!--顶部导航-->
+<div class="container-fluid">
+    <div class="nav">
+        <div class="row">
+            <ul class="nav nav-tabs " id="navv">
+                <li class="col-xs-3">
+                    <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'index'])); ?>"
+                       id="noth">
+                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic1.png")); ?>"
+                             class="center-block pos">
+                        <p class="text-center">推荐</p>
+                    </a>
+                </li>
+                <li class="col-xs-3">
+                    <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'summary'])); ?>"
+                       id="noth">
+                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic2.png")); ?>"
+                             class="center-block pos">
+                        <p class="text-center">简介</p>
+                    </a>
+                </li>
+                <li class="col-xs-3">
+                    <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'address'])); ?>"
+                       id="noth">
+                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic3.png")); ?>"
+                             class="center-block pos">
+                        <p class="text-center">地址</p>
+                    </a>
+                </li>
+                <li class="col-xs-3">
+                    <a href="javascript:void(0)"
+                       <?php /*<a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'order'])); ?>"*/ ?>
+                       id="noth">
+                        <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic4.png")); ?>"
+                             class="center-block pos">
+                        <p class="text-center">预定</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--商品列表-->
+<div class="container-fluid">
+    <div class="img">
+        <ul class="row">
+            <?php $__empty_1 = true; foreach($extra['models'] as $v): $__empty_1 = false; ?>
+                <li class="col-xs-4 col-sm-4">
+                    <?php /*<a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'content'])); ?>?id=<?php echo e($v->id); ?>">*/ ?>
+                    <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'content'])); ?>?id=<?php echo e($v->models_id); ?>">
+                        <?php /*<img src="<?php if(file_exists($v['upload_cover_image'])): ?><?php echo url($v['upload_cover_image']); ?><?php elseif(file_exists($v['cover_img'])): ?><?php echo url($v['cover_img']); ?><?php else: ?><?php echo Theme::asset()->url('images/folder_no_cover.png'); ?><?php endif; ?>"/>*/ ?>
+                        <img src="<?php if(file_exists($v['goods_cover'])): ?><?php echo url($v['goods_cover']); ?><?php else: ?><?php echo Theme::asset()->url('images/folder_no_cover.png'); ?><?php endif; ?>"/>
+                        <?php /*<p><?php echo e($v['title']); ?></p>*/ ?>
+                        <p><?php echo e($v['goods_name']); ?></p>
+                    </a>
+                </li>
+            <?php endforeach; if ($__empty_1): ?>
+                <li class="col-xs-4 col-sm-4">
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/1.jpg")); ?>"/>
+                    <p>暂无商品</p>
+                </li>
+            <?php endif; ?>
+            <?php /*<li class="col-xs-4 col-sm-4">
+                <a href="content.html">
+                    <img src="img/mobile_shop/1.jpg"/>
+                    <p>卧式洋型红灯</p>
+                </a>
+            </li>*/ ?>
+        </ul>
+    </div>
+</div>
+<!--底部导航-->
+<div class="nav_bottom">
+    <div class="row">
+        <ul>
+            <li class="col-xs-4">
+                <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id])); ?>"
+                   id="noth">
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic5.png")); ?>"
+                         class="center-block img-responsive">
+                    <p class="text-center">首页</p>
+                </a>
+            </li>
+            <li class="col-xs-4">
+                <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic6.png")); ?>"
+                     class="center-block img-responsive">
+                <p class="text-center">学习</p>
+            </li>
+            <li class="col-xs-4">
+                <a href="<?php echo e(route("{$shop->module}.pages.show",[$shop->store_id, 'personal'])); ?>"
+                   id="noth">
+                    <img src="<?php echo e(Theme::asset()->url("{$shop->dir}/images/{$info->page}/pic7.png")); ?>"
+                         class="center-block img-responsive">
+                    <p class="text-center">我的</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('theme-css-index', "{$shop->dir}/css/index.css"); ?>
+

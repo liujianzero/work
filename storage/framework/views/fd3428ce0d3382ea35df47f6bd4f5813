@@ -1,0 +1,8 @@
+<?php /* 这边是操作提示 */ ?>
+<?php if(Session::has('msg')): ?>
+    <script type="text/javascript">
+        $(function(){
+            layer.msg('<?php echo e(Session::get('msg')); ?>');
+        })
+    </script>
+<?php endif; ?>

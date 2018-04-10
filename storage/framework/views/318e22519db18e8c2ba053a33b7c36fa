@@ -1,0 +1,429 @@
+<style>
+    .g-main {
+        background-color: #252527;
+    }
+    .pagination {
+        display: inline-block;
+        padding-left: 0;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
+    .pagination > li {
+        display: inline;
+    }
+    .pagination > li > a,
+    .pagination > li > span {
+        position: relative;
+        float: left;
+        padding: 8px 12px;
+        line-height: 1.42857143;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #191919;
+        border: 1px solid #353535;
+        margin-left: -1px;
+    }
+    .pagination > li:first-child > a,
+    .pagination > li:first-child > span {
+        margin-left: 0;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+    }
+    .pagination > li:last-child > a,
+    .pagination > li:last-child > span {
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+    .pagination > li > a:hover,
+    .pagination > li > span:hover,
+    .pagination > li > a:focus,
+    .pagination > li > span:focus {
+        z-index: 2;
+        color: #ffffff;
+        background-color: #2a9fd6;
+        border-color: transparent;
+    }
+    .pagination > .active > a,
+    .pagination > .active > span,
+    .pagination > .active > a:hover,
+    .pagination > .active > span:hover,
+    .pagination > .active > a:focus,
+    .pagination > .active > span:focus {
+        z-index: 3;
+        color: #ffffff;
+        background-color: #2a9fd6;
+        border-color: transparent;
+        cursor: default;
+    }
+    .pagination > .disabled > span,
+    .pagination > .disabled > span:hover,
+    .pagination > .disabled > span:focus,
+    .pagination > .disabled > a,
+    .pagination > .disabled > a:hover,
+    .pagination > .disabled > a:focus {
+        color: #888888;
+        background-color: #191919;
+        border-color: #353535;
+        cursor: not-allowed;
+    }
+    .pagination-lg > li > a,
+    .pagination-lg > li > span {
+        padding: 14px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+    }
+    .pagination-lg > li:first-child > a,
+    .pagination-lg > li:first-child > span {
+        border-bottom-left-radius: 6px;
+        border-top-left-radius: 6px;
+    }
+    .pagination-lg > li:last-child > a,
+    .pagination-lg > li:last-child > span {
+        border-bottom-right-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    .pagination-sm > li > a,
+    .pagination-sm > li > span {
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    .pagination-sm > li:first-child > a,
+    .pagination-sm > li:first-child > span {
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+    .pagination-sm > li:last-child > a,
+    .pagination-sm > li:last-child > span {
+        border-bottom-right-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+    .pager {
+        padding-left: 0;
+        margin: 20px 0;
+        list-style: none;
+        text-align: center;
+    }
+    .pager li {
+        display: inline;
+    }
+    .pager li > a,
+    .pager li > span {
+        display: inline-block;
+        padding: 5px 14px;
+        background-color: #191919;
+        border: 1px solid #353535;
+        border-radius: 15px;
+    }
+    .pager li > a:hover,
+    .pager li > a:focus {
+        text-decoration: none;
+        background-color: #2a9fd6;
+    }
+    .pager .next > a,
+    .pager .next > span {
+        float: right;
+    }
+    .pager .previous > a,
+    .pager .previous > span {
+        float: left;
+    }
+    .pager .disabled > a,
+    .pager .disabled > a:hover,
+    .pager .disabled > a:focus,
+    .pager .disabled > span {
+        color: #888888;
+        background-color: #191919;
+        cursor: not-allowed;
+    }
+    .pagination li.disabled span {
+        height: 38px;
+    }
+    .cor-gray51,
+    .cor-blue2f {
+        color: #fff !important;
+    }
+    select {
+        background-color: #191919 !important;
+        color: #fff !important;
+        border-radius: 4px !important;
+    }
+    .cor-gray87 {
+        color: #cbcbcb;
+    }
+    .server-span {
+        padding: 1px 3px;
+        border-radius: 2px;
+        color: #fff;
+    }
+    .server-span.active-ding {
+        background-color: #ff9934;
+    }
+    .server-span.active-ji {
+        background-color: #fb5161;
+    }
+    .server-span.active-suo {
+        background-color: #18A689;
+    }
+    .server-span.active-cang {
+        background-color: #337AB7;
+    }
+    .label {
+        height: inherit;
+        border-radius: 4px;
+    }
+    .g-userborbtm {
+        border-bottom: 1px dashed #000;
+    }
+    .g-userlabel a {
+        border: 1px solid #353535;
+        color: #cbcbcb;
+    }
+    .g-releasetask .g-reletaskhd button {
+        background-color: #399bdc;
+        border: none;
+        color: #fff;
+    }
+    .g-releasetask .g-reletaskhd button i {
+        color: #fff;
+    }
+    .g-releasetask .g-reletaskhd button:hover {
+        background-color: #0aa6e8;
+    }
+    body .layui-layer-rim{
+        border: 3px solid rgba(200, 200, 200, .6);
+        border-radius: 5px;
+        box-shadow: none;
+    }
+    body .layui-layer-title{
+        background: #121212;
+        color:#fff;
+        border: none;
+    }
+    body .layui-layer-setwin .layui-layer-close1{
+        color:#fff;
+    }
+    body .layui-layer-content{
+        background: #1A1A1B;
+        color: #fff !important;
+    }
+    body .layui-layer-btn{
+        background: #121212;
+    }
+    .usernopd .btn {
+        margin-top: 3px;
+    }
+</style>
+<div class="g-main g-releasetask">
+    <div class="row u-title">
+        <div class="col-sm-6">
+            <h4 class="text-size16 cor-blue2f">我发布的任务</h4>
+        </div>
+        <div class="col-sm-6 text-right">
+            <h4 class="text-size16 cor-blue2f">
+                <a href="<?php echo e(route('taskCreatePage')); ?>" class="btn btn-link">发布任务</a>
+            </h4>
+        </div>
+    </div>
+
+    <div class="space-12"></div>
+    <div class="clearfix g-reletaskhd hidden-xs">
+        <form>
+            <div class="pull-left">
+                <div class="pull-left">
+                    <label for="type_id" class="sr-only">所有模式</label>
+                    <select class="form-control" id="type_id" name="type_id">
+                        <option value="">所有模式</option>
+                        <?php foreach($type as $v): ?>
+                            <option value="<?php echo e($v->id); ?>" <?php if($merge['type_id'] == $v->id): ?> selected <?php endif; ?>><?php echo e($v->name); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="pull-left">
+                    <label for="status" class="sr-only">任务状态</label>
+                    <select class="form-control" id="status" name="status">
+                        <?php foreach($status as $k => $v): ?>
+                            <option value="<?php echo e($k); ?>" <?php if($merge['status'] == $k): ?> selected <?php endif; ?>><?php echo e($v['name']); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="pull-left">
+                    <label for="time" class="sr-only">时间段</label>
+                    <select class="form-control" id="time" name="time">
+                        <?php foreach($time as $k => $v): ?>
+                            <option value="<?php echo e($k); ?>" <?php if($merge['time'] == $k): ?> selected <?php endif; ?>><?php echo e($v); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <button type="submit"><i class="fa fa-search text-size16 cor-graybd"></i> 搜索</button>
+            </div>
+        </form>
+    </div>
+    <div class="space-6"></div>
+    <ul id="useraccept">
+        <?php $__empty_1 = true; foreach($my_tasks as $v): $__empty_1 = false; ?>
+            <li class="row width590">
+                <div class="col-sm-1 col-xs-2 usercter">
+                    <img src="<?php if(file_exists($v->avatar)): ?><?php echo e(url($v->avatar)); ?><?php else: ?><?php echo e(Theme::asset()->url('images/default_avatar.png')); ?><?php endif; ?>"/>
+                </div>
+                <div class="col-sm-11 col-xs-10 usernopd">
+                    <div class="col-sm-9 col-xs-8">
+                        <div class="text-size14 cor-gray51">
+                            <span class="cor-orange">
+                                <?php if($v->type_id == 2): ?>
+                                    <?php if($v->status > 3): ?>
+                                        <b class="cor-orange">￥<?php echo e($v->bounty); ?></b>
+                                    <?php else: ?>
+                                        <?php if($v->action_id > 0): ?>
+                                            <b class="cor-orange">[预算]￥<?php echo e($v->min_price); ?>~<?php echo e($v->max_price); ?></b>
+                                        <?php else: ?>
+                                            <b class="cor-orange">[预算]￥<?php echo e($v->bounty); ?></b>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <b class="cor-orange">￥<?php echo e($v->bounty); ?></b>
+                                <?php endif; ?>
+                            </span>
+                            &nbsp;
+                            <a target="_blank" class="cor-blue42" href="/task/<?php echo e($v->id); ?>">
+                                <?php echo e($title = str_limit($v->title, 40)); ?>
+
+                            </a>
+                            <?php if($v->server_status == 2): ?>
+                                <?php if($v->top_status): ?>    <span class="server-span active-ding">顶</span> <?php endif; ?>
+                                <?php if($v->urgent_status): ?> <span class="server-span active-ji">急</span>   <?php endif; ?>
+                                <?php if($v->engine_status): ?> <span class="server-span active-suo">索</span>  <?php endif; ?>
+                                <?php if($v->work_status): ?>   <span class="server-span active-cang">藏</span> <?php endif; ?>
+                            <?php endif; ?>
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <?php echo e($status[$v->status]['name']); ?>
+
+                            &nbsp;&nbsp;|&nbsp;&nbsp;
+                            <span class="label label-<?php echo e($verified[$v->verified_status]['label']); ?>"><?php echo e($verified[$v->verified_status]['name']); ?></span>
+                        </div>
+                        <div class="space-6"></div>
+                        <p class="cor-gray87">
+                            <i class="ace-icon fa fa-user bigger-110 cor-grayd2" aria-hidden="true"></i>
+                            <?php echo e(isset($v->nickname) ? $v->nickname : $v->username); ?>&nbsp;&nbsp;
+                            <i class="fa fa-eye cor-grayd2" aria-hidden="true"></i>
+                            <?php echo e($v->view_count); ?>人浏览/<?php echo e($v->delivery_count); ?>人投稿&nbsp;&nbsp;
+                            <i class="fa fa-clock-o cor-grayd2" aria-hidden="true"></i>
+                            <?php echo e(how_time($v->created_at)); ?>&nbsp;&nbsp;
+                            <?php if($v->type_id == 2): ?>
+                                <?php if($v->bounty_status == 2): ?>
+                                    <i class="fa fa-check cor-grayd2" aria-hidden="true"></i>
+                                    已托管赏金
+                                <?php else: ?>
+                                    <?php if($v->status > 3): ?>
+                                        <i class="fa fa-close cor-grayd2" aria-hidden="true"></i>
+                                        待托管赏金
+                                    <?php else: ?>
+                                        <i class="fa fa-circle-o-notch cor-grayd2" aria-hidden="true"></i>
+                                        中标后托管赏金
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <?php if($v->bounty_status == 2): ?>
+                                    <i class="fa fa-check cor-grayd2" aria-hidden="true"></i>
+                                    已托管赏金
+                                <?php else: ?>
+                                    <i class="fa fa-close cor-grayd2" aria-hidden="true"></i>
+                                    待托管赏金
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </p>
+                        <div class="space-6"></div>
+                        <p class="cor-gray51 p-space"><?php echo strip_tags(htmlspecialchars_decode($v->desc)); ?> </p>
+                        <div class="space-2"></div>
+                        <div class="g-userlabel">
+                            <a>
+                                <i class="fa fa-gavel cor-grayd2" aria-hidden="true"></i>
+                                <?php echo e($v->type_name); ?>
+
+                            </a>
+                            <a>
+                                <i class="fa fa-th-large" aria-hidden="true"></i>
+                                <?php echo e($v->cate_name); ?>
+
+                            </a>
+                            <?php if($v->region_limit == 2): ?>
+                                <a>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <?php echo e("$v->province_name-$v->city_name"); ?>
+
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <?php /* 审核状态 */ ?>
+                    <?php if(in_array($v->verified_status, [1, 2])): ?>
+                        <a href="<?php echo e(route('taskUpdatePage', ['id' => $v->id]) . '?' . http_build_query(array_merge($merge, ['page' => @$_GET['page']]))); ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> 编辑</a>
+                        <button type="button" class="btn btn-danger btn-xs" onclick="del('<?php echo e($v->id); ?>', '<?php echo e($title); ?>')"><i class="fa fa-trash"></i> 删除</button>
+                    <?php elseif($v->verified_status == 3): ?>
+                        <?php if($v->status == 3 && $v->delivery_count > 0): ?>
+                            <a class="btn btn-primary btn-xs" href="/task/<?php echo e($v->id); ?>" target="_blank">选标</a>
+                        <?php endif; ?>
+                        <?php if($v->type_id == 2): ?>
+                            <?php if($v->status == 3): ?>
+                                <?php if($v->server_status == 1): ?>
+                                    <a href="/member/bounty/<?php echo e($v->id); ?>/task/3" class="btn btn-info btn-xs"><i class="fa fa-credit-card"></i> 增值服务</a>
+                                <?php endif; ?>
+                            <?php elseif($v->status == 4): ?>
+                                <?php if($v->server_status == 1 && $v->bounty_status == 1): ?>
+                                    <a href="/member/bounty/<?php echo e($v->id); ?>/task/1" class="btn btn-info btn-xs"><i class="fa fa-credit-card"></i> 合并支付</a>
+                                    <a href="/member/bounty/<?php echo e($v->id); ?>/task/2" class="btn btn-info btn-xs"><i class="fa fa-credit-card"></i> 托管赏金</a>
+                                    <a href="/member/bounty/<?php echo e($v->id); ?>/task/3" class="btn btn-info btn-xs"><i class="fa fa-credit-card"></i> 增值服务</a>
+                                <?php elseif($v->bounty_status == 1): ?>
+                                    <a href="/member/bounty/<?php echo e($v->id); ?>/task/2" class="btn btn-info btn-xs"><i class="fa fa-credit-card"></i> 托管赏金</a>
+                                <?php elseif($v->server_status == 1): ?>
+                                    <a href="/member/bounty/<?php echo e($v->id); ?>/task/3" class="btn btn-info btn-xs"><i class="fa fa-credit-card"></i> 增值服务</a>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            <a class="btn btn-default btn-xs" href="/task/<?php echo e($v->id); ?>" target="_blank"><i class="fa fa-television"></i> 查看</a>
+                        <?php else: ?>
+                            <?php if($v->server_status == 1 && $v->bounty_status == 1): ?>
+                                <a href="/member/bounty/<?php echo e($v->id); ?>/task/1" class="btn btn-info btn-xs"><i class="fa fa-credit-card"></i> 合并支付</a>
+                                <a href="/member/bounty/<?php echo e($v->id); ?>/task/2" class="btn btn-info btn-xs"><i class="fa fa-credit-card"></i> 托管赏金</a>
+                                <a href="/member/bounty/<?php echo e($v->id); ?>/task/3" class="btn btn-info btn-xs"><i class="fa fa-credit-card"></i> 增值服务</a>
+                            <?php elseif($v->bounty_status == 1): ?>
+                                <a href="/member/bounty/<?php echo e($v->id); ?>/task/2" class="btn btn-info btn-xs"><i class="fa fa-credit-card"></i> 托管赏金</a>
+                            <?php elseif($v->server_status == 1): ?>
+                                <a href="/member/bounty/<?php echo e($v->id); ?>/task/3" class="btn btn-info btn-xs"><i class="fa fa-credit-card"></i> 增值服务</a>
+                            <?php endif; ?>
+                            <?php if($v->bounty_status == 2): ?>
+                                <a class="btn btn-default btn-xs" href="/task/<?php echo e($v->id); ?>" target="_blank"><i class="fa fa-television"></i> 查看</a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <?php /* /审核状态 */ ?>
+                    <div class="col-xs-12"><div class="g-userborbtm"></div></div>
+                </div>
+
+            </li>
+        <?php endforeach; if ($__empty_1): ?>
+            <div class="space-30"></div>
+            <div class="space-30"></div>
+            <div class="text-center">
+                <p class="cor-gray51 text-size20">抱歉！没有找到符合以上条件的任务</p>
+                <p class="cor-gray87 text-size14">您可以重新再进行筛选 或</p>
+                <div class="space-10"></div>
+                <a class="btn-big bg-blue text-size18 bor-radius2" href="/task/create">发布任务</a>
+            </div>
+        <?php endif; ?>
+    </ul>
+    <div class="space-20"></div>
+    <div class="dataTables_paginate paging_bootstrap">
+        <ul class="pagination">
+            <?php echo $my_tasks->appends($merge)->render(); ?>
+
+        </ul>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('custom-css')->usepath()->add('usercenter','css/usercenter/usercenter.css'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('nopie','js/doc/nopie.js'); ?>
+
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('task-list','js/task/list.js'); ?>
+

@@ -1,0 +1,212 @@
+
+<div class="container" style="width: 1250px;">
+<div id="easts">
+	<div class="east cbody">
+		<div class="photo clearfix nav_type">
+			<?php foreach($funcUrl as $v): ?>
+				<?php if(!empty(Session::get('children')['id']) && !in_array( Session::get('children')['id'] , explode(',',$v['team_id'] ))): ?>
+					<a href="javascript:layer.msg('对不起！您的权限不足，无法使用此功能！')"><i class="fa <?php echo e($v['ico']); ?>" aria-hidden="true"></i><?php echo e($v['title']); ?></a>
+				<?php else: ?>
+					<a	href="<?php echo e($v['url']); ?>" ><i class="fa <?php echo e($v['ico']); ?>" aria-hidden="true"></i><?php echo e($v['title']); ?></a>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</div>
+		<div class="pic" >
+			<ul class="clearfix" id="folderList">
+				<?php if($folder): ?>
+					<?php foreach($folder as $k1 => $v1): ?>
+						<?php if( !Session::get('children')['id'] ): ?>
+							<li id="folder_<?php echo e($v1['id']); ?>">
+								<div class="slide2">
+									<img src="<?php echo Theme::asset()->url('img/vrs17.png'); ?>"/>
+									<div class="slider">
+										<a href="javascript:void(0);" class="slider-a1" data-name="<?php echo e($v1['name']); ?>"
+										   data-id="<?php echo e($v1['id']); ?>"><i class="fa fa-file-text-o"></i>信息编辑</a>
+
+										<a href="javascript:void(0);" class="slider-a3" data-id="<?php echo e($v1['id']); ?>"><i
+													class="fa fa-photo"></i>制作封面</a>
+										<a href="javascript:void(0);" class="slider-a4" data-id="<?php echo e($v1['id']); ?>"
+										   data-count="<?php echo e($v1['count']); ?>"><i class="fa fa-trash-o"></i>删除</a>
+									</div>
+								</div>
+								<a href="/user/folder/<?php echo e($v1['id']); ?>" class="a9"><img style="height:180px;width:180px;"
+																					 src="<?php if(!empty($v1['cover_img'])): ?> <?php echo url($v1['cover_img']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/folder_no_cover.png'); ?> <?php endif; ?>"/></a>
+								<div class="pics">
+									<span class="folderName"><?php echo e(mb_strimwidth($v1['name'],0,20,'..')); ?></span>
+									<?php if($v1['auth_type'] == 1): ?>
+										<a href="javascript:void(0);" style="float:right;" class="auth_type "
+										   id="auth_type_<?php echo e($v1['id']); ?>" data-auth="<?php echo e($v1['auth_type']); ?>"
+										   data-id="<?php echo e($v1['id']); ?>" title="设为公开"><i class="fa fa-lock"></i></a>
+									<?php else: ?>
+										<a href="javascript:void(0);" style="float:right;" <?php if($user_data['user_type']!=0): ?>class="auth_type" <?php else: ?> class="updateMemeber" <?php endif; ?>
+										   id="auth_type_<?php echo e($v1['id']); ?>" data-auth="<?php echo e($v1['auth_type']); ?>"
+										   data-id="<?php echo e($v1['id']); ?>" title="设为私密"><i class="fa fa-unlock"></i></a>
+									<?php endif; ?>
+								</div>
+
+								<span class="pic-num-wrap"><span class="pic-num"><?php echo e($v1['count']); ?></span></span>
+							</li>
+						<?php else: ?>
+							<?php if(in_array(Session::get('children')['id'],explode(',',$v1['team_id']))): ?>
+								<li id="folder_<?php echo e($v1['id']); ?>">
+									<div class="slide2">
+										<img src="<?php echo Theme::asset()->url('img/vrs17.png'); ?>"/>
+										<div class="slider">
+											<a href="javascript:layer.msg('您权限不足，无法操作！');"  data-name="<?php echo e($v1['name']); ?>"
+											   data-id="<?php echo e($v1['id']); ?>"><i class="fa fa-file-text-o"></i>信息编辑</a>
+
+											<a href="javascript:void(0);" class="slider-a3" data-id="<?php echo e($v1['id']); ?>"><i
+														class="fa fa-photo"></i>制作封面</a>
+											<a href="javascript:void(0);" class="slider-a4" data-id="<?php echo e($v1['id']); ?>"
+											   data-count="<?php echo e($v1['count']); ?>" data-child="true"><i class="fa fa-trash-o"></i>删除</a>
+										</div>
+									</div>
+									<a href="/user/folder/<?php echo e($v1['id']); ?>" class="a9"><img
+												style="height:180px;width:180px;"
+												src="<?php if(!empty($v1['cover_img'])): ?> <?php echo url($v1['cover_img']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/folder_no_cover.png'); ?> <?php endif; ?>"/></a>
+									<div class="pics">
+										<span class="folderName"><?php echo e(mb_strimwidth($v1['name'],0,20,'..')); ?></span>
+
+										<?php if($v1['auth_type'] == 1): ?>
+											<a href="javascript:void(0);" style="float:right;" class="auth_type "
+											   id="auth_type_<?php echo e($v1['id']); ?>" data-auth="<?php echo e($v1['auth_type']); ?>"
+											   data-id="<?php echo e($v1['id']); ?>" title="设为公开"><i class="fa fa-lock"></i></a>
+										<?php else: ?>
+											<a href="javascript:void(0);" style="float:right;" class="auth_type"
+											   id="auth_type_<?php echo e($v1['id']); ?>" data-auth="<?php echo e($v1['auth_type']); ?>"
+											   data-id="<?php echo e($v1['id']); ?>" title="设为私密"><i class="fa fa-unlock"></i></a>
+										<?php endif; ?>
+									</div>
+
+									<span class="pic-num-wrap"><span class="pic-num"><?php echo e($v1['count']); ?></span></span>
+								</li>
+							<?php endif; ?>
+						<?php endif; ?>
+
+					<?php endforeach; ?>
+				<?php endif; ?>
+
+				 <?php if( !Session::get('children')['id'] ): ?>
+					 <li id="folder_0">
+						 <div class="slide2">
+							 <img src="<?php echo Theme::asset()->url('img/vrs17.png'); ?>"/>
+							 <div class="slider">
+								 <a href="javascript:void(0);" class="slider-a1" data-name="默认封面" data-id="0"><i
+											 class="fa fa-file-text-o"></i>信息编辑</a>
+								 <a href="javascript:void(0);" class="slider-a3" data-id="0"><i
+											 class="fa fa-photo"></i>制作封面</a>
+								 <a href="javascript:void(0);" class="slider-a4" data-id="0" data-count=""><i
+											 class="fa fa-trash-o"></i>删除</a>
+							 </div>
+						 </div>
+						 <a href="/user/folder/0" class="a9"><img style="height:180px;width:180px;"
+																  src="<?php echo Theme::asset()->url('images/folder_no_cover.png'); ?>"/></a>
+						 <div class="pics">
+							 <span class="folderName">默认文件夹 <?php echo e(Session::get('children')['id']); ?></span>
+						 </div>
+
+						 <span class="pic-num-wrap"><span class="pic-num"><?php echo e($defaultFolderCount); ?></span></span>
+					 </li>
+					 <li id="createFolderBtn" class="li1">
+						 <div class="newa">
+							 <p><i class="fa fa-plus fa-2x" aria-hidden="true"></i></p>
+							 <a href="javascript:void(0);">新建文件夹</a>
+						 </div>
+					 </li>
+				 <?php endif; ?>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+</div>
+<!--文件夹  -->
+    <div id="createFolderDiv" style="display:none;">
+		<div style="padding:30px;">
+			<input type="text" class="form-control" placeholder="文件夹名称" id="folderName" value=""/>
+   		    <div class="space-14"></div>
+   			<button class="layer-diy-btn fr saveFolder" style="">保存</button>
+   		</div>
+    </div>
+    
+  
+ <!--文件夹编辑  -->
+    <div id="editFolderDiv" style="display:none;">
+		<div style="padding:30px;">
+			<input type="hidden" value="" class="editFolderId"/>
+			<input type="text" class="form-control editFolderName" value=""/>
+   		    <div class="space-14"></div>
+   			<button class="layer-diy-btn fr editFolder">保存</button>
+   		</div>
+    </div>
+    
+    
+     <!--设置权限  -->
+    <div id="folderAuthDiv" style="display:none;">
+		<div style="padding:30px;">
+			<input type="hidden" value="" class="editFolderId"/>
+			<div class="input-group col-sm-12" style="">
+				<span class="input-group-addon" id="basic-addon1">访问权限：</span><select class="form-control folderAuth" name="folderAuth">
+					<option value="0">所有人可见</option>
+					<option value="1">仅自己可见</option>
+					
+				</select>
+			</div>
+			 <div class="space-14"></div>
+			
+			
+   		    <div class="space-14"></div>
+   			<button class="btn btn-default fr saveAuthBtn">保存</button>
+   		</div>
+    </div>
+       
+   <!--制作封面  -->  
+    
+	 <div id="createCoverDiv" style="display:none;">
+			
+				<input type="hidden" value="" class="editFolderId"/>
+		        <div class="memberdiv pull-left g-userimgup" style="padding:30px;">
+		                    <div class="position-relative">
+		                        <input name="shop_pic" type="file" class="id-input-file-6"/>
+		                    </div>
+		        </div>
+				 <div class="memberdiv pull-right" style="padding:30px;">
+				 
+				 	<button class="btn btn-success editCoverBtn">保存</button>
+				 
+				 </div>
+			
+    </div>
+<div id="member1" style="display:none;">
+	<div id="memeber">
+		<div class="text">
+			你的版本不够，请升级至更高版本 !
+		</div>
+		<div style="text-align: center">
+			<button class="memberClose closeBtn1" type="button">取消</button>
+			<a href="/member" target="_blank" class="layui-btn" >立即升级版本</a>
+		</div>
+	</div>
+</div>
+<script>
+	$(function(){
+		var volume = "<?php echo e(Theme::get('percentage')); ?>";
+		volume=parseFloat(volume);
+		if (volume >= 100) {
+			$('.nav_type a').attr('href', '#').click(function () {
+				layer.msg("目前的容量已经无法满足您的脑洞,赶快升级吧！");
+			})
+		}
+	});
+</script>
+
+<?php echo Theme::asset()->container('custom-css')->usepath()->add('froala_editor','css/usercenter/usercenter.css'); ?> 
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('userindex','js/doc/userindex.js'); ?>
+
+<?php echo Theme::asset()->container('custom-js')->usepath()->add('more-js','js/doc/more.js'); ?> 
+
+<?php echo Theme::widget('avatar')->render(); ?>
+
+
+

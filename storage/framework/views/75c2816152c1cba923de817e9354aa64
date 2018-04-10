@@ -1,0 +1,118 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+
+    <div class="app-container"><!--内容-->
+        <div class="app-container-head gray clearfix">
+            <div class="shop-left">
+                <a href="<?php echo e(route(Theme::get('route_prefix') . '.shop.select.template')); ?>">选择模板</a>
+                <a href="javascript:void(0);" class="modular">自定义模块</a>
+                <span>配色方案</span>
+                <ul id="model">
+                    <li class="active">
+                        <span style="background:#444;"></span>
+                        <span style="background: #e7e1cd;"></span>
+                        <span style="background: #fff;"></span>
+                    </li>
+                    <li>
+                        <span style="background: #ff9300;"></span>
+                        <span style="background: #ff5e15;"></span>
+                        <span style="background: #fff;"></span>
+                    </li>
+                    <li>
+                        <span style="background: #6cbf72;"></span>
+                        <span style="background: #ffe7e9;"></span>
+                        <span style="background: #fff;"></span>
+                    </li>
+                    <li>
+                        <span class="span1"></span>
+                        <span class="span2"></span>
+                        <span class="span3"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="shop-right">
+                <a href="javascript:bindName(this);">绑定域名</a>
+                <a href="javascript:void(0);" class="mar">手机预览</a>
+                <a href="javascript:void(0);">保存发布</a>
+            </div>
+        </div>
+        <div class="app-banner">
+            <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/banner1.png')); ?>"/>
+        </div>
+        <div class="clothes">
+            <ul>
+                <li><a href="javascript:void(0);" class="a1">全部商品</a></li>
+                <li><a href="javascript:void(0);">衣服</a></li>
+                <li><a href="javascript:void(0);">鞋子</a></li>
+            </ul>
+            <form action="" method="post">
+                <i class="iconfont icon-sousuo"></i>
+                <input type="text" value="" placeholder="搜索"/>
+            </form>
+        </div>
+        <div class="cbody">
+            <div class="martop">
+                <ul>
+                    <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                        <a href=""></a>
+                        <div class="pic">
+                            <img class="vip" src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/vip4.png')); ?>"/>
+                            <a href="javascript:void(0);"><img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/cover1.png')); ?>"/></a>
+                        </div>
+                        <a href="javascript:void(0);" class="info">
+                            <div class="title clearfix">
+                                <span class="span-left">古董</span>
+                                <span class="span-right">300.00元</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                        <a href=""></a>
+                        <div class="pic">
+                            <img class="vip" src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/vip4.png')); ?>"/>
+                            <a href="javascript:void(0);"><img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/cover1.png')); ?>"/></a>
+                        </div>
+                        <a href="javascript:void(0);" class="info">
+                            <div class="title clearfix">
+                                <span class="span-left">古董</span>
+                                <span class="span-right">300.00元</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+                        <a href=""></a>
+                        <div class="pic">
+                            <img class="vip" src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/vip4.png')); ?>"/>
+                            <a href="javascript:void(0);"><img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/cover1.png')); ?>"/></a>
+                        </div>
+                        <a href="javascript:void(0);" class="info">
+                            <div class="title clearfix">
+                                <span class="span-left">古董</span>
+                                <span class="span-right">300.00元</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="bindname" style="display: none;">
+    <form action="" method="post">
+
+        <div class="form-group pull clearfix">
+            <label for="" class="col-md-3 tar control-label">绑定的域名:</label>
+            <div class="col-md-9">
+                <input type="text" name="bindname" class="form-control" placeholder="请输入正确的域名" />
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('shop-css-index', Theme::get('dir_prefix') . '/shop/css/index.css', [], ['id' => 'theme', 'data-type' => Theme::get('flag'), 'data-module' => Theme::get('module')]); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('shop-js-index', Theme::get('dir_prefix') . '/shop/js/index.js'); ?>
+

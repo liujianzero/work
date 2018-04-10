@@ -1,0 +1,549 @@
+<div class="hidden-xs sidebar-pc">
+    <div class="head-box">
+        <input class="input_id" value="<?php echo e($userinfo['id']); ?>" type="hidden">
+        <?php /*用户头像*/ ?>
+        <a class="photo" href="/zone/models/<?php echo e($userinfo['id']); ?>/0"><img src="<?php echo url($userinfo['avatar']); ?>"></a>
+        <!--用户名字-->
+        <div class="private-info">
+            <a class="name" href="javascript:void(0)">
+                <?php if($userinfo['nickname']): ?>
+                    <a class="name"
+                       href="/zone/models/<?php echo e($userinfo['id']); ?>/0"><?php echo mb_strimwidth($userinfo['nickname'],0,15,'..'); ?></a>
+                <?php else: ?>
+                    未命名
+                <?php endif; ?>
+            </a>
+        <span class="ll-badge"><img src="<?php echo $vipLogo; ?>"/></span>
+            <span class="rank"><?php echo $userLevel; ?></span>
+            <span class="attention-pc focusBtn <?php if($userinfo['isFocus']): ?>btn-active <?php else: ?> " <?php endif; ?> type="button"
+                  data-id="<?php echo e($userinfo['id']); ?>" id="focusBtn">关注</span>
+        </div>
+    <span class="autograph"><?php echo $userinfo['introduce']; ?></span>
+    </div>
+    <div class="btn-box ">
+        <input type="hidden" value="<?php echo e($content['id']); ?>" class="vote_models_id">
+
+        <div class="info-title">
+            <span class="title"><?php echo $content['title']; ?></span>
+            <a class="report" href="javascript:void(0)">举报</a>
+        <span <?php if($content['price'] != '0.00'): ?> style="display: block"
+              <?php endif; ?>  class="browse-price">售价：￥<?php echo e($content['price']); ?></span>
+        </div>
+        <!--作品说明-->
+        <div class="info">
+            <p><?php echo $content['content']; ?></p>
+        </div>
+        <!--作品数据-->
+        <div class="info-data">
+            <?php if($paramaters): ?>
+                <?php foreach($paramaters as $p): ?> <span><?php echo $p; ?></span> <?php endforeach; ?>
+                <span>文件编号  &nbsp;&nbsp;：<?php echo e($content['id']); ?></span><span>上传时间  &nbsp;&nbsp;：<?php echo $time; ?></span>
+            <?php endif; ?>
+        </div>
+
+        <div class="statistics">
+            <span class="browse num-ck"><i class="fa fa-eye"></i> <?php echo $lookNum; ?></span>
+            <span class="browse num_dz"><i class="fa fa-thumbs-up"></i> <?php echo $favoriteNum; ?></span>
+            <span class="browse num_sc"><i class="fa fa-star"></i> <?php echo $collectNum; ?></span>
+        </div>
+        <?php if(!$isAuthor && $isLogin): ?>
+            <?php /*登录状态下，价格不为0和参赛状态*/ ?>
+            <?php if($enroll_status == 1 ||  $content['is_goods'] == 1): ?>
+                <div class="btn-container2">
+                    <a class="btn-bg btn-thumbs  btn_dz btn_dz_e <?php if($userinfo['isFavorite']): ?>  btn-active <?php else: ?> <?php endif; ?>"  id="favoriteNum" data-id="<?php echo e($content['id']); ?>">
+                        <i class="fa fa-thumbs-up"></i>
+                    </a>
+                    <a class="btn-bg btn-collection btn_sc btn_sc_e <?php if($userinfo['isCollect']): ?>  btn-active <?php else: ?> <?php endif; ?>"  id="collectNum" data-id="<?php echo e($content['id']); ?>">
+                        <i class="fa fa-star"></i>
+                    </a>
+                    <a class="btn-bg btn-share  share_show">
+                        <i data-toggle="modal" class="fa fa-share-alt"></i>
+                    </a>
+                    <?php if($enroll_status == 1 ): ?>
+                        <a class="purchase-btn vote_click" style="color: white;" href="javascript:void(0);">投它一票</a>
+                    <?php else: ?>
+                        <?php echo $web; ?>
+
+                    <?php endif; ?>
+                </div>
+            <?php else: ?>
+                <div class="btn-container">
+                    <div class="btn-bg btn-thumbs btn_dz  <?php if($userinfo['isFavorite']): ?> btn-active <?php else: ?> <?php endif; ?>" id="favoriteNum" data-id="<?php echo e($content['id']); ?>">
+                        <i class="fa fa-thumbs-up"></i>
+                        点赞
+                    </div>
+                    <div   class="btn-bg btn-collection btn_sc   <?php if($userinfo['isCollect']): ?> btn-active <?php else: ?> <?php endif; ?>"   id="collectNum" data-id="<?php echo e($content['id']); ?>">
+                        <i class="fa fa-check"></i>
+                        收藏
+                    </div>
+                    <a class="btn-bg btn-share share_show">
+                        <?php /*<i data-toggle="modal" data-target="#erweima" class="fa fa-share-alt"></i>*/ ?>
+                        <i data-toggle="modal" class="fa fa-share-alt"></i>
+                        分享
+                    </a>
+                </div>
+            <?php endif; ?>
+        <?php else: ?>
+            <?php if($enroll_status == 1 ||  $content['is_goods'] == 1): ?>
+                <div class="btn-container2">
+                    <a class="btn-bg btn-thumbs  btn_dz btn_dz_e" href="<?php if($isAuthor): ?> # <?php else: ?> login1  <?php endif; ?>" >
+                        <i class="fa fa-thumbs-up"></i>
+                    </a>
+                    <a class="btn-bg btn-collection btn_sc btn_sc_e" href="<?php if($isAuthor): ?> # <?php else: ?> login1 <?php endif; ?>">
+                        <i class="fa fa-star"></i>
+                    </a>
+                    <a class="btn-bg btn-share  share_show">
+                        <i data-toggle="modal" class="fa fa-share-alt"></i>
+                    </a>
+                    <?php if($enroll_status == 1 ): ?>
+                        <a class="purchase-btn vote_click" style="color: white;"
+                           href="<?php if($isAuthor): ?> # <?php else: ?> login1  <?php endif; ?>">投它一票</a>
+                    <?php else: ?>
+                        <?php echo $web; ?>
+
+                    <?php endif; ?>
+                </div>
+            <?php else: ?>
+                <div class="btn-container">
+                    <a class="btn-bg btn-thumbs btn_dz"  href="<?php if($isAuthor): ?> # <?php else: ?> login1  <?php endif; ?>">
+                        <i class="fa fa-thumbs-up"></i>
+                        点赞
+                    </a>
+                    <a class="btn-bg btn-collection btn_sc" href="<?php if($isAuthor): ?> # <?php else: ?> login1  <?php endif; ?>">
+                        <i class="fa fa-check"></i>
+                        收藏
+                    </a>
+                    <a class="btn-bg btn-share share_show">
+                        <?php /*<i data-toggle="modal" data-target="#erweima" class="fa fa-share-alt"></i>*/ ?>
+                        <i data-toggle="modal" class="fa fa-share-alt"></i>
+                        分享
+                    </a>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+
+    </div>
+    <div class="info-box">
+        <!--更多其他作品-->
+        <div class="more-works">
+            <span><?php echo $userinfo['nickname']; ?>更多的作品</span>
+            <ul></ul>
+            <?php if($otherModelList): ?>
+                <?php foreach($otherModelList as $k1 => $v1): ?>
+                    <li class="col-lg-4 col-sm-4 col-md-4 col-xs-12 works-box "><a href="/view-<?php echo e($v1['id']); ?>" class="works" target="_self"><img
+                                    style="width:100%;" src="<?php echo e(url($v1['cover_img'])); ?>"></a>
+                    </li>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+
+        <div class="comments">
+            <div class="comments-title">
+                <i class="fa fa-comments"></i>
+                <span><?php echo $fans; ?></span>
+                <samp>条评论</samp>
+            </div>
+            <form action="" method="post">
+                <div class="comments-container">
+                    <div class="comments-box">
+                        <textarea placeholder="请您在这里评论吧！" name="remark" id="remark"></textarea>
+                        <button data-id="<?php echo $modelsId; ?>" type="button" class="submit-btn">发送</button>
+                    </div>
+                    <?php if($remarkList): ?>
+                            <!--多行文本-->
+                    <ul class="user-comments-ul">
+                        <?php foreach($remarkList as $k1 => $v1): ?>
+                            <li class="user-comments-li" >
+                                <div class="user-comments-photo">
+                                    <a href="/zone/models/<?php echo e($v1['uid']); ?>/0" class="photo">
+                                        <img class="userLogo" style="width:30px;height:30px;"
+                                             src="<?php if(!empty($v1['avatar'])): ?> <?php echo url($v1['avatar']); ?>
+
+                                             <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?>
+
+                                             <?php endif; ?>">
+                                    </a>
+                                </div>
+                                <div class="user-comments-container" >
+                                    <a href="/zone/models/<?php echo e($v1['uid']); ?>/0"
+                                       class="user-comments-name"><?php echo $v1['nickname']; ?></a>
+                                    <div class="child-comments-box">
+                                        <input type="hidden" value="<?php echo $modelsId; ?>" class="child_id"/>
+                                        <textarea placeholder="请您在这里回复吧！" name="remark"
+                                                  class="remark_list_<?php echo $v1['id']; ?>"></textarea>
+                                        <button data-remark_id="<?php echo $v1['id']; ?>" type="button"
+                                                class="submit-btn-child">发送
+                                        </button>
+                                    </div>
+                                    <div class="user-comments-content"><?php echo $v1['content']; ?></div>
+                                    <div class="comments-btn-box" data-id="<?php echo $v1['id']; ?>">
+                                        <span><?php echo \Carbon\Carbon::parse($v1['created_at'])->diffForHumans(); ?></span>
+                                        <span class="user-comments-btn">回复</span>
+                                    </div>
+                                    <!--子回复-->
+                                    <?php foreach($remark[$k1]['remark'] as $k2=> $v2): ?>
+                                        <div class="reply-container">
+                                            <div class="child-comments-photo">
+                                                <a href="/zone/models/<?php echo e($v2['uid']); ?>/0" class="photo">
+                                                    <img src="<?php if(!empty($v2['avatar'])): ?> <?php echo url($v2['avatar']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?> <?php endif; ?>">
+                                                </a>
+                                            </div>
+                                            <div class="child-comments-container" >
+                                                <a href="/zone/models/<?php echo e($v2['uid']); ?>/0"
+                                                   class="child-comments-name"><?php echo $v2['nickname']; ?></a>
+
+                                                <div class="child-comments-content"><?php echo $v2['content']; ?></div>
+                                                <div class="">
+                                                    <?php /*<span class="child-comments-btn"></span>*/ ?>
+                                                    <span class="child-comments-btn"><?php echo \Carbon\Carbon::parse($v2['created_at'])->diffForHumans(); ?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php endforeach; ?>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php endif; ?>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php /*手机*/ ?>
+<div class="hidden-sm hidden-md hidden-lg sidebar-phone">
+    <span <?php if($content['price'] != '0.00'): ?> style="display: block" class="browse-price">售价：￥<?php echo e($content['price']); ?>
+
+        <?php else: ?> style="display: none">
+        <?php endif; ?>
+    </span>
+    <div class="btn-box">
+        <?php if($content['price'] == '0.00' && $enroll_status == 0): ?>
+            <a class="comment-btn" href="#comment">写评论..</a>
+        <?php endif; ?>
+        <?php if(!$isAuthor && $isLogin): ?>
+            <div class="icon-box" name="top">
+                <?php /*评论*/ ?>
+                <a href="#comment" class="comment-icon">
+                    <i class="iconfont icon-cmt" style="font-size: 23px;color: white;    margin-left: -3px;"></i>
+                    <div class="comment-info" style="left: 75%; <?php if( strlen($fans) <= 2): ?>  <?php else: ?>  <?php endif; ?> ">
+                        <?php echo $fans; ?>
+
+                    </div>
+                </a>
+                <?php /*收藏*/ ?>
+                <a  id="collectNum_m" class="star-icon btn_sc">
+                    <i class="iconfont icon-collect" style="font-size: 23px;color: white;    margin-left: -23px;"></i>
+                    <div class="comment-info num_sc_tel" style="left: 55%; <?php if( strlen($collectNum) <= 2): ?> <?php else: ?> <?php endif; ?> ">
+                        <?php echo $collectNum; ?>
+
+                    </div>
+                </a>
+                <?php /*点赞*/ ?>
+                <a id="favoriteNum_m" class="thumbs-icon btn_dz">
+                    <i class="iconfont icon-like" style="font-size: 23px;color: white;   margin-left: -46px;"></i>
+                    <div class="comment-info  num_dz_tel" style="left: 40%; <?php if( strlen($collectNum) <= 2): ?>  <?php else: ?> <?php endif; ?> ">
+                        <?php echo $favoriteNum; ?>
+
+                    </div>
+                </a>
+            </div>
+        <?php else: ?>
+            <div class="icon-box" name="top">
+                <?php /*评论*/ ?>
+                <a  href="<?php if($isAuthor): ?> #comment <?php else: ?> login1  <?php endif; ?>" class="comment-icon">
+                    <i class="iconfont icon-cmt" style="font-size: 23px;color: white;    margin-left: -3px;"></i>
+                    <div class="comment-info" style="left: 75%; <?php if( strlen($fans) <= 2): ?>  <?php else: ?> <?php endif; ?> ">
+                        <?php echo $fans; ?>
+
+                    </div>
+                </a>
+                <?php /*收藏*/ ?>
+                <a  href="<?php if($isAuthor): ?> # <?php else: ?> login1  <?php endif; ?>" class="star-icon">
+                    <i class="iconfont icon-collect" style="font-size: 23px;color: white;    margin-left: -23px;"></i>
+                    <div class="comment-info"
+                         style="left: 55%; <?php if( strlen($collectNum) <= 2): ?> <?php else: ?>  <?php endif; ?> ">
+                        <?php echo $collectNum; ?>
+
+                    </div>
+                </a>
+                <?php /*点赞*/ ?>
+                <a href="<?php if($isAuthor): ?> # <?php else: ?> login1  <?php endif; ?>" class="thumbs-icon btn_dz">
+                    <i class="iconfont icon-like" style="font-size: 23px;color: white;    margin-left: -46px;"></i>
+                    <?php /*<img src="<?php echo Theme::asset()->url('images/models/dianzan.png'); ?>" alt="">*/ ?>
+                    <div class="comment-info"
+                         style="left: 40%; <?php if( strlen($collectNum) <= 2): ?>  <?php else: ?>  <?php endif; ?> ">
+                        <?php echo $favoriteNum; ?>
+
+                    </div>
+                </a>
+            </div>
+        <?php endif; ?>
+        <?php if($enroll_status == 1): ?>
+            <a class="vote-btn vote_click" style="color: white;" href="javascript:void(0);">投它一票</a>
+            <?php elseif($content['is_goods'] == 1): ?>
+                <?php /*<a class="purchase-btn" href="/anonymous/orderInfo/<?php echo e($content['id']); ?>">立即购买</a>*/ ?>
+                <?php echo $wap; ?>
+
+        <?php endif; ?>
+    </div>
+
+    <div class="info-box">
+        <div class="info-title">
+            <span class="title"><?php echo $content['title']; ?></span>
+            <span class="browse">
+                    <i class="fa fa-eye"></i>&nbsp;&nbsp;<?php echo $lookNum; ?>
+
+                </span>
+        </div>
+        <!--作品说明-->
+        <div class="info">
+            <p><?php echo $content['content']; ?></p>
+        </div>
+        <!--作品数据-->
+        <div class="info-data ">
+            <?php if($paramaters): ?>
+                <?php foreach($paramaters as $p): ?> <span><?php echo $p; ?></span> <?php endforeach; ?>
+                <span>文件编号&nbsp;&nbsp;：<?php echo e($content['id']); ?></span><span>上传时间&nbsp;&nbsp;：<?php echo $time; ?></span>
+            <?php endif; ?>
+        </div>
+
+
+        <hr style="width: 100%;border-color:#2b2b2b;margin-top: 10px;margin-bottom: 10px" />
+        <div class="head-box">
+            <input class="input_id" value="<?php echo e($userinfo['id']); ?>" type="hidden">
+            <!--用户头像-->
+            <a class="photo" href="/zone/models/<?php echo e($userinfo['id']); ?>/0"><img src="<?php echo url($userinfo['avatar']); ?>"></a>
+            <!--用户名字-->
+            <div class="private-info">
+                <a class="name" href="javascript:void(0)">
+                    <?php if($userinfo['nickname']): ?>
+                        <a class="name" href="/zone/models/<?php echo e($userinfo['id']); ?>/0"><?php echo $userinfo['nickname']; ?></a>
+                    <?php else: ?>
+                        未命名
+                    <?php endif; ?>
+                </a>
+                <span class="ll-badge"><img src="<?php echo $vipLogo; ?>"/></span>
+                <span class="rank"><?php echo $userLevel; ?></span>
+                <span class="attention-pc <?php if($userinfo['isFocus']): ?>btn-active  <?php else: ?> <?php endif; ?> " type="button"
+                      data-id="<?php echo e($userinfo['id']); ?>" id="focusBtn">关注
+                </span>
+            </div>
+            <span class="autograph"><?php echo $userinfo['introduce']; ?></span>
+        </div>
+        <hr style="width: 100%;border-color:#2b2b2b;margin-top: 10px;margin-bottom: 10px" />
+        <!--更多其他作品-->
+        <div class="more-works" style="margin-bottom: 24px">
+            <span><?php echo $userinfo['nickname']; ?>更多的作品</span>
+            <ul></ul>
+            <?php if($otherModelList): ?>
+                <?php foreach($otherModelList as $k1 => $v1): ?>
+                    <li class="works-box col-lg-4 col-sm-4 col-md-4 col-xs-12" style="width: 33.3%;float: left">
+                        <a href="/view-<?php echo e($v1['id']); ?>" class="works">
+                            <img style="width:100%;" src="<?php echo e(url($v1['cover_img'])); ?>">
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+        <hr style="width: 100%;border-color:#2b2b2b;margin-top: 10px;margin-bottom: 10px" />
+        <a name="comment">
+            <div class="comments">
+                <div class="comments-title">
+                    <i class="fa fa-comments"></i>
+                    <span><?php echo $fans; ?></span>
+                    <samp>条评论</samp>
+                </div>
+                <form action="" method="post">
+                    <div class="comments-container">
+                        <div class="comments-box">
+                            <textarea placeholder="请您在这里评论吧！" name="remark" id="remark1"></textarea>
+                            <button data-id="<?php echo $modelsId; ?>" type="button" class="submit-btn">发送</button>
+                        </div>
+                        <?php if($remarkList): ?>
+                                <!--多行文本-->
+                        <ul class="user-comments-ul">
+                            <?php foreach($remarkList as $k1 => $v1): ?>
+                                <li class="user-comments-li" data-remark_id="<?php echo $v1['id']; ?>">
+                                    <div class="user-comments-photo">
+                                        <a href="/zone/models/<?php echo e($v1['uid']); ?>/0" class="photo">
+                                            <img class="userLogo" style="width:30px;height:30px;"
+                                                 src="<?php if(!empty($v1['avatar'])): ?> <?php echo url($v1['avatar']); ?>
+
+                                                 <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?>
+
+                                                 <?php endif; ?>">
+                                        </a>
+                                    </div>
+                                    <div class="user-comments-container">
+                                        <a href="/zone/models/<?php echo e($v1['uid']); ?>/0"
+                                           class="user-comments-name"><?php echo $v1['nickname']; ?>
+
+                                        </a>
+                                        <div class="child-comments-box">
+                                            <input type="hidden" value="<?php echo $modelsId; ?>" class="child_id"/>
+                                                    <textarea placeholder="请您在这里回复吧！" name="remark"
+                                                              class="remark_list1_<?php echo $v1['id']; ?>"></textarea>
+                                            <button data-remark_id="<?php echo $v1['id']; ?>" type="button"
+                                                    class="submit-btn-child">发送
+                                            </button>
+                                        </div>
+                                        <div class="user-comments-content"><?php echo $v1['content']; ?></div>
+                                        <div class="comments-btn-box" data-id="<?php echo $v1['id']; ?>">
+                                            <span class="comments-time">
+                                                <?php echo \Carbon\Carbon::parse($v1['created_at'])->diffForHumans(); ?>
+
+                                            </span>
+                                            <span class="user-comments-btn">回复</span>
+                                        </div>
+                                        <!--子回复-->
+                                        <?php foreach($remark[$k1]['remark'] as $k2=> $v2): ?>
+
+                                            <div class="reply-container">
+                                                <div class="child-comments-photo">
+                                                    <a href="/zone/models/<?php echo e($v2['uid']); ?>/0" class="photo">
+                                                        <img src="<?php if(!empty($v2['avatar'])): ?> <?php echo url($v2['avatar']); ?> <?php else: ?> <?php echo Theme::asset()->url('images/default_avatar.png'); ?> <?php endif; ?>">
+                                                    </a>
+                                                </div>
+                                                <div class="child-comments-container">
+                                                    <a href="/zone/models/<?php echo e($v2['uid']); ?>/0"
+                                                       class="child-comments-name"><?php echo $v2['nickname']; ?></a>
+
+                                                    <div class="child-comments-content"><?php echo $v2['content']; ?></div>
+                                                    <div class="">
+                                                        <span class="child-comments-btn"><?php echo \Carbon\Carbon::parse($v2['created_at'])->diffForHumans(); ?></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php endforeach; ?>
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <?php endif; ?>
+                    </div>
+                </form>
+            </div>
+        </a>
+    </div>
+</div>
+<!--登录注册弹框-->
+<div class="alert-m">
+    <div class="alert-off"><img src="<?php echo Theme::asset()->url('images/share/off.png'); ?>" alt=""></div>
+    <div class="img">
+        <?php if($_SERVER['SERVER_NAME']=="zbsw.hxivr.com"): ?>
+            <?php if( !is_file('themes/default/assets/qrcodesZB/qrcode'.$content['id'].'.png')): ?>
+                <?php echo e(QrCode::format('png')->size(250)->merge('/public/logo.png',.15)->margin(1)->generate("http://".$_SERVER['SERVER_NAME']."/view-".$content['id'],public_path('themes/default/assets/images/qrcodesZB/qrcode'.$modelsId.'.png'))); ?>
+
+            <?php endif; ?>
+            <img src="<?php echo Theme::asset()->url('images/qrcodesZB/qrcode'.$content['id'].'.png'); ?>" alt="">
+        <?php else: ?>
+            <?php if( !is_file('themes/default/assets/qrcodes/qrcode'.$content['id'].'.png')): ?>
+                <?php echo e(QrCode::format('png')->size(250)->merge('/public/logo.png',.15)->margin(1)->generate("http://".$_SERVER['SERVER_NAME']."/view-".$content['id'],public_path('themes/default/assets/images/qrcodes/qrcode'.$modelsId.'.png'))); ?>
+
+            <?php endif; ?>
+            <img src="<?php echo Theme::asset()->url('images/qrcodes/qrcode'.$content['id'].'.png'); ?>" alt="">
+        <?php endif; ?>
+
+    </div>
+    <p>微信扫一扫 手机一键分享</p>
+
+    <div class="bdsharebuttonbox">
+        <ul class="gb_resItms clearfix">
+            <li style="display: none;"><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a></li>
+            <li><a title="分享到QQ好友" href="#" class="bds_sqq" data-cmd="sqq"></a></li>
+            <li><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a></li>
+            <li><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a></li>
+            <li><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a></li>
+            <!--<li><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a></li>-->
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    //全局变量，动态的文章ID
+    var ShareURL = "";
+    //绑定所有分享按钮所在A标签的鼠标移入事件，从而获取动态ID
+    $(function () {
+        $(".bdsharebuttonbox a").mouseover(function () {
+            ShareURL = $(this).attr("data-url");
+        });
+    });
+    /*
+     * 动态设置百度分享URL的函数,具体参数
+     * cmd为分享目标id,此id指的是插件中分析按钮的ID
+     *，我们自己的文章ID要通过全局变量获取
+     * config为当前设置，返回值为更新后的设置。
+     */
+    function SetShareUrl(cmd, config) {
+        if (ShareURL) {
+            config.bdUrl = ShareURL;
+        }
+        return config;
+    }
+    //插件的配置部分，注意要记得设置onBeforeClick事件，主要用于获取动态的文章ID
+    window._bd_share_config = {
+        "common": {
+            onBeforeClick: SetShareUrl, "bdSnsKey": {}, "bdText": ""
+            , "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdSign": "off", "bdStyle": "0", "bdSize": "24"
+        }, "share": {}
+    };
+    //插件的JS加载部分
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+    $(document).scroll(function () {
+        var docHeight = $(document).scrollTop();
+        var browseHeight = $(".browse-box").height();
+        if (docHeight > browseHeight) {
+            $(".btn-box").css("position", "fixed");
+        } else {
+            $(".btn-box").css("position", "relative");
+        }
+    });
+    $(".user-comments-btn").on("click", function () {
+        $(".child-comments-box").css("display", "none");
+        $(this).parent().siblings(".child-comments-box").css("display", "block")
+    });
+    $(function () {
+        var isLogin = "<?php echo e($isLogin); ?>";
+        var isAuthor = "<?php echo e($isAuthor); ?>";
+        if (!isAuthor && isLogin) {
+            //作品点赞
+            initFavoriteNum();
+            //收藏作品
+            initCollect();
+            //用户评论
+            initRemark();
+            //用户子评论
+            initRemarkChild();
+            //关注用户
+            initFocus();
+            //投票
+            initVoteNum();
+        } else {
+            $('.submit-btn').click(function () {
+                window.location.href = "\login1";
+            });
+            $('.submit-btn-child').click(function () {
+                window.location.href = "\login1";
+            });
+            $('#focusBtn').click(function () {
+                window.location.href = "\login1";
+            });
+            $('.vote_click').click(function () {
+                window.location.href = "\login1";
+            })
+        }
+        //关闭分享页面
+        $(".alert-off").click(function () {
+            $(".alert-m").hide(500);
+        });
+        //开启分享页面
+        $(".btn-share").click(function () {
+            $(".alert-m").show(500);
+        });
+
+    })
+
+</script>
+
+

@@ -1,0 +1,2273 @@
+<div class="container">
+    <!--右边主体内容开始-->
+    <div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+        <!-- 左侧功能栏-->
+        <div class="fun-left">
+            <div class="fun-head">
+                <span class="active"><i class="iconfont icon-page"></i>页面管理</span>
+                <span><i class="iconfont icon-zujianku"></i>组件库</span>
+            </div>
+            <div class="fun-content">
+
+                <div class="fun-main active">
+                    <ul class="group-navs">
+                        <li data-id="1">
+                            <div class="group-nav clearfix">
+                                <i class="iconfont icon-sanjiaoxing2 chart fl"></i>
+                                <div class="fl modify">
+                                    <span class="indet"><i class="fa fa-folder-o"></i><em>一级分组</em></span>
+                                    <span class="indets" style="display: none;">
+												<i class="fa fa-folder-o"></i>
+												<input class="inp" type="text" value=""/>
+												<button class="btn1">确定</button>
+												<button class="btn2">取消</button>
+											</span>
+                                </div>
+
+                                <div class="groupright">
+                                    <span class="iconfont icon-shanchu icon" title="删除"></span>
+                                    <span class="iconfont icon-xiugai icon" title="编辑组名"></span>
+                                    <span class="iconfont icon-tianjia icon" title="添加页面"></span>
+                                </div>
+                            </div>
+                            <ul class="page-nav left_nav_ul" style="display:block">
+                                <li class="active">
+                                    <?php /*<span class="indet left_nav_1" data-id="left_nav_1">首页</span>*/ ?>
+                                    <span class="indet">首页</span>
+                                    <span class="indets" style="display: none;">
+												<input class="inp" type="text" value=""/>
+												<button class="btn1">确定</button>
+												<button class="btn2">取消</button>
+											</span>
+                                    <div class="groupright">
+                                        <span class="iconfont icon-shanchu icon2" title="删除"></span>
+                                        <span class="iconfont icon-copy icon2" title="复制"></span>
+                                        <span class="iconfont icon-xing icon2" title="收藏"></span>
+                                        <span class="iconfont icon-xiugai icon2" title="编辑名称"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                    <div class="new-page">
+                        <span class="page1"><i class="fa fa-file-text"></i>添加页面</span>
+                        <span class="page2"><i class="fa fa-folder-open"></i>添加分组</span>
+                    </div>
+                </div>
+                <div class="fun-main">
+                    <div class="widgets">
+								<span class="widget fl" data-id="1">
+									<i class="fa fa-text-height"></i>
+									<label for="">文本</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-text" class="widget-main" style="display: none;">
+                                        <div class="widget-content" data-type="widget-text"
+                                             onmouseover='addNotice(this)' onmouseleave='delNotice(this)'>
+                                            <div data-id="1">
+                                                <div class='btns'>
+                                                    <p class="text-p"><a href="">这是文本内容</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</span>
+                        <span class="widget fl" data-id="2">
+									<i class="fa fa-file-image-o"></i>
+									<label for="">全景图</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-image" class="widget-main" style="display: none;">
+                                        <div class="widget-content" data-type="widget-pic" onmouseover='addNotice(this)'
+                                             onmouseleave='delNotice(this)'>
+                                            <div data-id="2">
+                                                <div class='content-head'>
+                                                    <iframe id="iframe" scrolling='no'
+                                                            src='http://www.teamnii.cn/online/mobile_shop.html'></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</span>
+                        <span class="widget fl" data-id="3">
+									<i class="fa fa-hand-o-up"></i>
+									<label for="">按钮</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-btn" class="widget-main" style="display: none;">
+                                        <div class="widget-content" data-type="widget-btn" onmouseover='addNotice(this)'
+                                             onmouseleave='delNotice(this)'>
+                                            <div data-id="3">
+                                                <div class='btns'>
+                                                    <p class='btn-p'><a href="#">按钮</a></p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+								</span>
+                        <span class="widget fl" data-id="4">
+									<i class="fa fa-list-ol"></i>
+									<label for="">分类</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-cat" class="widget-main" style="display: none;">
+                                        <div class="widget-content" data-type="widget-cat" onmouseover='addNotice(this)'
+                                             onmouseleave='delNotice(this)'>
+                                            <div data-id="4">
+                                                <div class="classfly">
+                                                    <ul class="row">
+                                                        <li class="active col-sm-3 col-xs-3">
+                                                            <span class="img"><img
+                                                                        src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic1.png')); ?>"/></span>
+                                                            <p class="groom"><a href="javascript:void(0);">推荐</a></p>
+                                                        </li>
+                                                        <li class="col-sm-3 col-xs-3">
+                                                            <span class="img"><img
+                                                                        src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic2.png')); ?>"/></span>
+                                                            <p class="groom"><a href="javascript:void(0);">简介</a></p>
+                                                        </li>
+                                                        <li class="col-sm-3 col-xs-3">
+                                                            <span class="img"><img
+                                                                        src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic3.png')); ?>"/></span>
+                                                            <p class="groom"><a href="javascript:void(0);">地址</a></p>
+                                                        </li>
+                                                        <li class="col-sm-3 col-xs-3">
+                                                            <span class="img"><img
+                                                                        src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic4.png')); ?>"/></span>
+                                                            <p class="groom"><a href="javascript:void(0);">预定</a></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</span>
+                        <span class="widget fl" data-id="5">
+									<i class="fa fa-picture-o"></i>
+									<label for="">图片列表</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+
+									<div id="widget-btn" class="widget-main" style="display: none;">
+                                        <div class="widget-content" data-type="widget-piclist"
+                                             onmouseover='addNotice(this)' onmouseleave='delNotice(this)'>
+                                            <div>
+                                                <div class="picture">
+                                                    <ul class="row">
+                                                        <li class="col-sm-4 col-xs-4">
+                                                            <a href="javascript:void(0);" class="link"><img class="img"
+                                                                                                            src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/default.png')); ?>"/></a>
+                                                            <p class="textp">图片1</p>
+                                                        </li>
+                                                        <li class="col-sm-4 col-xs-4">
+                                                            <a href="javascript:void(0);" class="link"><img class="img"
+                                                                                                            src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/default.png')); ?>"/></a>
+                                                            <p class="textp">图片2</p>
+                                                        </li>
+                                                        <li class="col-sm-4 col-xs-4">
+                                                            <a href="javascript:void(0);" class="link"><img class="img"
+                                                                                                            src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/default.png')); ?>"/></a>
+                                                            <p class="textp">图片3</p>
+                                                        </li>
+                                                        <li class="col-sm-4 col-xs-4">
+                                                            <a href="javascript:void(0);" class="link"><img class="img"
+                                                                                                            src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/default.png')); ?>"/></a>
+                                                            <p class="textp">图片4</p>
+                                                        </li>
+                                                        <li class="col-sm-4 col-xs-4">
+                                                            <a href="javascript:void(0);" class="link"><img class="img"
+                                                                                                            src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/default.png')); ?>"/></a>
+                                                            <p class="textp">图片5</p>
+                                                        </li>
+                                                        <li class="col-sm-4 col-xs-4">
+                                                            <a href="javascript:void(0);" class="link"><img class="img"
+                                                                                                            src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/default.png')); ?>"/></a>
+                                                            <p class="textp">图片6</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</span>
+                        <span class="widget fl" data-id="6">
+									<i class="fa fa-server"></i>
+									<label for="">底部导航</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-btn" class="widget-main" style="display: none;">
+                                        <div class="widget-content" style="position: absolute;bottom: 0;left: 0;"
+                                             data-type="widget-bottomnav" onmouseover='addNotice(this)'
+                                             onmouseleave='delNotice(this)'>
+                                            <div class="bottom-b">
+                                                <div class="bottomnav">
+                                                    <ul class="row">
+                                                        <li class="col-sm-4 col-xs-4">
+                                                            <span class="pic"><img
+                                                                        src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic5.png')); ?>"
+                                                                        alt="首页"/></span>
+                                                            <p class="textp"><a href="javascript:void(0);">首页</a></p>
+                                                        </li>
+                                                        <li class="col-sm-4 col-xs-4">
+                                                            <span class="pic"><img
+                                                                        src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic6.png')); ?>"
+                                                                        alt="学习"/></span>
+                                                            <p class="textp"><a href="javascript:void(0);">学习</a></p>
+                                                        </li>
+                                                        <li class="col-sm-4 col-xs-4">
+                                                            <span class="pic"><img
+                                                                        src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic7.png')); ?>"
+                                                                        alt="我的"/></span>
+                                                            <p class="textp"><a href="javascript:void(0);">我的</a></p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</span>
+                        <span class="widget fl" data-id="7">
+									<i class="fa fa-user-circle"></i>
+									<label for="">个人中心</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-btn" class="widget-main" style="display: none;">
+                                        <div class="widget-content" data-type="widget-pcenter"
+                                             onmouseover='addNotice(this)' onmouseleave='delNotice(this)'>
+                                            <div>
+                                                <div class="pcenter">
+                                                    <div class="banner">
+                                                        <div class="thumbnail">
+                                                            <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic13.png')); ?>"/>
+                                                            <p class="p1">昵称：Viktor</p>
+                                                            <p class="p2">等级：星球之光</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="container">
+                                                        <div class="ull">
+                                                            <ul class="row">
+                                                                <li class="col-xs-12 col-sm-12">
+                                                                    <a href="#">
+                                                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic8.png')); ?>"
+                                                                             class="logo"/>
+                                                                        <span>申请成为分销商</span>
+                                                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/arrow.png')); ?>"
+                                                                             class="arrow pull-right"/>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="col-xs-12 col-sm-12">
+                                                                    <a href="#">
+                                                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic12.png')); ?>"
+                                                                             class="logo"/>
+                                                                        <span>全部订单</span>
+                                                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/arrow.png')); ?>"
+                                                                             class="arrow pull-right"/>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="col-xs-12 col-sm-12">
+                                                                    <a href="#">
+                                                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic9.png')); ?>"
+                                                                             class="logo"/>
+                                                                        <span>购物车</span>
+                                                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/arrow.png')); ?>"
+                                                                             class="arrow pull-right"/>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="col-xs-12 col-sm-12">
+                                                                    <a href="#">
+                                                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/pic10.png')); ?>"
+                                                                             class="logo"/>
+                                                                        <span>我的收藏</span>
+                                                                        <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/arrow.png')); ?>"
+                                                                             class="arrow pull-right"/>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</span>
+                        <span class="widget fl" data-id="8">
+									<i class="fa fa-map-marker"></i>
+									<label for="">地图</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-btn" class="widget-main" style="display: none;">
+                                        <div class="widget-content" data-type="widget-map" onmouseover='addNotice(this)'
+                                             onmouseleave='delNotice(this)'>
+                                            <div>
+                                                <div class="map">
+                                                    <div id="maps">
+                                                        <iframe src="" id="ifmap" width="100%" height="200px"></iframe>
+                                                    </div>
+                                                    <div class="map-text">
+                                                        显示地址
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</span>
+                        <span class="widget fl">
+									<i class="fa fa-file-text"></i>
+									<label for="">添加标题</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-btn" class="widget-main" style="display: none;">
+                                        <div class="widget-content" data-type="widget-addtitle"
+                                             onmouseover='addNotice(this)' onmouseleave='delNotice(this)'>
+                                            <div>
+                                                <div class="addtitle">
+                                                    <p><a href="javascript:void(0);">青海省博物馆</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</span>
+                        <span class="widget fl">
+									<i class="fa fa-commenting-o"></i>
+									<label for="">评论</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-btn" class="widget-main" style="display: none;">
+                                        <div class="widget-content" data-type="widget-comment"
+                                             onmouseover='addNotice(this)' onmouseleave='delNotice(this)'>
+                                            <div>
+                                                <div class="comment">
+                                                    <p><span class="text-c">0</span>条评论</p>
+                                                    <div class="c-textarea">
+                                                        <textarea name="" placeholder="我也来说几句..."></textarea>
+                                                    </div>
+                                                    <div class="c-btn">
+                                                        <span class="com-btn">发布</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</span>
+                        <span class="widget fl">
+									<i class="fa fa-telegram"></i>
+									<label for="">城市定位</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-btn" class="widget-main" style="display: none;">
+                                        <div class="widget-content" data-type="widget-gps" onmouseover='addNotice(this)'
+                                             onmouseleave='delNotice(this)'>
+                                            <div>
+                                                <div class="gps">
+                                                    当前选择城市：厦门
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</span>
+
+                        <span class="widget fl">
+									<i class="fa fa-leanpub"></i>
+									<label for="">学习答题</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-btn" class="widget-main" style="display: none;">
+                                        <div class="widget-content" data-type="widget-study"
+                                             onmouseover='addNotice(this)' onmouseleave='delNotice(this)'>
+                                            <div>
+                                                <div class="study">
+                                                    <form action="">
+                                                        <div class="learn">
+                                                            <p class="clearfix"><em class="num">1.</em><span
+                                                                        class="learn_span">1</span></p>
+                                                            <ul class="laern_ul">
+                                                                <li><input type="radio" name="check1" value="check1"/>A.<span>a</span></li>
+                                                                <li><input type="radio" name="check1" value="check2"/>B.<span>b</span></li>
+                                                                <li><input type="radio" name="check1" value="check3"/>C.<span>c</span></li>
+                                                                <li><input type="radio" name="check1" value="check4"/>D.<span>d</span></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="learn">
+                                                            <p class="clearfix"><em class="num">2.</em><span
+                                                                        class="learn_span">1</span></p>
+                                                            <ul class="laern_ul">
+                                                                <li><input type="radio" name="check2" value="check1"/>A.<span>a</span></li>
+                                                                <li><input type="radio" name="check2" value="check2"/>B.<span>b</span></li>
+                                                                <li><input type="radio" name="check2" value="check3"/>C.<span>c</span></li>
+                                                                <li><input type="radio" name="check2" value="check4"/>D.<span>d</span></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="learn">
+                                                            <p class="clearfix"><em class="num">3.</em><span
+                                                                        class="learn_span">1</span></p>
+                                                            <ul class="laern_ul">
+                                                                <li><input type="radio" name="check3" value="check1"/>A.<span>a</span></li>
+                                                                <li><input type="radio" name="check3" value="check2"/>B.<span>b</span></li>
+                                                                <li><input type="radio" name="check3" value="check3"/>C.<span>c</span></li>
+                                                                <li><input type="radio" name="check3" value="check4"/>D.<span>d</span></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="learn">
+                                                            <p class="clearfix"><em class="num">4.</em><span
+                                                                        class="learn_span">1</span></p>
+                                                            <ul class="laern_ul">
+                                                                <li><input type="radio" name="check4" value="check1"/>A.<span>a</span></li>
+                                                                <li><input type="radio" name="check4" value="check2"/>B.<span>b</span></li>
+                                                                <li><input type="radio" name="check4" value="check3"/>C.<span>c</span></li>
+                                                                <li><input type="radio" name="check4" value="check4"/>D.<span>d</span></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="subm">
+                                                            <input type="submit" name="submit" value="提交"/>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</span>
+                        <span class="widget fl">
+									<i class="fa fa-th-list"></i>
+									<label for="">顶部导航</label>
+									<a href="javascript:void(0);" class="help-warp">
+                                        <span class="help-text">?</span>
+                                        <span class="help"></span>
+                                    </a>
+									<div id="widget-btn" class="widget-main" style="display: none;">
+                                        <div class="widget-content" style="position: absolute;top: 0;left: 0;"
+                                             data-type="widget-topnav" onmouseover='addNotice(this)'
+                                             onmouseleave='delNotice(this)'>
+                                            <div class="top-t">
+                                                <div class="topnav">
+                                                    <div class="top-text">
+                                                        <a class="back" href="javascript:void(0);"><span>返回</span></a>
+                                                    </div>
+                                                    <div class="first">
+                                                        <a href="javascript:void(0);">首页</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+								</span>
+                    </div>
+                    <!-- 第二个选项卡-->
+                    <div class="widget-table">
+                        <div class="title-table">
+                            <span class="active">布局</span>
+                            <span>高级</span>
+                            <span>其他</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- 添加页面的盒子-->
+            <div id="addpage">
+                <ul>
+                    <li class="li1">
+                        页面名称：
+                        <input id="inp1" type="text" placeholder="建议10个字以内"/>
+                    </li>
+                    <li class="li2">
+                        选择分组：
+                        <select name="group_id" class="addselect1">
+                            <option value="1">一级分组</option>
+
+                        </select>
+                    </li>
+                </ul>
+                <div class="buttons">
+                    <span class="button1">取消</span>
+                    <span class="button2">确定</span>
+                </div>
+            </div>
+            <!-- 添加分组的盒子-->
+            <div id="addgroup">
+                <ul>
+                    <li class="li1">
+                        分组名称：
+                        <input id="inp2" type="text" placeholder="建议10个字以内"/>
+                    </li>
+                </ul>
+                <div class="buttons">
+                    <span class="button1">取消</span>
+                    <span class="button2">确定</span>
+                </div>
+            </div>
+        </div>
+        <!-- 中间展示区域-->
+        <div class="head-component">
+            <div class="head-right">
+                <a href="javascript:void(0);">选择模板</a>
+                <a href="javascript:void(0);">配色方案</a>
+                <a href="javascript:bindName(this);">绑定域名</a>
+                <a class="shop_preshow" href="javascript:void(0);">店铺预览</a>
+                <a href="javascript:;" class="active custom_right_save" data-id="<?php echo e($uid); ?>">保存发布<?php echo e($uid); ?></a>
+            </div>
+        </div>
+        <!-- 中间展示区域-->
+        <div class="component">
+            <div class="phone-component">
+                <div class="phone-top">
+                    <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/phonetop.png')); ?>"/>
+                </div>
+
+                <!-- 有内容时显示的盒子-->
+                <form id="form" action="<?php echo e(route(Theme::get('route_prefix') . '.shop.save.template')); ?>" method="post">
+                    <?php echo e(csrf_field()); ?>
+
+
+                    <div class="empty-page">
+
+                    </div>
+                    <div class="text-contents ">
+                        <div class="top-div">
+
+                        </div>
+
+                        <div class="body-div">
+
+                        </div>
+
+                        <div class="bottom-div">
+
+                        </div>
+                    </div>
+                    <input type="submit" value="111" style="margin-top: 50px;"/>
+                </form>
+                <div class="phone-bottom">
+                    <img src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/phonebottom.png')); ?>"/>
+                </div>
+            </div>
+
+        </div>
+        <!-- 右侧选择栏-->
+        <div class="right-content">
+
+            <div id="tool-bar">
+                <!-- 默认 -->
+                <div class="table-content content-bar widget-default">
+                    <ul>
+                        <li class="title">
+                            <i class="iconfont icon-sanjiaoxing2"></i>属性
+                        </li>
+                        <li class="lcontent">
+                            <div class="setting-warp">
+                                <p>
+                                    <label for="">页面名称：</label>
+                                    <input type="text" value="首页"/>
+                                </p>
+                                <p>
+                                    <label for="">网页标题：</label>
+                                    <input type="text" value="首页"/>
+                                </p>
+                                <p>
+                                    <label for="">是否登录：</label>
+                                    <input type="checkbox"/>
+                                </p>
+                                <p>
+                                    <label for="">背景颜色：</label>
+                                    <input type="color"/>
+                                    <button class="option-btn">设置背景图</button>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="title">
+                            <i class="iconfont icon-sanjiaoxing2"></i>数据管理
+                        </li>
+                        <li class="lcontent">
+                            <div class="xiangqin">
+                                <span>设置为详情页</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /默认 -->
+
+                <!-- 文本 -->
+                <div class="other-content content-bar widget-text" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">文本组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <div class="btngroup">
+                            <span>文本文字：</span>
+                            <input class="inp" type="text" value="文本"/>
+                        </div>
+                        <div class="btngroup">
+                            <span class="settitle">点击事件</span>
+                            <div id="btngroup">
+                                <ul class="function-nav clearfix">
+                                    <li class="active"><a href="javascript:void(0);">无</a></li>
+                                    <li><a href="javascript:void(0);">页面</a></li>
+                                    <li><a href="javascript:void(0);">功能</a></li>
+                                </ul>
+                                <div class="btnpage active">
+
+                                </div>
+                                <div class="btnpage">
+                                    <div class="page-sect">
+                                        <span>连接至：</span>
+                                        <select name="" class="select1">
+                                            <option value="0">无</option>
+                                            <option value="../mobile/content.html">文物详情</option>
+                                            <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                            <option value="../mobile/mobile_shop.html">学习</option>
+                                            <option value="../mobile/personal.html">我的</option>
+                                            <option value="../mobile/summary.html">简介</option>
+                                            <option value="../mobile/addr.html">地址</option>
+                                            <option value="../mobile/order.html">预定</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="btnpage">
+                                    <div class="page-sect">
+                                        <span>调用功能：</span>
+                                        <select class="text-btn">
+                                            <option value="0">无</option>
+                                            <option value="1">刷新页面</option>
+                                            <option value="2">商品买卖</option>
+                                            <option value="3">进入商家</option>
+                                        </select>
+                                        <div class="page-weiye" style="display: block;">
+                                            <!--<a href="javascript:refresh(this);">刷新页面</a>-->
+                                        </div>
+                                        <div class="page-weiye">
+                                        </div>
+                                        <div class="page-weiye">
+                                            <a href="javascript:wares(this);">商品买卖</a>
+                                        </div>
+                                        <div class="page-weiye">
+                                            <a href="javascript:buness(this);">进入商家</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置<i class="iconfont icon-sanjiaoxing2"></i>
+                            </div>
+                            <div class="section-main">
+
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">
+                                文字设置<i class="iconfont icon-sanjiaoxing2"></i>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /文本 -->
+
+                <!-- 全景图 -->
+                <div class="other-content content-bar widget-pic" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">全景图组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <div class="btngroup">
+                            <span>添加全景图链接</span>
+                            <input type="text" class="addlink" placeholder="请输入全景图链接"/>
+                        </div>
+                        <div class="btngroup">
+                            <button class="addbtn">添加</button>
+                        </div>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+                            <div class="">
+
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">
+                                文字设置
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">边框设置</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /全景图 -->
+
+                <!-- 按钮 -->
+                <div class="other-content content-bar widget-btn" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">按钮组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <div class="btngroup">
+                            <span>按钮文字：</span>
+                            <input class="btnss" type="text" value="按钮"/>
+                        </div>
+                        <div class="btngroup">
+                            <span class="settitle">点击事件</span>
+                            <div id="btngroup">
+                                <ul class="function-nav clearfix">
+                                    <li class="active"><a href="javascript:void(0);">无</a></li>
+                                    <li><a href="javascript:void(0);">页面</a></li>
+                                    <li><a href="javascript:void(0);">功能</a></li>
+                                </ul>
+                                <div class="btnpage active">
+
+                                </div>
+                                <div class="btnpage">
+                                    <div class="page-sect">
+                                        <span>连接至：</span>
+                                        <select name="" class="select2">
+                                            <option value="0">无</option>
+                                            <option value="../mobile/content.html">文物详情</option>
+                                            <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                            <option value="../mobile/mobile_shop.html">学习</option>
+                                            <option value="../mobile/personal.html">我的</option>
+                                            <option value="../mobile/summary.html">简介</option>
+                                            <option value="../mobile/addr.html">地址</option>
+                                            <option value="../mobile/order.html">预定</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="btnpage">
+                                    <div class="page-sect">
+                                        <span>调用功能：</span>
+                                        <select class="btn-click">
+                                            <option value="0">无</option>
+                                            <option value="1">刷新页面</option>
+                                            <option value="2">商品买卖</option>
+                                            <option value="3">进入商家</option>
+                                        </select>
+                                        <div class="page-weiye" style="display: block;">
+                                        </div>
+                                        <div class="page-weiye">
+                                        </div>
+                                        <div class="page-weiye">
+                                            <a href="javascript:wares(this);">商品买卖</a>
+                                        </div>
+                                        <div class="page-weiye">
+                                            <a href="javascript:buness(this);">进入商家</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+                            <div class="">
+
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">
+                                文字设置
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">边框设置</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /按钮 -->
+
+                <!-- 分类 -->
+                <div class="other-content content-bar widget-cat" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">分类组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <div class="addto">
+                            <a href="javascript:void(0);">添加</a>
+                        </div>
+                        <div class="setline">
+                            <div class="setline-main">
+                                选中状态的分类：
+                                <select name="" class="select3">
+                                    <option value="1">无</option>
+                                    <option value="2" selected="selected">推荐</option>
+                                    <option value="3">简介</option>
+                                    <option value="4">地址</option>
+                                    <option value="5">预定</option>
+                                </select>
+                            </div>
+                        </div>
+                        <ul class="acction">
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>推荐</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>推荐：</span>
+                                        <input type="text" value="推荐"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <ul class="settingul">
+                                            <li class="active"><a href="javascript:void(0);">无</a></li>
+                                            <li><a href="javascript:void(0);">页面</a></li>
+                                            <li><a href="javascript:void(0);">功能</a></li>
+                                        </ul>
+                                        <div class="settingdiv"></div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <p>
+                                                    <span>连接至：</span>
+                                                    <select name="" class="page-link">
+                                                        <option value="javascript:void(0);">无</option>
+                                                        <option value="../mobile/content.html">文物详情</option>
+                                                        <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                        <option value="../mobile/mobile_shop.html">学习</option>
+                                                        <option value="../mobile/personal.html">我的</option>
+                                                        <option value="../mobile/summary.html">简介</option>
+                                                        <option value="../mobile/addr.html">地址</option>
+                                                        <option value="../mobile/order.html">预定</option>
+                                                    </select>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <span>调用功能：</span>
+                                                <select name="" class="sect-link">
+                                                    <option value="0">无</option>
+                                                    <option value="1">刷新页面</option>
+                                                    <option value="2">商品买卖</option>
+                                                    <option value="3">进入商家</option>
+                                                </select>
+                                                <div class="link-weiye" style="display: block;">
+                                                </div>
+                                                <div class="link-weiye">
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:wares(this);" class="weiye-btn">商品买卖</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:buness(this);" class="weiye-btn">选择商家</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>简介</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>简介：</span>
+                                        <input type="text" value="简介"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <ul class="settingul">
+                                            <li class="active"><a href="javascript:void(0);">无</a></li>
+                                            <li><a href="javascript:void(0);">页面</a></li>
+                                            <li><a href="javascript:void(0);">功能</a></li>
+                                        </ul>
+
+                                        <div class="settingdiv"></div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <p>
+                                                    <span>连接至：</span>
+                                                    <select name="" class="page-link">
+                                                        <option value="0">无</option>
+                                                        <option value="../mobile/content.html">文物详情</option>
+                                                        <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                        <option value="../mobile/mobile_shop.html">学习</option>
+                                                        <option value="../mobile/personal.html">我的</option>
+                                                        <option value="../mobile/summary.html">简介</option>
+                                                        <option value="../mobile/addr.html">地址</option>
+                                                        <option value="../mobile/order.html">预定</option>
+                                                    </select>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <span>调用功能：</span>
+                                                <select name="" class="sect-link">
+                                                    <option value="0">无</option>
+                                                    <option value="1">刷新页面</option>
+                                                    <option value="2">商品买卖</option>
+                                                    <option value="3">进入商家</option>
+                                                </select>
+                                                <div class="link-weiye" style="display: block;">
+                                                </div>
+                                                <div class="link-weiye">
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:wares(this);" class="weiye-btn">商品买卖</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:buness(this);" class="weiye-btn">选择商家</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>地址</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>地址：</span>
+                                        <input type="text" value="地址"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <ul class="settingul">
+                                            <li class="active"><a href="javascript:void(0);">无</a></li>
+                                            <li><a href="javascript:void(0);">页面</a></li>
+                                            <li><a href="javascript:void(0);">功能</a></li>
+                                        </ul>
+                                        <div class="settingdiv"></div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <p>
+                                                    <span>连接至：</span>
+                                                    <select name="" class="page-link">
+                                                        <option value="0">无</option>
+                                                        <option value="../mobile/content.html">文物详情</option>
+                                                        <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                        <option value="../mobile/mobile_shop.html">学习</option>
+                                                        <option value="../mobile/personal.html">我的</option>
+                                                        <option value="../mobile/summary.html">简介</option>
+                                                        <option value="../mobile/addr.html">地址</option>
+                                                        <option value="../mobile/order.html">预定</option>
+                                                    </select>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <span>调用功能：</span>
+                                                <select name="" class="sect-link">
+                                                    <option value="0">无</option>
+                                                    <option value="1">刷新页面</option>
+                                                    <option value="2">商品买卖</option>
+                                                    <option value="3">进入商家</option>
+                                                </select>
+                                                <div class="link-weiye" style="display: block;">
+                                                </div>
+                                                <div class="link-weiye">
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:wares(this);" class="weiye-btn">商品买卖</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:buness(this);" class="weiye-btn">选择商家</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>预定</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>预定：</span>
+                                        <input type="text" value="预定"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <ul class="settingul">
+                                            <li class="active"><a href="javascript:void(0);">无</a></li>
+                                            <li><a href="javascript:void(0);">页面</a></li>
+                                            <li><a href="javascript:void(0);">功能</a></li>
+                                        </ul>
+                                        <div class="settingdiv"></div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <p>
+                                                    <span>连接至：</span>
+                                                    <select name="" class="page-link">
+                                                        <option value="0">无</option>
+                                                        <option value="../mobile/content.html">文物详情</option>
+                                                        <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                        <option value="../mobile/mobile_shop.html">学习</option>
+                                                        <option value="../mobile/personal.html">我的</option>
+                                                        <option value="../mobile/summary.html">简介</option>
+                                                        <option value="../mobile/addr.html">地址</option>
+                                                        <option value="../mobile/order.html">预定</option>
+                                                    </select>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <span>调用功能：</span>
+                                                <select name="" class="sect-link">
+                                                    <option value="0">无</option>
+                                                    <option value="1">刷新页面</option>
+                                                    <option value="2">商品买卖</option>
+                                                    <option value="3">进入商家</option>
+                                                </select>
+                                                <div class="link-weiye" style="display: block;">
+                                                </div>
+                                                <div class="link-weiye">
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:wares(this);" class="weiye-btn">商品买卖</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:buness(this);" class="weiye-btn">选择商家</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+                            <div class="">
+
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">
+                                文字设置
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /分类  -->
+
+                <!-- 图片列表-->
+                <div class="other-content content-bar widget-piclist" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">图片列表组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <div class="setline">
+                            <span class="full-btn">添加图片</span>
+                        </div>
+                        <ul class="acction">
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>图片1</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>标题：</span>
+                                        <input type="text" value="标题"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <ul class="settingul">
+                                            <li class="active"><a href="javascript:void(0);">无</a></li>
+                                            <li><a href="javascript:void(0);">页面</a></li>
+                                            <li><a href="javascript:void(0);">功能</a></li>
+                                        </ul>
+                                        <div class="settingdiv"></div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <p>
+                                                    <span>连接至：</span>
+                                                    <select name="" class="page-link">
+                                                        <option value="0">无</option>
+                                                        <option value="../mobile/content.html">文物详情</option>
+                                                        <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                        <option value="../mobile/mobile_shop.html">学习</option>
+                                                        <option value="../mobile/personal.html">我的</option>
+                                                        <option value="../mobile/summary.html">简介</option>
+                                                        <option value="../mobile/addr.html">地址</option>
+                                                        <option value="../mobile/order.html">预定</option>
+                                                    </select>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <span>调用功能：</span>
+                                                <select name="" class="sect-link">
+                                                    <option value="0">无</option>
+                                                    <option value="1">刷新页面</option>
+                                                    <option value="2">商品买卖</option>
+                                                    <option value="3">进入商家</option>
+                                                </select>
+                                                <div class="link-weiye" style="display: block;">
+                                                </div>
+                                                <div class="link-weiye">
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:wares(this);" class="weiye-btn">商品买卖</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:buness(this);" class="weiye-btn">选择商家</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>图片2</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>标题：</span>
+                                        <input type="text" value="标题"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <ul class="settingul">
+                                            <li class="active"><a href="javascript:void(0);">无</a></li>
+                                            <li><a href="javascript:void(0);">页面</a></li>
+                                            <li><a href="javascript:void(0);">功能</a></li>
+                                        </ul>
+                                        <div class="settingdiv"></div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <p>
+                                                    <span>连接至：</span>
+                                                    <select name="" class="page-link">
+                                                        <option value="0">无</option>
+                                                        <option value="../mobile/content.html">文物详情</option>
+                                                        <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                        <option value="../mobile/mobile_shop.html">学习</option>
+                                                        <option value="../mobile/personal.html">我的</option>
+                                                        <option value="../mobile/summary.html">简介</option>
+                                                        <option value="../mobile/addr.html">地址</option>
+                                                        <option value="../mobile/order.html">预定</option>
+                                                    </select>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <span>调用功能：</span>
+                                                <select name="" class="sect-link">
+                                                    <option value="0">无</option>
+                                                    <option value="1">刷新页面</option>
+                                                    <option value="2">商品买卖</option>
+                                                    <option value="3">进入商家</option>
+                                                </select>
+                                                <div class="link-weiye" style="display: block;">
+                                                </div>
+                                                <div class="link-weiye">
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:wares(this);" class="weiye-btn">商品买卖</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:buness(this);" class="weiye-btn">选择商家</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>图片3</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>标题：</span>
+                                        <input type="text" value="标题"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <ul class="settingul">
+                                            <li class="active"><a href="javascript:void(0);">无</a></li>
+                                            <li><a href="javascript:void(0);">页面</a></li>
+                                            <li><a href="javascript:void(0);">功能</a></li>
+                                        </ul>
+                                        <div class="settingdiv"></div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <p>
+                                                    <span>连接至：</span>
+                                                    <select name="" class="page-link">
+                                                        <option value="0">无</option>
+                                                        <option value="../mobile/content.html">文物详情</option>
+                                                        <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                        <option value="../mobile/mobile_shop.html">学习</option>
+                                                        <option value="../mobile/personal.html">我的</option>
+                                                        <option value="../mobile/summary.html">简介</option>
+                                                        <option value="../mobile/addr.html">地址</option>
+                                                        <option value="../mobile/order.html">预定</option>
+                                                    </select>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <span>调用功能：</span>
+                                                <select name="" class="sect-link">
+                                                    <option value="0">无</option>
+                                                    <option value="1">刷新页面</option>
+                                                    <option value="2">商品买卖</option>
+                                                    <option value="3">进入商家</option>
+                                                </select>
+                                                <div class="link-weiye" style="display: block;">
+                                                    <a href="javascript:refresh(this);" class="weiye-btn">刷新页面</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:wares(this);" class="weiye-btn">商品买卖</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:buness(this);" class="weiye-btn">选择商家</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>图片4</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>标题：</span>
+                                        <input type="text" value="标题"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <ul class="settingul">
+                                            <li class="active"><a href="javascript:void(0);">无</a></li>
+                                            <li><a href="javascript:void(0);">页面</a></li>
+                                            <li><a href="javascript:void(0);">功能</a></li>
+                                        </ul>
+                                        <div class="settingdiv"></div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <p>
+                                                    <span>连接至：</span>
+                                                    <select name="" class="page-link">
+                                                        <option value="0">无</option>
+                                                        <option value="../mobile/content.html">文物详情</option>
+                                                        <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                        <option value="../mobile/mobile_shop.html">学习</option>
+                                                        <option value="../mobile/personal.html">我的</option>
+                                                        <option value="../mobile/summary.html">简介</option>
+                                                        <option value="../mobile/addr.html">地址</option>
+                                                        <option value="../mobile/order.html">预定</option>
+                                                    </select>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <span>调用功能：</span>
+                                                <select name="" class="sect-link">
+                                                    <option value="0">无</option>
+                                                    <option value="1">刷新页面</option>
+                                                    <option value="2">商品买卖</option>
+                                                    <option value="3">进入商家</option>
+                                                </select>
+                                                <div class="link-weiye" style="display: block;">
+                                                    <a href="javascript:refresh(this);" class="weiye-btn">刷新页面</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:wares(this);" class="weiye-btn">商品买卖</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:buness(this);" class="weiye-btn">选择商家</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>图片5</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>标题：</span>
+                                        <input type="text" value="标题"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <ul class="settingul">
+                                            <li class="active"><a href="javascript:void(0);">无</a></li>
+                                            <li><a href="javascript:void(0);">页面</a></li>
+                                            <li><a href="javascript:void(0);">功能</a></li>
+                                        </ul>
+                                        <div class="settingdiv"></div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <p>
+                                                    <span>连接至：</span>
+                                                    <select name="" class="page-link">
+                                                        <option value="0">无</option>
+                                                        <option value="../mobile/content.html">文物详情</option>
+                                                        <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                        <option value="../mobile/mobile_shop.html">学习</option>
+                                                        <option value="../mobile/personal.html">我的</option>
+                                                        <option value="../mobile/summary.html">简介</option>
+                                                        <option value="../mobile/addr.html">地址</option>
+                                                        <option value="../mobile/order.html">预定</option>
+                                                    </select>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <span>调用功能：</span>
+                                                <select name="" class="sect-link">
+                                                    <option value="0">无</option>
+                                                    <option value="1">刷新页面</option>
+                                                    <option value="2">商品买卖</option>
+                                                    <option value="3">进入商家</option>
+                                                </select>
+                                                <div class="link-weiye" style="display: block;">
+                                                    <a href="javascript:refresh(this);" class="weiye-btn">刷新页面</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:wares(this);" class="weiye-btn">商品买卖</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:buness(this);" class="weiye-btn">选择商家</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>图片6</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>标题：</span>
+                                        <input type="text" value="标题"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <ul class="settingul">
+                                            <li class="active"><a href="javascript:void(0);">无</a></li>
+                                            <li><a href="javascript:void(0);">页面</a></li>
+                                            <li><a href="javascript:void(0);">功能</a></li>
+                                        </ul>
+                                        <div class="settingdiv"></div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <p>
+                                                    <span>连接至：</span>
+                                                    <select name="" class="page-link">
+                                                        <option value="0">无</option>
+                                                        <option value="../mobile/content.html">文物详情</option>
+                                                        <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                        <option value="../mobile/mobile_shop.html">学习</option>
+                                                        <option value="../mobile/personal.html">我的</option>
+                                                        <option value="../mobile/summary.html">简介</option>
+                                                        <option value="../mobile/addr.html">地址</option>
+                                                        <option value="../mobile/order.html">预定</option>
+                                                    </select>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="settingdiv">
+                                            <div class="connect">
+                                                <span>调用功能：</span>
+                                                <select name="" class="sect-link">
+                                                    <option value="0">无</option>
+                                                    <option value="1">刷新页面</option>
+                                                    <option value="2">商品买卖</option>
+                                                    <option value="3">进入商家</option>
+                                                </select>
+                                                <div class="link-weiye" style="display: block;">
+                                                    <a href="javascript:refresh(this);" class="weiye-btn">刷新页面</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:wares(this);" class="weiye-btn">商品买卖</a>
+                                                </div>
+                                                <div class="link-weiye">
+                                                    <a href="javascript:buness(this);" class="weiye-btn">选择商家</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+                            <div class="">
+
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">
+                                文字设置
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /图片列表  -->
+
+                <!-- 底部导航-->
+                <div class="other-content content-bar widget-bottomnav" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">底部导航组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <ul class="acction">
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>首页</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>标题：</span>
+                                        <input type="text" value="首页"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <span>原始图片：</span>
+                                        <div class="set">
+                                            <a href="javascript:void(0);">上传图片</a>
+                                        </div>
+                                    </div>
+                                    <div class="setting-row">
+                                        <div class="connect">
+                                            <p>
+                                                <span>连接至：</span>
+                                                <select name="" class="page-link">
+                                                    <option value="0">无</option>
+                                                    <option value="../mobile/content.html">文物详情</option>
+                                                    <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                    <option value="../mobile/mobile_shop.html">学习</option>
+                                                    <option value="../mobile/personal.html">我的</option>
+                                                    <option value="../mobile/summary.html">简介</option>
+                                                    <option value="../mobile/addr.html">地址</option>
+                                                    <option value="../mobile/order.html">预定</option>
+                                                </select>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>文物</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>标题：</span>
+                                        <input type="text" value="文物"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <span>原始图片：</span>
+                                        <div class="set">
+                                            <a href="javascript:void(0);">上传图片</a>
+                                        </div>
+                                    </div>
+                                    <div class="setting-row">
+                                        <div class="connect">
+                                            <p>
+                                                <span>连接至：</span>
+                                                <select name="" class="page-link">
+                                                    <option value="0">无</option>
+                                                    <option value="../mobile/content.html">文物详情</option>
+                                                    <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                    <option value="../mobile/mobile_shop.html">学习</option>
+                                                    <option value="../mobile/personal.html">我的</option>
+                                                    <option value="../mobile/summary.html">简介</option>
+                                                    <option value="../mobile/addr.html">地址</option>
+                                                    <option value="../mobile/order.html">预定</option>
+                                                </select>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="p-title">
+                                    <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i>我的</span>
+                                    <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+                                </p>
+                                <div class="setcontent">
+                                    <div class="setting-row">
+                                        <span>标题：</span>
+                                        <input type="text" value="我的"/>
+                                    </div>
+                                    <div class="setting-row">
+                                        <span>原始图片：</span>
+                                        <div class="set">
+                                            <a href="javascript:void(0);">上传图片</a>
+                                        </div>
+                                    </div>
+                                    <div class="setting-row">
+                                        <div class="connect">
+                                            <p>
+                                                <span>连接至：</span>
+                                                <select name="" class="page-link">
+                                                    <option value="0">无</option>
+                                                    <option value="../mobile/content.html">文物详情</option>
+                                                    <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                                    <option value="../mobile/mobile_shop.html">学习</option>
+                                                    <option value="../mobile/personal.html">我的</option>
+                                                    <option value="../mobile/summary.html">简介</option>
+                                                    <option value="../mobile/addr.html">地址</option>
+                                                    <option value="../mobile/order.html">预定</option>
+                                                </select>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+                            <div class="">
+
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">
+                                文字设置
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /底部导航  -->
+
+                <!-- 个人中心  -->
+                <div class="other-content content-bar widget-pcenter" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">个人中心组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <div class="head-tab">
+                            <h3>选择要添加到"个人中心的组件"</h3>
+                            <ul>
+                                <li>申请成为分销商</li>
+                                <li>全部订单</li>
+                                <li>我的购物车</li>
+                                <li>我的收藏</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">
+                                文字设置
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /个人中心  -->
+
+                <!-- 地图  -->
+                <div class="other-content content-bar widget-map" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">地图组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <div id="map">
+
+                        </div>
+                        <div class="setting-address">
+                            <h3>定位地址</h3>
+                            <div class="set-address">
+                                <input type="text" id="inpt" value="" placeholder="请输入地址"/>
+                                <span class="text1">定位</span>
+                            </div>
+                            <div class="set-address">
+                                <span class="text2">文字:</span>
+                                <input type="text" class="textp" value="显示地址"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">
+                                文字设置
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /地图  -->
+
+                <!-- 添加标题  -->
+                <div class="other-content content-bar widget-addtitle" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">添加标题组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <div class="add-text">
+                            <span>标题：</span>
+                            <input class="titles" type="text" value="青海省博物馆"/>
+                        </div>
+                        <div class="btngroup">
+                            <span class="settitle">点击事件</span>
+                            <div id="btngroup">
+                                <ul class="function-nav clearfix">
+                                    <li class="active"><a href="javascript:void(0);">无</a></li>
+                                    <li><a href="javascript:void(0);">页面</a></li>
+                                    <li><a href="javascript:void(0);">功能</a></li>
+                                </ul>
+                                <div class="btnpage active">
+
+                                </div>
+                                <div class="btnpage">
+                                    <div class="page-sect">
+                                        <span>连接至：</span>
+                                        <select name="" class="select1">
+                                            <option value="javascript:void(0);">无</option>
+                                            <option value="../mobile/content.html">文物详情</option>
+                                            <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                            <option value="../mobile/mobile_shop.html">学习</option>
+                                            <option value="../mobile/personal.html">我的</option>
+                                            <option value="../mobile/summary.html">简介</option>
+                                            <option value="../mobile/addr.html">地址</option>
+                                            <option value="../mobile/order.html">预定</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="btnpage">
+                                    <div class="page-sect">
+                                        <span>调用功能：</span>
+                                        <select class="text-btn">
+                                            <option value="0">无</option>
+                                            <option value="1">刷新页面</option>
+                                            <option value="2">商品买卖</option>
+                                            <option value="3">进入商家</option>
+                                        </select>
+                                        <div class="page-weiye" style="display: block;">
+                                            <!--<a href="javascript:refresh(this);">刷新页面</a>-->
+                                        </div>
+                                        <div class="page-weiye">
+                                        </div>
+                                        <div class="page-weiye">
+                                            <a href="javascript:wares(this);">商品买卖</a>
+                                        </div>
+                                        <div class="page-weiye">
+                                            <a href="javascript:buness(this);">进入商家</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">
+                                文字设置
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /添加标题  -->
+
+                <!-- 添加评论框  -->
+                <div class="other-content content-bar widget-comment" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">添加评论组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <div class="add-text">
+                            <span>标题：</span>
+                            <p>评论框:</p>
+                        </div>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /添加评论框  -->
+
+                <!-- 添加城市定位  -->
+                <div class="other-content content-bar widget-gps" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">城市定位组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <div class="add-text">
+                            <span>关联列表</span>
+                            <div class="secl">
+                                <select name="">
+                                    <option value="">选择列表</option>
+                                    <option value="">商品列表</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /添加城市定位  -->
+
+
+                <!-- 学习答题  -->
+                <div class="other-content content-bar widget-study" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">学习答题组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+
+                        <div class="other_title">
+                            <p>题目1：<input class="title title1" type="text" placeholder="请输入你的题目"></p>
+                            <ul>
+                                <li><span>答案A</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案B</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案C</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案D</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                            </ul>
+                        </div>
+                        <div class="other_title">
+                            <p>题目2：<input class="title title2" type="text" placeholder="请输入你的题目"></p>
+                            <ul>
+                                <li><span>答案A</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案B</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案C</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案D</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                            </ul>
+                        </div>
+                        <div class="other_title">
+                            <p>题目3：<input class="title title3" type="text" placeholder="请输入你的题目"></p>
+                            <ul>
+                                <li><span>答案A</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案B</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案C</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案D</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                            </ul>
+                        </div>
+                        <div class="other_title">
+                            <p>题目4：<input class="title title4" type="text" placeholder="请输入你的题目"></p>
+                            <ul>
+                                <li><span>答案A</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案B</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案C</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                                <li><span>答案D</span><input class="answer" type="text" placeholder="输入答案"/></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /学习答题  -->
+
+                <!-- 顶部导航  -->
+                <div class="other-content content-bar widget-topnav" style="display: none;">
+                    <div class="other-head">
+                        <span class="topname active">顶部导航组件</span>
+                        <span class="topname">组件样式</span>
+                    </div>
+                    <div class="other-main active">
+                        <div class="btngroup">
+                            <span>按钮文字：</span>
+                            <input class="btntop" type="text" value="首页"/>
+                        </div>
+                        <div class="btngroup">
+                            <span class="settitle">点击事件</span>
+                            <div id="btngroup">
+                                <ul class="function-nav clearfix">
+                                    <li class="active"><a href="javascript:void(0);">无</a></li>
+                                    <li><a href="javascript:void(0);">页面</a></li>
+                                </ul>
+                                <div class="btnpage active">
+
+                                </div>
+                                <div class="btnpage">
+                                    <div class="page-sect">
+                                        <span>连接至：</span>
+                                        <select name="" class="select2">
+                                            <option value="0">无</option>
+                                            <option value="../mobile/content.html">文物详情</option>
+                                            <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                            <option value="../mobile/mobile_shop.html">学习</option>
+                                            <option value="../mobile/personal.html">我的</option>
+                                            <option value="../mobile/summary.html">简介</option>
+                                            <option value="../mobile/addr.html">地址</option>
+                                            <option value="../mobile/order.html">预定</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="btngroup">
+                            <span class="settitle">返回按钮</span>
+                            <div id="returnbtn">
+                                <ul>
+                                    <li class="active"><a href="javascript:void(0);">无</a></li>
+                                    <li><a href="javascript:void(0);">页面</a></li>
+                                </ul>
+                                <div class="btnpage active"></div>
+                                <div class="btnpage">
+                                    <div class="page-inp">
+                                        <span>文字：</span>
+                                        <input type="text" name="" class="pageinp" value="返回"/>
+                                    </div>
+                                    <div class="page-select">
+                                        <span>连接至：</span>
+                                        <select name="" class="select3">
+                                            <option value="0">无</option>
+                                            <option value="../mobile/content.html">文物详情</option>
+                                            <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                            <option value="../mobile/mobile_shop.html">学习</option>
+                                            <option value="../mobile/personal.html">我的</option>
+                                            <option value="../mobile/summary.html">简介</option>
+                                            <option value="../mobile/addr.html">地址</option>
+                                            <option value="../mobile/order.html">预定</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other-main">
+                        <div class="section">
+                            <div class="sectiontop">
+                                组件设置
+                            </div>
+                            <div class="">
+
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="sectiontop">
+                                文字设置
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /顶部导航  -->
+            </div>
+        </div>
+    </div>
+    <!--右边主体内容结束-->
+</div>
+
+<!--域名绑定-->
+<div id="bindname" style="display: none;">
+    <ul>
+        <li>
+            绑定域名：
+            <input type="text" placeholder="请输入正确的域名"/>
+        </li>
+    </ul>
+</div>
+
+<!--收藏-->
+<div id="store" style="display: none;">
+    <div class="store">
+        收藏收藏收藏收藏收藏收藏收藏收藏收藏收藏
+    </div>
+</div>
+<!--刷新页面-->
+<div id="refresh" style="display: none;">
+    <div class="wares-head">
+        <span class="active">电商</span>
+        <span>外卖</span>
+        <span>预约</span>
+        <span>到店</span>
+    </div>
+    <div class="wares-main">
+        <select name="">
+            <option value="">全部</option>
+        </select>
+        <div class="search">
+            <input type="text" name="" placeholder="商品搜索"/>
+        </div>
+        <a href="javascript:void(0);"><i class="fa fa-plus"></i>添加商品</a>
+    </div>
+</div>
+<!--选择商品-->
+<div id="wares" style="display: none;">
+    <div class="wares-head">
+        <span class="active">电商</span>
+        <span>外卖</span>
+        <span>预约</span>
+        <span>到店</span>
+    </div>
+    <div class="wares-main clearfix">
+        <select name="">
+            <option value="">全部</option>
+        </select>
+        <div class="search clearfix">
+            <input type="text" name="" placeholder="商品搜索"/>
+            <button class="butn">搜索</button>
+        </div>
+        <a href="javascript:void(0);" class="add"><i class="fa fa-plus"></i>添加商品</a>
+    </div>
+</div>
+<!--进入商家-->
+<div id="buness" style="display: none;">
+
+    <div class="buness">
+
+    </div>
+</div>
+<!--鼠标移上去的内容-->
+<div id="load-demo" style="display: none;">
+    <div id="load" onclick="getElement(this);">
+        <div class="col-sm-7 text-right">
+            <span type="button" class="btn btn-default btn-xs btn1"><i class="fa fa-bars"></i><i class="fa fa-bars"></i></span>
+        </div>
+        <div class="col-sm-5 text-right" style="padding: 0;">
+            <button onclick="delWidget(this,event);" type="button" class="btn btn-default btn-xs btn2"><i
+                        class="fa fa-close" title="删除"></i></button>
+        </div>
+    </div>
+
+</div>
+<!--添加分组-->
+<div id="new-dir-li" style="display: none;">
+    <li>
+        <div class="group-nav clearfix">
+            <i class="iconfont icon-sanjiaoxing2 chart fl"></i>
+            <div class="fl modify">
+                <span class="indet"><i class="fa fa-folder-o"></i><em class="name"></em></span>
+                <span class="indets" style="display: none;">
+							<i class="fa fa-folder-o"></i>
+							<input class="inp" type="text" value=""/>
+							<button class="btn1">确定</button>
+							<button class="btn2">取消</button>
+						</span>
+            </div>
+            <div class="groupright">
+                <span class="iconfont icon-shanchu icon" title="删除"></span>
+                <span class="iconfont icon-xiugai icon" title="编辑组名"></span>
+                <span class="iconfont icon-tianjia icon" title="添加页面"></span>
+            </div>
+        </div>
+        <ul class="page-nav">
+            <li>
+                <span class="indet">首页</span>
+                <span class="indets" style="display: none;">
+							<input class="inp" type="text"/>
+							<button class="btn1">确定</button>
+							<button class="btn2">取消</button>
+						</span>
+                <div class="groupright">
+                    <span class="iconfont icon-shanchu icon2" title="删除"></span>
+                    <span class="iconfont icon-copy icon2" title="复制"></span>
+                    <span class="iconfont icon-xing icon2" title="收藏"></span>
+                    <span class="iconfont icon-xiugai icon2" title="编辑名称"></span>
+                </div>
+            </li>
+        </ul>
+    </li>
+</div>
+
+<!--添加图片列表选项-->
+<div id="new-pic-li" style="display: none;">
+    <li>
+        <p class="p-title">
+            <span class="span1"><i class="iconfont icon-sanjiaoxing2 chart"></i><span
+                        class="new-pic-title">标题：</span></span>
+            <span class="span2"><i class="fa fa-trash-o fa-2x"></i></span>
+        </p>
+        <div class="setcontent">
+            <div class="setting-row">
+                <span>标题：</span>
+                <input type="text" value="标题"/>
+            </div>
+            <div class="setting-row">
+                <ul class="settingul">
+                    <li class="active"><a href="javascript:void(0);">无</a></li>
+                    <li><a href="javascript:void(0);">页面</a></li>
+                    <li><a href="javascript:void(0);">功能</a></li>
+                </ul>
+                <div class="settingdiv"></div>
+                <div class="settingdiv">
+                    <div class="connect">
+                        <p>
+                            <span>连接至：</span>
+                            <select name="" class="page-link">
+                                <option value="0">无</option>
+                                <option value="../mobile/content.html">文物详情</option>
+                                <option value="../mobile/mobile_shop.html">博物馆首页</option>
+                                <option value="../mobile/mobile_shop.html">学习</option>
+                                <option value="../mobile/personal.html">我的</option>
+                                <option value="../mobile/summary.html">简介</option>
+                                <option value="../mobile/addr.html">地址</option>
+                                <option value="../mobile/order.html">预定</option>
+                            </select>
+                        </p>
+                    </div>
+                </div>
+                <div class="settingdiv">
+                    <div class="connect">
+                        <span>调用功能：</span>
+                        <select name="" class="sect-link">
+                            <option value="0">无</option>
+                            <option value="1">刷新页面</option>
+                            <option value="2">商品买卖</option>
+                            <option value="3">进入商家</option>
+                        </select>
+                        <div class="link-weiye" style="display: block;">
+                        </div>
+                        <div class="link-weiye">
+                        </div>
+                        <div class="link-weiye">
+                            <a href="javascript:wares(this);" class="weiye-btn">商品买卖</a>
+                        </div>
+                        <div class="link-weiye">
+                            <a href="javascript:buness(this);" class="weiye-btn">选择商家</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+<!--添加图片-->
+<div id="new_picture" style="display: none;">
+    <li class="col-sm-4 col-xs-4">
+        <a href="javascript:void(0);" class="link"><img class="img"
+                                                        src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/default.png')); ?>"/></a>
+        <p class="textp">标题</p>
+    </li>
+</div>
+
+<!--上传图片-->
+<div id="upload">
+    <div class="upload">
+        <div class="upload_head">
+            <ul class="head_ul clearfix">
+                <li class="active">我的图片</li>
+                <li>图片库</li>
+            </ul>
+        </div>
+        <div class="upload_main active">
+            <ul class="upload_tab" id="upload-tab">
+                <li class="active">全部</li>
+                <li>背景</li>
+                <li>图片</li>
+                <li>素材</li>
+            </ul>
+            <div class="upload_warp">
+                <ul>
+                    <li>
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img10.png')); ?>"/></a>
+                        <div class="imgop">
+                            <a href="javascript:void(0);" title="删除">删除</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img10.png')); ?>"/></a>
+                        <div class="imgop">
+                            <a href="javascript:void(0);" title="删除">删除</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img10.png')); ?>"/></a>
+                        <div class="imgop">
+                            <a href="javascript:void(0);" title="删除">删除</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img10.png')); ?>"/></a>
+                        <div class="imgop">
+                            <a href="javascript:void(0);" title="删除">删除</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img10.png')); ?>"/></a>
+                        <div class="imgop">
+                            <a href="javascript:void(0);" title="删除">删除</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="upload_footer">
+                <a href="javascript:void(0);">取消</a>
+            </div>
+        </div>
+        <div class="upload_main">
+            <ul class="upload_tab" id="upload-tab">
+                <li class="active">全部</li>
+                <li>背景</li>
+                <li>节日</li>
+                <li>图标</li>
+                <li>素材</li>
+            </ul>
+            <div id="listimg" class="isotope">
+                <ul class="clearfix">
+                    <li class="bg">
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img1.png')); ?>"/></a>
+                    </li>
+                    <li class="bg">
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img2.png')); ?>"/></a>
+                    </li>
+                    <li class="bg">
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img3.png')); ?>"/></a>
+                    </li>
+                    <li class="fest">
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img4.jpg')); ?>"/></a>
+                    </li>
+                    <li class="fest">
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img5.jpg')); ?>"/></a>
+                    </li>
+                    <li class="icon">
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img6.png')); ?>"/></a>
+                    </li>
+                    <li class="icon">
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img7.png')); ?>"/></a>
+                    </li>
+                    <li class="sour">
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img8.png')); ?>"/></a>
+                    </li>
+                    <li class="sour">
+                        <a href="javascript:void(0);"><img
+                                    src="<?php echo e(Theme::asset()->url(Theme::get('dir_prefix') . '/shop/images/custom/img9.png')); ?>"/></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="upload_footer">
+                <a href="javascript:void(0);">取消</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('childpage-css-index', Theme::get('dir_prefix') . '/shop/css/childpage.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('childpage-js-index', Theme::get('dir_prefix') . '/shop/js/childpage.js'); ?>
+
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('shop-css-customTemplate', Theme::get('dir_prefix') . '/shop/css/customTemplate.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('childpage-js-customTemplate_index', Theme::get('dir_prefix') . '/shop/js/customTemplate_index.js'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('childpage-js-index2', Theme::get('dir_prefix') . '/shop/js/index2.js'); ?>
+
+<?php /*<?php echo Theme::asset()->container('common-js')->usePath()->add('childpage-js-right_data', Theme::get('dir_prefix') . '/shop/js/right_data.js'); ?>*/ ?>
+<?php echo Theme::asset()->container('common-js')->usePath()->add('childpage-dataCache', Theme::get('dir_prefix') . '/shop/js/dataCache.js'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('childpage-js-right_data1', Theme::get('dir_prefix') . '/shop/js/jquery-ui-1.10.4.custom.min.js'); ?>
+
+
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=5c96270e7778203606e70ae14ed0af9f"></script>
+

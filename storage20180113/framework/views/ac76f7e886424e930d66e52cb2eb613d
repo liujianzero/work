@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="<?php echo e(app()->getLocale()); ?>">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta charset="utf-8">
+    <?php /*<meta http-equiv="X-UA-Compatible" content="IE=edge">*/ ?>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <link rel="shortcut icon" href="<?php echo e(Theme::asset()->url('images/favicon.ico')); ?>"/>
+    <title><?php echo Theme::get('title'); ?></title>
+    <?php /* 特殊CSS */ ?>
+    <?php echo Theme::asset()->container('special-css')->styles(); ?>
+
+    <?php /* 全局CSS */ ?>
+    <?php echo Theme::asset()->usepath()->add('layout-css-bootstrap', 'agent/common/css/bootstrap.min.css'); ?>
+
+    <?php echo Theme::asset()->usepath()->add('layout-css-iconfont', 'agent/common/font/iconfont.css'); ?>
+
+    <?php echo Theme::asset()->usepath()->add('layout-css-font-awesome', 'agent/common/css/font-awesome.min.css'); ?>
+
+    <?php echo Theme::asset()->usepath()->add('layout-js-jquery-1.9.1', 'agent/common/js/jquery-1.9.1.min.js'); ?>
+
+    <?php echo Theme::asset()->styles(); ?>
+
+    <?php /* 插件CSS */ ?>
+    <?php echo Theme::asset()->container('plugin-css')->styles(); ?>
+
+    <?php /* 自定义CSS */ ?>
+    <?php echo Theme::asset()->container('common-css')->styles(); ?>
+
+</head>
+<body>
+<?php echo Theme::content(); ?>
+
+</body>
+<?php /* 特殊JS */ ?>
+<?php echo Theme::asset()->container('special-js')->scripts(); ?>
+
+<?php /* 全局JS */ ?>
+<?php echo Theme::asset()->usepath()->add('layout-js-layer', 'agent/plugin/layer/layer.js'); ?>
+
+<?php echo Theme::asset()->scripts(); ?>
+
+<?php /* 插件JS */ ?>
+<?php echo Theme::asset()->container('plugin-js')->scripts(); ?>
+
+<?php /* 自定义JS */ ?>
+<?php echo Theme::asset()->container('common-js')->scripts(); ?>
+
+</html>

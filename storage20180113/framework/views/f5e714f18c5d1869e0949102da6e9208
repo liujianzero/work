@@ -1,0 +1,103 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+    <input type="hidden" class="id" value="<?php echo e($id); ?>">
+    <input type="hidden" class="tem_id" value="<?php echo e($info['template_id']); ?>">
+    <input type="hidden" class="route" value="<?php echo e($route); ?>">
+    <!--内容-->
+    <div class="app-container">
+        <!--选择栏-->
+        <div class="app-container-head gray clearfix">
+            <div class="shop-left">
+                <a href="<?php echo e(route(Theme::get('route_prefix') . '.shop.select.template')); ?>">选择模板</a>
+                <a class="modular" href="<?php echo e(route(Theme::get('route_prefix') . '.shop.customTemplate')); ?>">自定义模块</a>
+                <span>配色方案</span>
+                <ul id="model">
+                    <li class="active">
+                        <span style="background:#444;"></span>
+                        <span style="background: #e7e1cd;"></span>
+                        <span style="background: #fff;"></span>
+                    </li>
+                    <li>
+                        <span style="background: #ff9300;"></span>
+                        <span style="background: #ff5e15;"></span>
+                        <span style="background: #fff;"></span>
+                    </li>
+                    <li>
+                        <span style="background: #6cbf72;"></span>
+                        <span style="background: #ffe7e9;"></span>
+                        <span style="background: #fff;"></span>
+                    </li>
+                    <li>
+                        <span class="span1"></span>
+                        <span class="span2"></span>
+                        <span class="span3"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="shop-right">
+                <a href="javascript:editPic(this);" id="background">更换背景</a>
+                <a href="javascript:bindName(this);">绑定域名</a>
+                <?php /*<a href="javascript:void(0);" class="mar">手机预览</a>*/ ?>
+                <a href="javascript:void(0);" class="active" id="default_issue">进入店铺</a>
+            </div>
+        </div>
+        <!--默认模板-展示-->
+        <div id="preview-wrap" class="preview-wrap">
+            <div id="phone-component" class="phone-6plus">
+                <div class="phone-head">
+                    <span id="go-back">返回</span>
+                </div>
+                <div id="phone-container" class="phone-content">
+                    <?php if($info->template_id == 0): ?>
+                        <div class="default"></div>
+                    <?php else: ?>
+                        <iframe class="preview-iframe" id="preview-iframe" frameborder="0" allowtransparency="true"
+                                seamless=""
+                                src="<?php echo url($info->module . '/shop/'. $route . '/' . $id); ?>"></iframe>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容 结束-->
+</div>
+<!--绑定域名-->
+<div id="bindname" style="display: none;">
+    <form action="" method="post">
+        <div class="form-group pull clearfix">
+            <label for="" class="col-md-3 tar control-label">绑定的域名:</label>
+            <div class="col-md-9">
+                <input type="text" name="bindname" class="form-control" placeholder="请输入正确的域名"/>
+            </div>
+        </div>
+    </form>
+</div>
+<!--全景图链接-->
+<div id="editPic" style="display: none;">
+    <form id="editPicForm" action="" method="post">
+        <div class="form-group pull clearfix">
+            <label for="" class="col-md-3 tar control-label">全景图链接:</label>
+            <div class="col-md-9">
+                <input type="text" name="editPic" class="form-control" placeholder="请输入全景图链接"/>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <button id="formSubmit" class="btn btn-primary" style="margin-left: 60%;margin-top: 10%;">提交</button>
+        </div>
+        <?php echo csrf_field(); ?>
+
+    </form>
+</div>
+
+<?php /*<?php echo Theme::asset()->container('common-css')->usePath()->add('mobile-css-mobile', Theme::get('dir_prefix') . '/mobile/css/mobile.css'); ?>*/ ?>
+<?php /*<link rel="stylesheet" href="//at.alicdn.com/t/font_432602_j1fwfi994bqbmx6r.css"/>*/ ?>
+<?php echo Theme::asset()->container('common-css')->usePath()->add('shop-css-index', Theme::get('dir_prefix') . '/shop/css/index.css', [], ['id' => 'theme', 'data-type' => Theme::get('flag'), 'data-module' => Theme::get('module')]); ?>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('shop-css-default', Theme::get('dir_prefix') . '/shop/css/default.css', [], ['id' => 'theme', 'data-type' => Theme::get('flag'), 'data-module' => Theme::get('module')]); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('shop-js-jquery.validate', Theme::get('module') . '/plugin/bootstrap-validate/jquery.validate.min.js'); ?>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('shop-js-messages_zh', Theme::get('module') . '/plugin/bootstrap-validate/messages_zh.min.js'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('shop-js-index', Theme::get('dir_prefix') . '/shop/js/index.js'); ?>
+
+

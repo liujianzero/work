@@ -1,0 +1,141 @@
+<div id="app-container" class="col-xs-10 col-lg-11 col-md-10">
+
+    <div class="container-fluid">
+        <div class="row margint">
+            <div class="tabs col-md-offset-5 col-md-1">
+                <a class="active title" data-index="0">店铺数据</a>
+            </div>
+            <div class="tabs col-md-1">
+                <a class="title" data-index="1">订单数据</a>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <div class="con_title1">
+                    <p>今日实时</p>
+                </div>
+                <div class="con">
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($view_count->tody_store_pv); ?></a>
+                        <p class="text-center">今日浏览量</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($view_count->tody_store_uv); ?></a>
+                        <p class="text-center">今日访客数</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($view_count->tody_goods_pv); ?></a>
+                        <p class="text-center">今日商品浏览量</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($view_count->tody_goods_uv); ?></a>
+                        <p class="text-center">今日商品访客数</p>
+                    </div>
+                </div>
+                <div class="con_title2">
+                    <p>昨日营业概况</p>
+                </div>
+                <div class="con3">
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($view_count->yestody_store_pv); ?></a>
+                        <p class="text-center">昨日浏览量</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($view_count->yestody_store_uv); ?></a>
+                        <p class="text-center">昨日访客数</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($view_count->yestody_goods_pv); ?></a>
+                        <p class="text-center">昨日商品浏览量</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($view_count->yestody_goods_uv); ?></a>
+                        <p class="text-center">昨日商品访客量</p>
+                    </div>
+                </div>
+                <div class="con_title4">
+                    <p>流量趋势</p>
+                </div>
+                <div>
+                    <div id="main" data-json="<?php echo e($json['view']); ?>" style="width:68%;height:300px;float: left;"></div>
+                    <div id="main4" style="width:29%;height:300px;float: left;margin-left: 25px;">
+                        <div class="con5" style="display: block;">
+                            <div class="col-md-1-1 padt">
+                                <a class="text-center font" href="javascript:void(0)"><?php echo e($view_count->total_pv); ?></a>
+                                <p class="text-center">历史浏览量</p>
+                            </div>
+                        </div>
+                        <div class="con6" style="display: block;">
+                            <div class="col-md-1-1 padt">
+                                <a class="text-center font" href="javascript:void(0)"><?php echo e($view_count->total_uv); ?></a>
+                                <p class="text-center">历史访客数</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: none;">
+                <div class="con_title1">
+                    <p>今日实时</p>
+                </div>
+                <div class="con2">
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($order_count->wait); ?></a>
+                        <p class="text-center">待发货订单</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($order_count->refund); ?></a>
+                        <p class="text-center">维权订单</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($order_count->yesterday); ?></a>
+                        <p class="text-center">昨日订单数</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)">￥<?php echo e(price_format($order_count->yesterday_money)); ?></a>
+                        <p class="text-center">昨日交易额</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)">￥<?php echo e(price_format($order_count->withdrawals_money)); ?></a>
+                        <p class="text-center">可提现余额</p>
+                    </div>
+                </div>
+                <div class="con_title3">
+                    <p>总概况</p>
+                </div>
+                <div class="con4">
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($goods['all']); ?></a>
+                        <p class="text-center">总商品数</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)"><?php echo e($order_count->total_order); ?></a>
+                        <p class="text-center">总订单</p>
+                    </div>
+                    <div class="col-md-1-5 padt">
+                        <a class="text-center font" href="javascript:void(0)">￥<?php echo e(price_format($order_count->total_money)); ?></a>
+                        <p class="text-center">总交易额</p>
+                    </div>
+                </div>
+                <div class="con_title5">
+                    <p>商品概况</p>
+                </div>
+                <div>
+                    <div id="main2" data-json="<?php echo e($json['goods']); ?>" style="width:48%;height:300px;float: left;"></div>
+                    <div id="main3" data-json="<?php echo e($json['order']); ?>" style="width:48%;height:300px;float: left;margin-left:35px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo Theme::asset()->container('plugin-js')->usePath()->add('data-js-echarts', Theme::get('module') . '/plugin/echarts/echarts.min.js'); ?>
+
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('data-css-index', Theme::get('dir_prefix') . '/data/css/index.css'); ?>
+
+<?php echo Theme::asset()->container('common-css')->usePath()->add('data-css-data', Theme::get('dir_prefix') . '/data/css/data.css'); ?>
+
+<?php echo Theme::asset()->container('common-js')->usePath()->add('data-js-data', Theme::get('dir_prefix') . '/data/js/data.js'); ?>
+
