@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3547941d-7647-4845-a5e6-4699d48ae1cc" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app1222/User.php" afterPath="$PROJECT_DIR$/app1222/User.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/app/Modules/Agent/Http/Controllers/PagesController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="589" column="9" lean-forward="true" selection-start-line="589" selection-start-column="9" selection-end-line="589" selection-end-column="9" />
+              <caret line="589" column="9" lean-forward="false" selection-start-line="589" selection-start-column="9" selection-end-line="589" selection-end-column="9" />
               <folding>
                 <element signature="e#24614#25375#0#PHP" expanded="false" />
               </folding>
@@ -43,8 +44,8 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app1222/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+            <state relative-caret-position="216">
+              <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -511,12 +512,12 @@
       <workItem from="1523253249401" duration="5625000" />
       <workItem from="1523322628106" duration="8503000" />
       <workItem from="1523338519534" duration="614000" />
-      <workItem from="1523342914430" duration="47000" />
+      <workItem from="1523342914430" duration="432000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2403597000" />
+    <option name="totallyTimeSpent" value="2403982000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -657,7 +658,7 @@
     <entry file="file://$PROJECT_DIR$/app/Modules/Agent/Http/Controllers/PagesController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="589" column="9" lean-forward="true" selection-start-line="589" selection-start-column="9" selection-end-line="589" selection-end-column="9" />
+          <caret line="589" column="9" lean-forward="false" selection-start-line="589" selection-start-column="9" selection-end-line="589" selection-end-column="9" />
           <folding>
             <element signature="e#24614#25375#0#PHP" expanded="false" />
           </folding>
@@ -720,8 +721,8 @@
     <entry file="file://$PROJECT_DIR$/public/themes/default/views/agent/museum/shop/index.blade.php" />
     <entry file="file://$PROJECT_DIR$/app1222/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+        <state relative-caret-position="216">
+          <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
           <folding />
         </state>
       </provider>
